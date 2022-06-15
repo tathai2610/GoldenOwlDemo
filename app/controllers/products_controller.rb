@@ -3,9 +3,7 @@ class ProductsController < ApplicationController
   
   def index 
     @products = Product.all
-    if params[:category]
-      @products = Product.category(params[:category])
-    end
+    @products = Product.in_category(params[:category]) if params[:category]
     @pagy, @products = pagy(@products, items: 12)
     @categories = Category.all.order(:name)
   end

@@ -8,5 +8,5 @@ class Product < ApplicationRecord
   # prefer 'pluck' when select columns, 'map' is used when there are calculations need to be done
   # scope :similar_products, -> id { joins(category_products: :category).where(categories: { id: Product.find(id).categories.pluck(:id) }).where.not(id: id) }
   scope :similar_products, -> id { joins(category_products: :category).merge(Category.where(id: [Product.find(id).categories.pluck(:id)])).where.not(id: id) }
-  scope :category, -> name { joins(category_products: :category).merge(Category.where(name: name)) }
+  scope :in_category, -> name { joins(category_products: :category).merge(Category.where(name: name)) }
 end
