@@ -1,0 +1,53 @@
+@use "config" as *;
+@use "navigation";
+@use "pagination";
+@use "home";
+@use "products/products";
+
+@import "~bootstrap/scss/bootstrap";
+
+@media only screen and (max-width: 767px) {
+  .img-responsive {
+    height: 840px;
+    object-fit: cover;
+  }
+
+  .logo-responsive {
+    width: 100px;
+    height: 40px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .img-responsive {
+    height: 584px;
+    object-fit: cover;
+  }
+
+  .logo-responsive {
+    width: 160px;
+    height: 64px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .img-responsive {
+    height: 360px;
+    object-fit: cover;
+  }
+
+  .logo-responsive {
+    width: 160px;
+    height: 64px;
+  }
+}
+
+// @media only screen and (min-width: 1200px) {
+//   body {
+//     background-color: lightblue;
+//   }
+// }
+
+body {
+  font-family: $dg;
+}

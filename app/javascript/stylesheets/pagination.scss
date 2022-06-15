@@ -1,0 +1,22 @@
+@use "config" as *;
+
+.pagination {
+  .page {
+    color: white; 
+    background-color: $dark-green;
+    padding: 18px;
+    text-align: center;
+  }
+
+  a {
+    color: white;
+
+    &:hover {
+      color: white;
+    }
+  }
+  .page.disabled, 
+  .page.current {
+    opacity: 0.8;
+  }
+}
