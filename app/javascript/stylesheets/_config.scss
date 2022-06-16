@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;700&family=Roboto:wght@100;400&display=swap');
+
+// font-family
+$roboto: 'Roboto', sans-serif;
+$dg: 'Darker Grotesque', sans-serif;
+
+// colors
+$dark-green: rgb(65, 98, 75);
+
+.ff-roboto {
+  font-family: $roboto;
+}
+
+.text-darkgreen {
+  color: $dark-green;
+}
+
+.text-red {
+  color: red;
+}
+
+.fw-300 {
+  font-weight: 300; 
+}
+
+.fw-400 {
+  font-weight: 400; 
+}
+
+.fw-500 {
+  font-weight: 500;
+}
+
+.fs-18 {
+  font-size: 18px !important;
+}
+
+.fs-36 {
+  font-size: 36px !important;
+}
+
+.fs-48 {
+  font-size: 48px !important;
+}
+
+.h-48 {
+  height: 48px !important;
+}
+
+.btn-add-to-cart {
+  width: 100%; 
+  background-color: $dark-green;
+  padding: 12px 32px; 
+  color: white;
+  font-size: 20px;
+  @extend .fw-300;
+  border-style: none;
+  height: 40px;
+  line-height: 16px;
+}
+
+.overflow-2-lines {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.navbar-link {
+  text-decoration: none;
+  color: $dark-green;
+  font-size: 20px;
+  @extend .fw-500;
+
+  &:hover {
+    color: $dark-green;
+  }
+}
+
+.products-view {
+  h1 {
+    font-size: 30px;
+    font-family: $roboto;
+    @extend .fw-400;
+  }
+
+  a[href="/products"] {
+    color: black; 
+
+    &:hover {
+      color: $dark-green;
+    }
+  }
+
+  img {
+    object-fit: cover;
+  }
+
+  .product {
+    a {
+      text-decoration: none;
+      color: black;
+    }
+
+    button {
+      @extend .btn-add-to-cart;
+    }
+    
+    &-name {
+      @extend .overflow-2-lines; 
+      height: 58px; 
+    }
+
+    &-description {
+      @extend .overflow-2-lines;
+      height: 48px;
+    }
+  }
+}

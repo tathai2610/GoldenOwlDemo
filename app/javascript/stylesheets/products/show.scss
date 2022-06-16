@@ -1,0 +1,23 @@
+@use "../config" as *;
+
+.product-show-img {
+  height: 800px;
+  width: 100%; 
+  object-fit: cover;
+}
+
+#add-btn, #sub-btn, #product-show-qtt {
+  width: 55px;
+}
+
+#similar-products {
+  background-color: white;
+  @extend .products-view;
+}
+
+#product-show-info {
+  h2 a {
+    text-decoration: none;
+    color: black;
+  }
+}
