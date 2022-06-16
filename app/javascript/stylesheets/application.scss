@@ -3,6 +3,7 @@
 @use "pagination";
 @use "home";
 @use "products/products";
+@use "users/users";
 
 @import "~bootstrap/scss/bootstrap";
 
@@ -39,6 +40,10 @@
   .logo-responsive {
     width: 160px;
     height: 64px;
+  }
+
+  .w-lg-50 {
+    width: 50% !important;
   }
 }
 

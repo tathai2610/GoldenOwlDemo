@@ -65,3 +65,5 @@ gem 'slim'
 gem 'pagy', '~> 5.10'
 # a flexible authentication solution for Rails based on Warden
 gem 'devise'
+
+gem 'simple_form'

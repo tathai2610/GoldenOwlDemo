@@ -1,0 +1,46 @@
+/ <h2>Log in</h2>
+
+/ <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+/   <div class="field">
+/     <%= f.label :email %><br />
+/     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+/   </div>
+
+/   <div class="field">
+/     <%= f.label :password %><br />
+/     <%= f.password_field :password, autocomplete: "current-password" %>
+/   </div>
+
+/   <% if devise_mapping.rememberable? %>
+/     <div class="field">
+/       <%= f.check_box :remember_me %>
+/       <%= f.label :remember_me %>
+/     </div>
+/   <% end %>
+
+/   <div class="actions">
+/     <%= f.submit "Log in" %>
+/   </div>
+/ <% end %>
+
+/ <%= render "users/shared/links" %>
+
+.container-xl.p-0#user-auth
+  .row.mx-auto.justify-content-center.align-items-center.h-100
+    .col-lg-5.p-0.px-5.ps-lg-0
+      h1.mb-0.ff-roboto.fw-100.pt-lg-4.pb-0 Log in
+      .py-2.fs-3 Open the world of Planty
+      
+      .d-block.mt-4
+        = simple_form_for user_session_path do |f| 
+          = f.input :email, placeholder: 'Enter your email'
+          = f.input :password, hint: 'Minimum 6 characters', placeholder: 'Password'
+          .d-flex.justify-content-between.align-items-center
+            = f.input :remember_me, as: :boolean, input_html: { class: "w-auto me-3" }, label_html: { class: "w-auto my-1" }
+            = link_to "Forgot your password?", new_user_password_path, class: "text-decoration-none text-darkgreen"
+          = f.button :submit, "Log in"
+      .mt-3.text-center.fs-5
+        | Don't have an account? 
+        = link_to "Sign up for free", new_user_registration_path, class: "text-decoration-none text-darkgreen fw-500"
+    .col-lg-4.p-0.d-none.d-lg-flex
+      = image_tag "login-cover.jpg"
