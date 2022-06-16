@@ -1,7 +1,11 @@
 @use '../config' as *;
 
 #user-auth {
-  height: calc(100vh - 112px);
+  background: url('/assets/home-cover.jpg');
+
+  .container-xl {
+    background-color: white;
+  }
 
   img {
     width: 100%;
@@ -29,6 +33,7 @@
     width: 100%;
     padding: 8px 16px;
     font-size: 20px;
+    outline-color: $dark-green;
   }
 
   input.btn {

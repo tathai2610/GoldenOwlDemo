@@ -17,6 +17,10 @@
     width: 100px;
     height: 40px;
   }
+
+  .height-responsive {
+    height: calc(100vh - 88px);
+  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -28,6 +32,10 @@
   .logo-responsive {
     width: 160px;
     height: 64px;
+  }
+
+  .height-responsive {
+    height: calc(100vh - 112px);
   }
 }
 
