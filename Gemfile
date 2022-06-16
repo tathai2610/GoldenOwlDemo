@@ -63,3 +63,5 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 gem 'slim'
 # Pagination
 gem 'pagy', '~> 5.10'
+# a flexible authentication solution for Rails based on Warden
+gem 'devise'
