@@ -37,12 +37,8 @@
   }
 
   input.btn {
-    padding: 16px 48px; 
-    background-color: $dark-green;
-    color: white;
     margin-top: 24px;
-    font-size: 24px;
-    @extend .fw-400;
+    @extend .btn-large;
   }
 
   a:hover {

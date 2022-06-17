@@ -63,6 +63,19 @@ $dark-green: rgb(65, 98, 75);
   line-height: 16px;
 }
 
+.btn-large {
+  padding: 16px 48px;
+  background-color: $dark-green;
+  font-size: 24px;
+  color: white;
+  border-style: none;
+  transition: .1s;
+
+  &:hover {
+    opacity: .8;
+  }
+}
+
 .overflow-2-lines {
   display: -webkit-box;
   -webkit-line-clamp: 2;
