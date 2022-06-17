@@ -66,7 +66,10 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 gem 'slim'
 # Pagination
 gem 'pagy', '~> 5.10'
-# a flexible authentication solution for Rails based on Warden
+# A flexible authentication solution for Rails based on Warden
 gem 'devise'
-
+# Rails forms made easy.
 gem 'simple_form'
+# Very simple Roles library without any authorization enforcement supporting scope on resource object.
+gem "rolify"
+
