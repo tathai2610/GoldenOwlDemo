@@ -31,9 +31,10 @@
       .col-lg-5.p-0.px-5.ps-lg-0
         h1.mb-0.ff-roboto.fw-100.pt-lg-4.pb-0 Log in
         .py-2.fs-3 Open the world of Planty
-        
+
         .d-block.mt-4
-          = simple_form_for user_session_path do |f| 
+          = render "layouts/flash"
+          = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| 
             = f.input :email, placeholder: 'Enter your email'
             = f.input :password, hint: 'Minimum 6 characters', placeholder: 'Password'
             .d-flex.justify-content-between.align-items-center

@@ -21,6 +21,7 @@
       .col-10.col-lg-5.p-0.px-5.ps-lg-0
         h1.mb-0.ff-roboto.fw-100.pt-lg-4.pb-0 Forgot your password?        
         .d-block.mt-4
+          = render "layouts/flash"
           = simple_form_for user_password_path do |f| 
             = f.input :email, placeholder: 'Enter your email'
             = f.button :submit, "Send reset password instructions"
