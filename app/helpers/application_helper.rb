@@ -12,4 +12,13 @@ module ApplicationHelper
   def product_categories(product)
     sanitize product.categories.map { |c| "#{link_to c.name, products_path(category: c.name)}".html_safe }.join(", ")
   end
+
+  def flash_class(flash_key)
+    case flash_key
+    when "notice"
+      "info"
+    when "alert"
+      "warning"
+    end
+  end
 end

@@ -10,8 +10,15 @@
         = link_to "Store", root_path
         = link_to "Plants", products_path
         = link_to "About", "#"
-      = link_to '#' do 
-        i.fa-solid.fa-bag-shopping.fa-lg.text-darkgreen
+      .d-flex.align-items-center
+        = link_to '#' do 
+          i.fa-solid.fa-bag-shopping.fa-lg.text-darkgreen
+        - unless user_signed_in?
+          = link_to new_user_session_path do 
+            i.fa-solid.fa-right-to-bracket.fa-lg.text-darkgreen.ms-4
+        - else
+          = link_to destroy_user_session_path, method: :delete do 
+            i.fa-solid.fa-right-from-bracket.fa-lg.text-darkgreen.ms-4
 #subnav.container-fluid.py-2.px-0
   = link_to root_path do 
     .container-fluid.py-2 Store

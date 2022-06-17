@@ -1,0 +1,50 @@
+/ <h2>Sign up</h2>
+
+/ <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+/   <%= render "users/shared/error_messages", resource: resource %>
+
+/   <div class="field">
+/     <%= f.label :email %><br />
+/     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+/   </div>
+
+/   <div class="field">
+/     <%= f.label :password %>
+/     <% if @minimum_password_length %>
+/     <em>(<%= @minimum_password_length %> characters minimum)</em>
+/     <% end %><br />
+/     <%= f.password_field :password, autocomplete: "new-password" %>
+/   </div>
+
+/   <div class="field">
+/     <%= f.label :password_confirmation %><br />
+/     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+/   </div>
+
+/   <div class="actions">
+/     <%= f.submit "Sign up" %>
+/   </div>
+/ <% end %>
+
+/ <%= render "users/shared/links" %>
+
+.container-fluid.py-5.px-5.px-lg-0.height-responsive#user-auth
+  .container-xl.p-4
+    .row.mx-auto.justify-content-center.align-items-center.h-100
+      .col-lg-4.p-0.d-none.d-lg-flex
+        = image_tag "signup-cover.jpg"
+      .col-lg-5.p-0.px-5.pe-lg-0
+        h1.mb-0.ff-roboto.fw-100.pt-lg-4.pb-0 Sign up
+        .py-2.fs-3 Find the perfect plants for your home
+        
+        .d-block.mt-4
+          = render "layouts/flash"
+          = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| 
+            = f.input :email, placeholder: 'Enter your email'
+            = f.input :password, hint: 'Minimum 6 characters', placeholder: 'Password'
+            = f.input :password_confirmation, placeholder: 'Comfirm password'
+            = f.button :submit, "Sign up"
+        .mt-3.text-center.fs-5
+          | Already have an account? 
+          = link_to "Log in", new_user_session_path, class: "text-decoration-none text-darkgreen fw-500"
+    

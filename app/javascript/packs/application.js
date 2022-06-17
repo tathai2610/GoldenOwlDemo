@@ -13,6 +13,10 @@ import "bootstrap"
 import { Tooltip, Popover } from "bootstrap"
 require("../stylesheets/application.scss")
 
+Rails.start()
+Turbolinks.start()
+ActiveStorage.start()
+
 document.addEventListener("turbolinks:load", () => {
   // Both of these are from the Bootstrap 5 docs
   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
@@ -25,10 +29,6 @@ document.addEventListener("turbolinks:load", () => {
       return new Popover(popoverTriggerEl)
   })
 })
-
-Rails.start()
-Turbolinks.start()
-ActiveStorage.start()
 
 require('packs/scripts.js') 
 

@@ -3,6 +3,7 @@
 @use "pagination";
 @use "home";
 @use "products/products";
+@use "users/users";
 
 @import "~bootstrap/scss/bootstrap";
 
@@ -16,6 +17,10 @@
     width: 100px;
     height: 40px;
   }
+
+  .height-responsive {
+    height: calc(100vh - 88px);
+  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -28,6 +33,10 @@
     width: 160px;
     height: 64px;
   }
+
+  .height-responsive {
+    height: calc(100vh - 112px);
+  }
 }
 
 @media only screen and (min-width: 992px) {
@@ -39,6 +48,10 @@
   .logo-responsive {
     width: 160px;
     height: 64px;
+  }
+
+  .w-lg-50 {
+    width: 50% !important;
   }
 }
 
