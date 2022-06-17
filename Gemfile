@@ -44,6 +44,7 @@ group :development do
   gem 'spring'
   # Preview email in the default browser instead of sending it.
   gem 'letter_opener'
+  
 end
 
 group :test do
