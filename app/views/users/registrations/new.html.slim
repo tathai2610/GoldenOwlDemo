@@ -43,6 +43,7 @@
             = f.input :email, placeholder: 'Enter your email'
             = f.input :password, hint: 'Minimum 6 characters', placeholder: 'Password'
             = f.input :password_confirmation, placeholder: 'Comfirm password'
+            = f.input :roles, collection: [['Buyer', 'buyer'], ['Seller', 'seller']], selected: 'buyer', label_html: { class: "me-3" }, input_html: { class: "w-25 py-2 px-3" }
             = f.button :submit, "Sign up"
         .mt-3.text-center.fs-5
           | Already have an account? 

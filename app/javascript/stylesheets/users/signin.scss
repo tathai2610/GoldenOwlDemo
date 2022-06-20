@@ -22,11 +22,15 @@
   }
 
   label {
-    display: block;
     font-size: 24px;
     @extend .fw-500;
     margin-bottom: 4px;
     margin-top: 8px;
+  }
+
+  span > label {
+    margin: 0;
+    font-size: 20px;
   }
 
   input {

@@ -7,18 +7,21 @@
       = link_to root_path do 
         = image_tag "logo.svg", class: "logo-responsive"
       .d-none.d-md-flex.w-25.justify-content-between
-        = link_to "Store", root_path
+        = link_to "Home", root_path
         = link_to "Plants", products_path
+        - if user_signed_in? && current_user.shop.blank?
+          = link_to "Open shop", new_user_shop_path(current_user)
         = link_to "About", "#"
-      .d-flex.align-items-center
+      .d-flex.align-items-center.justify-content-between.position-relative
         = link_to '#' do 
-          i.fa-solid.fa-bag-shopping.fa-lg.text-darkgreen
+          i.fa-solid.fa-bag-shopping.fa-lg.text-darkgreen.me-3 
+        .text-darkgreen.fs-1 |
         - unless user_signed_in?
           = link_to new_user_session_path do 
-            i.fa-solid.fa-right-to-bracket.fa-lg.text-darkgreen.ms-4
+            i.fa-solid.fa-right-to-bracket.fa-lg.text-darkgreen.ms-3
         - else
           = link_to destroy_user_session_path, method: :delete do 
-            i.fa-solid.fa-right-from-bracket.fa-lg.text-darkgreen.ms-4
+            i.fa-solid.fa-right-from-bracket.fa-lg.text-darkgreen.ms-3
 #subnav.container-fluid.py-2.px-0
   = link_to root_path do 
     .container-fluid.py-2 Store

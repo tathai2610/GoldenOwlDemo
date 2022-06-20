@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
-  devise_for :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  devise_for :users, controllers: { registrations: 'users/registrations' }
+
   root "home#index"
+
+  resources :users do
+    resource :shop
+  end
   
-  resources :products
+  resources :shop do
+    resources :products
+  end
+
+  resources :products, only: %i(index)
 end
