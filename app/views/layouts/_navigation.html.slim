@@ -7,12 +7,12 @@
       = link_to root_path do 
         = image_tag "logo.svg", class: "logo-responsive"
       .d-none.d-md-flex.w-auto.justify-content-between
-        = link_to "Home", root_path, class: "me-3"
-        = link_to "Plants", products_path, class: "me-3"
+        = link_to "Home", root_path, class: "me-4"
+        = link_to "Plants", products_path, class: "me-4"
         - if user_signed_in? && current_user.shop.blank?
-          = link_to "Open shop", new_user_shop_path(current_user), class: "me-3"
+          = link_to "Open shop", new_user_shop_path(current_user), class: "me-4"
         - elsif user_signed_in? && current_user.shop.present? 
-          = link_to "Your shop", user_shop_path(current_user), class: "me-3"
+          = link_to "Your shop", user_shop_path(current_user), class: "me-4"
         = link_to "About", "#"
       .d-flex.align-items-center.justify-content-between.position-relative
         = link_to '#' do 

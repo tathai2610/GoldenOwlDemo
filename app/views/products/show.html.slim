@@ -1,4 +1,4 @@
-.container-xl.p-0 
+.container-xl.p-0.mb-5
   .row.mx-auto.p-0.px-lg-4 
     .col-auto.px-4.p-lg-0.mt-5.mb-3
       = link_to products_path, class: "text-decoration-none text-dark fs-4 fw-300 ps-3" do 
@@ -22,8 +22,27 @@
                 span.text-center#product-show-qtt 1 
                 button.border-0#add-btn type="button" 
                   i.fa-solid.fa-plus.fs-5
-            button.btn-add-to-cart.fs-4.w-50.mt-5.h-48  type="submit" Add to cart
-  .row.mx-auto.p-0.px-lg-4 
-    
+            = link_to "#" do 
+              button.btn-small.fs-4.w-50.mt-5.h-48  type="submit" Add to cart
+.container-fluid.p-0#product-show-shop 
+  .container-xl.py-5.px-4
+    .row.mx-auto.p-0
+      .col-12.col-lg-4.p-0
+        .container-fluid.p-0 
+          .row.mx-auto.mb-5.mb-lg-0.justify-content-center.align-items-center
+            .col-auto.ps-0
+              = link_to user_shop_path(@shop.user) do 
+                = image_tag @shop.avatar, size: "100x100", class: "rounded border-color-darkgreen"
+            .col-auto.p-0
+              h4 = @shop.name
+              .d-flex
+                = link_to user_shop_path(@shop.user) do 
+                  button.btn-small.bg-white.text-darkgreen type="button" View shop
+                = link_to "#", class: "ms-2" do 
+                  button.btn-small type="button" Follow
+      .col-12.col-lg-8.p-0.d-flex.align-items-center
+        .container-fluid.p-0 
+          .row.mx-auto
+            = render partial: "shops/info", locals: { shop: @shop }
 = render partial: "home/products_4", locals: { section: "similar-products", product_list: products_section("similar-products", @product.id) }
 

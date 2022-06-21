@@ -12,7 +12,7 @@ $dark-green: rgb(65, 98, 75);
 }
 
 .text-darkgreen {
-  color: $dark-green;
+  color: $dark-green !important;
 }
 
 .text-red {
@@ -59,15 +59,19 @@ $dark-green: rgb(65, 98, 75);
   border: 2px solid $dark-green;
 }
 
-.btn-add-to-cart {
+.bg-color-cream {
+  background-color: #e8e9e3;
+}
+
+.btn-small {
   width: 100%; 
   background-color: $dark-green;
   padding: 12px 32px; 
   color: white;
   font-size: 20px;
   @extend .fw-300;
-  border-style: none;
-  height: 40px;
+  border: 2px solid $dark-green;
+  height: 45px;
   line-height: 16px;
 }
 
@@ -76,7 +80,7 @@ $dark-green: rgb(65, 98, 75);
   background-color: $dark-green;
   font-size: 24px;
   color: white;
-  border-style: none;
+  border: 2px solid $dark-green;
   transition: .1s;
 
   &:hover {
@@ -129,7 +133,7 @@ $dark-green: rgb(65, 98, 75);
     }
 
     button {
-      @extend .btn-add-to-cart;
+      @extend .btn-small;
     }
     
     &-name {
