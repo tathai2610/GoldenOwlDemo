@@ -31,6 +31,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '>= 3.9.0'
 end
 
 group :development do
@@ -53,6 +54,10 @@ group :test do
   gem 'selenium-webdriver', '>= 4.0.0.rc1'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  # provides RSpec- and Minitest-compatible one-liners to test common Rails functionality
+  gem 'shoulda-matchers', '~> 5.0'  
+  gem 'shoulda-callback-matchers', '~> 1.1.1'
+  gem 'database_rewinder'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -72,4 +77,5 @@ gem 'devise'
 gem 'simple_form'
 # Very simple Roles library without any authorization enforcement supporting scope on resource object.
 gem "rolify"
-
+# support for multiple build strategies and multiple factories for the same class
+gem "factory_bot_rails"
