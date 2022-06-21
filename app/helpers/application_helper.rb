@@ -19,6 +19,10 @@ module ApplicationHelper
       "info"
     when "alert"
       "warning"
+    when "error"
+      "danger"
+    when "success"
+      "success"
     end
   end
 end

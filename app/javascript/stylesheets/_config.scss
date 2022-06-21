@@ -51,6 +51,14 @@ $dark-green: rgb(65, 98, 75);
   height: 48px !important;
 }
 
+.object-fit-cover {
+  object-fit: cover;
+}
+
+.border-color-darkgreen {
+  border: 2px solid $dark-green;
+}
+
 .btn-add-to-cart {
   width: 100%; 
   background-color: $dark-green;

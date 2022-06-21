@@ -4,6 +4,7 @@
 @use "home";
 @use "products/products";
 @use "users/users";
+@use "shops/shops";
 
 @import "~bootstrap/scss/bootstrap";
 
@@ -21,6 +22,10 @@
   .height-responsive {
     height: calc(100vh - 88px);
   }
+
+  #signup-height {
+    height: 716px;
+  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -36,6 +41,10 @@
 
   .height-responsive {
     height: calc(100vh - 112px);
+  }
+
+  #signup-height {
+    height: 744px;
   }
 }
 

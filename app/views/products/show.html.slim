@@ -23,5 +23,7 @@
                 button.border-0#add-btn type="button" 
                   i.fa-solid.fa-plus.fs-5
             button.btn-add-to-cart.fs-4.w-50.mt-5.h-48  type="submit" Add to cart
+  .row.mx-auto.p-0.px-lg-4 
+    
 = render partial: "home/products_4", locals: { section: "similar-products", product_list: products_section("similar-products", @product.id) }
 

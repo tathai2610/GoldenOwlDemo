@@ -6,11 +6,13 @@
           i.fa-solid.fa-bars.fa-lg.text-darkgreen
       = link_to root_path do 
         = image_tag "logo.svg", class: "logo-responsive"
-      .d-none.d-md-flex.w-25.justify-content-between
-        = link_to "Home", root_path
-        = link_to "Plants", products_path
+      .d-none.d-md-flex.w-auto.justify-content-between
+        = link_to "Home", root_path, class: "me-3"
+        = link_to "Plants", products_path, class: "me-3"
         - if user_signed_in? && current_user.shop.blank?
-          = link_to "Open shop", new_user_shop_path(current_user)
+          = link_to "Open shop", new_user_shop_path(current_user), class: "me-3"
+        - elsif user_signed_in? && current_user.shop.present? 
+          = link_to "Your shop", user_shop_path(current_user), class: "me-3"
         = link_to "About", "#"
       .d-flex.align-items-center.justify-content-between.position-relative
         = link_to '#' do 
@@ -24,7 +26,7 @@
             i.fa-solid.fa-right-from-bracket.fa-lg.text-darkgreen.ms-3
 #subnav.container-fluid.py-2.px-0
   = link_to root_path do 
-    .container-fluid.py-2 Store
+    .container-fluid.py-2 Home
   = link_to products_path do
     .container-fluid.py-2 Plants
   = link_to "#" do
