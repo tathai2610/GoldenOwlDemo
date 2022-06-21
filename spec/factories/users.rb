@@ -12,5 +12,9 @@ FactoryBot.define do
     factory :seller do
       after(:create) { |user| user.add_role(:seller) }
     end
+
+    factory :buyer do
+      after(:create) { |user| user.add_role(:buyer) }
+    end
   end
 end

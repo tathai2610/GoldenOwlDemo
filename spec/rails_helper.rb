@@ -61,6 +61,14 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  config.after(:each) do
+    DatabaseRewinder.clean
+  end
+
+  config.include Devise::Test::IntegrationHelpers, type: :request
+
+  config.include Rails.application.routes.url_helpers, type: :request
 end
 
 Shoulda::Matchers.configure do |config|
