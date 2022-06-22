@@ -22,14 +22,18 @@
   }
 
   label {
-    display: block;
     font-size: 24px;
     @extend .fw-500;
     margin-bottom: 4px;
     margin-top: 8px;
   }
 
-  input {
+  span > label {
+    margin: 0;
+    font-size: 20px;
+  }
+
+  input, textarea {
     width: 100%;
     padding: 8px 16px;
     font-size: 20px;
@@ -37,15 +41,15 @@
   }
 
   input.btn {
-    padding: 16px 48px; 
-    background-color: $dark-green;
-    color: white;
     margin-top: 24px;
-    font-size: 24px;
-    @extend .fw-400;
+    @extend .btn-large;
   }
 
   a:hover {
     @extend .text-darkgreen;
+  }
+
+  textarea {
+    
   }
 }

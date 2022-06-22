@@ -1,0 +1,4 @@
+= simple_form_for shop, url: user_shop_path(current_user) do |f| 
+  = f.input :name, label: 'Shop name'
+  = f.input :description, as: :text
+  = f.button :submit, "Submit"

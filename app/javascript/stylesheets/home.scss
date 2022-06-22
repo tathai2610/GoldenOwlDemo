@@ -11,15 +11,7 @@
 
   button {
     margin-top: 32px;
-    padding: 16px 48px;
-    background-color: $dark-green;
-    font-size: 24px;
-    color: white;
-    border-style: none;
-
-    &:hover {
-      opacity: .8;
-    }
+    @extend .btn-large;
   }
 
   img {

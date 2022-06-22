@@ -1,0 +1,46 @@
+.container-xl.p-0
+  = render "layouts/flash"
+.container-fluid.p-0.shop-cover.py-5
+  .container-xl.p-0
+    .row.mx-auto.justify-content-center 
+      .col-auto.p-0.d-flex.justify-content-center
+        = image_tag @shop.avatar, size: "115x115", class: "object-fit-cover rounded border-color-darkgreen"
+    .row.mx-auto.mt-2
+      h1.mb-0.text-center.text-darkgreen = @shop.name
+    .row.mx-auto.mt-3.justify-content-center
+      .col-auto.p-0 
+        - if current_user == @user 
+          = link_to "#" do 
+            button.btn-small type="button" Add product 
+        - else 
+          = link_to "#" do 
+            button.btn-small type="button" Follow
+
+.container-fluid.p-0.py-5.px-4
+  .container-xl.p-0
+    .row.mx-auto 
+      .col-lg-12.mb-4
+        h4.m-0.ff-roboto.fw-100.text-darkgreen.text-center Description 
+        .text-center = @shop.description 
+      = render partial: "shops/info", locals: { shop: @shop }
+- if @products.any?
+  .container-fluid.p-0#plants
+    .container-xl.py-5.px-4.position-relative.border-top
+      .d-flex.justify-content-between.align-items-center
+        h1.p-0.m-0.ff-roboto.fw-400 Plants
+      .container-fluid.p-0.my-4 
+        .row
+          = render partial: "products/product", collection: @products, as: :product
+      .d-flex.mb-5.py-lg-3.px-lg-4.justify-content-center
+        = render partial: "layouts/pagination", locals: { pagy: @pagy }
+  = render partial: "home/products_4", locals: { section: "best-sellers", product_list: @shop.products.first(4) }
+- else 
+  .container-fluid.p-0.bg-color-cream 
+    .container-xl.py-5.px-4.d-flex.align-items-center.justify-content-center 
+      h2.py-5.ff-roboto.fw-300.text-center It seems that this shop hasn't added any products yet.
+      
+
+
+
+
+    

@@ -12,7 +12,7 @@ $dark-green: rgb(65, 98, 75);
 }
 
 .text-darkgreen {
-  color: $dark-green;
+  color: $dark-green !important;
 }
 
 .text-red {
@@ -51,16 +51,41 @@ $dark-green: rgb(65, 98, 75);
   height: 48px !important;
 }
 
-.btn-add-to-cart {
+.object-fit-cover {
+  object-fit: cover;
+}
+
+.border-color-darkgreen {
+  border: 2px solid $dark-green;
+}
+
+.bg-color-cream {
+  background-color: #e8e9e3;
+}
+
+.btn-small {
   width: 100%; 
   background-color: $dark-green;
   padding: 12px 32px; 
   color: white;
   font-size: 20px;
   @extend .fw-300;
-  border-style: none;
-  height: 40px;
+  border: 2px solid $dark-green;
+  height: 45px;
   line-height: 16px;
+}
+
+.btn-large {
+  padding: 16px 48px;
+  background-color: $dark-green;
+  font-size: 24px;
+  color: white;
+  border: 2px solid $dark-green;
+  transition: .1s;
+
+  &:hover {
+    opacity: .8;
+  }
 }
 
 .overflow-2-lines {
@@ -108,7 +133,7 @@ $dark-green: rgb(65, 98, 75);
     }
 
     button {
-      @extend .btn-add-to-cart;
+      @extend .btn-small;
     }
     
     &-name {
