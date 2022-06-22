@@ -18,7 +18,7 @@ class ShopsController < ApplicationController
     if @shop.save
       @user.add_role :seller 
       flash[:success] = "Congratulations! You have successfuly open your own shop on Planty!"
-      redirect_to user_shop_path(@user), method: :get
+      redirect_to user_shop_path(@user)
     else 
       flash[:error] = "Cannot create your shop"
       render root_path

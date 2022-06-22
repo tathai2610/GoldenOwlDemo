@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Product, type: :model do
   let(:categories) { create_list(:category, 3) }
   let(:products) { create_list(:product, 5) }
+  
   before do
     products.first(3).each { |product| product.categories << categories.first } 
     products.last(2).each { |product| product.categories << categories.last } 

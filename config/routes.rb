@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resource :shop
   end
   
-  resources :shop do
+  resources :shops do
     resources :products
   end
 
