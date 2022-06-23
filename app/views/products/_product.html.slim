@@ -3,7 +3,7 @@
       = image_tag url_for(product.images.first), class: "w-100 img-responsive"
       .container-fluid.p-0.py-3
         h2.m-0.d-flex.justify-content-between.fs-4.fw-500
-          span.product-name = product.name 
+          span.product-name.pe-2 = product.name 
           span $#{product.price}
         p.mt-2.fw-300.product-description = product.description 
         button Add to cart 

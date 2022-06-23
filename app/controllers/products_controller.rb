@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :check_categories, only: [:create]
   before_action :set_shop, only: [:show, :new, :create]
   before_action :set_product, only: [:show]
   
@@ -19,7 +20,6 @@ class ProductsController < ApplicationController
   end
 
   def create
-    puts product_params
     @product = Product.new(product_params.merge(shop: @shop))
     if @product.save 
       flash[:success] = 'Successfully add a new product!'
@@ -42,5 +42,16 @@ class ProductsController < ApplicationController
 
   def product_params 
     params.require(:product).permit(:name, :description, :quantity, :price, images: [], category_ids: [])
+  end
+
+  def check_categories
+    return if params[:product][:category_ids].size == 1
+    params[:product][:category_ids].each do |c| 
+      if c.present? && Category.find_by(id: c).nil? 
+        new_c = Category.create(name: c)
+        c_index = params[:product][:category_ids].find_index(c)
+        params[:product][:category_ids][c_index] = new_c.id.to_s
+      end
+    end
   end
 end

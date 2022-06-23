@@ -23,8 +23,9 @@ end
 end
 
 50.times do 
-  p = Product.create(name: Faker::Lorem.sentence.gsub('.', ''), description: Faker::Lorem.paragraphs.join(' '), price: Faker::Number.decimal(l_digits: 2, r_digits: 2), shop_id: rand(1..10))
+  p = Product.new(name: Faker::Lorem.sentence.gsub('.', ''), description: Faker::Lorem.paragraphs.join(' '), price: Faker::Number.decimal(l_digits: 2, r_digits: 2), shop_id: rand(1..10))
   p.images.attach([io: File.open(Rails.root.join('app', 'assets', 'images', 'default.jpg')), filename: 'default-image.jpg', content_type: 'image/jpg'])
+  p.save
   2.times do 
     p.categories << Category.find(rand(1..20))
   end

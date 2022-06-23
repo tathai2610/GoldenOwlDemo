@@ -28,5 +28,9 @@ $(document).on("turbolinks:load", function() {
   })
 
   // select2 call 
-  $('#product_category_ids').select2()
+  $('#product_category_ids').select2({
+    tags: true,
+    tokenSeparators: [',', ' '],
+    placeholder: 'Choose product category'
+  })
 })
