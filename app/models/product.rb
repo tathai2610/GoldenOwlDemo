@@ -1,8 +1,9 @@
 class Product < ApplicationRecord
-  has_many_attached :images
+  belongs_to :shop, counter_cache: true
   has_many :category_products, dependent: :destroy 
   has_many :categories, through: :category_products
-  belongs_to :shop, counter_cache: true
+  has_many_attached :images
+  has_rich_text :description
 
   validates :name, presence: true
   validates :description, presence: true 

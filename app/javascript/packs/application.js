@@ -13,6 +13,9 @@ import "bootstrap"
 import { Tooltip, Popover } from "bootstrap"
 require("../stylesheets/application.scss")
 
+import "trix"
+import "@rails/actiontext"
+
 import 'select2'
 import 'select2/dist/css/select2.css'
 
@@ -36,3 +39,6 @@ document.addEventListener("turbolinks:load", () => {
 require('packs/scripts.js') 
 
 global.$ = window.$ = jQuery;
+
+require("trix")
+require("@rails/actiontext")

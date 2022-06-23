@@ -14,16 +14,14 @@
           #product-show-info.col-12.col-lg-6.px-4.py-lg-3.ps-lg-5 
             h1.m-0.pt-4.fw-400.fs-48 = @product.name 
             h2.m-0.fw-300 = product_categories(@product)
-            .mt-5.fs-18.fw-400.py-2 = @product.description
-            .d-flex.mt-5
-              h1.m-0.fs-36.text-red.fw-bold $#{@product.price} 
-              .d-flex.ms-5.fs-3.align-items-center 
-                span.me-3 Quantity: 
-                button.border-0#sub-btn type="button" 
-                  i.fa-solid.fa-minus.fs-5
-                span.text-center#product-show-qtt = @product.quantity
-                button.border-0#add-btn type="button" 
-                  i.fa-solid.fa-plus.fs-5
+            h1.m-0.fs-36.text-red.fw-bold.py-3 $#{ sprintf("%.2f", @product.price) }
+            .d-flex.fs-3.mt-3.align-items-center 
+              span.me-3 Quantity: 
+              button.border-0#sub-btn type="button" 
+                i.fa-solid.fa-minus.fs-5
+              span.text-center#product-show-qtt = @product.quantity
+              button.border-0#add-btn type="button" 
+                i.fa-solid.fa-plus.fs-5
             = link_to "#" do 
               button.btn-small.fs-4.w-50.mt-5.h-48  type="submit" Add to cart
 .container-fluid.p-0#product-show-shop 
@@ -46,6 +44,11 @@
         .container-fluid.p-0 
           .row.mx-auto
             = render partial: "shops/info", locals: { shop: @shop }
+.container-fluid.p-0 
+  .container-xl.py-5.px-4.border-bottom
+    h1 Product Description
+    .fs-20.fw-400.py-2 == @product.description
+
 - if Product.similar_products(@product.id).any?
   = render partial: "home/products_4", locals: { section: "similar-products", product_list: products_section("similar-products", @product.id) }
 

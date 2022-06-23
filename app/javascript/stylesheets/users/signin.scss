@@ -36,7 +36,8 @@ form {
     display: block;
   }
 
-  span > label {
+  span > label, 
+  trix-editor {
     margin: 0;
     font-size: 20px;
   }

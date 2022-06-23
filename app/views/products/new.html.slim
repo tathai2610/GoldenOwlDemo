@@ -15,7 +15,7 @@
                 = f.input :quantity
               .col-6.pe-0
                 = f.input :price
-          = f.input :description
+          = f.input :description, as: :rich_text_area
         .col-12.col-lg-6.px-0.ps-lg-3
           = f.input :images, as: :file, label: 'Product Images', input_html: { multiple: true }
           = f.button :submit, 'Add Product'
