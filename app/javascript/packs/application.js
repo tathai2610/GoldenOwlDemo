@@ -13,6 +13,9 @@ import "bootstrap"
 import { Tooltip, Popover } from "bootstrap"
 require("../stylesheets/application.scss")
 
+import 'select2'
+import 'select2/dist/css/select2.css'
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()

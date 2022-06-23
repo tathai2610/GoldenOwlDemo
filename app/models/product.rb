@@ -1,8 +1,13 @@
 class Product < ApplicationRecord
-  has_one_attached :image
+  has_many_attached :images
   has_many :category_products, dependent: :destroy 
   has_many :categories, through: :category_products
   belongs_to :shop, counter_cache: true
+
+  validates :name, presence: true
+  validates :description, presence: true 
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :images, presence: true
 
   # scope :best_sellers, -> { where }
   # 'where' is often used when there are more than one conditions, otherwise 'merge'

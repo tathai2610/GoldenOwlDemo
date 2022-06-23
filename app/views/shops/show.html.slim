@@ -1,4 +1,4 @@
-.container-xl.p-0
+.container-xl.p-0.pb-3
   = render "layouts/flash"
 .container-fluid.p-0.shop-cover.py-5
   .container-xl.p-0
@@ -10,7 +10,7 @@
     .row.mx-auto.mt-3.justify-content-center
       .col-auto.p-0 
         - if current_user == @user 
-          = link_to "#" do 
+          = link_to new_shop_product_path(@shop) do 
             button.btn-small type="button" Add product 
         - else 
           = link_to "#" do 
@@ -37,10 +37,4 @@
 - else 
   .container-fluid.p-0.bg-color-cream 
     .container-xl.py-5.px-4.d-flex.align-items-center.justify-content-center 
-      h2.py-5.ff-roboto.fw-300.text-center It seems that this shop hasn't added any products yet.
-      
-
-
-
-
-    
+      h2.py-5.ff-roboto.fw-300.text-center It seems that this shop hasn't added any products yet.    

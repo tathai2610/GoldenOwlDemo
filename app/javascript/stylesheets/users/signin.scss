@@ -16,9 +16,12 @@
   h1 {
     font-size: 70px;
   }
+}
 
+form {
   abbr {
-    text-decoration: none;
+    display: none;
+    text-decoration: none !important;
   }
 
   label {
@@ -28,12 +31,16 @@
     margin-top: 8px;
   }
 
+  label[for*='image'] {
+    display: block;
+  }
+
   span > label {
     margin: 0;
     font-size: 20px;
   }
 
-  input, textarea {
+  input, textarea, select {
     width: 100%;
     padding: 8px 16px;
     font-size: 20px;
@@ -45,11 +52,13 @@
     @extend .btn-large;
   }
 
+  // input[type='file'] {
+  //   height: 150px;
+  //   width: 150px;
+  //   background-color: #e8e9e3;
+  // }
+
   a:hover {
     @extend .text-darkgreen;
-  }
-
-  textarea {
-    
   }
 }

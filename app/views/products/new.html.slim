@@ -1,0 +1,21 @@
+.container-fluid.p-0.shop-cover.py-5 
+  .container-xl.p-0 
+    h1.p-0.m-0.text-center New product
+.container-fluid.p-0 
+  .container-xl.px-4.py-5
+    = render 'layouts/flash'
+    = simple_form_for @product, url: shop_products_path(@shop) do |f|
+      .row.mx-auto
+        .col-12.col-lg-6.ps-0
+          = f.input :name, label: 'Product Name'
+          = f.association :categories, label: 'Category', input_html: { multiple: true }
+          .container-fluid.p-0 
+            .row.mx-auto.justify-content-between
+              .col-6.ps-0 
+                = f.input :quantity
+              .col-6.pe-0
+                = f.input :price
+          = f.input :description
+        .col-12.col-lg-6.pe-0
+          = f.input :images, as: :file, label: 'Product Images', input_html: { multiple: true }
+          = f.button :submit, 'Add Product'

@@ -26,4 +26,7 @@ $(document).on("turbolinks:load", function() {
       $(this).children("i").addClass("fa-x")
     }
   })
+
+  // select2 call 
+  $('#product_category_ids').select2()
 })
