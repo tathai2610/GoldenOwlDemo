@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   end
   
   resources :shops do
-    resources :products
+    resources :products do 
+      post 'import', on: :collection
+    end
   end
 
   resources :products, only: %i(index)

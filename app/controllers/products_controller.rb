@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :check_categories, only: [:create]
-  before_action :set_shop, only: [:show, :new, :create]
+  before_action :set_shop, only: [:show, :new, :create, :import]
   before_action :set_product, only: [:show]
   
   def index 

@@ -11,6 +11,8 @@
         .row.mx-auto.p-0 
           .col-12.col-lg-6.p-0
             = image_tag url_for(@product.images.first), class: "product-show-img"
+            .d-flex.mt-3.pb-2.w-100.product-show_images-holder
+              = render partial: "products/product_images", collection: @product.images, as: :image
           #product-show-info.col-12.col-lg-6.px-4.py-lg-3.ps-lg-5 
             h1.m-0.pt-4.fw-400.fs-48 = @product.name 
             h2.m-0.fw-300 = product_categories(@product)
