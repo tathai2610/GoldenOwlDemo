@@ -1,6 +1,6 @@
 .container-fluid.p-0.shop-cover.py-5 
   .container-xl.p-0 
-    h1.p-0.m-0.text-center New product
+    h1.p-0.m-0.text-center New Product
 .container-fluid.p-0 
   .container-xl.px-4.py-5
     = render 'layouts/flash'
@@ -21,3 +21,9 @@
           .d-flex.pb-3#product-images_preview
 
           = f.button :submit, 'Add Product'
+.d-flex.align-items-center.text-center.separator OR
+.container-fluid.p-0
+  .container-xl.px-4.py-5.d-flex.justify-content-center
+    = simple_form_for :products, url: import_shop_products_path(@shop) do |f|
+      = f.input :file, as: :file, label: "You can create multiple products with a csv file"
+      = f.button :submit, "Submit", class: "w-50"

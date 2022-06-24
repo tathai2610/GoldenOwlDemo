@@ -30,6 +30,11 @@ class ProductsController < ApplicationController
     end
   end
 
+  def import
+    ProductsImporterService.call(params.dig(:products, :file), @shop)
+    redirect_to user_shop_path(@shop.user, @shop)
+  end
+
   private 
 
   def set_shop 

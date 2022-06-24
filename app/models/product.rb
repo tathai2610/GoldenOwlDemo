@@ -1,5 +1,3 @@
-require 'csv'
-
 class Product < ApplicationRecord
   belongs_to :shop, counter_cache: true
   has_many :category_products, dependent: :destroy 
