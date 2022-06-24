@@ -42,3 +42,6 @@ global.$ = window.$ = jQuery;
 
 require("trix")
 require("@rails/actiontext")
+
+require('@client-side-validations/client-side-validations')
+require('@client-side-validations/simple-form/dist/simple-form.bootstrap4.esm')

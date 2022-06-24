@@ -2,6 +2,8 @@
   "name": "golden-owl-demo",
   "private": true,
   "dependencies": {
+    "@client-side-validations/client-side-validations": "^0.3.0",
+    "@client-side-validations/simple-form": "^0.3.1",
     "@popperjs/core": "^2.11.5",
     "@rails/actioncable": "^6.0.0",
     "@rails/actiontext": "^6.1.6",

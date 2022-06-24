@@ -31,8 +31,14 @@ class ProductsController < ApplicationController
   end
 
   def import
-    ProductsImporterService.call(params.dig(:products, :file), @shop)
-    redirect_to user_shop_path(@shop.user, @shop)
+    if params.dig(:products, :file).nil?
+      @product = Product.new
+      flash[:error] = 'The new product cannot be saved!'
+      render action: :new
+    else
+      ProductsImporterService.call(params[:products][:file], @shop)
+      redirect_to user_shop_path(@shop.user, @shop)
+    end
   end
 
   private 

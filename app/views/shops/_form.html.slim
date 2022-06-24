@@ -1,4 +1,4 @@
-= simple_form_for shop, url: user_shop_path(current_user) do |f| 
-  = f.input :name, label: 'Shop name'
-  = f.input :description, as: :text
+= simple_form_for shop, url: user_shop_path(current_user), validate: true do |f| 
+  = f.input :name, label: 'Shop name', placeholder: 'Enter your shop name'
+  = f.input :description, as: :text, placeholder: 'Describe something about your shop...'
   = f.button :submit, "Submit"

@@ -23,3 +23,13 @@
 .separator:not(:empty)::after {
   margin-left: .25em;
 }
+
+span.error {
+  color: red;
+}
+
+span.invalid-feedback {
+  font-size: 18px;
+  margin: 0;
+  font-weight: 500;
+}

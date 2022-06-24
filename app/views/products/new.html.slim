@@ -4,26 +4,12 @@
 .container-fluid.p-0 
   .container-xl.px-4.py-5
     = render 'layouts/flash'
-    = simple_form_for @product, url: shop_products_path(@shop) do |f|
-      .row.mx-auto
-        .col-12.col-lg-6.px-0.pe-lg-3
-          = f.input :name, label: 'Product Name'
-          = f.association :categories, label: 'Category', input_html: { multiple: true }
-          .container-fluid.p-0 
-            .row.mx-auto.justify-content-between
-              .col-6.ps-0 
-                = f.input :quantity
-              .col-6.pe-0
-                = f.input :price
-          = f.input :description, as: :rich_text_area
-        .col-12.col-lg-6.px-0.ps-lg-3
-          = f.input :images, as: :file, label: 'Product Images', input_html: { multiple: true }
-          .d-flex.pb-3#product-images_preview
-
-          = f.button :submit, 'Add Product'
-.d-flex.align-items-center.text-center.separator OR
+    = render 'products/form', product: @product
+.container-xl.d-flex.align-items-center.text-center.separator OR
 .container-fluid.p-0
-  .container-xl.px-4.py-5.d-flex.justify-content-center
-    = simple_form_for :products, url: import_shop_products_path(@shop) do |f|
-      = f.input :file, as: :file, label: "You can create multiple products with a csv file"
-      = f.button :submit, "Submit", class: "w-50"
+  .container-xl.px-4.py-5
+    .row.mx-auto.justify-content-center 
+      .col--12.col-lg-6.p-0
+        = simple_form_for :products, url: import_shop_products_path(@shop) do |f|
+          = f.input :file, as: :file, label: "You can create multiple products with a csv file", validate: { presence: true }
+          = f.button :submit, "Submit"

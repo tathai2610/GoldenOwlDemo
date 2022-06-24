@@ -5,8 +5,8 @@ class Product < ApplicationRecord
   has_many_attached :images
   has_rich_text :description
 
+  validate :description_not_blank
   validates :name, presence: true
-  validates :description, presence: true 
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :images, presence: true
   validates :quantity, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
@@ -17,4 +17,12 @@ class Product < ApplicationRecord
   # scope :similar_products, -> id { joins(category_products: :category).where(categories: { id: Product.find(id).categories.pluck(:id) }).where.not(id: id) }
   scope :similar_products, -> id { joins(category_products: :category).merge(Category.where(id: [Product.find(id).categories.pluck(:id)])).where.not(id: id) }
   scope :in_category, -> name { joins(category_products: :category).merge(Category.where(name: name)) }
+
+  private 
+
+  def description_not_blank
+    if self.description.blank?
+      self.errors.add(:description, 'can\'t be blank')
+    end
+  end
 end
