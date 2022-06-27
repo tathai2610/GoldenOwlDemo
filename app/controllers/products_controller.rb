@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :import]
   before_action :check_categories, only: [:create]
   before_action :set_shop, only: [:show, :new, :create, :import]
   before_action :set_product, only: [:show]
@@ -26,6 +27,7 @@ class ProductsController < ApplicationController
       redirect_to shop_product_path(@shop, @product)
     else
       flash[:error] = 'The new product cannot be saved!'
+      p @product.errors.full_messages
       render action: :new
     end
   end
@@ -37,7 +39,7 @@ class ProductsController < ApplicationController
       render action: :new
     else
       ProductsImporterService.call(params[:products][:file], @shop)
-      flash[:notice] = "Please wait. Your products will be updated as soon as possible!"
+      flash[:notice] = "Please wait. Your products will be updated as soon as possible!git "
       redirect_to user_shop_path(@shop.user)
     end
   end
