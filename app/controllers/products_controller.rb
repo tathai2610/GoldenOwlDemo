@@ -27,7 +27,6 @@ class ProductsController < ApplicationController
       redirect_to shop_product_path(@shop, @product)
     else
       flash[:error] = 'The new product cannot be saved!'
-      p @product.errors.full_messages
       render action: :new
     end
   end
