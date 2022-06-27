@@ -8,6 +8,20 @@ class Shop < ApplicationRecord
 
   after_create :attach_avatar
 
+  state_machine :state, initial: :pending do 
+    event :approve do 
+      transition pending: :active
+    end
+
+    state :active 
+    state :pending
+  end
+
+  def initialize(state="pending")
+    state = state
+    super
+  end
+
   private
 
   def attach_avatar

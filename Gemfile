@@ -82,3 +82,8 @@ gem "factory_bot_rails"
 # best practices for client side validations
 gem 'client_side_validations'
 gem 'client_side_validations-simple_form'
+# State Machines adds support for creating state machines for attributes on any Ruby class.
+gem 'state_machines'
+gem 'state_machines-activerecord'
+# Guide you in leveraging regular Ruby classes and object oriented design patterns to build a simple, robust and scalable authorization system.
+gem "pundit", "~> 2.2"

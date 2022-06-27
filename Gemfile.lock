@@ -161,6 +161,8 @@ GEM
     public_suffix (4.0.7)
     puma (5.6.4)
       nio4r (~> 2.0)
+    pundit (2.2.0)
+      activesupport (>= 3.0.0)
     racc (1.6.0)
     rack (2.2.3.1)
     rack-mini-profiler (2.3.4)
@@ -265,6 +267,13 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+    state_machines (0.5.0)
+    state_machines-activemodel (0.8.0)
+      activemodel (>= 5.1)
+      state_machines (>= 0.5.0)
+    state_machines-activerecord (0.8.0)
+      activerecord (>= 5.1)
+      state_machines-activemodel (>= 0.8.0)
     temple (0.8.2)
     thor (1.2.1)
     tilt (2.0.10)
@@ -319,6 +328,7 @@ DEPENDENCIES
   pagy (~> 5.10)
   pg (~> 1.1)
   puma (~> 5.0)
+  pundit (~> 2.2)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.5)
   rolify
@@ -330,6 +340,8 @@ DEPENDENCIES
   simple_form
   slim
   spring
+  state_machines
+  state_machines-activerecord
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)

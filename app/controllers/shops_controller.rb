@@ -1,5 +1,5 @@
 class ShopsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :destroy]
+  # before_action :authenticate_user!, only: [:new, :create, :destroy]
   before_action :set_user
   before_action :set_shop, only: [:show]
   before_action :check_shop_exist, only: [:new, :create]
@@ -40,7 +40,8 @@ class ShopsController < ApplicationController
   end
 
   def check_shop_exist
-    if current_user.shop.present?
+    authorize Shop.new 
+    if @user.shop.present?
       flash[:error] = "You have already open a shop!"
       redirect_back(fallback_location: root_path)
     end
