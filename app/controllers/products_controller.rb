@@ -37,7 +37,7 @@ class ProductsController < ApplicationController
       render action: :new
     else
       ProductsImporterService.call(params[:products][:file], @shop)
-      redirect_to user_shop_path(@shop.user, @shop)
+      redirect_to user_shop_path(@shop.user)
     end
   end
 

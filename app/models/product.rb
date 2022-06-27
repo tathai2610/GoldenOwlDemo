@@ -21,8 +21,6 @@ class Product < ApplicationRecord
   private 
 
   def description_not_blank
-    if self.description.blank?
-      self.errors.add(:description, 'can\'t be blank')
-    end
+    errors.add(:description, 'Description is required') if description.blank?
   end
 end
