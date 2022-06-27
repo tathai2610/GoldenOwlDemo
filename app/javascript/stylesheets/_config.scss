@@ -92,6 +92,7 @@ $dark-green: rgb(65, 98, 75);
   transition: .1s;
 
   &:hover {
+    color: white;
     opacity: .8;
   }
 }

@@ -37,6 +37,7 @@ class ProductsController < ApplicationController
       render action: :new
     else
       ProductsImporterService.call(params[:products][:file], @shop)
+      flash[:notice] = "Please wait. Your products will be updated as soon as possible!"
       redirect_to user_shop_path(@shop.user)
     end
   end
