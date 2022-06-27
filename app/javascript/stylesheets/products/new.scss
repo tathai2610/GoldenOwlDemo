@@ -1,0 +1,35 @@
+#product-images_preview {
+  overflow-x: auto;
+}
+
+.product-images_preview {
+  width: 150px;
+  height: 150px;
+  margin-right: 16px;
+  object-fit: cover;
+}
+
+.separator::before,
+.separator::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #ccc;
+}
+
+.separator:not(:empty)::before {
+  margin-right: .25em;
+}
+
+.separator:not(:empty)::after {
+  margin-left: .25em;
+}
+
+span.error {
+  color: red;
+}
+
+span.invalid-feedback {
+  font-size: 18px;
+  margin: 0;
+  font-weight: 500;
+}

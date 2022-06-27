@@ -13,6 +13,12 @@ import "bootstrap"
 import { Tooltip, Popover } from "bootstrap"
 require("../stylesheets/application.scss")
 
+import "trix"
+import "@rails/actiontext"
+
+import 'select2'
+import 'select2/dist/css/select2.css'
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
@@ -33,3 +39,9 @@ document.addEventListener("turbolinks:load", () => {
 require('packs/scripts.js') 
 
 global.$ = window.$ = jQuery;
+
+require("trix")
+require("@rails/actiontext")
+
+require('@client-side-validations/client-side-validations')
+require('@client-side-validations/simple-form/dist/simple-form.bootstrap4.esm')

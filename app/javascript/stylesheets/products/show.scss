@@ -25,3 +25,13 @@
 #product-show-shop {
   @extend .bg-color-cream;
 }
+
+.product-show_images-holder {
+  overflow-x: auto;
+}
+
+.product-show_images-holder .d-flex:first-child img,
+.product-show_small-image:hover {
+  border-color: $dark-green;
+  cursor: pointer;
+}

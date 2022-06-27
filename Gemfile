@@ -79,3 +79,6 @@ gem 'simple_form'
 gem "rolify"
 # support for multiple build strategies and multiple factories for the same class
 gem "factory_bot_rails"
+# best practices for client side validations
+gem 'client_side_validations'
+gem 'client_side_validations-simple_form'

@@ -7,6 +7,11 @@ RSpec.describe Shop, type: :model do
     it { is_expected.to have_one_attached(:avatar) }
   end
 
+  describe "Validations" do 
+    it { is_expected.to validate_presence_of(:name) }
+    it { is_expected.to validate_presence_of(:description) }
+  end
+
   describe "Callbacks" do 
     it { is_expected.to callback(:attach_avatar).after(:create) }
   end

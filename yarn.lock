@@ -908,6 +908,16 @@
     "@babel/helper-validator-identifier" "^7.16.7"
     to-fast-properties "^2.0.0"
 
+"@client-side-validations/client-side-validations@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@client-side-validations/client-side-validations/-/client-side-validations-0.3.0.tgz#0cdfe1ddd3e4388c38a48efde1aa70d3e646c28d"
+  integrity sha512-UVCpiqU8YDO/jPkNFEzyDpyCatoMZfo43RrzATFe4JERnirONODuFqdaN6y5CfjeaxU5sMjLIdpcensR1zhLCA==
+
+"@client-side-validations/simple-form@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@client-side-validations/simple-form/-/simple-form-0.3.1.tgz#6b24086d02fac82a118efbc47830f4ebb88b0b06"
+  integrity sha512-XvLLbaZR2pmjfWC4kSyDu9Q//FBsMy5wbxHUV6CsK73Nv6+9Uo6x8k5UORvHe2coopQec5/UTs6TsePWSup2Pw==
+
 "@csstools/convert-colors@^1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
@@ -991,6 +1001,13 @@
   version "6.0.5"
   resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-6.0.5.tgz#a889f25b0c13ea0215d747e32fa3d1a52967f17b"
   integrity sha512-79sIsTpIoHnJ6pRHKaC6h5NMRpY+VZD4mqOKN/035X1ehxHgToDWvgMZ4jV5y1qeObg4enmNESmgeKoImYGzOw==
+
+"@rails/actiontext@^6.1.6":
+  version "6.1.6"
+  resolved "https://registry.yarnpkg.com/@rails/actiontext/-/actiontext-6.1.6.tgz#1e643621b16629d51923cbd5d8cb49358de9aed2"
+  integrity sha512-IK47RN1Cr6Ga5Xmhdq8Skhd2YrmQJzKmT0Q3GGbZAfM8b4FLZuXDOtA4WA/z6no8ghZd0LtmlC4Y10e5fCvFZQ==
+  dependencies:
+    "@rails/activestorage" "^6.0.0"
 
 "@rails/activestorage@^6.0.0":
   version "6.0.5"
@@ -5994,6 +6011,11 @@ select-hose@^2.0.0:
   resolved "https://registry.yarnpkg.com/select-hose/-/select-hose-2.0.0.tgz#625d8658f865af43ec962bfc376a37359a4994ca"
   integrity sha512-mEugaLK+YfkijB4fx0e6kImuJdCIt2LxCRcbEYPqRGCs4F2ogyfZU5IAZRdjCP8JPq2AtdNoC/Dux63d9Kiryg==
 
+select2@^4.1.0-rc.0:
+  version "4.1.0-rc.0"
+  resolved "https://registry.yarnpkg.com/select2/-/select2-4.1.0-rc.0.tgz#ba3cd3901dda0155e1c0219ab41b74ba51ea22d8"
+  integrity sha512-Hr9TdhyHCZUtwznEH2CBf7967mEM0idtJ5nMtjvk3Up5tPukOLXbHUNmh10oRfeNIhj+3GD3niu+g6sVK+gK0A==
+
 selfsigned@^1.10.8:
   version "1.10.14"
   resolved "https://registry.yarnpkg.com/selfsigned/-/selfsigned-1.10.14.tgz#ee51d84d9dcecc61e07e4aba34f229ab525c1574"
@@ -6624,6 +6646,11 @@ toidentifier@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/toidentifier/-/toidentifier-1.0.1.tgz#3be34321a88a820ed1bd80dfaa33e479fbb8dd35"
   integrity sha512-o5sSPKEkg/DIQNmH43V0/uerLrpzVedkUh8tGNvaeXpfpuwjKenlSox/2O/BTlZUtEe+JG7s5YhEz608PlAHRA==
+
+trix@^1.2.0:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/trix/-/trix-1.3.1.tgz#ccce8d9e72bf0fe70c8c019ff558c70266f8d857"
+  integrity sha512-BbH6mb6gk+AV4f2as38mP6Ucc1LE3OD6XxkZnAgPIduWXYtvg2mI3cZhIZSLqmMh9OITEpOBCCk88IVmyjU7bA==
 
 ts-pnp@^1.1.6:
   version "1.2.0"

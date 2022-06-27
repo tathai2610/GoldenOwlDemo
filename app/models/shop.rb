@@ -3,6 +3,9 @@ class Shop < ApplicationRecord
   has_many :products, dependent: :destroy
   has_one_attached :avatar
 
+  validates :name, presence: true 
+  validates :description, presence: true
+
   after_create :attach_avatar
 
   private

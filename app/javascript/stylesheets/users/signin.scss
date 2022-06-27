@@ -16,9 +16,12 @@
   h1 {
     font-size: 70px;
   }
+}
 
+form {
   abbr {
-    text-decoration: none;
+    display: none;
+    text-decoration: none !important;
   }
 
   label {
@@ -28,9 +31,36 @@
     margin-top: 8px;
   }
 
-  span > label {
+  label[for*='image'],
+  label.select {
+    display: block;
+  }
+
+  span > label, 
+  trix-editor {
     margin: 0;
     font-size: 20px;
+  }
+
+  span.select2 {
+    width: 100% !important;
+  }
+
+  .select2-selection {
+    border: none !important;
+    padding-bottom: 8px;
+
+    .select2-search__field {
+      margin: 0 !important;
+    }
+
+    .select2-selection__choice__display {
+      font-size: 20px;
+    }
+
+    textarea {
+      padding-bottom: 25px !important;
+    }
   }
 
   input, textarea {
@@ -45,11 +75,13 @@
     @extend .btn-large;
   }
 
+  // input[type='file'] {
+  //   height: 150px;
+  //   width: 150px;
+  //   background-color: #e8e9e3;
+  // }
+
   a:hover {
     @extend .text-darkgreen;
-  }
-
-  textarea {
-    
   }
 }

@@ -30,4 +30,26 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  # hello: "Hello world"
+  activerecord: 
+    errors: 
+      models:
+        product:
+          attributes:
+            name: 
+              blank: "Name is required"
+            price: 
+              blank: "Price is required"
+              greater_than_or_equal_to: "Price must be greater or equal to 0"
+            images: 
+              blank: "Required at least one image"
+            quantity: 
+              not_an_integer: "Only integer"
+              greater_than_or_equal_to: "Quantity must be greater or equal to 0"
+        shop: 
+          attributes: 
+            name: 
+              blank: "Name is required"
+            description: 
+              blank: "Description is required"
+              

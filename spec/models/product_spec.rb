@@ -10,10 +10,30 @@ RSpec.describe Product, type: :model do
   end
 
   describe "Associations" do 
-    it { is_expected.to have_one_attached(:image) }
+    it { is_expected.to have_many_attached(:images) }
     it { is_expected.to have_many(:category_products).dependent(:destroy) }
     it { is_expected.to have_many(:categories).through(:category_products) }
     it { is_expected.to belong_to(:shop).counter_cache(true) }
+    it { is_expected.to have_rich_text(:description) }
+  end
+
+  describe "Validations" do 
+    it { is_expected.to validate_presence_of(:name) }
+    it { is_expected.to validate_presence_of(:price) }
+    it { is_expected.to validate_presence_of(:images) }
+    it { is_expected.to validate_numericality_of(:price).is_greater_than_or_equal_to(0) }
+    it { is_expected.to validate_numericality_of(:quantity).only_integer }
+    it { is_expected.to validate_numericality_of(:quantity).is_greater_than_or_equal_to(0) }
+
+    describe ".description_not_blank" do 
+      context "when description is blank" do
+        let(:product_no_desct) { build(:product, description: "") }
+
+        it "returns invalid product" do 
+          expect(product_no_desct).to_not be_valid
+        end
+      end
+    end
   end
 
   describe ".similar_products" do
