@@ -10,11 +10,11 @@ class ShopsController < ApplicationController
   end
   
   def new 
-    @shop = Shop.new
+    @shop = authorize Shop.new
   end
 
   def create 
-    @shop = Shop.new(shop_params.merge(user: @user))
+    @shop = authorize Shop.new(shop_params.merge(user: @user))
     if @shop.save
       @user.add_role :seller 
       flash[:success] = "Congratulations! You have successfuly open your own shop on Planty!"
@@ -33,6 +33,7 @@ class ShopsController < ApplicationController
 
   def set_shop 
     @shop = @user.shop
+    authorize @shop
   end
 
   def shop_params 
@@ -40,7 +41,7 @@ class ShopsController < ApplicationController
   end
 
   def check_shop_exist
-    authorize Shop.new 
+    authorize Shop.new
     if @user.shop.present?
       flash[:error] = "You have already open a shop!"
       redirect_back(fallback_location: root_path)

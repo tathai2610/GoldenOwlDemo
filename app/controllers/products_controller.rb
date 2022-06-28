@@ -1,12 +1,12 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :import]
+  # before_action :authenticate_user!, only: [:new, :create, :import]
   before_action :check_categories, only: [:create]
   before_action :set_shop, only: [:show, :new, :create, :import]
   before_action :set_product, only: [:show]
   
   def index 
     unless params[:shop_id]
-      @products = Product.all
+      @products = authorize Product.all
       @products = Product.in_category(params[:category]) if params[:category]
       @pagy, @products = pagy(@products, items: 12)
       @categories = Category.all.order(:name)
@@ -17,11 +17,11 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @product = Product.new
+    @product = authorize Product.new
   end
 
   def create
-    @product = Product.new(product_params.merge(shop: @shop))
+    @product = authorize Product.new(product_params.merge(shop: @shop))
     if @product.save 
       flash[:success] = 'Successfully add a new product!'
       redirect_to shop_product_path(@shop, @product)
@@ -50,7 +50,7 @@ class ProductsController < ApplicationController
   end
 
   def set_product
-    @product = Product.find(params[:id])
+    @product = authorize Product.find(params[:id])
   end
 
   def product_params 
