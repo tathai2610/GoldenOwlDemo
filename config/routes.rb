@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   namespace :admin do 
     root "dashboard#index"
     resources :dashboard
+    get '/shops/pendings', to: 'dashboard#pending_shops'
+    put '/shops/:shop_id/handle', to: 'dashboard#handle_shop', as: '/handle_shop'
   end
 
   root "home#index"

@@ -16,7 +16,6 @@ class ShopsController < ApplicationController
   def create 
     @shop = authorize Shop.new(shop_params.merge(user: @user))
     if @shop.save
-      @user.add_role :seller 
       flash[:success] = "Congratulations! You have successfuly open your own shop on Planty!"
       redirect_to user_shop_path(@user)
     else 

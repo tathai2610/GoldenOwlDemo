@@ -10,11 +10,16 @@ class Shop < ApplicationRecord
 
   state_machine :state, initial: :pending do 
     event :approve do 
-      transition pending: :active
+      transition all => :active
+    end
+
+    event :reject do 
+      transition pending: :rejected 
     end
 
     state :active 
     state :pending
+    state :rejected
   end
 
   def initialize(state="pending")

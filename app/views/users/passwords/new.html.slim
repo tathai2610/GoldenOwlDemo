@@ -22,10 +22,10 @@
         h1.mb-0.ff-roboto.fw-100.pt-lg-4.pb-0 Forgot your password?        
         .d-block.mt-4
           = render "layouts/flash"
-          = simple_form_for user_password_path do |f| 
+          = simple_form_for user_password_path, :html=> { class: 'user-form' } do |f| 
             = f.input :email, placeholder: 'Enter your email'
             = f.button :submit, "Send reset password instructions"
-        .mt-3.text-center.fs-5
-          = link_to "Log in", new_user_registration_path, class: "text-decoration-none text-darkgreen fw-500"
+        .mt-3.text-center.fs-18
+          = link_to "Log in", new_user_registration_path, class: "text-decoration-none text-darkgreen fw-500 fs-20"
           br
-          = link_to "Sign up", new_user_registration_path, class: "text-decoration-none text-darkgreen fw-500"
+          = link_to "Sign up", new_user_registration_path, class: "text-decoration-none text-darkgreen fw-500 fs-20"

@@ -17,6 +17,8 @@ module ApplicationHelper
     case flash_key
     when "notice"
       "info"
+    when "info"
+      "info"
     when "alert"
       "warning"
     when "error"

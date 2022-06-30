@@ -12,5 +12,10 @@ class ApplicationController < ActionController::Base
     flash[:error] = t "#{policy_name}.#{exception.query}", scope: "pundit", default: :default
     redirect_back(fallback_location: root_path)
   end
+
+  def after_sign_in_path_for(resource) 
+    return admin_root_path if resource.has_role? :admin
+    super
+  end
 end
           

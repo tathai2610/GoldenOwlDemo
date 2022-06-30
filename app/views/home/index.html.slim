@@ -1,17 +1,17 @@
-.container-xl.p-0.pb-3
-  = render "layouts/flash"
+= render "layouts/flash"
 
-#jumpotron.container-xl.p-0
-  .row.mx-auto.p-0.px-lg-4
-    .col-12.d-block.d-lg-none.p-0
-      = image_tag "home-cover.jpg", class: "img-fluid h-100"
-    .col-12.col-lg-6.p-3.ps-lg-0.py-lg-5.pe-lg-4
-      h1.mb-0 Best Plants for your home
-      .py-2.py-lg-4.mt-0.mt-lg-4.fs-4.w-sm-100.w-lg-50 Check our store and find the most beautiful plant for your home
-      = link_to products_path do 
-        button [type="button"] All the products
-    .col-4.p-0.d-none.d-lg-block
-      = image_tag "home-cover.jpg", class: "img-fluid h-100"
+.container-fluid.p-0.bg-white
+  #jumpotron.container-xl.p-0
+    .row.mx-auto.p-0.px-lg-4
+      .col-12.d-block.d-lg-none.p-0
+        = image_tag "home-cover.jpg", class: "img-fluid h-100"
+      .col-12.col-lg-6.p-3.ps-lg-0.py-lg-5.pe-lg-4
+        h1.mb-0 Best Plants for your home
+        .py-2.py-lg-4.mt-0.mt-lg-4.fs-24.fw-100.w-sm-100.w-lg-50.ff-dg Check our store and find the most beautiful plant for your home
+        = link_to products_path do 
+          button [type="button"] All the products
+      .col-4.p-0.d-none.d-lg-block
+        = image_tag "home-cover.jpg", class: "img-fluid h-100"
 
 = render partial: "products_4", locals: { section: "best-sellers", product_list: Product.first(4) }
 

@@ -1,0 +1,27 @@
+.accordion-item
+  h2.accordion-header id="heading-#{shop.id}"
+    button.accordion-button.collapsed aria-expanded="false" data-bs-target="#shop-#{shop.id}" data-bs-toggle="collapse" type="button" 
+      = shop.name
+  .accordion-collapse.collapse data-bs-parent="#pending-shops" id="shop-#{shop.id}"
+    .accordion-body.pt-0
+      .mt-3.mb-4
+        .datagrid
+          .datagrid-item
+            .datagrid-title User
+            .datagrid-content 
+              .d-flex.align-items-center 
+                span.avatar.avatar-xs.me-2.avatar-rounded style="background-image: url(#{rails_blob_url shop.user.avatar})"
+                = shop.user.email
+          .datagrid-item 
+            .datagrid-title Joined 
+            .datagrid-content = shop.user.created_at.strftime("%b %Y")
+          .datagrid-item 
+            .datagrid-title Shop name 
+            .datafrid-content = shop.name 
+          .datagrid-item 
+            .datagrid-title Shop description 
+            .datafrid-content = shop.description
+      = simple_form_for :shop, url: admin_handle_shop_path(shop), remote: true, html: { method: :put } do |f| 
+        .btn-list
+          = f.button :submit, "Approve", class: "btn btn-primary"
+          = f.button :submit, "Reject", class: "btn"
