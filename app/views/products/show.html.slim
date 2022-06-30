@@ -28,13 +28,13 @@
                 button.btn-small.w-50.mt-5.h-48  type="submit" Add to cart
 .container-fluid.p-0#product-show-shop 
   .container-xl.py-5.px-4
-    .row.mx-auto.p-0.justify-content-between.justify-content-md-around
+    .row.mx-auto.p-0.justify-content-between.justify-content-md-around.align-items-center
       .col-12.col-lg-auto.p-0
         .container-fluid.p-0 
           .row.mx-auto.mb-4.mb-lg-0.justify-content-center.align-items-center
             .col-auto.ps-0
               = link_to user_shop_path(@shop.user) do 
-                = image_tag @shop.avatar, size: "100x100", class: ""
+                = image_tag url_for(@shop.avatar), size: "100x100"
             .col-auto.pe-0
               h4.mb-2.fs-20.fw-400.ff-roboto.lh-sm = @shop.name
               .d-flex

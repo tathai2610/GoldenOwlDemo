@@ -32,4 +32,8 @@
     .container-fluid.py-2 Plants
   = link_to "#" do
     .container-fluid.py-2 Store
+  - if user_signed_in? && current_user.shop.blank?
+    = link_to "Open shop", new_user_shop_path(current_user), class: "me-4"
+  - elsif user_signed_in? && current_user.shop.present? 
+    = link_to "Your shop", user_shop_path(current_user), class: "me-4"
 
