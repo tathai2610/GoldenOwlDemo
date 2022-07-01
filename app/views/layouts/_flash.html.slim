@@ -1,7 +1,8 @@
-.container-fluid.p-0.bg-white#flash
-  .container-xl.p-0.pb-3
-    - flash.each do |key, value| 
-      div class="alert alert-#{flash_class(key)} m-0 d-flex justify-content-between"
-        = value
-        button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="alert"
+- if flash.any?
+  .container-fluid.p-0.my-3#flash
+    .container-xl.p-0
+      - flash.each do |key, value| 
+        div class="alert alert-#{flash_class(key)} m-0 d-flex justify-content-between ff-inter"
+          = value
+          button type="button" class="btn-close" aria-label="Close" id="btn-remove-flash"
 

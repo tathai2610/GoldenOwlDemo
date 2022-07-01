@@ -14,6 +14,7 @@ class Admin::DashboardController < ApplicationController
     @shop = Shop.find(params[:shop_id])
     authorize @shop, policy_class: Admin::DashboardPolicy
     respond = handle_open_shop_request(params[:commit], @shop)
+    
     respond_to do |format|
       if respond 
         flash[:info] = "#{@shop.user.email}'s #{@shop.name} is now active!"
