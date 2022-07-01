@@ -52,4 +52,12 @@ en:
               blank: "Name is required"
             description: 
               blank: "Description is required"
+  pundit:
+    default: 'You cannot perform this action.'
+    shop_policy:
+      new?: 'You cannot create a new shop!'
+      create?: 'You cannot create a new shop!'
+    product_policy:
+      new?: 'You cannot create a new product!'
+      create?: 'You cannot create a new product!'
               

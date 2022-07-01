@@ -35,16 +35,16 @@
         = image_tag "signup-cover.jpg"
       .col-lg-5.p-0.px-5.pe-lg-0
         h1.mb-0.ff-roboto.fw-100.pt-lg-4.pb-0 Sign up
-        .py-2.fs-3 Find the perfect plants for your home
+        .py-2.fs-24 Find the perfect plants for your home
         
         .d-block.mt-4
           = render "layouts/flash"
-          = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| 
+          = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), :html=> { class: 'user-form' }) do |f| 
             = f.input :email, placeholder: 'Enter your email'
             = f.input :password, hint: 'Minimum 6 characters', placeholder: 'Password'
             = f.input :password_confirmation, placeholder: 'Comfirm password'
             = f.button :submit, "Sign up"
-        .mt-3.text-center.fs-5
+        .mt-3.text-center.fs-18
           | Already have an account? 
-          = link_to "Log in", new_user_session_path, class: "text-decoration-none text-darkgreen fw-500"
+          = link_to "Log in", new_user_session_path, class: "text-decoration-none text-darkgreen fw-500 fs-20"
     

@@ -1,12 +1,11 @@
-.container-xl.p-0.pb-3
-  = render "layouts/flash"
+= render "layouts/flash"
 .container-fluid.p-0.shop-cover.py-5
   .container-xl.p-0
     .row.mx-auto.justify-content-center 
       .col-auto.p-0.d-flex.justify-content-center
         = image_tag @shop.avatar, size: "115x115", class: "object-fit-cover rounded border-color-darkgreen"
     .row.mx-auto.mt-2
-      h1.mb-0.text-center.text-darkgreen = @shop.name
+      .fs-30.fw-500.ff-roboto.mb-0.text-center.text-darkgreen = @shop.name
     .row.mx-auto.mt-3.justify-content-center
       .col-auto.p-0 
         - if current_user == @user 
@@ -15,13 +14,13 @@
         - else 
           = link_to "#" do 
             button.btn-small type="button" Follow
-
 .container-fluid.p-0.py-5.px-4
   .container-xl.p-0
     .row.mx-auto 
       .col-lg-12.mb-4
-        h4.m-0.ff-roboto.fw-100.text-darkgreen.text-center Description 
-        .text-center = @shop.description 
+        .ff-roboto.fw-400.text-darkgreen.text-center.text-uppercase.lh-sm Description 
+        .text-center.fs-24 = @shop.description 
+    .row.mx-auto.justify-content-around
       = render partial: "shops/info", locals: { shop: @shop }
 - if @products.any?
   .container-fluid.p-0#plants

@@ -1,0 +1,8 @@
+|
+  $("#heading-#{@shop.id}").closest(".accordion-item").remove()
+  $("#flash").remove()
+  $(".card-body").last().prepend("#{ j render "layouts/flash" }")
+
+  if (!$("#pending-shops .accordion-item").length) {
+    $("#pending-shops").append("#{ j render "admin/dashboard/empty" }")
+  }

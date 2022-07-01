@@ -1,13 +1,21 @@
 class ApplicationController < ActionController::Base
   include Pagy::Backend
-  # before_action :configure_permitted_parameters, if: :devise_controller?
+  include Pundit::Authorization
 
-  # protected
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
-  # def configure_permitted_parameters
-  #   devise_parameter_sanitizer.permit(:sign_up) do |user_params|
-  #     user_params.permit(:role, :email, :password, :password_confirmation)
-  #   end  
-  # end
+  private
+
+  def user_not_authorized(exception)
+    policy_name = exception.policy.class.to_s.underscore
+
+    flash[:error] = t "#{policy_name}.#{exception.query}", scope: "pundit", default: :default
+    redirect_back(fallback_location: root_path)
+  end
+
+  def after_sign_in_path_for(resource) 
+    return admin_root_path if resource.has_role? :admin
+    super
+  end
 end
           

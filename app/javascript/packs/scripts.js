@@ -49,4 +49,8 @@ $(document).on("turbolinks:load", function() {
     $(".product-show_small-image").css('border-color', 'white')
     $(this).css('border-color', 'rgb(65, 98, 75)')
   })
+
+  $(document).on('click', "#btn-remove-flash", function() {
+    $("#flash").remove()
+  })
 })

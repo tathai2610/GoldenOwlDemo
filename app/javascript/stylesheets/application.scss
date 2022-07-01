@@ -2,14 +2,17 @@
 @use "navigation";
 @use "pagination";
 @use "home";
+@use "admin";
 @use "products/products";
 @use "users/users";
 @use "shops/shops";
 
-@import "~bootstrap/scss/bootstrap";
+@import '@tabler/core/dist/css/tabler.min.css';
+// @import "~bootstrap/scss/bootstrap";
+  
 
 @media only screen and (max-width: 767px) {
-  .img-responsive {
+  .product-img-responsive {
     height: 840px;
     object-fit: cover;
   }
@@ -29,7 +32,7 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .img-responsive {
+  .product-img-responsive {
     height: 584px;
     object-fit: cover;
   }
@@ -49,7 +52,7 @@
 }
 
 @media only screen and (min-width: 992px) {
-  .img-responsive {
+  .product-img-responsive {
     height: 360px;
     object-fit: cover;
   }
@@ -72,4 +75,8 @@
 
 body {
   font-family: $dg;
+}
+
+.page-wrapper {
+  @extend .ff-inter;
 }

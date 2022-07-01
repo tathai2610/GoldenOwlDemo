@@ -8,6 +8,27 @@ class Shop < ApplicationRecord
 
   after_create :attach_avatar
 
+  scope :pendings, -> { where(state: :pending) }
+
+  state_machine :state, initial: :pending do 
+    event :approve do 
+      transition all => :active
+    end
+
+    event :reject do 
+      transition pending: :rejected 
+    end
+
+    state :active 
+    state :pending
+    state :rejected
+  end
+
+  def initialize(state= :pending)
+    state = state
+    super
+  end
+
   private
 
   def attach_avatar

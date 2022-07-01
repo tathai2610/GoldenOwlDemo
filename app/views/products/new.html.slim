@@ -1,15 +1,15 @@
 .container-fluid.p-0.shop-cover.py-5 
   .container-xl.p-0 
-    h1.p-0.m-0.text-center New Product
-.container-fluid.p-0 
+    h1.p-0.m-0.text-center.ff-roboto.fw-500.fs-36 New Product
+.container-fluid.p-0.bg-white
   .container-xl.px-4.py-5
     = render 'layouts/flash'
     = render 'products/form', product: @product
 .container-xl.d-flex.align-items-center.text-center.separator OR
-.container-fluid.p-0
+.container-fluid.p-0.bg-white
   .container-xl.px-4.py-5
     .row.mx-auto.justify-content-center 
       .col--12.col-lg-6.p-0
-        = simple_form_for :products, url: import_shop_products_path(@shop) do |f|
+        = simple_form_for :products, url: import_shop_products_path(@shop), html: { class: "user-form" } do |f|
           = f.input :file, as: :file, label: "You can create multiple products with a csv file", validate: { presence: true }
           = f.button :submit, "Submit"

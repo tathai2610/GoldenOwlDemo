@@ -9,10 +9,16 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'https://kit.fontawesome.com/f3d6bce8e0.js', crossorigin:"anonymous" %>
-  </head>
+</head>
 
   <body>
-    <%= render "layouts/navigation" %>
-    <%= yield %>
+    <div class="wrapper">
+      <% unless user_signed_in? && current_user.has_role?(:admin) %>
+        <%= render "layouts/navigation" %> 
+      <% else %>
+        <%= render "admin/navigation" %>
+      <% end %>
+      <%= yield%>
+    </div>
   </body>
 </html>

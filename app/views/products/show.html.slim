@@ -1,55 +1,55 @@
-.container-xl.p-0 
-  = render 'layouts/flash'
-.container-xl.p-0.mb-5
-  .row.mx-auto.p-0.px-lg-4 
-    .col-auto.px-4.p-lg-0.mt-5.mb-3
-      = link_to products_path, class: "text-decoration-none text-dark fs-4 fw-300 ps-3" do 
-        i.fa-solid.fa-arrow-left-long.me-3.fw-400
-        | Back to all products 
-    .col-12.p-0
-      .container-fluid.p-0
-        .row.mx-auto.p-0 
-          .col-12.col-lg-6.p-0
-            = image_tag url_for(@product.images.first), class: "product-show-img"
-            .d-flex.mt-3.pb-2.w-100.product-show_images-holder
-              = render partial: "products/product_images", collection: @product.images, as: :image
-          #product-show-info.col-12.col-lg-6.px-4.py-lg-3.ps-lg-5 
-            h1.m-0.pt-4.fw-400.fs-48 = @product.name 
-            h2.m-0.fw-300 = product_categories(@product)
-            h1.m-0.fs-36.text-red.fw-bold.py-3 $#{ sprintf("%.2f", @product.price) }
-            .d-flex.fs-3.mt-3.align-items-center 
-              span.me-3 Quantity: 
-              button.border-0#sub-btn type="button" 
-                i.fa-solid.fa-minus.fs-5
-              span.text-center#product-show-qtt 1
-              button.border-0#add-btn type="button" 
-                i.fa-solid.fa-plus.fs-5
-            = link_to "#" do 
-              button.btn-small.fs-4.w-50.mt-5.h-48  type="submit" Add to cart
+= render 'layouts/flash'
+.container-fluid.p-0.pb-5.bg-white
+  .container-xl.p-0
+    .row.mx-auto.p-0.px-lg-4 
+      .col-auto.px-4.p-lg-0.mt-5.mb-3
+        = link_to products_path, class: "text-decoration-none text-dark fs-24 fw-300 ps-3" do 
+          i.fa-solid.fa-arrow-left-long.me-3.fw-400
+          | Back to all products 
+      .col-12.p-0
+        .container-fluid.p-0
+          .row.mx-auto.p-0 
+            .col-12.col-lg-6.p-0
+              = image_tag url_for(@product.images.first), class: "product-show-img"
+              .d-flex.mt-3.pb-2.w-100.product-show_images-holder
+                = render partial: "products/product_images", collection: @product.images, as: :image
+            #product-show-info.col-12.col-lg-6.px-4.py-lg-3.ps-lg-5.ff-dg
+              h1.m-0.pt-4.fw-400.fs-48.lh-sm = @product.name 
+              h2.m-0.fw-300.fs-30 = product_categories(@product)
+              h1.mb-0.fs-36.text-red.fw-bold.mt-40 $#{ sprintf("%.2f", @product.price) }
+              .d-flex.fs-24.mt-40.align-items-center
+                span.me-4.fs-400 Quantity: 
+                button.border-0#sub-btn type="button" 
+                  i.fa-solid.fa-minus
+                span.text-center.fs-36#product-show-qtt 1
+                button.border-0#add-btn type="button" 
+                  i.fa-solid.fa-plus
+              = link_to "#" do 
+                button.btn-small.w-50.mt-5.h-48  type="submit" Add to cart
 .container-fluid.p-0#product-show-shop 
   .container-xl.py-5.px-4
-    .row.mx-auto.p-0
-      .col-12.col-lg-4.p-0
+    .row.mx-auto.p-0.justify-content-between.justify-content-md-around.align-items-center
+      .col-12.col-lg-auto.p-0
         .container-fluid.p-0 
-          .row.mx-auto.mb-5.mb-lg-0.justify-content-center.align-items-center
+          .row.mx-auto.mb-4.mb-lg-0.justify-content-center.align-items-center
             .col-auto.ps-0
               = link_to user_shop_path(@shop.user) do 
-                = image_tag @shop.avatar, size: "100x100", class: "rounded border-color-darkgreen"
-            .col-auto.p-0
-              h4 = @shop.name
+                = image_tag url_for(@shop.avatar), size: "100x100"
+            .col-auto.pe-0
+              h4.mb-2.fs-20.fw-400.ff-roboto.lh-sm = @shop.name
               .d-flex
                 = link_to user_shop_path(@shop.user) do 
-                  button.btn-small.bg-white.text-darkgreen type="button" View shop
+                  button.btn-small.fs-20.py-2.bg-white.text-darkgreen type="button" View shop
                 = link_to "#", class: "ms-2" do 
-                  button.btn-small type="button" Follow
-      .col-12.col-lg-8.p-0.d-flex.align-items-center
+                  button.btn-small.fs-20.py-2 type="button" Follow
+      .col-12.col-lg-auto.p-0.d-flex.align-items-center
         .container-fluid.p-0 
-          .row.mx-auto
+          .row.mx-auto.justify-content-center.gx-4
             = render partial: "shops/info", locals: { shop: @shop }
-.container-fluid.p-0 
+.container-fluid.p-0.bg-white
   .container-xl.py-5.px-4.border-bottom
-    h1 Product Description
-    .fs-20.fw-400.py-2 == @product.description
+    h1.ff-roboto.fw-400.fs-30.mb-0 Product Description
+    .fs-20.fw-400.py-2.ff-dg == @product.description
 
 - if Product.similar_products(@product.id).any?
   = render partial: "home/products_4", locals: { section: "similar-products", product_list: products_section("similar-products", @product.id) }

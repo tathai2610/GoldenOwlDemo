@@ -17,6 +17,8 @@ module ApplicationHelper
     case flash_key
     when "notice"
       "info"
+    when "info"
+      "info"
     when "alert"
       "warning"
     when "error"
@@ -24,5 +26,9 @@ module ApplicationHelper
     when "success"
       "success"
     end
+  end
+
+  def user_has_role?(role)
+    user_signed_in? && current_user.has_role?(role)
   end
 end

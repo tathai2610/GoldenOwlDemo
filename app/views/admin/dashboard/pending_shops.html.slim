@@ -1,0 +1,20 @@
+.page-wrapper
+  .container-xl
+    /! Page title
+    .page-header.d-print-none
+      .row.align-items-center
+        .col
+          h2.page-title
+            | Pending shops
+  .page-body
+    .container-xl
+      .card
+        .card-body
+          = render "layouts/flash"
+          #pending-shops.accordion
+            - if @pending_shops.any? 
+              = render partial: "shop", collection: @pending_shops, as: :shop
+            - else 
+              = render "empty"
+
+  

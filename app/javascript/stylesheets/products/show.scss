@@ -6,8 +6,13 @@
   object-fit: cover;
 }
 
-#add-btn, #sub-btn, #product-show-qtt {
-  width: 55px;
+#add-btn, #sub-btn {
+  width: 45px;
+  height: 42px;
+}
+
+#product-show-qtt {
+  padding: 4px 18px;
 }
 
 #similar-products {
@@ -28,6 +33,12 @@
 
 .product-show_images-holder {
   overflow-x: auto;
+
+  img { 
+    width: 100px;
+    height: 100px;
+    max-width: 100px;
+  }
 }
 
 .product-show_images-holder .d-flex:first-child img,
@@ -35,3 +46,4 @@
   border-color: $dark-green;
   cursor: pointer;
 }
+

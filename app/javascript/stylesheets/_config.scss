@@ -1,14 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;700&family=Roboto:wght@100;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;700&family=Inter:wght@400;500;600&family=Roboto:wght@100;400&display=swap');
 
 // font-family
 $roboto: 'Roboto', sans-serif;
 $dg: 'Darker Grotesque', sans-serif;
+$inter: 'Inter', sans-serif;
 
 // colors
 $dark-green: rgb(65, 98, 75);
 
 .ff-roboto {
-  font-family: $roboto;
+  font-family: $roboto; 
+}
+
+.ff-dg {
+  font-family: $dg;
+}
+
+.ff-inter {
+  font-family: $inter;
 }
 
 .text-darkgreen {
@@ -43,6 +52,14 @@ $dark-green: rgb(65, 98, 75);
   font-size: 20px !important;
 }
 
+.fs-24 {
+  font-size: 24px !important;
+}
+
+.fs-30 {
+  font-size: 30px !important;
+}
+
 .fs-36 {
   font-size: 36px !important;
 }
@@ -53,6 +70,10 @@ $dark-green: rgb(65, 98, 75);
 
 .h-48 {
   height: 48px !important;
+}
+
+.mt-40 {
+  margin-top: 40px !important;
 }
 
 .object-fit-cover {
@@ -76,20 +97,22 @@ $dark-green: rgb(65, 98, 75);
   background-color: $dark-green;
   padding: 12px 32px; 
   color: white;
-  font-size: 20px;
-  @extend .fw-400;
   border: 2px solid $dark-green;
   height: 45px;
   line-height: 16px;
+  font-size: 24px;
+  @extend .fw-400;
+  @extend .ff-dg;
 }
 
 .btn-large {
   padding: 16px 48px;
   background-color: $dark-green;
-  font-size: 24px;
   color: white;
+  font-size: 24px;
   border: 2px solid $dark-green;
   transition: .1s;
+  @extend .ff-dg;
 
   &:hover {
     color: white;
@@ -112,6 +135,7 @@ $dark-green: rgb(65, 98, 75);
   @extend .fw-500;
 
   &:hover {
+    text-decoration: none;
     color: $dark-green;
   }
 }
@@ -146,13 +170,11 @@ $dark-green: rgb(65, 98, 75);
     }
     
     &-name {
+      @extend .ff-dg;
       @extend .overflow-2-lines; 
       height: 58px; 
-    }
-
-    &-description {
-      @extend .overflow-2-lines;
-      height: 48px;
+      line-height: 28px;
+      overflow: visible;
     }
   }
 }
