@@ -19,7 +19,6 @@
         <%= render "admin/navigation" %>
       <% end %>
       <%= yield%>
-      <%= render "admin/footer" if user_signed_in? && current_user.has_role?(:admin) %>
     </div>
   </body>
 </html>
