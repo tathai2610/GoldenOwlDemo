@@ -15,25 +15,52 @@
           - elsif user_signed_in? && current_user.shop.present? 
             = link_to "Your shop", user_shop_path(current_user), class: "me-4"
           = link_to "About", "#"
-        .d-flex.align-items-center.justify-content-between.position-relative
-          = link_to '#' do 
-            i.fa-solid.fa-bag-shopping.fa-lg.text-darkgreen.me-3 
-          .text-darkgreen.fs-1 |
-          - unless user_signed_in?
-            = link_to new_user_session_path do 
-              i.fa-solid.fa-right-to-bracket.fa-lg.text-darkgreen.ms-3
-          - else
-            = link_to destroy_user_session_path, method: :delete do 
-              i.fa-solid.fa-right-from-bracket.fa-lg.text-darkgreen.ms-3
+        .dropdown 
+          a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+            - unless user_signed_in?
+              i.fa-solid.fa-user
+            - else 
+              = image_tag url_for(current_user.avatar), size:"35x35"
+          .dropdown-menu 
+            - if user_has_role?(:seller)
+              .dropdown-item
+                = link_to "Add product", new_shop_product_path(current_user.shop)
+              .dropdown-item 
+                = link_to "Edit shop", "#"
+              .dropdown-divider 
+            .dropdown-item 
+              = link_to "Checkout", "#"
+            .dropdown-divider 
+            - unless user_signed_in? 
+              .dropdown-item 
+                = link_to "Sign in", new_user_session_path
+              .dropdown-item 
+                = link_to "Sign up", new_user_registration_path
+            - else 
+              .dropdown-item 
+                = link_to "Logout", destroy_user_session_path, method: :delete
+            
+        / .d-flex.align-items-center.justify-content-between.position-relative
+        /   = link_to '#' do 
+        /     i.fa-solid.fa-bag-shopping.fa-lg.text-darkgreen.me-3 
+        /   .text-darkgreen.fs-1 |
+        /   - unless user_signed_in?
+        /     = link_to new_user_session_path do 
+        /       i.fa-solid.fa-right-to-bracket.fa-lg.text-darkgreen.ms-3
+        /   - else
+        /     = link_to destroy_user_session_path, method: :delete do 
+        /       i.fa-solid.fa-right-from-bracket.fa-lg.text-darkgreen.ms-3
 #subnav.container-fluid.py-2.px-0
   = link_to root_path do 
     .container-fluid.py-2 Home
   = link_to products_path do
     .container-fluid.py-2 Plants
-  = link_to "#" do
-    .container-fluid.py-2 Store
   - if user_signed_in? && current_user.shop.blank?
-    = link_to "Open shop", new_user_shop_path(current_user), class: "me-4"
+    = link_to new_user_shop_path(current_user) do 
+      .container-fluid.py-2 Open shop
   - elsif user_signed_in? && current_user.shop.present? 
-    = link_to "Your shop", user_shop_path(current_user), class: "me-4"
+    = link_to user_shop_path(current_user) do
+      .container-fluid.py-2 Your shop
+  = link_to "#" do
+    .container-fluid.py-2 About
 

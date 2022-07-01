@@ -27,4 +27,8 @@ module ApplicationHelper
       "success"
     end
   end
+
+  def user_has_role?(role)
+    user_signed_in? && current_user.has_role?(role)
+  end
 end

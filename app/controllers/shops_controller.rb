@@ -10,7 +10,7 @@ class ShopsController < ApplicationController
   end
   
   def new 
-    @shop = authorize Shop.new
+    @shop = authorize Shop.new(user: @user)
   end
 
   def create 
@@ -40,7 +40,6 @@ class ShopsController < ApplicationController
   end
 
   def check_shop_exist
-    authorize Shop.new
     if @user.shop.present?
       flash[:error] = "You have already open a shop!"
       redirect_back(fallback_location: root_path)

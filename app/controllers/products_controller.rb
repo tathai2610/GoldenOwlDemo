@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @product = authorize Product.new
+    @product = authorize Product.new(shop: @shop)
   end
 
   def create

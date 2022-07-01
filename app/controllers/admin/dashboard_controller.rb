@@ -6,12 +6,12 @@ class Admin::DashboardController < ApplicationController
   end
 
   def pending_shops 
-    @pending_shops = Shop.where(state: "pending").includes(:user)
+    @pending_shops = Shop.pendings.includes(:user)
     authorize @pending_shops, policy_class: Admin::DashboardPolicy
   end
 
   def handle_shop
-    @shop = Shop.find(params[:shop_id])
+    @shop = Shop.pendings.find(params[:shop_id])
     authorize @shop, policy_class: Admin::DashboardPolicy
     respond = handle_open_shop_request(params[:commit], @shop)
     

@@ -15,7 +15,7 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def create? 
-    user.present? && user.has_role?(:seller) && user.shop.active?
+    user.present? && user.shop == product.shop && user.has_role?(:seller) && user.shop.active?
   end
 
   private 

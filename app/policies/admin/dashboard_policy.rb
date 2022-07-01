@@ -15,6 +15,6 @@ class Admin::DashboardPolicy < ApplicationPolicy
   end
 
   def handle_shop? 
-    index?
+    index? && record.pending?
   end
 end
