@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resource :shop
+    resources :cart_items
   end
   
   resources :shops do

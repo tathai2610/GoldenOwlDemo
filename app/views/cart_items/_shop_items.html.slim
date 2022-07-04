@@ -1,0 +1,10 @@
+.container-fluid.px-0.bg-white.mb-3.border.border-bottom-0.shadow-sm
+  .row.mx-auto.py-3.border-bottom
+    .col-1.col-md-auto.col-lg-1.d-flex.align-items-center.justify-content-center
+      input.form-check-input.input-shop-items type="checkbox" id="shop-#{shop_items[:shop].id}"
+    .col-auto.col-lg-11
+      label.form-check-label.fs-20.fw-bold for= "shop-#{shop_items[:shop].id}" 
+        = shop_items[:shop].name
+  .row.mx-auto
+    .col-12.p-0
+      = render partial: "cart_item", collection: shop_items[:items], as: :cart_item

@@ -53,4 +53,24 @@ $(document).on("turbolinks:load", function() {
   $(document).on('click', "#btn-remove-flash", function() {
     $("#flash").remove()
   })
+
+  // Check shop's checkbox
+  $(document).on('change', '.input-shop-items', function() {
+    if (this.checked) {
+      let cartTotalPrice = Number($(".cart-total-price").text())
+      let cartFinalItems = Number($(".cart-final-items").text())
+      let items = $(this).closest(".container-fluid").find(".item-total-price")
+      
+      for (let i=0; i < items.length; i++) {
+        cartTotalPrice += Number($(items[i]).text())
+      }
+
+      if (items.length > 1) 
+        $(".cart-final-items-postfix").text("s")
+
+      $(".cart-total-price").text(cartTotalPrice)
+      $(".cart-final-items").text(cartFinalItems + items.length)
+      $(this).closest(".container-fluid").find(".input-cart-item").prop("checked", true)
+    }
+  })
 })

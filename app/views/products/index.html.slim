@@ -3,7 +3,7 @@
     .d-flex.justify-content-between.align-items-center
       h1.p-0.m-0.ff-roboto.fw-400 Plants
       .d-flex
-        button#toggle-categories-btn.px-3.py-2.fs-4 type="button"
+        button#toggle-categories-btn.px-3.py-2.fs-3 type="button"
           | Categories
           i.fa-solid.fa-caret-down.ms-3.fs-5
     #categories.container-fluid.p-0
@@ -11,7 +11,7 @@
         - @categories.each do |c|
             .col-sm-6.col-md-4.col-lg-3.py-2 = link_to c.name, products_path(category: c.name)
     .container-fluid.p-0.my-4 
-      .row
+      .row.gx-5
         = render partial: "products/product", collection: @products, as: :product
     .d-flex.mb-5.py-lg-3.px-lg-4.justify-content-center
       = render partial: "layouts/pagination", locals: { pagy: @pagy }

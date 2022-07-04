@@ -1,6 +1,7 @@
 class Shop < ApplicationRecord
   belongs_to :user
   has_many :products, dependent: :destroy
+  has_many :cart_items, dependent: :destroy
   has_one_attached :avatar
 
   validates :name, presence: true 

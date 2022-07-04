@@ -28,7 +28,17 @@ module ApplicationHelper
     end
   end
 
-  def user_has_role?(role)
+  def user_logged_in_and_has_role?(role)
     user_signed_in? && current_user.has_role?(role)
+  end
+
+  def svg_tag(path, options={})
+    file = File.read(Rails.root.join('app','assets','images',path))
+    doc = Nokogiri::HTML::DocumentFragment.parse file
+    svg = doc.at_css 'svg'
+
+    options.each { |attr, value| svg[attr.to_s] = value }
+    
+    doc.to_html.html_safe
   end
 end

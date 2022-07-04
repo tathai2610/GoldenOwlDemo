@@ -1,0 +1,10 @@
+| 
+  // change item quantity
+  $("#cart-item-#{@cart_item.id} .item-qtt").text("#{@cart_item.quantity}")
+  // change item total price
+  $("#cart-item-#{@cart_item.id} .item-total-price").text("#{sprintf("%.2f", @cart_item.product.price * @cart_item.quantity)}")
+  // change cart total items
+  $(".cart-total-items").text("#{current_user.cart_total_items}")
+  // change cart total price
+  $(".cart-total-price").text("#{current_user.cart_total_price}")
+
