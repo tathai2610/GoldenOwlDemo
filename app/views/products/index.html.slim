@@ -11,7 +11,7 @@
         - @categories.each do |c|
             .col-sm-6.col-md-4.col-lg-3.py-2 = link_to c.name, products_path(category: c.name)
     .container-fluid.p-0.my-4 
-      .row.gx-5
+      .row.gx-4
         = render partial: "products/product", collection: @products, as: :product
     .d-flex.mb-5.py-lg-3.px-lg-4.justify-content-center
       = render partial: "layouts/pagination", locals: { pagy: @pagy }

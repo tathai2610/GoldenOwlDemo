@@ -10,7 +10,8 @@ html
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'https://kit.fontawesome.com/f3d6bce8e0.js', crossorigin:"anonymous"
   body 
-    .wrapper 
+    .wrapper.position-relative
+      = render "layouts/toast"
       = render "layouts/navigation"
       = yield 
     

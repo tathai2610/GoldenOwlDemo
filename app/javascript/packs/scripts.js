@@ -55,22 +55,169 @@ $(document).on("turbolinks:load", function() {
   })
 
   // Check shop's checkbox
-  $(document).on('change', '.input-shop-items', function() {
-    if (this.checked) {
-      let cartTotalPrice = Number($(".cart-total-price").text())
-      let cartFinalItems = Number($(".cart-final-items").text())
-      let items = $(this).closest(".container-fluid").find(".item-total-price")
-      
-      for (let i=0; i < items.length; i++) {
-        cartTotalPrice += Number($(items[i]).text())
+  $('.input-shop-items').on('change', function() {
+    let cartTotalPrice = Number($(".cart-total-price").text())
+    let cartFinalItems = Number($(".cart-final-items").text())
+    let items = $(this).closest(".container-fluid").find(".cart-item")
+    let shopItemsSibings = $(this).closest(".shop-items").siblings()
+    
+    if (this.checked) {    
+      let unchecked = []
+
+      items.each(function(index) {
+        if ($(this).find(".input-cart-item").is(":not(:checked)")) {
+          unchecked.push($(this))
+          cartTotalPrice += Number($(this).find(".item-total-price").text())
+          $(this).find(".input-cart-item").prop("checked", true)
+        }
+      })
+
+      if (cartFinalItems + unchecked.length > 1) {
+        $(".cart-final-items-postfix").text("s")
       }
 
-      if (items.length > 1) 
-        $(".cart-final-items-postfix").text("s")
+      $(".cart-total-price").text(cartTotalPrice.toFixed(2))
+      $(".cart-final-items").text(cartFinalItems + unchecked.length)
 
-      $(".cart-total-price").text(cartTotalPrice)
-      $(".cart-final-items").text(cartFinalItems + items.length)
-      $(this).closest(".container-fluid").find(".input-cart-item").prop("checked", true)
+      // If all shops are checked, check select-all
+      let selectAll = true
+      for (x in shopItemsSibings) {
+        if($(x).find(".input-shop-items").is(":not(:checked)")) {
+          selectAll = false 
+          break
+        }
+      }
+      if (selectAll) {
+        console.log(true)
+        $("#shop-all").prop("checked", true)
+      }
+
+    }
+    else {
+      items.each(function(index) {
+        cartTotalPrice -= Number($(this).find(".item-total-price").text())
+      })
+
+      if (cartFinalItems - items.length <= 1) 
+        $(".cart-final-items-postfix").text("")
+
+      if ($("#shop-all").prop("checked"))
+        $("#shop-all").prop("checked", false)
+      
+      $(".cart-total-price").text(cartTotalPrice.toFixed(2))
+      $(".cart-final-items").text(cartFinalItems - items.length)
+      $(this).closest(".container-fluid").find(".input-cart-item").prop("checked", false)
     }
   })
+
+  // Check cart item's checkbox 
+  $('.input-cart-item').on('change', function() {
+    let cartTotalPrice = Number($(".cart-total-price").text())
+    let cartFinalItems = Number($(".cart-final-items").text())
+    let itemTotalPrice = Number($(this).closest('.container-fluid').find('.item-total-price').text())
+    let allItemsCurrentShop = $(this).closest('.cart-items').find('input').length
+    let allItemsCurrentShopChecked = $(this).closest('.cart-items').find('input:checked').length
+    let inputShopItems = $(this).closest(".shop-items").find(".input-shop-items")
+    let shopItemsSibings = $(this).closest(".shop-items").siblings()
+
+    if (this.checked) {
+      if (cartFinalItems >= 1) 
+        $(".cart-final-items-postfix").text("s")
+
+      if (allItemsCurrentShopChecked == allItemsCurrentShop)
+        inputShopItems.prop("checked", true)
+
+      $(".cart-total-price").text((cartTotalPrice + itemTotalPrice).toFixed(2))
+      $(".cart-final-items").text(cartFinalItems + 1)
+
+      let selectAll = true
+      for (x in shopItemsSibings) {
+        if($(x).find(".input-shop-items").is(":not(:checked)")) {
+          selectAll = false 
+          break
+        }
+      }
+      if (selectAll) {
+        console.log(true)
+        $("#shop-all").prop("checked", true)
+      }
+    }
+    else {
+      if (cartFinalItems <= 2) 
+        $(".cart-final-items-postfix").text("")
+
+      if (inputShopItems.prop("checked"))
+        inputShopItems.prop("checked", false)
+      
+      if ($("#shop-all").prop("checked"))
+        $("#shop-all").prop("checked", false)
+
+      $(".cart-total-price").text((cartTotalPrice - itemTotalPrice).toFixed(2))
+      $(".cart-final-items").text(cartFinalItems - 1)
+    }
+  })
+
+  // check select all 
+  $("#shop-all").on('change', function() {
+    let numberOfItems = $(".item-total-price").length
+    let cartTotalPrice = 0
+    
+    if (this.checked) {
+      $(".item-total-price").each(function(index) {
+        cartTotalPrice += Number($(this).text())
+      })
+
+      if (numberOfItems > 1)
+        $(".cart-final-items-postfix").text("s")
+
+      $(".cart-total-price").text(cartTotalPrice.toFixed(2))
+      $(".cart-final-items").text(numberOfItems)
+      $("input").prop("checked", true)
+      $("#btn-destroy-cart").toggleClass("disabled")
+    }
+    else {
+      $("input").prop("checked", false)
+      $(".cart-total-price").text(0)
+      $(".cart-final-items").text(0)
+      $(".cart-final-items-postfix").text("")
+      $("#btn-destroy-cart").toggleClass("disabled")
+    }
+  })
+
+  // Modify quantity in product show
+  $("#add-btn").on('click', function() {
+    $("#product-show-qtt").val(Number($("#product-show-qtt").val()) + 1)
+
+    if ($("#sub-btn").is(":disabled")) {
+      $("#sub-btn").prop("disabled", false)
+    }
+  })
+  $("#sub-btn").on('click', function() {
+    $("#product-show-qtt").val(Number($("#product-show-qtt").val()) - 1)
+
+    if ($("#product-show-qtt").val() == 1) {
+      $("#sub-btn").prop("disabled", true)
+    }
+  })
+
+  // Add product to cart ajax
+  $("#btn-add-to-cart").on('click', function() {
+    let form = $("#form-add-to-cart");
+    let actionUrl = form.attr('action');
+
+    $(this).append('<input type="hidden" name="add_to_cart" value="true" />');
+
+    $.ajax({
+      type: "POST",
+      url: actionUrl,
+      data: form.serialize(),
+      success: function(result) {
+        const toast = new bootstrap.Toast(document.getElementById("success-add-to-cart"))
+
+        toast.show()
+      } 
+    })
+  }) 
+  
+  
 })

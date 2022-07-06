@@ -18,7 +18,8 @@ end
   u.save
   if i < 10 
     u.add_role :seller 
-    Shop.create(user: u, name: Faker::Lorem.sentence.gsub('.', ''), description: Faker::Lorem.paragraphs.join(' '))
+    s = Shop.create(user: u, name: Faker::Lorem.sentence.gsub('.', ''), description: Faker::Lorem.paragraphs.join(' '))
+    s.approve
   end
 end
 

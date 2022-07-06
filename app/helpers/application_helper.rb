@@ -41,4 +41,18 @@ module ApplicationHelper
     
     doc.to_html.html_safe
   end
+
+  def display_price(price)
+    sprintf("%.2f", price)
+  end
+
+  def disable_class(quantity)
+    quantity == 1 ? "disabled" : ""
+  end
+
+  def buy_now?(cart_item)
+    return false if @item_buy_now.nil?
+    return true if @item_buy_now == cart_item
+    false
+  end
 end

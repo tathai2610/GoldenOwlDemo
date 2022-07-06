@@ -15,14 +15,8 @@ class User < ApplicationRecord
     return nil if cart_items.blank? 
 
     result = [] 
-    shops = cart_items.pluck(:shop_id).uniq
 
-    shops.each do |s| 
-      shop = Shop.find(s)
-      items = cart_items.where(user: self, shop: shop).includes(:product)
-
-      result.push({ shop: shop, items: items })
-    end
+    cart_items.group_by(&:shop).each { |shop, items| result.push({ shop: shop, items: items })  }
 
     result
   end
@@ -30,21 +24,13 @@ class User < ApplicationRecord
   def cart_total_items 
     return 0 if cart_items.blank? 
 
-    result = 0
-
-    cart_items.each { |i| result += i.quantity }
-
-    result
+    cart_items.sum(&:quantity)
   end
 
   def cart_total_price
     return 0 if cart_items.blank? 
 
-    result = 0
-
-    cart_items.each { |i| result += (i.product.price * i.quantity) }
-
-    sprintf("%.2f", result)
+    cart_items.sum { |i| i.product.price * i.quantity}
   end
 
   private
