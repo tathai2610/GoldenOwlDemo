@@ -15,11 +15,31 @@
     }
     else {
       $("#cart-item-#{@cart_item.id}").closest(".shop-items").remove()
+
+      let allShop = $('.input-shop-items').length
+      let allShopChecked = $('.input-shop-items:checked').length
+
+      if (allShop == allShopChecked) {
+        $("#shop-all").prop("checked", true)
+      }
     }
   }
-  // otherwise, delete the cart_item only
+  // otherwise, delete the cart-item only
   else {
+    let currentShop = $("#cart-item-#{@cart_item.id}").closest('.shop-items')
+    
+    // delete the cart-item
     $("#cart-item-#{@cart_item.id}").closest(".cart-item").remove()
+    
+    let allItemsCurrentShop = currentShop.find('.cart-items input').length
+    let allItemsCurrentShopChecked = currentShop.find('.cart-items input:checked').length
+
+    if (allItemsCurrentShopChecked == allItemsCurrentShop)
+      currentShop.find(".input-shop-items").prop("checked", true)
+
+    if ($(".shop-items").length == 1) {
+      $("#shop-all").prop("checked", true)
+    }
   }
 
   // Update cart-total-items 

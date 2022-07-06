@@ -138,7 +138,6 @@ $(document).on("turbolinks:load", function() {
         }
       }
       if (selectAll) {
-        console.log(true)
         $("#shop-all").prop("checked", true)
       }
     }
@@ -205,8 +204,6 @@ $(document).on("turbolinks:load", function() {
     let form = $("#form-add-to-cart");
     let actionUrl = form.attr('action');
 
-    $(this).append('<input type="hidden" name="add_to_cart" value="true" />');
-
     $.ajax({
       type: "POST",
       url: actionUrl,
@@ -215,9 +212,24 @@ $(document).on("turbolinks:load", function() {
         const toast = new bootstrap.Toast(document.getElementById("success-add-to-cart"))
 
         toast.show()
+        $(".cart-total-items").text(Number($(".cart-total-items").text()) + 1 )
       } 
     })
   }) 
   
-  
+  // Update cart if there is a cart item checked 
+  if ($(".input-cart-item:checked").length > 0) {
+    let cartItem = $(".input-cart-item:checked").closest((".cart-item"))
+
+    $(".cart-total-price").text(cartItem.find(".item-total-price").text())
+    $(".cart-final-items").text(1)
+
+    if (cartItem.siblings().length == 0) {
+      cartItem.closest(".shop-items").find(".input-shop-items").prop("checked", true)
+
+      if (cartItem.closest(".shop-items").siblings().length == 0) {
+        $("#shop-all").prop("checked", true)
+      }
+    }
+  }
 })

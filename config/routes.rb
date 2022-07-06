@@ -12,8 +12,8 @@ Rails.application.routes.draw do
 
   resources :users do
     resource :shop
-    resources :cart_items
     collection do
+      resources :cart_items
       delete '/cart_items/destroy_all', to: 'cart_items#destroy_all'
     end
   end

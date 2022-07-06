@@ -50,6 +50,7 @@ module ApplicationHelper
     quantity == 1 ? "disabled" : ""
   end
 
+  # Check if the item is buy_now_item
   def buy_now?(cart_item)
     return false if @item_buy_now.nil?
     return true if @item_buy_now == cart_item

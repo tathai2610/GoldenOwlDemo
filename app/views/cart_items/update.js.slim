@@ -7,10 +7,10 @@
   if ($("#cart-item-#{@cart_item.id} input").is(":checked")) {    
     // change cart total price
     if ("#{@action}" == "inc") {
-      $(".cart-total-price").text(Number($(".cart-total-price").text()) + Number(#{@cart_item.product.price}))
+      $(".cart-total-price").text((Number($(".cart-total-price").text()) + Number(#{@cart_item.product.price})).toFixed(2))
     }
     else {
-      $(".cart-total-price").text(Number($(".cart-total-price").text()) - Number(#{@cart_item.product.price}))
+      $(".cart-total-price").text((Number($(".cart-total-price").text()) - Number(#{@cart_item.product.price})).toFixed(2))
     }
   }
 
