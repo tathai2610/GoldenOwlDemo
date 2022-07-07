@@ -25,6 +25,8 @@ module ApplicationHelper
       "danger"
     when "success"
       "success"
+    when "warning"
+      "warning"
     end
   end
 

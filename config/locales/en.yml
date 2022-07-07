@@ -61,5 +61,5 @@ en:
       new?: 'You cannot create a new product!'
       create?: 'You cannot create a new product!'
     cart_item_policy:
-      index?: 'Please login or signup to access your shopping cart!'
+      index?: 'Please login to access to your shopping cart!'
               

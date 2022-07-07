@@ -12,7 +12,9 @@ RSpec.describe "CartItems", type: :request do
     let(:commit) { "inc" }
 
     context "when user is a guest" do 
-      it_behaves_like "successful response"
+      it "redirects to login page" do 
+        expect(subject).to redirect_to new_user_session_path
+      end
     end
 
     describe "when user is a buyer" do

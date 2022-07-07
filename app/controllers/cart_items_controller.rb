@@ -1,6 +1,7 @@
 class CartItemsController < ApplicationController
   before_action :set_product, only: [:create]
   before_action :set_cart_item, only: [:update, :destroy]
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   
   def index 
     authorize current_user, policy_class: CartItemPolicy
@@ -11,10 +12,11 @@ class CartItemsController < ApplicationController
 
   def create
     @cart_item = CartItem.find_or_create_by(product: @product, shop: @product.shop)
-
     authorize @cart_item
+
     @cart_item.user = current_user
     @cart_item.quantity += cart_item_params[:quantity].to_i
+   
     @cart_item.save
 
     respond_to do |format|
@@ -51,6 +53,7 @@ class CartItemsController < ApplicationController
   end
 
   def destroy_all 
+    authorize current_user, policy_class: CartItemPolicy
     current_user.cart_items.destroy_all
 
     respond_to do |format|
@@ -72,5 +75,11 @@ class CartItemsController < ApplicationController
 
   def cart_item_params
     params.require(:cart_item).permit(:product_id, :quantity)
+  end
+
+  def user_not_authorized
+    flash[:warning] = "Please login to access to your shopping cart!"
+
+    redirect_to new_user_session_path
   end
 end

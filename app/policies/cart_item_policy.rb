@@ -10,16 +10,16 @@ class CartItemPolicy < ApplicationPolicy
     user.present?
   end
 
-  def create? 
+  def create?
     user.present?
   end
 
-  def update? 
-    user.present?
+  def update?
+    user.present? && user.cart_items.include?(record)
   end
 
   def destroy?
-    user.present?
+    user.present? && user.cart_items.include?(record)
   end
 
   def destroy_all? 

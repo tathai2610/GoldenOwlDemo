@@ -31,6 +31,8 @@
                   button.btn-small.h-48.rounded-0.text-darkgreen.bg-white.ms-3.w-50.d-flex.align-items-center.justify-content-center onclick='$("#form-add-to-cart").submit()'
                     = svg_tag "icons/shopping-cart-plus.svg"
                     span.ms-2 Buy now
+                - unless user_signed_in?
+                  .mt-2.text-red.fs-20 Please login to add this product to your cart.
 .container-fluid.p-0#product-show-shop 
   .container-xl.py-5.px-4
     .row.mx-auto.p-0.justify-content-between.justify-content-md-around.align-items-center
