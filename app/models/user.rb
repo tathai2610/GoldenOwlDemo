@@ -14,11 +14,9 @@ class User < ApplicationRecord
   def cart_items_group_by_shop 
     return nil if cart_items.blank? 
 
-    result = [] 
-
-    cart_items.group_by(&:shop).each { |shop, items| result.push({ shop: shop, items: items })  }
-
-    result
+    [].tap do |result|
+      cart_items.group_by(&:shop).each { |shop, items| result.push({ shop: shop, items: items }) }
+    end
   end
 
   def cart_total_items 
