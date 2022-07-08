@@ -56,7 +56,7 @@ $(document).on("turbolinks:load", function() {
 
   // Check shop's checkbox
   $('.input-shop-items').on('change', function() {
-    let cartTotalPrice = Number($(".cart-total-price").text())
+    let cartTotalPrice = Number($(".cart-total-price").text().replace(',', ''))
     let cartFinalItems = Number($(".cart-final-items").text())
     let items = $(this).closest(".container-fluid").find(".cart-item")
     let shopItemsSibings = $(this).closest(".shop-items").siblings()
@@ -64,10 +64,10 @@ $(document).on("turbolinks:load", function() {
     if (this.checked) {    
       let unchecked = []
 
-      items.each(function(index) {
+      items.each(function() {
         if ($(this).find(".input-cart-item").is(":not(:checked)")) {
           unchecked.push($(this))
-          cartTotalPrice += Number($(this).find(".item-total-price").text())
+          cartTotalPrice += Number($(this).find(".item-total-price").text().replace(',', ''))
           $(this).find(".input-cart-item").prop("checked", true)
         }
       })
@@ -76,7 +76,7 @@ $(document).on("turbolinks:load", function() {
         $(".cart-final-items-postfix").text("s")
       }
 
-      $(".cart-total-price").text(cartTotalPrice.toFixed(2))
+      $(".cart-total-price").text(displayPrice(cartTotalPrice))
       $(".cart-final-items").text(cartFinalItems + unchecked.length)
 
       // If all shops are checked, check select-all
@@ -88,14 +88,13 @@ $(document).on("turbolinks:load", function() {
         }
       }
       if (selectAll) {
-        console.log(true)
         $("#shop-all").prop("checked", true)
       }
 
     }
     else {
-      items.each(function(index) {
-        cartTotalPrice -= Number($(this).find(".item-total-price").text())
+      items.each(function() {
+        cartTotalPrice -= Number($(this).find(".item-total-price").text().replace(',', ''))
       })
 
       if (cartFinalItems - items.length <= 1) 
@@ -104,7 +103,7 @@ $(document).on("turbolinks:load", function() {
       if ($("#shop-all").prop("checked"))
         $("#shop-all").prop("checked", false)
       
-      $(".cart-total-price").text(cartTotalPrice.toFixed(2))
+      $(".cart-total-price").text(displayPrice(cartTotalPrice))
       $(".cart-final-items").text(cartFinalItems - items.length)
       $(this).closest(".container-fluid").find(".input-cart-item").prop("checked", false)
     }
@@ -112,9 +111,9 @@ $(document).on("turbolinks:load", function() {
 
   // Check cart item's checkbox 
   $('.input-cart-item').on('change', function() {
-    let cartTotalPrice = Number($(".cart-total-price").text())
+    let cartTotalPrice = Number($(".cart-total-price").text().replace(',', ''))
     let cartFinalItems = Number($(".cart-final-items").text())
-    let itemTotalPrice = Number($(this).closest('.container-fluid').find('.item-total-price').text())
+    let itemTotalPrice = Number($(this).closest('.container-fluid').find('.item-total-price').text().replace(',', ''))
     let allItemsCurrentShop = $(this).closest('.cart-items').find('input').length
     let allItemsCurrentShopChecked = $(this).closest('.cart-items').find('input:checked').length
     let inputShopItems = $(this).closest(".shop-items").find(".input-shop-items")
@@ -127,7 +126,7 @@ $(document).on("turbolinks:load", function() {
       if (allItemsCurrentShopChecked == allItemsCurrentShop)
         inputShopItems.prop("checked", true)
 
-      $(".cart-total-price").text((cartTotalPrice + itemTotalPrice).toFixed(2))
+      $(".cart-total-price").text(displayPrice(cartTotalPrice + itemTotalPrice))
       $(".cart-final-items").text(cartFinalItems + 1)
 
       let selectAll = true
@@ -151,7 +150,7 @@ $(document).on("turbolinks:load", function() {
       if ($("#shop-all").prop("checked"))
         $("#shop-all").prop("checked", false)
 
-      $(".cart-total-price").text((cartTotalPrice - itemTotalPrice).toFixed(2))
+      $(".cart-total-price").text(displayPrice(cartTotalPrice - itemTotalPrice))
       $(".cart-final-items").text(cartFinalItems - 1)
     }
   })
@@ -163,20 +162,20 @@ $(document).on("turbolinks:load", function() {
     
     if (this.checked) {
       $(".item-total-price").each(function(index) {
-        cartTotalPrice += Number($(this).text())
+        cartTotalPrice += Number($(this).text().replace(',', ''))
       })
 
       if (numberOfItems > 1)
         $(".cart-final-items-postfix").text("s")
 
-      $(".cart-total-price").text(cartTotalPrice.toFixed(2))
+      $(".cart-total-price").text(displayPrice(cartTotalPrice))
       $(".cart-final-items").text(numberOfItems)
       $("input").prop("checked", true)
       $("#btn-destroy-cart").toggleClass("disabled")
     }
     else {
       $("input").prop("checked", false)
-      $(".cart-total-price").text(0)
+      $(".cart-total-price").text("0.00")
       $(".cart-final-items").text(0)
       $(".cart-final-items-postfix").text("")
       $("#btn-destroy-cart").toggleClass("disabled")
@@ -221,7 +220,7 @@ $(document).on("turbolinks:load", function() {
   if ($(".input-cart-item:checked").length > 0) {
     let cartItem = $(".input-cart-item:checked").closest((".cart-item"))
 
-    $(".cart-total-price").text(cartItem.find(".item-total-price").text())
+    $(".cart-total-price").text(cartItem.find(".item-total-price").text().replace(',', ''))
     $(".cart-final-items").text(1)
 
     if (cartItem.siblings().length == 0) {
@@ -232,8 +231,8 @@ $(document).on("turbolinks:load", function() {
       }
     }
   }
-})
 
-function displayPrice(price) {
-  price = Number(price).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})
-}
+  window.displayPrice = function displayPrice(price) {
+    return Number(price).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})
+  }
+})

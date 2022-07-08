@@ -2,25 +2,25 @@
   // change item quantity
   $("#cart-item-#{@cart_item.id} .item-qtt").text("#{@cart_item.quantity}")
   // change item total price
-  $("#cart-item-#{@cart_item.id} .item-total-price").text("#{sprintf("%.2f", @cart_item.product.price * @cart_item.quantity)}")
+  $("#cart-item-#{@cart_item.id} .item-total-price").text("#{ display_price(@cart_item.product.price * @cart_item.quantity) }")
 
   if ($("#cart-item-#{@cart_item.id} input").is(":checked")) {    
     // change cart total price
     if ("#{@action}" == "inc") {
-      $(".cart-total-price").text((Number($(".cart-total-price").text()) + Number(#{@cart_item.product.price})).toFixed(2))
+      $(".cart-total-price").text(window.displayPrice(Number($(".cart-total-price").text().replace(',', '')) + +#{@cart_item.product.price}))
     }
     else {
-      $(".cart-total-price").text((Number($(".cart-total-price").text()) - Number(#{@cart_item.product.price})).toFixed(2))
+      $(".cart-total-price").text(window.displayPrice(Number($(".cart-total-price").text().replace(',', '')) - +#{@cart_item.product.price}))
     }
   }
 
-  if ("#{@action}" == "inc") {
-    if ("#{@cart_item.quantity}" == 2) {
+  if ("#{ @action == "inc" }") {
+    if ("#{ @cart_item.quantity == 2 }") {
       $("#cart-item-#{@cart_item.id} .btn-dec").removeClass("disabled")
     }
   }
   else {
-    if ("#{@cart_item.quantity}" == 1) {
+    if ("#{ @cart_item.quantity == 1 }") {
       $("#cart-item-#{@cart_item.id} .btn-dec").addClass("disabled")
     }
   }
