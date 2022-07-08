@@ -34,7 +34,7 @@ end
 
 5.times do |i| 
   s = Shop.find(rand(1..10))
-  CartItem.create(user: User.first, shop: s, product: s.products.last)
+  CartItem.create(user: User.first, shop: s, product: s.products.last, quantity: rand(1..100))
 end
 
 

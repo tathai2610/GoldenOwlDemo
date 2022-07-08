@@ -45,7 +45,7 @@ module ApplicationHelper
   end
 
   def display_price(price)
-    sprintf("%.2f", price)
+    number_with_precision(price, precision: 2, delimiter: ',')
   end
 
   def disable_class(quantity)

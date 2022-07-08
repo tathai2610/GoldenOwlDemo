@@ -25,7 +25,7 @@
           .dropdown.ms-4
             a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,10"
               - unless user_signed_in?
-                i.fa-solid.fa-user
+                = svg_tag "icons/user.svg", class: "text-darkgreen"
               - else 
                 = image_tag url_for(current_user.avatar), size:"35x35"
             .dropdown-menu
@@ -43,7 +43,7 @@
                   .ms-2 Sign in
                 = link_to new_user_registration_path, class: "dropdown-item text-darkgreen" do 
                   = svg_tag "icons/user-plus.svg"
-                  | Sign up
+                  .ms-2 Sign up
               - else 
                 = link_to destroy_user_session_path, method: :delete, class: "dropdown-item text-darkgreen" do 
                   = svg_tag "icons/logout.svg"

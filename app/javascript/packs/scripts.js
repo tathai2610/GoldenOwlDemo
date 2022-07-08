@@ -233,3 +233,7 @@ $(document).on("turbolinks:load", function() {
     }
   }
 })
+
+function displayPrice(price) {
+  price = Number(price).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})
+}

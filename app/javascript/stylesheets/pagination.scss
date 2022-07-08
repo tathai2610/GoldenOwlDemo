@@ -1,23 +1,26 @@
 @use "config" as *;
 
-.pagination {
-  .page {
-    color: white; 
-    background-color: $dark-green;
-    padding: 18px;
-    text-align: center;
-    min-height: auto;
-  }
+// .pagination {
+//   .page {
+//     color: white; 
+//     background-color: $dark-green;
+//     padding: 18px;
+//     text-align: center;
+//     min-height: auto;
+//   }
 
-  a {
-    color: white;
+//   a {
+//     color: white;
 
-    &:hover {
-      color: white;
-    }
-  }
-  .page.disabled, 
-  .page.current {
-    opacity: 0.8;
-  }
+//     &:hover {
+//       color: white;
+//     }
+//   }
+//   .page.disabled, 
+//   .page.current {
+//     opacity: 0.8;
+//   }
+// }
+.page-item.active .page-link {
+  background-color: $dark-green !important;
 }
