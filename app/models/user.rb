@@ -7,8 +7,29 @@ class User < ApplicationRecord
 
   has_one :shop, dependent: :destroy
   has_one_attached :avatar
+  has_many :cart_items, dependent: :destroy
 
   after_create :attach_avatar
+
+  def cart_items_group_by_shop 
+    return nil if cart_items.blank? 
+
+    [].tap do |result|
+      cart_items.group_by(&:shop).each { |shop, items| result.push({ shop: shop, items: items }) }
+    end
+  end
+
+  def cart_total_items 
+    return 0 if cart_items.blank? 
+
+    cart_items.sum(&:quantity)
+  end
+
+  def cart_total_price
+    return 0 if cart_items.blank? 
+
+    cart_items.sum { |i| i.product.price * i.quantity}
+  end
 
   private
 

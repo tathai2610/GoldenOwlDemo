@@ -25,10 +25,37 @@ module ApplicationHelper
       "danger"
     when "success"
       "success"
+    when "warning"
+      "warning"
     end
   end
 
-  def user_has_role?(role)
+  def user_logged_in_and_has_role?(role)
     user_signed_in? && current_user.has_role?(role)
+  end
+
+  def svg_tag(path, options={})
+    file = File.read(Rails.root.join('app','assets','images',path))
+    doc = Nokogiri::HTML::DocumentFragment.parse file
+    svg = doc.at_css 'svg'
+
+    options.each { |attr, value| svg[attr.to_s] = value }
+    
+    doc.to_html.html_safe
+  end
+
+  def display_price(price)
+    number_with_precision(price, precision: 2, delimiter: ',')
+  end
+
+  def disable_class(quantity)
+    quantity == 1 ? "disabled" : ""
+  end
+
+  # Check if the item is buy_now_item
+  def buy_now?(cart_item)
+    return false if @item_buy_now.nil?
+    return true if @item_buy_now == cart_item
+    false
   end
 end

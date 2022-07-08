@@ -4,5 +4,5 @@
       h1.p-0.m-0 = section.capitalize.gsub('-', ' ')
       = link_to "View all products", products_path, class: "align-self-center"
     .container-fluid.p-0.my-4 
-      .row
+      .row.gx-4
         = render partial: "products/product", collection: product_list, as: :product

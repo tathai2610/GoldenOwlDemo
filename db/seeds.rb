@@ -18,11 +18,12 @@ end
   u.save
   if i < 10 
     u.add_role :seller 
-    Shop.create(user: u, name: Faker::Lorem.sentence.gsub('.', ''), description: Faker::Lorem.paragraphs.join(' '))
+    s = Shop.create(user: u, name: Faker::Lorem.sentence.gsub('.', ''), description: Faker::Lorem.paragraphs.join(' '))
+    s.approve
   end
 end
 
-50.times do 
+50.times do |i|
   p = Product.new(name: Faker::Lorem.sentence.gsub('.', ''), description: "<div>#{Faker::Lorem.paragraphs.join('<br>')}</div>", price: Faker::Number.decimal(l_digits: 2, r_digits: 2), shop_id: rand(1..10))
   p.images.attach([io: File.open(Rails.root.join('app', 'assets', 'images', 'default.jpg')), filename: 'default-image.jpg', content_type: 'image/jpg'])
   p.save
@@ -30,5 +31,12 @@ end
     p.categories << Category.find(rand(1..20))
   end
 end
+
+5.times do |i| 
+  s = Shop.find(rand(1..10))
+  CartItem.create(user: User.first, shop: s, product: s.products.last, quantity: rand(1..100))
+end
+
+
 
 

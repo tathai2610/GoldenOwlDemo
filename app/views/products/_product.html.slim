@@ -1,8 +1,10 @@
-  .product.col-12.col-md-6.col-lg-3.mb-2 id="product-#{product.id}"
+  .product.col-12.col-md-6.col-lg-3.mb-3 id="product-#{product.id}"
     = link_to shop_product_path(product.shop, product) do 
       = image_tag url_for(product.images.first), class: "w-100 product-img-responsive"
       .container-fluid.p-0.py-3
         h2.m-0.fw-500.product-name.fs-24 = product.name
-        .d-flex
-          span.text-red.fs-36 $#{ sprintf("%.2f", product.price) }
-        button.mt-2 Add to cart 
+        .d-flex.mb-1
+          span.text-red.fs-30.fw-500 
+            | $ 
+            = sprintf("%.2f", product.price)
+        button Add to cart 

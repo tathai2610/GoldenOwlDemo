@@ -68,12 +68,39 @@ $dark-green: rgb(65, 98, 75);
   font-size: 48px !important;
 }
 
+.size-32 {
+  height: 32px;
+  width: 32px;
+}
+
+.min-size-80 {
+  min-height: 80px;
+  min-width: 80px;
+}
+
+.w-50px {
+  width: 50px !important;
+}
+
 .h-48 {
   height: 48px !important;
 }
 
 .mt-40 {
   margin-top: 40px !important;
+}
+
+.py-32 {
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+.p-30 {
+  padding: 30px;
+}
+
+.z-index-1 {
+  z-index: 1;
 }
 
 .object-fit-cover {

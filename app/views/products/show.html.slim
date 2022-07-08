@@ -6,7 +6,6 @@
         = link_to products_path, class: "text-decoration-none text-dark fs-24 fw-300 ps-3" do 
           i.fa-solid.fa-arrow-left-long.me-3.fw-400
           | Back to all products 
-      .col-12.p-0
         .container-fluid.p-0
           .row.mx-auto.p-0 
             .col-12.col-lg-6.p-0
@@ -14,18 +13,26 @@
               .d-flex.mt-3.pb-2.w-100.product-show_images-holder
                 = render partial: "products/product_images", collection: @product.images, as: :image
             #product-show-info.col-12.col-lg-6.px-4.py-lg-3.ps-lg-5.ff-dg
-              h1.m-0.pt-4.fw-400.fs-48.lh-sm = @product.name 
-              h2.m-0.fw-300.fs-30 = product_categories(@product)
-              h1.mb-0.fs-36.text-red.fw-bold.mt-40 $#{ sprintf("%.2f", @product.price) }
-              .d-flex.fs-24.mt-40.align-items-center
-                span.me-4.fs-400 Quantity: 
-                button.border-0#sub-btn type="button" 
-                  i.fa-solid.fa-minus
-                span.text-center.fs-36#product-show-qtt 1
-                button.border-0#add-btn type="button" 
-                  i.fa-solid.fa-plus
-              = link_to "#" do 
-                button.btn-small.w-50.mt-5.h-48  type="submit" Add to cart
+              = simple_form_for :cart_item, url: cart_items_path, html: { method: :post, id: "form-add-to-cart" } do |f|
+                h1.m-0.pt-4.fw-400.fs-48.lh-sm = @product.name 
+                h2.m-0.fw-300.fs-30 = product_categories(@product)
+                h1.mb-0.fs-36.text-red.fw-bold.mt-40 $#{ display_price(@product.price) }
+                .d-flex.align-items-center.mt-40
+                  span.me-4.fs-24 Quantity: 
+                  .d-flex.align-items-center
+                    button.border-0#sub-btn type="button" disabled=true
+                      i.fa-solid.fa-minus
+                    = f.input :quantity, label: false, input_html: { class: "form-control form-control-flush text-center fs-30", id:"product-show-qtt", value:1 }
+                    button.border-0#add-btn type="button" 
+                      i.fa-solid.fa-plus
+                = f.input :product_id, as: :hidden, input_html: { value: @product.id }
+                .d-flex.align-items-center.mt-5
+                  = f.button :button, "Add to cart", type: "button", class: "btn-small w-50 h-48 rounded-0 text-white", id: "btn-add-to-cart"
+                  button.btn-small.h-48.rounded-0.text-darkgreen.bg-white.ms-3.w-50.d-flex.align-items-center.justify-content-center onclick='$("#form-add-to-cart").submit()'
+                    = svg_tag "icons/shopping-cart-plus.svg"
+                    span.ms-2 Buy now
+                - unless user_signed_in?
+                  .mt-2.text-red.fs-20 Please login to add this product to your cart.
 .container-fluid.p-0#product-show-shop 
   .container-xl.py-5.px-4
     .row.mx-auto.p-0.justify-content-between.justify-content-md-around.align-items-center
@@ -53,4 +60,3 @@
 
 - if Product.similar_products(@product.id).any?
   = render partial: "home/products_4", locals: { section: "similar-products", product_list: products_section("similar-products", @product.id) }
-

@@ -31,7 +31,8 @@
         .row
           = render partial: "products/product", collection: @products, as: :product
       .d-flex.mb-5.py-lg-3.px-lg-4.justify-content-center
-        = render partial: "layouts/pagination", locals: { pagy: @pagy }
+        / = render partial: "layouts/pagination", locals: { pagy: @pagy }
+        == pagy_bootstrap_nav(@pagy)
   = render partial: "home/products_4", locals: { section: "best-sellers", product_list: @shop.products.first(4) }
 - else 
   .container-fluid.p-0.bg-color-cream 

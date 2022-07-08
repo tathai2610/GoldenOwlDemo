@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
   belongs_to :shop, counter_cache: true
+  has_many :cart_items, dependent: :destroy
   has_many :category_products, dependent: :destroy 
   has_many :categories, through: :category_products
   has_many_attached :images
