@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_one :shop, dependent: :destroy
   has_one_attached :avatar
   has_many :cart_items, dependent: :destroy
+  has_many :orders, dependent: :destroy
 
   after_create :attach_avatar
 
