@@ -11,7 +11,7 @@ class CartItemsController < ApplicationController
   end
 
   def create
-    @cart_item = CartItem.find_or_create_by(product: @product, shop: @product.shop)
+    @cart_item = CartItem.find_or_create_by(product: @product)
     authorize @cart_item
 
     @cart_item.user = current_user
