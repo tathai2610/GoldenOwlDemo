@@ -14,18 +14,6 @@ class User < ApplicationRecord
   after_create :attach_avatar
   after_create :create_cart
 
-  def cart_total_items 
-    return 0 if cart_items.blank? 
-
-    cart_items.sum(&:quantity)
-  end
-
-  def cart_total_price
-    return 0 if cart_items.blank? 
-
-    cart_items.sum { |i| i.product.price * i.quantity}
-  end
-
   private
 
   def attach_avatar

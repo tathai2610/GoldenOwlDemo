@@ -1,0 +1,9 @@
+.container-fluid.px-0.bg-white.mt-3.border.border-bottom-0.shadow-sm.shop-items
+  .row.mx-auto.py-3.border-bottom
+    .col-12
+      = link_to user_shop_path(shop_items[:shop].user), class: "d-flex align-items-center text-decoration-none fs-20 text-dark" do
+        = svg_tag "icons/building-store.svg"
+        .ms-2.fw-bold = shop_items[:shop].name
+  .row.mx-auto.cart-items
+    .col-12
+      = render partial: "order_item", collection: shop_items[:items], as: :order_item

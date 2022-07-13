@@ -20,9 +20,8 @@
           - if user_signed_in?
             = link_to user_cart_path(current_user), class: "position-relative text-darkgreen" do 
               = svg_tag "icons/shopping-cart.svg", class: "fs-36"
-              - if current_user.cart.line_items.any?
-                span.position-absolute.top-0.start-100.translate-middle.px-2.bg-danger.border.border-light.rounded-pill.d-flex.justify-content-center.align-items-center
-                  span.fs-5.fw-bold.cart-total-items = current_user.cart.line_items.size
+              span.position-absolute.top-0.start-100.translate-middle.px-2.bg-danger.border.border-light.rounded-pill.d-flex.justify-content-center.align-items-center
+                span.fs-5.fw-bold.cart-total-items = current_user.cart.line_items.size
           - else 
             = link_to new_user_session_path, class: "position-relative text-darkgreen" do 
               = svg_tag "icons/shopping-cart.svg", class: "fs-36"

@@ -1,21 +1,20 @@
 .container-fluid.p-0.border-bottom.cart-item 
-  .row.mx-auto.py-3.justify-content-md-between id="cart-item-#{cart_item.id}" product-id="#{cart_item.product.id}"
+  .row.mx-auto.py-3.justify-content-md-between id="cart-item-#{cart_item.id}" cart-item-id="#{cart_item.id}"
     .col-auto.col-sm-1.col-md-auto.col-lg-1.d-flex.align-items-center.justify-content-center
       - if buy_now?(cart_item)
         input.form-check-input.input-cart-item type="checkbox" checked=true
       - else 
         input.form-check-input.input-cart-item type="checkbox"
-    .col-12.col-sm-3.col-md-auto.px-0.d-flex.justify-content-center
+    .col-12.col-sm-3.col-md-auto.px-0.d-flex.justify-content-center.align-items-center
       = link_to shop_product_path(cart_item.shop, cart_item.product) do
         = image_tag url_for(cart_item.product.images.first), size:"80x80", class: "object-fit-cover min-size-80"
-    .col-12.col-sm-8.col-md-3.justify-content-center.justify-content-sm-start
-      = link_to shop_product_path(cart_item.shop, cart_item.product), class: "text-decoration-none text-dark" do
-        .fs-20.text-center.text-sm-start = cart_item.product.name
-    .col-12.col-sm-11.col-md-1.offset-md-0.d-flex.align-items-center.justify-content-sm-end.justify-content-center
+    .col-12.col-sm-8.col-md-3.d-flex.justify-content-center.justify-content-sm-start.justify-content-md-center.align-items-center
+      = link_to cart_item.product.name, shop_product_path(cart_item.shop, cart_item.product), class: "text-decoration-none text-dark fs-20 text-center text-sm-start" 
+    .col-12.col-sm-11.col-md-1.offset-md-0.d-flex.align-items-center.justify-content-center.justify-content-sm-end.justify-content-md-center
       .d-flex.fs-18
         | $
         .item-unit-price = display_price(cart_item.product.price)
-    .col-12.col-sm-9.col-md-2.d-flex.align-items-center.justify-content-center.justify-content-sm-end.my-2.my-md-2
+    .col-12.col-sm-9.col-md-2.d-flex.align-items-center.justify-content-center.justify-content-sm-end.justify-content-md-center.my-2.my-md-2
       .d-flex.align-items-center
         = link_to cart_line_item_path(@cart, cart_item, commit:"dec"), method: :put, remote: true, class: "btn btn-sm btn-dec " + disable_class(cart_item.quantity) do
           = svg_tag ('icons/minus.svg'), class: 'm-0'
@@ -23,7 +22,7 @@
           = cart_item.quantity 
         = link_to cart_line_item_path(@cart, cart_item, commit:"inc"), method: :put, remote: true, class: "btn btn-sm btn-inc" do
           = svg_tag ('icons/plus.svg'), class: 'm-0'
-    .col-12.col-sm-2.col-md-1.d-flex.align-items-center.justify-content-center.justify-content-sm-end
+    .col-12.col-sm-2.col-md-1.d-flex.align-items-center.justify-content-center.justify-content-sm-end.justify-content-md-center
       .d-flex.fs-18.text-red.fw-500
         | $ 
         .item-total-price = display_price(cart_item.product.price * cart_item.quantity)

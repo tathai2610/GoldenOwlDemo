@@ -22,7 +22,7 @@
                   .d-flex.align-items-center
                     button.border-0#sub-btn type="button" disabled=true
                       i.fa-solid.fa-minus
-                    = f.input :quantity, label: false, input_html: { class: "form-control form-control-flush text-center fs-30", id:"product-show-qtt", value:1 }
+                    = f.input :quantity, label: false, input_html: { class: "form-control form-control-flush text-center fs-30 number-arrows-none", id:"product-show-qtt", value:1 }
                     button.border-0#add-btn type="button" 
                       i.fa-solid.fa-plus
                 = f.association :product, as: :hidden, input_html: { value: @product.id }

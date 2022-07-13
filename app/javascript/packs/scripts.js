@@ -223,8 +223,8 @@ $(document).on("turbolinks:load", function() {
 
   // Add product to cart ajax
   $("#btn-add-to-cart").on('click', function() {
-    let form = $("#form-add-to-cart");
-    let actionUrl = form.attr('action');
+    let form = $("#form-add-to-cart")
+    let actionUrl = form.attr('action')
 
     $.ajax({
       type: "POST",
@@ -263,11 +263,25 @@ $(document).on("turbolinks:load", function() {
       let itemsChecked = []
 
       $(".input-cart-item:checked").each(function() {
-        itemsChecked.push($(this).closest(".cart-item").children().attr("product-id"))
+        itemsChecked.push($(this).closest(".cart-item").children().attr("cart-item-id"))
       })
 
-      return href + "?products_ids=" + itemsChecked.join()
+      return href + "?cart_items_ids=" + itemsChecked.join()
     })
-    console.log($(this).attr("href"))
+  })
+
+  $("#form-create-order").on('submit', function(e) {
+    let items = []
+
+    $(".order-item").each(function() {
+      items.push($(this).children().attr("cart-item-id"))
+    })
+
+    $("<input />").attr("type", "hidden")
+          .attr("name", "order[cart_items_ids]")
+          .attr("value", items.join(','))
+          .appendTo("#form-create-order");
+
+    return true
   })
 })

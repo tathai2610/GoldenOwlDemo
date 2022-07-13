@@ -127,6 +127,16 @@ $dark-green: rgb(65, 98, 75);
   background-color: $dark-green !important;
 }
 
+.number-arrows-none {
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  -moz-appearance: textfield;
+}
+
 .btn-small {
   width: 100%; 
   background-color: $dark-green;

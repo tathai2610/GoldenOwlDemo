@@ -1,7 +1,7 @@
 class LineItemsController < ApplicationController 
   before_action :set_product, only: :create
   before_action :set_line_item, only: [:update, :destroy]
-  
+
   def create
     @line_item = LineItem.find_or_initialize_by(product: @product, line_itemable: @line_itemable)
     # authorize @line_item

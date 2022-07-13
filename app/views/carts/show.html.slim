@@ -5,7 +5,7 @@
       .d-flex.fs-24.align-items-center
         = svg_tag 'icons/shopping-cart.svg', class: "text-azure"
         .ms-2.cart-total-items = current_user.cart.line_items.size
-    - if @line_items_group_by_shop.any?
+    - if @line_items_group_by_shop.present?
       .cart-info
         = render partial: "shop_items", collection: @line_items_group_by_shop, as: :shop_items
       .container-fluid.p-0.mb-5.bg-white.border.shadow-sm.cart-checkout
@@ -18,8 +18,6 @@
               .cart-total-items = current_user.cart.line_items.size
               | )
           .col-auto.col-md-auto.col-lg-1.ms-auto.d-flex.align-items-center.justify-content-center
-            / = link_to cart_items_destroy_all_users_path, method: :delete, class: "btn btn-sm btn-ghost-danger py-2 disabled", id: "btn-destroy-cart", remote: true
-            /   = svg_tag 'icons/trash.svg', class: "m-0"
             = link_to destroy_all_cart_line_items_path(@cart), method: :delete, class: "btn btn-sm btn-ghost-danger py-2 disabled", id: "btn-destroy-cart", remote: true
               = svg_tag 'icons/trash.svg', class: "m-0"
         .row.mx-auto.py-3
@@ -34,7 +32,6 @@
                 | $ 
                 .cart-total-price 0.00
           .col-12.col-sm-11.col-md-4.d-flex.align-items-center.justify-content-center.justify-content-sm-end.mt-2.mt-md-0
-              / button.btn-large.ms-sm-5 type="button" Check Out
-              = link_to "Check Out", new_user_order_path(current_user), class: "btn btn-lg bg-color-darkgreen border-color-darkgreen text-white fs-24 rounded-0 disabled", id: "btn-checkout"
+              = link_to "Check Out", new_user_order_path(current_user), class: "btn btn-lg bg-color-darkgreen border-color-darkgreen text-white fs-30 rounded-0 disabled", id: "btn-checkout"
     - else 
       = render "empty"
