@@ -107,6 +107,10 @@ $dark-green: rgb(65, 98, 75);
   object-fit: cover;
 }
 
+.disabled-link {
+  pointer-events: none;
+}
+
 .border-color-darkgreen {
   border: 2px solid $dark-green;
 }
@@ -117,6 +121,10 @@ $dark-green: rgb(65, 98, 75);
 
 .bg-color-cream {
   background-color: #e8e9e3;
+}
+
+.bg-color-darkgreen{
+  background-color: $dark-green !important;
 }
 
 .btn-small {

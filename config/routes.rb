@@ -12,17 +12,28 @@ Rails.application.routes.draw do
 
   resources :users do
     resource :shop
+    resource :cart
     resources :orders 
-    collection do
-      resources :cart_items
-      delete '/cart_items/destroy_all', to: 'cart_items#destroy_all'
-    end
+    # collection do
+    #   resources :cart_items
+    #   delete '/cart_items/destroy_all', to: 'cart_items#destroy_all'
+    # end
   end
   
   resources :shops do
     resources :products do 
       post 'import', on: :collection
     end
+  end
+
+  resources :carts do 
+    resources :line_items, module: :carts do
+      delete 'destroy_all', on: :collection
+    end
+  end
+
+  resources :orders do 
+    resources :line_items, module: :orders
   end
 
   resources :products, only: %i(index)

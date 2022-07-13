@@ -14,13 +14,13 @@
     }
   }
 
-  if ("#{ @action == "inc" }") {
-    if ("#{ @cart_item.quantity == 2 }") {
+  if ("#{@action}" == "inc") {
+    if ("#{ @cart_item.quantity }" == 2) {
       $("#cart-item-#{@cart_item.id} .btn-dec").removeClass("disabled")
     }
   }
   else {
-    if ("#{ @cart_item.quantity == 1 }") {
+    if ("#{ @cart_item.quantity }" == 1) {
       $("#cart-item-#{@cart_item.id} .btn-dec").addClass("disabled")
     }
   }

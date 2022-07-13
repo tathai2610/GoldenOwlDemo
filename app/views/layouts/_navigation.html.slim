@@ -17,11 +17,15 @@
           = link_to "About", "#"
         
         .d-flex.align-items-center.justify-content-between
-          = link_to cart_items_path, class: "position-relative text-darkgreen" do 
-            = svg_tag "icons/shopping-cart.svg", class: "fs-36"
-            - if user_signed_in? && current_user.cart_items.any?
-              span.position-absolute.top-0.start-100.translate-middle.px-2.bg-danger.border.border-light.rounded-pill.d-flex.justify-content-center.align-items-center
-                span.fs-5.fw-bold.cart-total-items = current_user.cart_items.size
+          - if user_signed_in?
+            = link_to user_cart_path(current_user), class: "position-relative text-darkgreen" do 
+              = svg_tag "icons/shopping-cart.svg", class: "fs-36"
+              - if current_user.cart.line_items.any?
+                span.position-absolute.top-0.start-100.translate-middle.px-2.bg-danger.border.border-light.rounded-pill.d-flex.justify-content-center.align-items-center
+                  span.fs-5.fw-bold.cart-total-items = current_user.cart.line_items.size
+          - else 
+            = link_to new_user_session_path, class: "position-relative text-darkgreen" do 
+              = svg_tag "icons/shopping-cart.svg", class: "fs-36"
           .dropdown.ms-4
             a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,10"
               - unless user_signed_in?

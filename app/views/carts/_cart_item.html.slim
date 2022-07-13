@@ -17,16 +17,16 @@
         .item-unit-price = display_price(cart_item.product.price)
     .col-12.col-sm-9.col-md-2.d-flex.align-items-center.justify-content-center.justify-content-sm-end.my-2.my-md-2
       .d-flex.align-items-center
-        = link_to cart_item_path(cart_item, commit:"dec"), method: :put, remote: true, class: "btn btn-sm btn-dec " + disable_class(cart_item.quantity) do
+        = link_to cart_line_item_path(@cart, cart_item, commit:"dec"), method: :put, remote: true, class: "btn btn-sm btn-dec " + disable_class(cart_item.quantity) do
           = svg_tag ('icons/minus.svg'), class: 'm-0'
         span.text-center.w-50px.fs-20.item-qtt
           = cart_item.quantity 
-        = link_to cart_item_path(cart_item, commit:"inc"), method: :put, remote: true, class: "btn btn-sm btn-inc" do
+        = link_to cart_line_item_path(@cart, cart_item, commit:"inc"), method: :put, remote: true, class: "btn btn-sm btn-inc" do
           = svg_tag ('icons/plus.svg'), class: 'm-0'
     .col-12.col-sm-2.col-md-1.d-flex.align-items-center.justify-content-center.justify-content-sm-end
       .d-flex.fs-18.text-red.fw-500
         | $ 
         .item-total-price = display_price(cart_item.product.price * cart_item.quantity)
     .col-12.col-sm-11.col-md-auto.col-lg-1.ms-auto.ms-sm-0.ms-md-0.d-flex.align-items-center.justify-content-center.justify-content-sm-end.justify-content-md-center
-      = link_to cart_item_path(cart_item), method: :delete, remote: true, class: "btn btn-sm btn-ghost-danger py-2" do
+      = link_to cart_line_item_path(@cart, cart_item), method: :delete, remote: true, class: "btn btn-sm btn-ghost-danger py-2" do
         = svg_tag ('icons/trash.svg'), class: 'm-0'

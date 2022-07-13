@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_08_100216) do
+ActiveRecord::Schema.define(version: 2022_07_12_095958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,10 +59,15 @@ ActiveRecord::Schema.define(version: 2022_07_08_100216) do
     t.integer "quantity", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "shop_id", null: false
     t.index ["product_id"], name: "index_cart_items_on_product_id"
-    t.index ["shop_id"], name: "index_cart_items_on_shop_id"
     t.index ["user_id"], name: "index_cart_items_on_user_id"
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -78,6 +83,17 @@ ActiveRecord::Schema.define(version: 2022_07_08_100216) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_category_products_on_category_id"
     t.index ["product_id"], name: "index_category_products_on_product_id"
+  end
+
+  create_table "line_items", force: :cascade do |t|
+    t.string "line_itemable_type", null: false
+    t.bigint "line_itemable_id", null: false
+    t.bigint "product_id", null: false
+    t.integer "quantity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["line_itemable_type", "line_itemable_id"], name: "index_line_items_on_line_itemable"
+    t.index ["product_id"], name: "index_line_items_on_product_id"
   end
 
   create_table "order_products", force: :cascade do |t|
@@ -161,14 +177,12 @@ ActiveRecord::Schema.define(version: 2022_07_08_100216) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cart_items", "products"
-  add_foreign_key "cart_items", "shops"
   add_foreign_key "cart_items", "users"
+  add_foreign_key "carts", "users"
   add_foreign_key "category_products", "categories"
   add_foreign_key "category_products", "products"
+  add_foreign_key "line_items", "products"
   add_foreign_key "order_products", "orders"
-  add_foreign_key "order_products", "products"
-  add_foreign_key "orders", "shops"
-  add_foreign_key "orders", "users"
   add_foreign_key "products", "shops"
   add_foreign_key "shops", "users"
 end

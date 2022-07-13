@@ -6,19 +6,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
 
   has_one :shop, dependent: :destroy
+  has_one :cart, dependent: :destroy
   has_one_attached :avatar
-  has_many :cart_items, dependent: :destroy
+  # has_many :cart_items, dependent: :destroy
   has_many :orders, dependent: :destroy
 
   after_create :attach_avatar
-
-  def cart_items_group_by_shop 
-    return nil if cart_items.blank? 
-
-    [].tap do |result|
-      cart_items.group_by(&:shop).each { |shop, items| result.push({ shop: shop, items: items }) }
-    end
-  end
+  after_create :create_cart
 
   def cart_total_items 
     return 0 if cart_items.blank? 
@@ -37,6 +31,12 @@ class User < ApplicationRecord
   def attach_avatar
     unless avatar.attached?
       avatar.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'avatar.jpg')), filename: 'default-image.jpg', content_type: 'image/jpg')
+    end
+  end
+
+  def create_cart 
+    if cart.nil? 
+      Cart.create(user: self)
     end
   end
 end

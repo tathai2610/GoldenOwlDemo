@@ -6,14 +6,14 @@
         = link_to products_path, class: "text-decoration-none text-dark fs-24 fw-300 ps-3" do 
           i.fa-solid.fa-arrow-left-long.me-3.fw-400
           | Back to all products 
-        .container-fluid.p-0
+        .container-fluid.p-0 
           .row.mx-auto.p-0 
             .col-12.col-lg-6.p-0
               = image_tag url_for(@product.images.first), class: "product-show-img"
               .d-flex.mt-3.pb-2.w-100.product-show_images-holder
                 = render partial: "products/product_images", collection: @product.images, as: :image
             #product-show-info.col-12.col-lg-6.px-4.py-lg-3.ps-lg-5.ff-dg
-              = simple_form_for :cart_item, url: cart_items_path, html: { method: :post, id: "form-add-to-cart" } do |f|
+              = simple_form_for @line_item, url: cart_line_items_path(current_user.cart ||= User.first.cart), html: { method: :post, id: "form-add-to-cart" } do |f|
                 h1.m-0.pt-4.fw-400.fs-48.lh-sm = @product.name 
                 h2.m-0.fw-300.fs-30 = product_categories(@product)
                 h1.mb-0.fs-36.text-red.fw-bold.mt-40 $#{ display_price(@product.price) }
@@ -25,7 +25,7 @@
                     = f.input :quantity, label: false, input_html: { class: "form-control form-control-flush text-center fs-30", id:"product-show-qtt", value:1 }
                     button.border-0#add-btn type="button" 
                       i.fa-solid.fa-plus
-                = f.input :product_id, as: :hidden, input_html: { value: @product.id }
+                = f.association :product, as: :hidden, input_html: { value: @product.id }
                 .d-flex.align-items-center.mt-5
                   = f.button :button, "Add to cart", type: "button", class: "btn-small w-50 h-48 rounded-0 text-white", id: "btn-add-to-cart"
                   button.btn-small.h-48.rounded-0.text-darkgreen.bg-white.ms-3.w-50.d-flex.align-items-center.justify-content-center onclick='$("#form-add-to-cart").submit()'

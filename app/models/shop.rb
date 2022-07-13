@@ -1,7 +1,7 @@
 class Shop < ApplicationRecord
   belongs_to :user
   has_many :products, dependent: :destroy
-  has_many :cart_items, through: :products
+  has_many :line_items, through: :products
   has_many :orders, dependent: :destroy
   has_one_attached :avatar
 

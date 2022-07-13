@@ -1,4 +1,8 @@
 $(document).on("turbolinks:load", function() { 
+  window.displayPrice = function displayPrice(price) {
+    return Number(price).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})
+  }
+
   // subnav visibility 
   $("#toggle-subnav-btn").on("click", function() {
     if ($("#subnav").is(":visible")) {
@@ -76,6 +80,10 @@ $(document).on("turbolinks:load", function() {
         $(".cart-final-items-postfix").text("s")
       }
 
+      if ($("#btn-checkout").hasClass("disabled")) {
+        $("#btn-checkout").removeClass("disabled")
+      }
+
       $(".cart-total-price").text(displayPrice(cartTotalPrice))
       $(".cart-final-items").text(cartFinalItems + unchecked.length)
 
@@ -106,6 +114,9 @@ $(document).on("turbolinks:load", function() {
       $(".cart-total-price").text(displayPrice(cartTotalPrice))
       $(".cart-final-items").text(cartFinalItems - items.length)
       $(this).closest(".container-fluid").find(".input-cart-item").prop("checked", false)
+
+      if ($("input:checked").length == 0) 
+        $("#btn-checkout").addClass("disabled")
     }
   })
 
@@ -125,6 +136,9 @@ $(document).on("turbolinks:load", function() {
 
       if (allItemsCurrentShopChecked == allItemsCurrentShop)
         inputShopItems.prop("checked", true)
+
+      if ($("#btn-checkout").hasClass("disabled")) 
+        $("#btn-checkout").removeClass("disabled")
 
       $(".cart-total-price").text(displayPrice(cartTotalPrice + itemTotalPrice))
       $(".cart-final-items").text(cartFinalItems + 1)
@@ -150,6 +164,9 @@ $(document).on("turbolinks:load", function() {
       if ($("#shop-all").prop("checked"))
         $("#shop-all").prop("checked", false)
 
+      if ($("input:checked").length == 0) 
+        $("#btn-checkout").addClass("disabled")
+
       $(".cart-total-price").text(displayPrice(cartTotalPrice - itemTotalPrice))
       $(".cart-final-items").text(cartFinalItems - 1)
     }
@@ -168,12 +185,18 @@ $(document).on("turbolinks:load", function() {
       if (numberOfItems > 1)
         $(".cart-final-items-postfix").text("s")
 
+      if ($("#btn-checkout").hasClass("disabled")) 
+        $("#btn-checkout").removeClass("disabled")
+
       $(".cart-total-price").text(displayPrice(cartTotalPrice))
       $(".cart-final-items").text(numberOfItems)
       $("input").prop("checked", true)
       $("#btn-destroy-cart").toggleClass("disabled")
     }
     else {
+      if (!$("#btn-checkout").hasClass("disabled")) 
+        $("#btn-checkout").addClass("disabled")
+
       $("input").prop("checked", false)
       $(".cart-total-price").text("0.00")
       $(".cart-final-items").text(0)
@@ -207,11 +230,14 @@ $(document).on("turbolinks:load", function() {
       type: "POST",
       url: actionUrl,
       data: form.serialize(),
-      success: function(result) {
+      success: function(data) {
         const toast = new bootstrap.Toast(document.getElementById("success-add-to-cart"))
 
         toast.show()
-        $(".cart-total-items").text(Number($(".cart-total-items").text()) + 1 )
+
+        if (data.created_at == data.updated_at) {
+          $(".cart-total-items").text(+$(".cart-total-items").text() + 1 )
+        }
       } 
     })
   }) 
@@ -232,7 +258,16 @@ $(document).on("turbolinks:load", function() {
     }
   }
 
-  window.displayPrice = function displayPrice(price) {
-    return Number(price).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})
-  }
+  $("#btn-checkout").on('click', function(e) {
+    $(this).attr('href', function(index, href) {
+      let itemsChecked = []
+
+      $(".input-cart-item:checked").each(function() {
+        itemsChecked.push($(this).closest(".cart-item").children().attr("product-id"))
+      })
+
+      return href + "?products_ids=" + itemsChecked.join()
+    })
+    console.log($(this).attr("href"))
+  })
 })

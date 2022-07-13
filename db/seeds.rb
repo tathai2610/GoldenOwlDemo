@@ -32,9 +32,10 @@ end
   end
 end
 
-5.times do |i| 
+5.times do
   s = Shop.find(rand(1..10))
-  CartItem.create(user: User.first, shop: s, product: s.products.last, quantity: rand(1..100))
+  item = LineItem.find_or_create_by(line_itemable: User.first.cart, product: Product.find(rand(0..50)))
+  item.update(quantity: rand(1..100))
 end
 
 

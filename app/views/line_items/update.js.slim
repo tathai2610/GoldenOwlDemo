@@ -1,0 +1,28 @@
+| 
+  // change item quantity
+  $("#cart-item-#{@line_item.id} .item-qtt").text("#{@line_item.quantity}")
+  // change item total price
+  $("#cart-item-#{@line_item.id} .item-total-price").text("#{ display_price(@line_item.product.price * @line_item.quantity) }")
+
+  if ($("#cart-item-#{@line_item.id} input").is(":checked")) {    
+    // change cart total price
+    if ("#{@action}" == "inc") {
+      $(".cart-total-price").text(window.displayPrice(Number($(".cart-total-price").text().replace(',', '')) + +#{@line_item.product.price}))
+      $(".cart-final-items").text(+$(".cart-final-items").text() + 1)
+    }
+    else {
+      $(".cart-total-price").text(window.displayPrice(Number($(".cart-total-price").text().replace(',', '')) - +#{@line_item.product.price}))
+      $(".cart-final-items").text(+$(".cart-final-items").text() - 1)
+    }
+  }
+
+  if ("#{@action}" == "inc") {
+    if ("#{ @line_item.quantity }" == 2) {
+      $("#cart-item-#{@line_item.id} .btn-dec").removeClass("disabled")
+    }
+  }
+  else {
+    if ("#{ @line_item.quantity }" == 1) {
+      $("#cart-item-#{@line_item.id} .btn-dec").addClass("disabled")
+    }
+  }

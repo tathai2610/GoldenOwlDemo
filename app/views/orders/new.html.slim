@@ -1,0 +1,15 @@
+.container-fluid.p-0 
+  .container-xl.p-0 
+    .d-flex.align-items-center.py-32.px-4.px-xl-0
+      .ff-roboto.fs-30.fw-400 Checkout
+    .bg-white.border.shadow-sm.px-4.py-32.fw-bold
+      .d-flex.align-items-center
+        = svg_tag "icons/map-pin.svg", class: "text-darkgreen"
+        .fs-24.ms-2.text-darkgreen Delevery Address
+      .mt-2.fs-18
+        | Address
+    .bg-white.border.shadow-sm.px-4.py-32.fw-bold.mt-3
+      .d-flex.align-items-center
+          .fs-24.text-darkgreen Products Ordered
+      div 
+        = @products
