@@ -1,8 +1,13 @@
 class OrdersController < ApplicationController
-  before_action :set_user, only: [:index, :new, :create]
+  before_action :set_user, only: [:index, :show, :new, :create]
+  before_action :set_order, only: [:show]
   
   def index 
     @orders = @user.orders 
+  end
+
+  def show 
+
   end
 
   def new 
@@ -51,5 +56,9 @@ class OrdersController < ApplicationController
 
   def set_user 
     @user = User.find(params[:user_id])
+  end
+
+  def set_order 
+    @order = Order.find(params[:id]).includes(:line_items)
   end
 end

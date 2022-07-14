@@ -256,6 +256,9 @@ $(document).on("turbolinks:load", function() {
         $("#shop-all").prop("checked", true)
       }
     }
+
+    if ($("#btn-checkout").hasClass("disabled")) 
+        $("#btn-checkout").removeClass("disabled")
   }
 
   $("#btn-checkout").on('click', function(e) {

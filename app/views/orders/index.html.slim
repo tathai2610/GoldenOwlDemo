@@ -1,5 +1,21 @@
 .container-fluid.p-0 
-  .container-xl.p-0 
+  .container-xl.p-0
     .d-flex.align-items-center.py-32.px-4.px-xl-0
-      .ff-roboto.fs-30.fw-400 Your Orders 
-    = @orders
+      .ff-roboto.fs-30.fw-400 My purchase 
+    .bg-white.shadow-sm.overflow-x-auto
+      .row.mx-auto.w-767px
+        .col.d-flex.align-items-center.justify-content-center.p-0
+          = link_to "All", "#", class: "py-3 fs-20 fw-bold text-darkgreen border-color-darkgreen border-x-0 border-top-0 w-100 text-decoration-none text-center"
+        .col.d-flex.align-items-center.justify-content-center.p-0
+          = link_to "To Pay", "#", class: "py-3 fs-20 text-dark w-100 text-decoration-none text-center"
+        .col.d-flex.align-items-center.justify-content-center.p-0 
+          = link_to "To Ship", "#", class: "py-3 fs-20 text-dark w-100 text-decoration-none text-center"
+        .col.d-flex.align-items-center.justify-content-center.p-0 
+          = link_to "To Receive", "#", class: "py-3 fs-20 text-dark w-100 text-decoration-none text-center"
+        .col.d-flex.align-items-center.justify-content-center.p-0 
+          = link_to "Completed", "#", class: "py-3 fs-20 text-dark w-100 text-decoration-none text-center"
+        .col.d-flex.align-items-center.justify-content-center.p-0 
+          = link_to "Cancelled", "#", class: "py-3 fs-20 text-dark w-100 text-decoration-none text-center"
+    div
+      = render partial: "shop_items", collection: @orders, as: :order
+    

@@ -1,7 +1,7 @@
 class LineItemsController < ApplicationController 
   before_action :set_product, only: :create
   before_action :set_line_item, only: [:update, :destroy]
-
+  
   def create
     @line_item = LineItem.find_or_initialize_by(product: @product, line_itemable: @line_itemable)
     # authorize @line_item
@@ -9,11 +9,11 @@ class LineItemsController < ApplicationController
     @line_item.quantity = (@line_item.quantity ||= 0) + line_item_params[:quantity].to_i
    
     @line_item.save
-
+    
     respond_to do |format|
       # format.js { render "create", layout: false, content_type: "text/javascript" }
       format.json { render json: @line_item }
-      format.html { redirect_to user_cart_path(current_user) }
+      format.html { redirect_to user_cart_path(current_user, item_buy_now: @line_item.id) }
     end
   end
 

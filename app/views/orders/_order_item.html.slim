@@ -1,27 +1,13 @@
-.container-fluid.p-0.order-item
-  .row.mx-auto.py-3.justify-content-md-between id="order-item-#{order_item.id}" cart-item-id="#{order_item.id}"
-    .col-3.col-md-2.px-0.d-flex.justify-content-center.align-items-center
-      = link_to shop_product_path(order_item.shop, order_item.product) do
-        = image_tag url_for(order_item.product.images.first), size:"80x80", class: "object-fit-cover min-size-80"
-    .col-9.col-md-4.d-inline-block.d-md-flex.justify-content-center.justify-content-sm-start.align-items-center
-      = link_to order_item.product.name, shop_product_path(order_item.shop, order_item.product), class: "text-decoration-none text-dark fs-20 w-100"
-      .d-flex.d-md-none.justify-content-between 
-        .d-flex.align-items-center.fs-20
-          | $
-          .item-unit-price = display_price(order_item.product.price)
-        .d-flex.align-items-center.fs-18.item-qtt
+= link_to "#", class: "text-decoration-none text-dark" do
+  .container-fluid.px-0.py-2.border-bottom
+    .row.mx-auto.align-items-center
+      .col
+        = image_tag order_item.product.images.first, size: "80x80", class: "object-fit-cover"
+      .col-7.fs-20
+        = order_item.product.name
+        div
           | x
-          = order_item.quantity 
-    .col-2.d-none.d-md-flex.align-items-center.justify-content-center.justify-content-sm-end.justify-content-md-center
-      .d-flex.fs-18
+          = order_item.quantity
+      .col.fs-18.text-end
         | $
-        .item-unit-price = display_price(order_item.product.price)
-    .col-2.d-none.d-md-flex.align-items-center.justify-content-center.justify-content-sm-end.justify-content-md-center
-      .d-flex.align-items-center
-        .text-center.w-50px.fs-20.item-qtt
-          | x
-          = order_item.quantity 
-    .col-2.d-none.d-md-flex.align-items-center.justify-content-center.justify-content-sm-end.justify-content-md-center
-      .d-flex.fs-18.text-red.fw-500
-        | $ 
-        .item-total-price = display_price(order_item.product.price * order_item.quantity)
+        = order_item.product.price

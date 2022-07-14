@@ -47,4 +47,8 @@ class Order < ApplicationRecord
     status = status
     super
   end
+
+  def total_price 
+    line_items.sum { |item| item.product.price * item.quantity }
+  end
 end

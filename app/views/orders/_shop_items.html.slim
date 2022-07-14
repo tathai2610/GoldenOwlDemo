@@ -1,9 +1,16 @@
-.container-fluid.px-0.bg-white.mt-3.border.border-bottom-0.shadow-sm.shop-items
-  .row.mx-auto.py-3.border-bottom
-    .col-12
-      = link_to user_shop_path(shop_items[:shop].user), class: "d-flex align-items-center text-decoration-none fs-20 text-dark" do
-        = svg_tag "icons/building-store.svg"
-        .ms-2.fw-bold = shop_items[:shop].name
-  .row.mx-auto.cart-items
-    .col-12
-      = render partial: "order_item", collection: shop_items[:items], as: :order_item
+.bg-white.shadow-sm.p-4.mt-3
+  .d-flex.align-items-center.justify-content-between.border-bottom.pb-2
+    .d-flex.align-items-center.fs-20
+      = svg_tag "icons/building-store.svg"
+      .ms-2.fw-bold = order.shop.name
+      .d-none.d-md-block.ms-3 = link_to "Follow", "#", class: "btn btn-secondary text-white bg-color-darkgreen fs-18"
+      .d-none.d-md-block.ms-2 = link_to "View shop", user_shop_path(order.shop.user), class: "btn fs-18"
+    .d-flex.align-items-center 
+      .status.status-azure = order.status.upcase
+  div 
+    = render partial: "order_item", collection: order.line_items, as: :order_item
+  .d-flex.align-items-center.justify-content-end.pt-3
+    .fs-20.fw-500 Order Total:  
+    .d-flex.align-items-center.fs-30.fw-bold.text-red.ms-3
+      | $
+      .order-total-price = display_price(order.total_price)

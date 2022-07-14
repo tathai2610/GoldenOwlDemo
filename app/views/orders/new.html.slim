@@ -13,7 +13,7 @@
         = svg_tag "icons/clipboard-list.svg", class: "text-darkgreen"
         .fs-24.fw-bold.ms-2.text-darkgreen Products Ordered 
       div  
-        = render partial: "shop_items", collection: @line_items_group_by_shop, as: :shop_items
+        = render partial: "new_shop_items", collection: @line_items_group_by_shop, as: :shop_items
     .bg-white.border.shadow-sm.px-4.py-32.mt-0.mt-xl-3
       .d-flex.align-items-center
         = svg_tag "icons/truck.svg", class: "text-darkgreen"

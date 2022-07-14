@@ -39,7 +39,11 @@
                 = link_to "#", class: "dropdown-item text-darkgreen" do 
                   = svg_tag "icons/edit.svg"
                   .ms-2 Edit shop
-                .dropdown-divider 
+                .dropdown-divider
+                = link_to user_orders_path(current_user), class: "dropdown-item text-darkgreen" do 
+                  = svg_tag "icons/clipboard-text.svg"
+                  .ms-2 My purchase
+                .dropdown-divider
               - unless user_signed_in?
                 = link_to new_user_session_path, class: "dropdown-item text-darkgreen" do 
                   = svg_tag "icons/login.svg"
