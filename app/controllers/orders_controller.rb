@@ -59,6 +59,6 @@ class OrdersController < ApplicationController
   end
 
   def set_order 
-    @order = Order.find(params[:id]).includes(:line_items)
+    @order = Order.find(params[:id])
   end
 end
