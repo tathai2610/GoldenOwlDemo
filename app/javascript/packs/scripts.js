@@ -275,6 +275,7 @@ $(document).on("turbolinks:load", function() {
 
   $("#form-create-order").on('submit', function(e) {
     let items = []
+    let userAddress = $(".user-address").first().attr("user-address-id")
 
     $(".order-item").each(function() {
       items.push($(this).children().attr("cart-item-id"))
@@ -284,7 +285,94 @@ $(document).on("turbolinks:load", function() {
           .attr("name", "order[cart_items_ids]")
           .attr("value", items.join(','))
           .appendTo("#form-create-order");
+    $("<input />").attr("type", "hidden")
+          .attr("name", "order[user_address_id]")
+          .attr("value", userAddress)
+          .appendTo("#form-create-order");
 
     return true
+  })
+
+  // Update collection of district when user select a city
+  $("#user_address_form_city").on('change', function() {
+    changeDistrictCollection("#user_address_form_city", "#user_address_form_district", "#user_address_form_ward")
+  })
+
+  function changeDistrictCollection(cityInputId, districtInputId, wardInputId) {
+    if ($(districtInputId).prop("disabled")) {
+      $(districtInputId).prop("disabled", false)
+    }
+
+    let selectedCityId = $(cityInputId + " option:selected").val()
+    $.ajax({
+      type: "GET",
+      url: `/addresses/cities/${selectedCityId}/districts`,
+      success: function(data) {
+        $(districtInputId + " option:not(:first-child)").remove()
+        $(wardInputId + " option:not(:first-child)").remove()
+
+        if (!$(wardInputId).prop("disabled")) {
+          $(wardInputId).prop("disabled", true)
+        }
+
+        data.forEach(function(item) {
+          let newOption = "<option value=" + item.id + ">" + item.name + "</option>"
+          $(districtInputId).append(newOption)
+        })
+      }
+    })
+  }
+
+  // Update collection of district when user select a city
+  $("#user_address_form_district").on('change', function() {
+    changeWardCollection("#user_address_form_district", "#user_address_form_ward")
+  })
+
+  function changeWardCollection(districtInputId, wardInputId) {
+    if ($(wardInputId).prop("disabled"))
+      $(wardInputId).prop("disabled", false)
+
+    let selectedDistrictId = $(districtInputId + " option:selected").val()
+    $.ajax({
+      type: "GET",
+      url: `/addresses/districts/${selectedDistrictId}/wards`,
+      success: function(data) {
+        $(wardInputId + " option:not(:first-child)").remove()
+
+        data.forEach(function(item) {
+          let newOption = "<option value=" + item.id + ">" + item.name + "</option>"
+          $(wardInputId).append(newOption)
+        })
+      }
+    })
+  }
+
+  if ($("#user_addresses").is(":empty")) {
+    $("#addressFormModal").modal('show')
+  }
+
+  $("#addressFormModal").on("shown.bs.modal", function(){
+    $(ClientSideValidations.selectors.forms).validate()
+  })
+
+  if ($("#btn-place-order").length) {
+    $("#new-address-form").enableClientSideValidations()
+    
+    let orderTotalPrice = 0
+
+    $(".order-item").each(function() {
+      orderTotalPrice += +$(this).find(".item-total-price").text().replace(',','')
+    })
+
+    $(".order-total-price").text(displayPrice(orderTotalPrice))
+    $(".order-final-price").text(displayPrice(orderTotalPrice + +$(".order-shipping-price").text()))
+  }
+  
+  $("#shop_registration_form_city").on('change', function() {
+    changeDistrictCollection("#shop_registration_form_city", "#shop_registration_form_district", "#shop_registration_form_ward")
+  })
+
+  $("#shop_registration_form_district").on('change', function() {
+    changeWardCollection("#shop_registration_form_district", "#shop_registration_form_ward")
   })
 })

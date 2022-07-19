@@ -1,0 +1,3 @@
+$("#user_addresses").html('<div class="text-red fs-20">Please select an address or create a new one.</address></div>')
+$("#user_addresses").append("<%= j render partial: "user_addresses/option_user_address", collection: @user_addresses, as: :user_address %>")
+$("#btn-place-order").prop("disabled", true)

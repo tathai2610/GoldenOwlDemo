@@ -1,4 +1,4 @@
-.container-fluid.p-0 
+.container-fluid.p-0#order
   .container-xl.p-0 
     .d-flex.align-items-center.py-32.px-4.px-xl-0
       .ff-roboto.fs-30.fw-400 Checkout
@@ -11,8 +11,10 @@
           button.btn.btn-teal.bg-color-darkgreen.fs-18.rounded-0 type="button" data-bs-toggle="modal" data-bs-target="#addressFormModal"
             = svg_tag "icons/plus.svg"
             .ms-2 New address
-      .mt-2.fs-18
-        | Address
+      #user_addresses 
+        - if current_user.addresses.present?
+          / = render partial: "user_addresses/user_addresses", collection: current_user.addresses, as: :user_address
+          = render partial: "user_addresses/user_address", locals: { user_address: current_user.addresses.first }
     .bg-white.border.shadow-sm.px-4.py-32.mt-0.mt-xl-3
       .d-flex.align-items-center.pb-3
         = svg_tag "icons/clipboard-list.svg", class: "text-darkgreen"
@@ -47,24 +49,22 @@
           tbody
             tr
               th Merchandise Subtotal: 
-              td.text-end $200.00
+              td.text-end
+                | $
+                .d-inline-block.order-total-price 
             tr
               th Shipping Total: 
-              td.text-end $200.00
+              td.text-end
+                | $
+                .d-inline-block.order-shipping-price 1.00
             tr
               th Total Payment: 
-              td.text-end.text-red.fw-bold.fs-30 $200.00
+              td.text-end.text-red.fw-bold.fs-30 
+                | $
+                .d-inline-block.order-final-price
     .bg-white.border.shadow-sm.px-4.py-32
       .d-flex.justify-content-end
         = simple_form_for :order, url: user_orders_path(current_user), html: { method: :post, id: "form-create-order" } do |f|
           = f.button :submit, "Place Order", class: "btn btn-lg text-white bg-color-darkgreen rounded-0 border-color-darkgreen fs-30", id: "btn-place-order"
 
-.modal.fade id="addressFormModal" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false"
-  .modal-dialog
-    .modal-content
-      .modal-header
-        .modal-title.fs-24 New Address 
-      .modal-body
-        .fs-18 To place order, please add a delivery address
-        
-      
+= render "user_addresses/modal_form"

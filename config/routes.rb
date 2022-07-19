@@ -11,18 +11,35 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :users do
-    resource :shop
     resource :cart
-    resources :orders 
-    # collection do
-    #   resources :cart_items
-    #   delete '/cart_items/destroy_all', to: 'cart_items#destroy_all'
-    # end
+    resource :shop
+    resources :user_infos
+    resources :orders
+
+    collection do
+      resources :user_addresses
+    end
+  end
+
+  resources :user_infos do 
+    resources :addresses
   end
   
   resources :shops do
+    resource :address
     resources :products do 
       post 'import', on: :collection
+    end
+
+    collection do
+      resource :shop_registration
+    end
+  end
+
+  resources :addresses do 
+    collection do 
+      get '/cities/:city_id/districts', to: 'addresses#get_districts'
+      get '/districts/:district_id/wards', to: 'addresses#get_wards'
     end
   end
 

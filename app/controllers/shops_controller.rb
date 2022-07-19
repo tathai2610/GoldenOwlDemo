@@ -10,7 +10,7 @@ class ShopsController < ApplicationController
   end
   
   def new 
-    @shop = authorize Shop.new(user: @user)
+    @shop = ShopRegistrationForm.new
   end
 
   def create 

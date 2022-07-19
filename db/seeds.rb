@@ -34,10 +34,24 @@ end
 
 5.times do
   s = Shop.find(rand(1..10))
-  item = LineItem.find_or_create_by(line_itemable: User.first.cart, product: Product.find(rand(0..50)))
+  item = LineItem.find_or_create_by(line_itemable: User.first.cart, product: Product.find(rand(1..50)))
   item.update(quantity: rand(1..100))
 end
 
+file = File.read('data/vietnam_provinces_districts.json')
+data = JSON.parse(file)
+
+data.each do |city|
+  c = City.create(name: city['name'])
+
+  city['districts'].each do |district|
+    d = District.create(name: district['name'], city: c)
+
+    district['wards'].each do |ward|
+      Ward.create(name: ward['name'], district: d)
+    end
+  end
+end
 
 
 

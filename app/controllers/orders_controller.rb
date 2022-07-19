@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show]
   
   def index 
-    @orders = @user.orders 
+    @orders = @user.orders.order("created_at DESC")
   end
 
   def show 
@@ -19,9 +19,10 @@ class OrdersController < ApplicationController
     items = line_items_in(order_params[:cart_items_ids])
     line_items_group_by_shop = line_items_group_by_shop(items)
     total_price = 0
+    user_address = Address.find_by(id: order_params[:user_address_id])
 
     line_items_group_by_shop.each do |shop_items|
-      o = Order.create(user: @user, shop: shop_items[:shop])
+      o = Order.create(user: @user, shop: shop_items[:shop], user_address: user_address)
       shop_items[:items].each do |i| 
         i.line_itemable = o
         i.save 
@@ -51,7 +52,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:cart_items_ids)
+    params.require(:order).permit(:cart_items_ids, :user_address_id)
   end
 
   def set_user 

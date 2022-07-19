@@ -1,0 +1,24 @@
+class UserAddressForm < AddressForm
+  attr_accessor :name, :phone, :user, :user_info, :user_address
+
+  validates :name, presence: true
+  validates :phone, presence: true
+
+  def save 
+    return false if invalid?
+    @user_info = create_user_info
+    @user_address = create_address(@user_info)
+    true
+  end
+
+  private
+
+  def create_user_info 
+    UserInfo.find_or_create_by(name: name, phone: phone, user: user)
+  end
+
+  def create_address(user_info)
+    new_street = Street.create(name: street)
+    Address.create(addressable: user_info, city: City.find(city), district: District.find(district), ward: Ward.find(ward), street: new_street)
+  end
+end

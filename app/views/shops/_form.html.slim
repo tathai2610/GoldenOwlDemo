@@ -1,4 +1,18 @@
-= simple_form_for shop, url: user_shop_path(current_user), html: { class: "user-form" }, validate: true do |f| 
-  = f.input :name, label: 'Shop name', placeholder: 'Enter your shop name'
-  = f.input :description, as: :text, placeholder: 'Describe something about your shop...'
-  = f.button :submit, "Submit"
+= simple_form_for shop, url: shop_registration_path, html: { class: "user-form", method: :post, id: "form-create-shop" }, validate: true do |f| 
+  .row 
+    .col-12.col-md-6 
+      = f.input :name, label: 'Shop name', placeholder: 'Enter your shop name'
+    .col-12.col-md-6 
+      = f.input :phone, label: 'Phone Number', placeholder: 'Enter you shop phone number'
+  .row.mt-2
+    = f.input :description, as: :text, placeholder: 'Describe something about your shop...'
+  .row.mt-2
+    = f.input :city, collection: City.all
+  .row.mt-2
+    = f.input :district, disabled: true, collection: City.all
+  .row.mt-2
+    = f.input :ward, disabled: true, collection: City.all
+  .row.mt-2
+    = f.input :street, label: "Street Address", placeholder: "Street Name, Building, House No."
+  .row.mt-3
+    = f.button :submit, "Submit"

@@ -52,6 +52,45 @@ en:
               blank: "Name is required"
             description: 
               blank: "Description is required"
+            phone: 
+              blank: "Phone is required"
+        address: 
+          attributes:
+            city: 
+              blank: "City is required"
+            district: 
+              blank: "District is required"
+            ward: 
+              blank: "Ward is required"
+            street: 
+              blank: "Street is required"
+  activemodel: 
+    errors:
+      models:
+        address_form:
+          attributes:
+            city: 
+              blank: "City is required"
+            district: 
+              blank: "District is required"
+            ward: 
+              blank: "Ward is required"
+            street: 
+              blank: "Street is required"
+        shop_registration_form: 
+          attributes: 
+            name: 
+              blank: "Name is required"
+            description: 
+              blank: "Description is required"
+            phone: 
+              blank: "Phone is required"
+        user_address_form:
+          attributes: 
+            name: 
+              blank: "Name is required"
+            phone: 
+              blank: "Phone is required"
   pundit:
     default: 'You cannot perform this action.'
     shop_policy:

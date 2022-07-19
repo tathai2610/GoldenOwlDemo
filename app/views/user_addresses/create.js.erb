@@ -1,0 +1,4 @@
+$("#addressFormModal").modal('hide')
+$("#addressFormModal").remove()
+$("#order").after("<%= j render "user_addresses/modal_form" %>")/
+$("#user_addresses").html("<%= j render partial: "user_addresses/user_address", locals: { user_address: @user_address.user_address } %>")

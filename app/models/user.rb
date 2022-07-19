@@ -5,11 +5,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
-  has_one :shop, dependent: :destroy
   has_one :cart, dependent: :destroy
+  has_one :shop, dependent: :destroy
   has_one_attached :avatar
-  # has_many :cart_items, dependent: :destroy
   has_many :orders, dependent: :destroy
+  has_many :user_infos, dependent: :destroy
+  has_many :addresses, through: :user_infos
 
   after_create :attach_avatar
   after_create :create_cart

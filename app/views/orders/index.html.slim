@@ -17,5 +17,10 @@
         .col.d-flex.align-items-center.justify-content-center.p-0 
           = link_to "Cancelled", "#", class: "py-3 fs-20 text-dark w-100 text-decoration-none text-center"
     div
-      = render partial: "shop_items", collection: @orders, as: :order
-    
+      - if @orders.present?
+        = render partial: "shop_items", collection: @orders, as: :order
+      - else 
+        .empty 
+          .empty-icon 
+            = svg_tag "icons/clipboard-x.svg"
+          .empty-title.fs-24 No orders yet

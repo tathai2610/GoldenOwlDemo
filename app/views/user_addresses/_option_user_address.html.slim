@@ -1,0 +1,5 @@
+= link_to user_address_path(user_address), remote: true, class: "text-decoration-none text-dark" do
+  .fs-18.mt-2.p-3.border
+    .name = user_address.addressable.name 
+    .phone = user_address.addressable.phone
+    .mb-2 = user_address.to_s

@@ -24,9 +24,9 @@
       .fs-24.fw-bold.text-darkgreen 
         | Delivery Address 
       .fs-20 
-        = @order.user.email 
-      .fs-20 
-        | Address
+        div = @order.user_address.addressable.name
+        div = @order.user_address.addressable.phone 
+        div = @order.user_address.to_s
 
     .bg-white.px-4 
       .d-flex.align-items-center.justify-content-start.border-bottom.pb-2
@@ -44,7 +44,7 @@
                 = @order.total_price
             tr
               th Shipping Total: 
-              td.text-end $200.00
+              td.text-end $1.00
             tr
               th Total Payment: 
               td.text-end.text-red.fw-bold.fs-30 
