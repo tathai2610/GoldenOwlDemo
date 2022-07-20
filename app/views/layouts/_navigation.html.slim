@@ -18,7 +18,7 @@
         
         .d-flex.align-items-center.justify-content-between
           - if user_signed_in?
-            = link_to user_cart_path(current_user), class: "position-relative text-darkgreen" do 
+            = link_to cart_path, class: "position-relative text-darkgreen" do 
               = svg_tag "icons/shopping-cart.svg", class: "fs-36"
               span.position-absolute.top-0.start-100.translate-middle.px-2.bg-danger.border.border-light.rounded-pill.d-flex.justify-content-center.align-items-center
                 span.fs-5.fw-bold.cart-total-items = current_user.cart.line_items.size
@@ -36,11 +36,11 @@
                 = link_to new_shop_product_path(current_user.shop), class: "dropdown-item text-darkgreen" do 
                   = svg_tag "icons/square-plus.svg"
                   .ms-2 Add product
-                / = link_to "#", class: "dropdown-item text-darkgreen" do 
-                /   = svg_tag "icons/edit.svg"
-                /   .ms-2 Edit shop
+                = link_to shop_orders_path, class: "dropdown-item text-darkgreen" do 
+                  = svg_tag "icons/building-store.svg"
+                  .ms-2 My shop orders
                 .dropdown-divider
-                = link_to user_orders_path(current_user), class: "dropdown-item text-darkgreen" do 
+                = link_to orders_path, class: "dropdown-item text-darkgreen" do 
                   = svg_tag "icons/clipboard-text.svg"
                   .ms-2 My purchase
                 .dropdown-divider

@@ -19,12 +19,9 @@ class UserAddressesController < ApplicationController
   def create 
     @user_address = UserAddressForm.new(user_address_params.merge(user: current_user))
     
-    if @user_address.save
-      respond_to do |format| 
-        format.js
-      end
-    else
-      # @errors = @user_address.errors.full_messages
+    @user_address.save
+    respond_to do |format| 
+      format.js
     end
   end
 

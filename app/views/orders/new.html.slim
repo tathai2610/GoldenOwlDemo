@@ -64,7 +64,7 @@
                 .d-inline-block.order-final-price
     .bg-white.border.shadow-sm.px-4.py-32
       .d-flex.justify-content-end
-        = simple_form_for :order, url: user_orders_path(current_user), html: { method: :post, id: "form-create-order" } do |f|
+        = simple_form_for :order, url: orders_path, html: { method: :post, id: "form-create-order" } do |f|
           = f.button :submit, "Place Order", class: "btn btn-lg text-white bg-color-darkgreen rounded-0 border-color-darkgreen fs-30", id: "btn-place-order"
 
 = render "user_addresses/modal_form"

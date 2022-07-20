@@ -11,29 +11,28 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :users do
-    resource :cart
     resource :shop
-    resources :user_infos
-    resources :orders
-
+    
     collection do
       resources :user_addresses
     end
   end
 
-  resources :user_infos do 
-    resources :addresses
-  end
-  
-  resources :shops do
-    resource :address
+  resource :cart
+  resources :orders
+
+  resources :shops do    
     resources :products do 
       post 'import', on: :collection
     end
-
+    
     collection do
       resource :shop_registration
     end
+  end
+
+  namespace :shop do 
+    resources :orders
   end
 
   resources :addresses do 

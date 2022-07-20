@@ -4,7 +4,7 @@ class LineItemsController < ApplicationController
   
   def create
     @line_item = LineItem.find_or_initialize_by(product: @product, line_itemable: @line_itemable)
-    # authorize @line_item
+    authorize @line_item
 
     @line_item.quantity = (@line_item.quantity ||= 0) + line_item_params[:quantity].to_i
    
@@ -13,7 +13,7 @@ class LineItemsController < ApplicationController
     respond_to do |format|
       # format.js { render "create", layout: false, content_type: "text/javascript" }
       format.json { render json: @line_item }
-      format.html { redirect_to user_cart_path(current_user, item_buy_now: @line_item.id) }
+      format.html { redirect_to cart_path(item_buy_now: @line_item.id) }
     end
   end
 
@@ -55,5 +55,6 @@ class LineItemsController < ApplicationController
 
   def set_line_item
     @line_item = LineItem.find(params[:id])
+    authorize @line_item
   end
 end
