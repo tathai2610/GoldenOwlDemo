@@ -25,10 +25,6 @@ Rails.application.routes.draw do
     resources :products do 
       post 'import', on: :collection
     end
-    
-    collection do
-      resource :shop_registration
-    end
   end
 
   namespace :shop do 

@@ -294,7 +294,7 @@ $(document).on("turbolinks:load", function() {
   })
 
   // Update collection of district when user select a city
-  $("#user_address_form_city").on('change', function() {
+  $(document).on('change', "#user_address_form_city", function() {
     changeDistrictCollection("#user_address_form_city", "#user_address_form_district", "#user_address_form_ward")
   })
 
@@ -324,7 +324,7 @@ $(document).on("turbolinks:load", function() {
   }
 
   // Update collection of district when user select a city
-  $("#user_address_form_district").on('change', function() {
+  $(document).on('change', "#user_address_form_district", function() {
     changeWardCollection("#user_address_form_district", "#user_address_form_ward")
   })
 

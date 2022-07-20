@@ -1,9 +1,8 @@
-class UserAddressesController < ApplicationController
+class UserAddressesController < ApplicationController  
   def index 
     @user_addresses = current_user.addresses
 
     respond_to do |format| 
-      format.html 
       format.js
     end
   end
@@ -19,7 +18,13 @@ class UserAddressesController < ApplicationController
   def create 
     @user_address = UserAddressForm.new(user_address_params.merge(user: current_user))
     
-    @user_address.save
+    if @user_address.save
+      flash[:success] = "A new address is created"
+    else
+      @error = true
+      flash[:error] = "Cannot create new user address"
+    end
+
     respond_to do |format| 
       format.js
     end

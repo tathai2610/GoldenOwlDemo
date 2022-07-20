@@ -7,6 +7,6 @@ class CartPolicy < ApplicationPolicy
   end
 
   def show?
-    user.present? && record == user.cart
+    user.present?
   end
 end

@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
   end
 
   def new 
+    authorize Order
     items = line_items_in(params[:cart_items_ids])
     @line_items_group_by_shop = line_items_group_by_shop(items)
   end
@@ -16,19 +17,15 @@ class OrdersController < ApplicationController
   def create 
     items = line_items_in(order_params[:cart_items_ids])
     line_items_group_by_shop = line_items_group_by_shop(items)
-    total_price = 0
     user_address = Address.find_by(id: order_params[:user_address_id])
 
     line_items_group_by_shop.each do |shop_items|
-      o = Order.create(user: current_user, shop: shop_items[:shop], user_address: user_address)
-      shop_items[:items].each do |i| 
-        i.line_itemable = o
-        i.save 
-        total_price += (i.product.price * i.quantity)
-      end
-      o.total_price = total_price
-      authorize o 
-      o.save
+      order = Order.create(user: current_user, shop: shop_items[:shop], user_address: user_address)
+      total_price = shop_items[:items].sum { |item| item.product.price * item.quantity }
+      authorize order
+
+      LineItem.where(id: shop_items[:items].map(&:id)).update_all(line_itemable_type: "Order", line_itemable_id: order.id) 
+      order.update(total_price: total_price)
     end
 
     redirect_to action: :index
@@ -36,15 +33,31 @@ class OrdersController < ApplicationController
 
   private 
 
+  # organize as below: 
+  # [
+  #   {
+  #     shop: <Shop instance>,
+  #     items: 
+  #     [
+  #       <LineItem instance 1>,
+  #       <LineItem instance 2>, 
+  #       ...
+  #     ]
+  #   },
+  #   {
+  #     shop: 
+  #     items: []
+  #   }
+  # ]
   def line_items_group_by_shop(items)
     [].tap do |result|
       items.group_by(&:shop).each { |shop, items| result.push({ shop: shop, items: items }) }
     end
   end
 
-  def line_items_in(string)
+  def line_items_in(item_ids_string)
     [].tap do |items|
-      string.split(',').each do |p|
+      item_ids_string.split(',').each do |p|
         items << LineItem.find(p)
       end
     end

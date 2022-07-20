@@ -1,5 +1,4 @@
 class ShopsController < ApplicationController
-  # before_action :authenticate_user!, only: [:new, :create, :destroy]
   before_action :set_user
   before_action :set_shop, only: [:show]
   before_action :check_shop_exist, only: [:new, :create]
@@ -14,13 +13,13 @@ class ShopsController < ApplicationController
   end
 
   def create 
-    @shop = authorize Shop.new(shop_params.merge(user: @user))
+    @shop = ShopRegistrationForm.new(shop_registration_params.merge(user: @user))
     if @shop.save
       flash[:success] = "Congratulations! You have successfuly open your own shop on Planty!"
       redirect_to user_shop_path(@user)
     else 
       flash[:error] = "Cannot create your shop"
-      render root_path
+      render :new
     end
   end
 
@@ -36,7 +35,11 @@ class ShopsController < ApplicationController
   end
 
   def shop_params 
-    params.require(:shop).permit(:name, :description)
+    params.require(:shop).permit(:name, :description, :phone)
+  end
+
+  def shop_registration_params 
+    params.require(:shop_registration_form).permit(:name, :description, :phone, :city, :district, :ward, :street)
   end
 
   def check_shop_exist

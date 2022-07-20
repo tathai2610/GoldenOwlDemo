@@ -20,6 +20,8 @@ class LineItemsController < ApplicationController
   def update
     @action = params[:commit] if params[:commit]
 
+    # Need to check if product.in_stock is max or min
+    # when Product has 'in_stock' attribute
     if @action == "inc"
       @line_item.quantity += 1
     elsif @action == "dec"
