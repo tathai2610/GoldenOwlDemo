@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_19_023223) do
+ActiveRecord::Schema.define(version: 2022_07_20_042010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,16 +69,6 @@ ActiveRecord::Schema.define(version: 2022_07_19_023223) do
     t.index ["ward_id"], name: "index_addresses_on_ward_id"
   end
 
-  create_table "cart_items", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "product_id", null: false
-    t.integer "quantity", default: 0
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["product_id"], name: "index_cart_items_on_product_id"
-    t.index ["user_id"], name: "index_cart_items_on_user_id"
-  end
-
   create_table "carts", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -124,16 +114,6 @@ ActiveRecord::Schema.define(version: 2022_07_19_023223) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["line_itemable_type", "line_itemable_id"], name: "index_line_items_on_line_itemable"
     t.index ["product_id"], name: "index_line_items_on_product_id"
-  end
-
-  create_table "order_products", force: :cascade do |t|
-    t.bigint "order_id", null: false
-    t.bigint "product_id", null: false
-    t.integer "quantity"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["order_id"], name: "index_order_products_on_order_id"
-    t.index ["product_id"], name: "index_order_products_on_product_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -236,14 +216,11 @@ ActiveRecord::Schema.define(version: 2022_07_19_023223) do
   add_foreign_key "addresses", "districts"
   add_foreign_key "addresses", "streets"
   add_foreign_key "addresses", "wards"
-  add_foreign_key "cart_items", "products"
-  add_foreign_key "cart_items", "users"
   add_foreign_key "carts", "users"
   add_foreign_key "category_products", "categories"
   add_foreign_key "category_products", "products"
   add_foreign_key "districts", "cities"
   add_foreign_key "line_items", "products"
-  add_foreign_key "order_products", "orders"
   add_foreign_key "orders", "addresses", column: "user_address_id"
   add_foreign_key "products", "shops"
   add_foreign_key "shops", "users"

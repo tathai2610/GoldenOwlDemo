@@ -8,6 +8,21 @@
 
 require 'faker'
 
+file = File.read('data/vietnam_provinces_districts.json')
+data = JSON.parse(file)
+
+data.each do |city|
+  c = City.create(name: city['name'])
+
+  city['districts'].each do |district|
+    d = District.create(name: district['name'], city: c)
+
+    district['wards'].each do |ward|
+      Ward.create(name: ward['name'], district: d)
+    end
+  end
+end
+
 20.times do 
   c = Category.create(name: Faker::Lorem.unique.word.capitalize)
 end
@@ -18,7 +33,7 @@ end
   u.save
   if i < 10 
     u.add_role :seller 
-    s = Shop.create(user: u, name: Faker::Lorem.sentence.gsub('.', ''), description: Faker::Lorem.paragraphs.join(' '))
+    s = Shop.create(user: u, name: Faker::Lorem.sentence.gsub('.', ''), description: Faker::Lorem.paragraphs.join(' '), phone: "333 333 3333")
     s.approve
   end
 end
@@ -38,20 +53,6 @@ end
   item.update(quantity: rand(1..100))
 end
 
-file = File.read('data/vietnam_provinces_districts.json')
-data = JSON.parse(file)
-
-data.each do |city|
-  c = City.create(name: city['name'])
-
-  city['districts'].each do |district|
-    d = District.create(name: district['name'], city: c)
-
-    district['wards'].each do |ward|
-      Ward.create(name: ward['name'], district: d)
-    end
-  end
-end
 
 
 
