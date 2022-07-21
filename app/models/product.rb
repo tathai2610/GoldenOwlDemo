@@ -3,6 +3,7 @@ class Product < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :category_products, dependent: :destroy 
   has_many :categories, through: :category_products
+  has_many :order_products
   has_many_attached :images
   has_rich_text :description
 

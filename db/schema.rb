@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_08_031123) do
+ActiveRecord::Schema.define(version: 2022_07_20_042010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,14 +53,27 @@ ActiveRecord::Schema.define(version: 2022_07_08_031123) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "cart_items", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "product_id", null: false
-    t.integer "quantity", default: 0
+  create_table "addresses", force: :cascade do |t|
+    t.string "addressable_type", null: false
+    t.bigint "addressable_id", null: false
+    t.bigint "street_id", null: false
+    t.bigint "ward_id", null: false
+    t.bigint "district_id", null: false
+    t.bigint "city_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["product_id"], name: "index_cart_items_on_product_id"
-    t.index ["user_id"], name: "index_cart_items_on_user_id"
+    t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable"
+    t.index ["city_id"], name: "index_addresses_on_city_id"
+    t.index ["district_id"], name: "index_addresses_on_district_id"
+    t.index ["street_id"], name: "index_addresses_on_street_id"
+    t.index ["ward_id"], name: "index_addresses_on_ward_id"
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -76,6 +89,44 @@ ActiveRecord::Schema.define(version: 2022_07_08_031123) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_category_products_on_category_id"
     t.index ["product_id"], name: "index_category_products_on_product_id"
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "districts", force: :cascade do |t|
+    t.string "name"
+    t.bigint "city_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["city_id"], name: "index_districts_on_city_id"
+  end
+
+  create_table "line_items", force: :cascade do |t|
+    t.string "line_itemable_type", null: false
+    t.bigint "line_itemable_id", null: false
+    t.bigint "product_id", null: false
+    t.integer "quantity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["line_itemable_type", "line_itemable_id"], name: "index_line_items_on_line_itemable"
+    t.index ["product_id"], name: "index_line_items_on_product_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "shop_id", null: false
+    t.string "status"
+    t.decimal "total_price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_address_id", null: false
+    t.index ["shop_id"], name: "index_orders_on_shop_id"
+    t.index ["user_address_id"], name: "index_orders_on_user_address_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -107,7 +158,23 @@ ActiveRecord::Schema.define(version: 2022_07_08_031123) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "state"
+    t.string "phone"
     t.index ["user_id"], name: "index_shops_on_user_id"
+  end
+
+  create_table "streets", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_infos", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_user_infos_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -135,12 +202,28 @@ ActiveRecord::Schema.define(version: 2022_07_08_031123) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  create_table "wards", force: :cascade do |t|
+    t.string "name"
+    t.bigint "district_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["district_id"], name: "index_wards_on_district_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "cart_items", "products"
-  add_foreign_key "cart_items", "users"
+  add_foreign_key "addresses", "cities"
+  add_foreign_key "addresses", "districts"
+  add_foreign_key "addresses", "streets"
+  add_foreign_key "addresses", "wards"
+  add_foreign_key "carts", "users"
   add_foreign_key "category_products", "categories"
   add_foreign_key "category_products", "products"
+  add_foreign_key "districts", "cities"
+  add_foreign_key "line_items", "products"
+  add_foreign_key "orders", "addresses", column: "user_address_id"
   add_foreign_key "products", "shops"
   add_foreign_key "shops", "users"
+  add_foreign_key "user_infos", "users"
+  add_foreign_key "wards", "districts"
 end

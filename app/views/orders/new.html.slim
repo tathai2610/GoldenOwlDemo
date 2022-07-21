@@ -1,0 +1,71 @@
+.container-fluid.p-0#order
+  .container-xl.p-0 
+    .py-32.px-4.px-xl-0.header
+      .ff-roboto.fs-30.fw-400 Checkout 
+      = render "layouts/flash"
+    .bg-white.border.shadow-sm.px-4.py-32
+      .d-flex.align-items-center.justify-content-between
+        .d-flex.align-items-center
+          = svg_tag "icons/map-pin.svg", class: "text-darkgreen"
+          .fs-24.fw-bold.ms-2.text-darkgreen Delevery Address
+        .d-flex.align-items-center 
+          button.btn.btn-teal.bg-color-darkgreen.fs-18.rounded-0 type="button" data-bs-toggle="modal" data-bs-target="#addressFormModal"
+            = svg_tag "icons/plus.svg"
+            .ms-2 New address
+      #user_addresses 
+        - if current_user.addresses.present?
+          / = render partial: "user_addresses/user_addresses", collection: current_user.addresses, as: :user_address
+          = render partial: "user_addresses/user_address", locals: { user_address: current_user.addresses.first }
+    .bg-white.border.shadow-sm.px-4.py-32.mt-0.mt-xl-3
+      .d-flex.align-items-center.pb-3
+        = svg_tag "icons/clipboard-list.svg", class: "text-darkgreen"
+        .fs-24.fw-bold.ms-2.text-darkgreen Products Ordered 
+      div  
+        = render partial: "new_shop_items", collection: @line_items_group_by_shop, as: :shop_items
+    .bg-white.border.shadow-sm.px-4.py-32.mt-0.mt-xl-3
+      .d-flex.align-items-center
+        = svg_tag "icons/truck.svg", class: "text-darkgreen"
+        .fs-24.fw-bold.ms-2.text-darkgreen Shipping
+    .bg-white.border.shadow-sm.px-4.py-32.mt-0.mt-xl-3
+      .d-flex.align-items-center
+        = svg_tag "icons/discount.svg", class: "text-darkgreen"
+        .fs-24.fw-bold.ms-2.text-darkgreen Voucher
+    .bg-white.border.shadow-sm.px-4.py-32.mt-0.mt-xl-3
+      .d-flex.align-items-center.w-100
+        = svg_tag "icons/wallet.svg", class: "text-darkgreen"
+        .fs-24.fw-bold.ms-2.text-darkgreen Payment 
+    .bg-white.border.border-top-0.shadow-sm.px-4.py-32
+      .d-flex.align-items-center.w-100
+        .fs-20 Payment Method
+        .form-selectgroup.ms-4
+          label.form-selectgroup-item
+            input.form-selectgroup-input#payment-method-card type="radio" name="payment-method" checked=true
+            span.form-selectgroup-label.fs-18 Credit/Debit Card
+          label.form-selectgroup-item
+            input.form-selectgroup-input#payment-method-cash type="radio" name="payment-method"
+            span.form-selectgroup-label.fs-18 Cash on Delivery
+    .bg-white.border.border-top-0.shadow-sm.px-4.py-32
+      .d-flex.justify-content-end 
+        table.table.table-sm.table-borderless.align-middle.fs-18.w-100.w-lg-50
+          tbody
+            tr
+              th Merchandise Subtotal: 
+              td.text-end
+                | $
+                .d-inline-block.order-total-price 
+            tr
+              th Shipping Total: 
+              td.text-end
+                | $
+                .d-inline-block.order-shipping-price 1.00
+            tr
+              th Total Payment: 
+              td.text-end.text-red.fw-bold.fs-30 
+                | $
+                .d-inline-block.order-final-price
+    .bg-white.border.shadow-sm.px-4.py-32
+      .d-flex.justify-content-end
+        = simple_form_for :order, url: orders_path, html: { method: :post, id: "form-create-order" } do |f|
+          = f.button :submit, "Place Order", class: "btn btn-lg text-white bg-color-darkgreen rounded-0 border-color-darkgreen fs-30", id: "btn-place-order"
+
+= render "user_addresses/modal_form"

@@ -4,5 +4,6 @@ FactoryBot.define do
     description { Faker::Lorem.sentence }
     association :user
     state { "pending" }
+    phone { "333 333 3333" }
   end
 end

@@ -12,16 +12,40 @@ Rails.application.routes.draw do
 
   resources :users do
     resource :shop
+    
     collection do
-      resources :cart_items
-      delete '/cart_items/destroy_all', to: 'cart_items#destroy_all'
+      resources :user_addresses
     end
   end
-  
-  resources :shops do
+
+  resource :cart
+  resources :orders
+
+  resources :shops do    
     resources :products do 
       post 'import', on: :collection
     end
+  end
+
+  namespace :shop do 
+    resources :orders
+  end
+
+  resources :addresses do 
+    collection do 
+      get '/cities/:city_id/districts', to: 'addresses#get_districts'
+      get '/districts/:district_id/wards', to: 'addresses#get_wards'
+    end
+  end
+
+  resources :carts do 
+    resources :line_items, module: :carts do
+      delete 'destroy_all', on: :collection
+    end
+  end
+
+  resources :orders do 
+    resources :line_items, module: :orders
   end
 
   resources :products, only: %i(index)

@@ -1,11 +1,14 @@
 class Shop < ApplicationRecord
   belongs_to :user
+  has_one :address, as: :addressable
   has_many :products, dependent: :destroy
-  has_many :cart_items, through: :products
+  has_many :line_items, through: :products
+  has_many :orders, dependent: :destroy
   has_one_attached :avatar
 
   validates :name, presence: true 
   validates :description, presence: true
+  validates :phone, presence: true
 
   after_create :attach_avatar
 

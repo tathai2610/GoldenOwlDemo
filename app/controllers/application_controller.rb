@@ -1,8 +1,16 @@
 class ApplicationController < ActionController::Base
   include Pagy::Backend
   include Pundit::Authorization
-
+  
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  
+  after_action :clear_xhr_flash
+  
+  def clear_xhr_flash
+    if request.xhr?
+      flash.discard
+    end
+  end
 
   private
 

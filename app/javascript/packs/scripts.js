@@ -1,4 +1,8 @@
 $(document).on("turbolinks:load", function() { 
+  window.displayPrice = function displayPrice(price) {
+    return Number(price).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})
+  }
+
   // subnav visibility 
   $("#toggle-subnav-btn").on("click", function() {
     if ($("#subnav").is(":visible")) {
@@ -76,6 +80,10 @@ $(document).on("turbolinks:load", function() {
         $(".cart-final-items-postfix").text("s")
       }
 
+      if ($("#btn-checkout").hasClass("disabled")) {
+        $("#btn-checkout").removeClass("disabled")
+      }
+
       $(".cart-total-price").text(displayPrice(cartTotalPrice))
       $(".cart-final-items").text(cartFinalItems + unchecked.length)
 
@@ -106,6 +114,9 @@ $(document).on("turbolinks:load", function() {
       $(".cart-total-price").text(displayPrice(cartTotalPrice))
       $(".cart-final-items").text(cartFinalItems - items.length)
       $(this).closest(".container-fluid").find(".input-cart-item").prop("checked", false)
+
+      if ($("input:checked").length == 0) 
+        $("#btn-checkout").addClass("disabled")
     }
   })
 
@@ -125,6 +136,9 @@ $(document).on("turbolinks:load", function() {
 
       if (allItemsCurrentShopChecked == allItemsCurrentShop)
         inputShopItems.prop("checked", true)
+
+      if ($("#btn-checkout").hasClass("disabled")) 
+        $("#btn-checkout").removeClass("disabled")
 
       $(".cart-total-price").text(displayPrice(cartTotalPrice + itemTotalPrice))
       $(".cart-final-items").text(cartFinalItems + 1)
@@ -150,6 +164,9 @@ $(document).on("turbolinks:load", function() {
       if ($("#shop-all").prop("checked"))
         $("#shop-all").prop("checked", false)
 
+      if ($("input:checked").length == 0) 
+        $("#btn-checkout").addClass("disabled")
+
       $(".cart-total-price").text(displayPrice(cartTotalPrice - itemTotalPrice))
       $(".cart-final-items").text(cartFinalItems - 1)
     }
@@ -168,12 +185,18 @@ $(document).on("turbolinks:load", function() {
       if (numberOfItems > 1)
         $(".cart-final-items-postfix").text("s")
 
+      if ($("#btn-checkout").hasClass("disabled")) 
+        $("#btn-checkout").removeClass("disabled")
+
       $(".cart-total-price").text(displayPrice(cartTotalPrice))
       $(".cart-final-items").text(numberOfItems)
       $("input").prop("checked", true)
       $("#btn-destroy-cart").toggleClass("disabled")
     }
     else {
+      if (!$("#btn-checkout").hasClass("disabled")) 
+        $("#btn-checkout").addClass("disabled")
+
       $("input").prop("checked", false)
       $(".cart-total-price").text("0.00")
       $(".cart-final-items").text(0)
@@ -200,18 +223,21 @@ $(document).on("turbolinks:load", function() {
 
   // Add product to cart ajax
   $("#btn-add-to-cart").on('click', function() {
-    let form = $("#form-add-to-cart");
-    let actionUrl = form.attr('action');
+    let form = $("#form-add-to-cart")
+    let actionUrl = form.attr('action')
 
     $.ajax({
       type: "POST",
       url: actionUrl,
       data: form.serialize(),
-      success: function(result) {
+      success: function(data) {
         const toast = new bootstrap.Toast(document.getElementById("success-add-to-cart"))
 
         toast.show()
-        $(".cart-total-items").text(Number($(".cart-total-items").text()) + 1 )
+
+        if (data.created_at == data.updated_at) {
+          $(".cart-total-items").text(+$(".cart-total-items").text() + 1 )
+        }
       } 
     })
   }) 
@@ -230,9 +256,123 @@ $(document).on("turbolinks:load", function() {
         $("#shop-all").prop("checked", true)
       }
     }
+
+    if ($("#btn-checkout").hasClass("disabled")) 
+        $("#btn-checkout").removeClass("disabled")
   }
 
-  window.displayPrice = function displayPrice(price) {
-    return Number(price).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})
+  $("#btn-checkout").on('click', function(e) {
+    $(this).attr('href', function(index, href) {
+      let itemsChecked = []
+
+      $(".input-cart-item:checked").each(function() {
+        itemsChecked.push($(this).closest(".cart-item").children().attr("cart-item-id"))
+      })
+
+      return href + "?cart_items_ids=" + itemsChecked.join()
+    })
+  })
+
+  $("#form-create-order").on('submit', function(e) {
+    let items = []
+    let userAddress = $(".user-address").first().attr("user-address-id")
+
+    $(".order-item").each(function() {
+      items.push($(this).children().attr("cart-item-id"))
+    })
+
+    $("<input />").attr("type", "hidden")
+          .attr("name", "order[cart_items_ids]")
+          .attr("value", items.join(','))
+          .appendTo("#form-create-order");
+    $("<input />").attr("type", "hidden")
+          .attr("name", "order[user_address_id]")
+          .attr("value", userAddress)
+          .appendTo("#form-create-order");
+
+    return true
+  })
+
+  // Update collection of district when user select a city
+  $(document).on('change', "#user_address_form_city", function() {
+    changeDistrictCollection("#user_address_form_city", "#user_address_form_district", "#user_address_form_ward")
+  })
+
+  function changeDistrictCollection(cityInputId, districtInputId, wardInputId) {
+    if ($(districtInputId).prop("disabled")) {
+      $(districtInputId).prop("disabled", false)
+    }
+
+    let selectedCityId = $(cityInputId + " option:selected").val()
+    $.ajax({
+      type: "GET",
+      url: `/addresses/cities/${selectedCityId}/districts`,
+      success: function(data) {
+        $(districtInputId + " option:not(:first-child)").remove()
+        $(wardInputId + " option:not(:first-child)").remove()
+
+        if (!$(wardInputId).prop("disabled")) {
+          $(wardInputId).prop("disabled", true)
+        }
+
+        data.forEach(function(item) {
+          let newOption = "<option value=" + item.id + ">" + item.name + "</option>"
+          $(districtInputId).append(newOption)
+        })
+      }
+    })
   }
+
+  // Update collection of district when user select a city
+  $(document).on('change', "#user_address_form_district", function() {
+    changeWardCollection("#user_address_form_district", "#user_address_form_ward")
+  })
+
+  function changeWardCollection(districtInputId, wardInputId) {
+    if ($(wardInputId).prop("disabled"))
+      $(wardInputId).prop("disabled", false)
+
+    let selectedDistrictId = $(districtInputId + " option:selected").val()
+    $.ajax({
+      type: "GET",
+      url: `/addresses/districts/${selectedDistrictId}/wards`,
+      success: function(data) {
+        $(wardInputId + " option:not(:first-child)").remove()
+
+        data.forEach(function(item) {
+          let newOption = "<option value=" + item.id + ">" + item.name + "</option>"
+          $(wardInputId).append(newOption)
+        })
+      }
+    })
+  }
+
+  if ($("#user_addresses").is(":empty")) {
+    $("#addressFormModal").modal('show')
+  }
+
+  $("#addressFormModal").on("shown.bs.modal", function(){
+    $(ClientSideValidations.selectors.forms).validate()
+  })
+
+  if ($("#btn-place-order").length) {
+    $("#new-address-form").enableClientSideValidations()
+    
+    let orderTotalPrice = 0
+
+    $(".order-item").each(function() {
+      orderTotalPrice += +$(this).find(".item-total-price").text().replace(',','')
+    })
+
+    $(".order-total-price").text(displayPrice(orderTotalPrice))
+    $(".order-final-price").text(displayPrice(orderTotalPrice + +$(".order-shipping-price").text()))
+  }
+  
+  $("#shop_registration_form_city").on('change', function() {
+    changeDistrictCollection("#shop_registration_form_city", "#shop_registration_form_district", "#shop_registration_form_ward")
+  })
+
+  $("#shop_registration_form_district").on('change', function() {
+    changeWardCollection("#shop_registration_form_district", "#shop_registration_form_ward")
+  })
 })

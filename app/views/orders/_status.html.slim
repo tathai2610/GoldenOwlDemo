@@ -1,0 +1,12 @@
+.d-flex.bg-white.shadow-sm.p-4.justify-content-between.align-items-center.border-bottom
+  .steps.steps-teal.fs-20.fw-500
+    .step-item class="#{'active' if order.created?}"
+      | Order Placed 
+    .step-item class="#{'active' if order.transporting?}"
+      | Order Shipped Out
+    .step-item class="#{'active' if order.received?}"
+      | Order Received
+    .step-item class="#{'active' if order.paid?}"
+      | Order Paid 
+    .step-item class="#{'active' if order.completed?}"
+      | Order Completed

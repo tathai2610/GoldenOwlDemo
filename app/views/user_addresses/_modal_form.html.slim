@@ -1,0 +1,28 @@
+.modal.fade id="addressFormModal" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false"
+  .modal-dialog.modal-dialog-centered.modal-dialog-scrollable
+    .modal-content
+      = simple_form_for UserAddressForm.new, url: user_addresses_path, validate: true, html: { method: :post, class: "user-form", id:"new-address-form" }, remote: true do |f|
+        .modal-header
+          .modal-title.fs-24 New Address 
+        .modal-body
+          - if current_user.addresses.blank?
+            .fs-20 To place order, please add a delivery address
+          .row.mx-auto
+            .col-6.ps-0
+              = f.input :name, label: "Full Name", placeholder: "Full Name", input_html: { class: "form-control" }
+            .col-6.pe-0
+              = f.input :phone, label: "Phone Number", placeholder: "Phone Number", input_html: { class: "form-control" }
+          .row.mx-auto.mt-3
+            = f.input :city, collection: City.all, input_html: { class: "form-select fs-20" }, wrapper_html: { class: "px-0" }
+          .row.mx-auto.mt-3
+            = f.input :district, disabled: true, collection: City.all, input_html: { class: "form-select fs-20" }, wrapper_html: { class: "px-0" }
+          .row.mx-auto.mt-3
+            = f.input :ward, disabled: true, collection: City.all, input_html: { class: "form-select fs-20" }, wrapper_html: { class: "px-0" }
+          .row.mx-auto.mt-3
+            = f.input :street, label: "Street Address", placeholder: "Street Name, Building, House No.", input_html: { class: "form-control" }, wrapper_html: { class: "px-0" }
+        .modal-footer 
+          - if current_user.addresses.present?
+            button.btn.fs-20 type="button" data-bs-dismiss="modal" Cancel
+          - else 
+            = link_to "Cancel", cart_path(current_user), class:"btn fs-20"
+          button.btn.fs-20.btn-teal.bg-color-darkgreen type="submit" Submit

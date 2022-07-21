@@ -29,6 +29,21 @@
   #signup-height {
     height: 716px;
   }
+
+  .overflow-x-auto {
+    overflow-x: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  .w-767px {
+    width: 767px;
+  }
 }
 
 @media only screen and (min-width: 768px) {

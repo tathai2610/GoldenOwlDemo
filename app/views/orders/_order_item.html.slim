@@ -1,0 +1,13 @@
+= link_to shop_product_path(order_item.shop, order_item.product), class: "text-decoration-none text-dark" do
+  .container-fluid.px-0.py-2.border-bottom
+    .row.mx-auto.align-items-center
+      .col
+        = image_tag order_item.product.images.first, size: "80x80", class: "object-fit-cover"
+      .col-7.fs-20
+        = order_item.product.name
+        div
+          | x
+          = order_item.quantity
+      .col.fs-18.text-end
+        | $
+        = order_item.product.price

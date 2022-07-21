@@ -1,0 +1,7 @@
+.d-flex.align-items-center.justify-content-between.mt-2.fs-18.user-address.p-3.border user-address-id="#{user_address.id}"
+  div
+    .name = user_address.addressable.name 
+    .phone = user_address.addressable.phone
+    .mb-2 = user_address.to_s
+  div 
+    = link_to "CHANGE", user_addresses_path, remote: true, class: "btn fs-18"

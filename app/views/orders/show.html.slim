@@ -1,0 +1,28 @@
+.container-fluid.p-0 
+  .container-xl.p-0
+    .d-flex.align-items-center.py-32.px-4.px-xl-0
+      .ff-roboto.fs-30.fw-400 My purchase 
+    .d-flex.bg-white.shadow-sm.px-4.py-3.justify-content-between.align-items-center.border-bottom 
+      = link_to :back, class: "text-decoration-none text-dark d-flex align-items-center fs-18" do 
+        = svg_tag "icons/arrow-narrow-left.svg"
+        .ms-2 BACK
+      .d-flex.align-items-center.fs-18 
+        = @order.status.upcase
+    = render partial: "orders/status", locals: { order: @order }
+    .bg-white.py-32.px-4
+      .fs-24.fw-bold.text-darkgreen 
+        | Delivery Address 
+      .fs-20 
+        div = @order.user_address.addressable.name
+        div = @order.user_address.addressable.phone 
+        div = @order.user_address.to_s
+
+    .bg-white.px-4 
+      .d-flex.align-items-center.justify-content-start.border-bottom.pb-2
+        = svg_tag "icons/building-store.svg"
+        .fs-20.ms-2.fw-bold = @order.shop.name
+        .d-none.d-md-block.ms-3 = link_to "View shop", user_shop_path(@order.shop.user), class: "btn fs-18"
+      div 
+        = render partial: "orders/order_item", collection: @order.line_items, as: :order_item
+      = render partial: "orders/price", locals: { order: @order }
+
