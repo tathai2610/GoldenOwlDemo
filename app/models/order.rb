@@ -5,8 +5,14 @@ class Order < ApplicationRecord
   has_many :line_items, as: :line_itemable
 
   state_machine :status, initial: :created do
-    state :created, :preparing, :transporting, :received, 
-          :paid, :completed, :cancelled
+    state :created, :preparing, :ready_to_pick, :picking,
+          :cancel, :money_collect_picking, :picked,
+          :storing, :transporting, :sorting, :delivering, 
+          :money_collect_delivering, :delivered, :delivery_fail,
+          :waiting_to_return, :return, :return_transporting, :return_sorting,
+          :returning, :return_fail, :returned, :exception,
+          :damage, :lost, 
+          :received, :paid, :completed, :cancelled
   end
 
   def initialize(status= :created)

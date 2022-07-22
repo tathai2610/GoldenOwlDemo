@@ -9,18 +9,30 @@ class ShopsController < ApplicationController
   end
   
   def new 
-    @shop = ShopRegistrationForm.new
+    @shop_registration = ShopRegistrationForm.new
   end
 
   def create 
-    @shop = ShopRegistrationForm.new(shop_registration_params.merge(user: @user))
-    if @shop.save
+    @shop_registration = ShopRegistrationForm.new(shop_registration_params.merge(user: @user))
+
+    ActiveRecord::Base.transaction do 
+      raise ActiveRecord::RecordInvalid unless (@shop_registration.save && GhnClient.new.create_store(@shop_registration.shop))
       flash[:success] = "Congratulations! You have successfuly open your own shop on Planty!"
       redirect_to user_shop_path(@user)
-    else 
-      flash[:error] = "Cannot create your shop"
-      render :new
+      # redirect_to root_path
     end
+  rescue ActiveRecord::RecordInvalid
+    flash[:error] = "Cannot create your shop"
+    render :new
+    # if GhnClient.new.create_shop(@shop_registration.shop)
+    #   if @shop_registration.save
+    #     flash[:success] = "Congratulations! You have successfuly open your own shop on Planty!"
+    #     redirect_to user_shop_path(@user)
+    #   end
+    # else 
+    #   flash[:error] = "Cannot create your shop"
+    #   render :new
+    # end
   end
 
   private 

@@ -8,17 +8,17 @@
 
 require 'faker'
 
-file = File.read('data/vietnam_provinces_districts.json')
+file = File.read('data/vietnam_provinces_districts_wards.json')
 data = JSON.parse(file)
 
 data.each do |city|
-  c = City.create(name: city['name'])
+  c = City.create(name: city['ProvinceName'], shipping_code: city['ProvinceID'])
 
   city['districts'].each do |district|
-    d = District.create(name: district['name'], city: c)
+    d = District.create(name: district['DistrictName'], city: c, shipping_code: district['DistrictID'])
 
-    district['wards'].each do |ward|
-      Ward.create(name: ward['name'], district: d)
+    district['wards']&.each do |ward|
+      Ward.create(name: ward['WardName'], district: d, shipping_code: ward['WardCode'])
     end
   end
 end
