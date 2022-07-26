@@ -1,3 +1,7 @@
+- if @error 
+|
+  alert("Quantity modification cannot be done!")
+- else 
 | 
   // change item quantity
   $("#cart-item-#{@line_item.id} .item-qtt").text("#{@line_item.quantity}")

@@ -31,11 +31,27 @@ end
   u = User.new(email: "tester#{i+1}@gmail.com", password: "123123", password_confirmation: "123123")
   u.confirm 
   u.save
+
+  ward = Ward.first
+  user_info = UserInfo.create(name: "Tyler", phone: "0924150409", user: u)
+  a = Address.create(city: ward.district.city,
+                     district: ward.district,
+                     ward: ward,
+                     street: Street.create(name: "15 anonym"),
+                     addressable: user_info)
   if i < 10 
     u.add_role :seller 
-    s = Shop.create(user: u, name: Faker::Lorem.sentence.gsub('.', ''), description: Faker::Lorem.paragraphs.join(' '), phone: "333 333 3333")
-    s.approve
-    s.address = Address.find_or_create_by(city: City.first, district: District.first, ward: Ward.first, street: Street.find_or_create_by(name: "10 anonym"))
+    ActiveRecord::Base.transaction do 
+      s = Shop.create!(user: u, name: Faker::Lorem.sentence.gsub('.', ''), description: Faker::Lorem.paragraphs.join(' '), phone: "0924150409")
+      s.approve
+      ward = Ward.last
+      a = Address.create!(city: ward.district.city, 
+                          district: ward.district, 
+                          ward: ward, 
+                          street: Street.create!(name: "10 anonym"),
+                          addressable: s)
+      GhnClient.new.create_store(s)
+    end
   end
 end
 

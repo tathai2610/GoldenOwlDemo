@@ -72,7 +72,7 @@ class GhnClient
           name: line_item.product.name,
           quantity: line_item.quantity,
           weight: 50,
-          price: (line_item.product.price * line_item.quantity).to_i
+          price: (line_item.product.price * line_item.quantity * 100).to_i 
         }
       )
     end
@@ -100,7 +100,7 @@ class GhnClient
     }
 
     response = self.class.post('/v2/shipping-order/create', options)
-
+    puts response.body
     return false if response["code"] != 200
     order.update(code: response["data"]["order_code"])
     true

@@ -48,8 +48,12 @@ module ApplicationHelper
     number_with_precision(price, precision: 2, delimiter: ',')
   end
 
-  def disable_class(quantity)
-    quantity == 1 ? "disabled" : ""
+  def disable_class(button, cart_item)
+    if button == "dec"
+      cart_item.quantity == 1 ? "disabled" : ""
+    elsif button == "inc"
+      cart_item.quantity == cart_item.product.quantity ? "disabled" : ""
+    end
   end
 
   # Check if the item is buy_now_item

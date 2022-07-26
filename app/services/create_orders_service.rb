@@ -15,11 +15,18 @@ class CreateOrdersService < ApplicationService
         total_price = shop_items[:items].sum { |item| item.product.price * item.quantity }
         
         # Update line_itemable for each LineItem
-        LineItem.where(id: shop_items[:items].map(&:id)).update_all(line_itemable_type: "Order", line_itemable_id: order.id) 
+        # LineItem.where(id: shop_items[:items].map(&:id)).update_all(line_itemable_type: "Order", line_itemable_id: order.id) 
+        shop_items[:items].each do |item| 
+          # Move the item from cart to order
+          item.update!(line_itemable: order)
+          # Update product quantity when order is created
+          item.product.update!(quantity: item.product.quantity - item.quantity)
+        end
         order.update!(total_price: total_price)
         
         # Raise error if API call not success
         raise ActiveRecord::RecordInvalid unless GhnClient.new.create_order(order)
+
       end
     end
   end
