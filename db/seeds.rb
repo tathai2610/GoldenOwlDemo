@@ -35,7 +35,7 @@ end
     u.add_role :seller 
     s = Shop.create(user: u, name: Faker::Lorem.sentence.gsub('.', ''), description: Faker::Lorem.paragraphs.join(' '), phone: "333 333 3333")
     s.approve
-    s.address = Address(city: City.first, district: District.first, ward: Ward.first, street: Street.find_or_create_by(name: "10 anonym"))
+    s.address = Address.find_or_create_by(city: City.first, district: District.first, ward: Ward.first, street: Street.find_or_create_by(name: "10 anonym"))
   end
 end
 
@@ -45,6 +45,7 @@ end
     description: "<div>#{Faker::Lorem.paragraphs.join('<br>')}</div>", 
     price: Faker::Number.decimal(l_digits: 2, r_digits: 2), 
     shop_id: rand(1..10), 
+    quantity: 100
     # code: Faker::Lorem.word.upcase
   )
   p.images.attach([io: File.open(Rails.root.join('app', 'assets', 'images', 'default.jpg')), filename: 'default-image.jpg', content_type: 'image/jpg'])

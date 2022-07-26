@@ -4,7 +4,8 @@ class ShopsController < ApplicationController
   before_action :check_shop_exist, only: [:new, :create]
 
   def show 
-    @products = @shop.products 
+    @products = Product.available(shop: @shop)
+    @products = @shop.products if @user == current_user
     @pagy, @products = pagy(@products, items: 12)
   end
   

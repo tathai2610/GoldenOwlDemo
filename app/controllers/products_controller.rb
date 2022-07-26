@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
   
   def index 
     unless params[:shop_id]
-      @products = authorize Product.all
+      @products = authorize Product.available
       @products = Product.in_category(params[:category]) if params[:category]
       @pagy, @products = pagy(@products, items: 12)
       @categories = Category.all.order(:name)

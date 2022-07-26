@@ -19,6 +19,7 @@ class Product < ApplicationRecord
   # scope :similar_products, -> id { joins(category_products: :category).where(categories: { id: Product.find(id).categories.pluck(:id) }).where.not(id: id) }
   scope :similar_products, -> id { joins(category_products: :category).merge(Category.where(id: [Product.find(id).categories.pluck(:id)])).where.not(id: id) }
   scope :in_category, -> name { joins(category_products: :category).merge(Category.where(name: name)) }
+  scope :available, -> { where("quantity > ?", 0).order(created_at: :desc) }
 
   private 
 

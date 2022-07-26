@@ -207,7 +207,19 @@ $(document).on("turbolinks:load", function() {
 
   // Modify quantity in product show
   $("#add-btn").on('click', function() {
-    $("#product-show-qtt").val(Number($("#product-show-qtt").val()) + 1)
+    let inStock = +$(".product-quantity").text()
+    let currentQuantity = +$("#product-show-qtt").val()
+
+    // If current quantity is less than in_stock number
+    if (currentQuantity < inStock) {
+      // Increase current desired quantity
+      $("#product-show-qtt").val(currentQuantity + 1)
+      // If after update, current desired quantity equals in_stock
+      if (+$("#product-show-qtt").val() == inStock) {
+        // Disable 'add-btn'
+        $("#add-btn").prop("disabled", true)
+      }
+    }
 
     if ($("#sub-btn").is(":disabled")) {
       $("#sub-btn").prop("disabled", false)
@@ -216,8 +228,21 @@ $(document).on("turbolinks:load", function() {
   $("#sub-btn").on('click', function() {
     $("#product-show-qtt").val(Number($("#product-show-qtt").val()) - 1)
 
+    // If desired quantity is 1, disable 'sub-btn'
     if ($("#product-show-qtt").val() == 1) {
       $("#sub-btn").prop("disabled", true)
+    }
+    // Else enable 'add-btn' if it is disabled
+    else {
+      $("#add-btn").prop("disabled", false)
+    }
+  })
+
+  $("#product-show-qtt").on('change', function() {
+    if (+$("#product-show-qtt").val() > +$(".product-quantity").text()) {
+      $("#product-show-qtt").val(+$(".product-quantity").text())
+      $("#add-btn").prop("disabled", true)
+      $("#sub-btn").prop("disabled", false)
     }
   })
 

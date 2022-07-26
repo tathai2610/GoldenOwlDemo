@@ -3,9 +3,9 @@ module ApplicationHelper
 
   def products_section(section, product_id=nil) 
     if section == "similar-products"
-      Product.similar_products(product_id).first(4)
+      Product.similar_products(product_id).available.first(4)
     else
-      Product.first(4)
+      Product.available.first(4)
     end
   end
 
@@ -59,12 +59,12 @@ module ApplicationHelper
     false
   end
 
-  # Check the order's status 
-  def check_status_active(status) 
-
-  end
-
   def display_status(status) 
     status.gsub('_', ' ').upcase 
+  end
+
+  def add_item_to_cart_path(user_signed_in)
+    return "/carts/#{current_user.cart.id}/line_items" if user_signed_in
+    "/carts/1/line_items"
   end
 end
