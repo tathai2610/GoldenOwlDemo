@@ -2,7 +2,7 @@
   .steps.steps-teal.fs-20.fw-500
     .step-item class="#{'active' if order.created?}"
       | Order Placed 
-    .step-item class="#{'active' if order.transporting?}"
+    .step-item class="#{'active' if order.shipping?}"
       | Order Shipped Out
     .step-item class="#{'active' if order.received?}"
       | Order Received

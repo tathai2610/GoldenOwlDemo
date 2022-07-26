@@ -15,24 +15,19 @@ class OrdersController < ApplicationController
   end
 
   def create 
+    authorize Order
     items = line_items_in(order_params[:cart_items_ids])
     line_items_group_by_shop = line_items_group_by_shop(items)
     user_address = Address.find_by(id: order_params[:user_address_id])
 
-    ActiveRecord::Base.transaction do 
-      line_items_group_by_shop.each do |shop_items|
-        order = Order.create!(user: current_user, shop: shop_items[:shop], user_address: user_address)
-        total_price = shop_items[:items].sum { |item| item.product.price * item.quantity }
-        authorize order
-  
-        LineItem.where(id: shop_items[:items].map(&:id)).update_all(line_itemable_type: "Order", line_itemable_id: order.id) 
-        order.update!(total_price: total_price)
-        
-        response = GhnClient.new.create_order(order)
-      end
-    end
+    CreateOrdersService.call(line_items_group_by_shop, user_address)
 
+    flash[:success] = "Your order is created"
     redirect_to action: :index
+
+  rescue ActiveRecord::RecordInvalid
+    flash[:error] = "Cannot create your order"
+    redirect_back(fallback_location: root_path)
   end
 
   private 

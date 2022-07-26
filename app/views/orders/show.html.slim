@@ -7,7 +7,7 @@
         = svg_tag "icons/arrow-narrow-left.svg"
         .ms-2 BACK
       .d-flex.align-items-center.fs-18 
-        = @order.status.upcase
+        = display_status(@order.status)
     = render partial: "orders/status", locals: { order: @order }
     .bg-white.py-32.px-4
       .fs-24.fw-bold.text-darkgreen 

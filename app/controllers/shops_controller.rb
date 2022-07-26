@@ -19,20 +19,10 @@ class ShopsController < ApplicationController
       raise ActiveRecord::RecordInvalid unless (@shop_registration.save && GhnClient.new.create_store(@shop_registration.shop))
       flash[:success] = "Congratulations! You have successfuly open your own shop on Planty!"
       redirect_to user_shop_path(@user)
-      # redirect_to root_path
     end
   rescue ActiveRecord::RecordInvalid
     flash[:error] = "Cannot create your shop"
     render :new
-    # if GhnClient.new.create_shop(@shop_registration.shop)
-    #   if @shop_registration.save
-    #     flash[:success] = "Congratulations! You have successfuly open your own shop on Planty!"
-    #     redirect_to user_shop_path(@user)
-    #   end
-    # else 
-    #   flash[:error] = "Cannot create your shop"
-    #   render :new
-    # end
   end
 
   private 

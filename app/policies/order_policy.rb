@@ -19,6 +19,6 @@ class OrderPolicy < ApplicationPolicy
   end
 
   def create?
-    user.present? && record.user == user 
+    user.present? 
   end
 end

@@ -19,6 +19,6 @@ class ProductsImporterService < ApplicationService
 
       data.push({ name: name, description: description, price: price, quantity: quantity, images: images, categories: categories })
     end
-    ProductImporterJob.perform_later data, @shop.id
+    ProductImporterJob.perform_later(data, @shop.id)
   end
 end

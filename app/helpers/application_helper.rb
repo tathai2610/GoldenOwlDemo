@@ -58,4 +58,13 @@ module ApplicationHelper
     return true if @item_buy_now == cart_item
     false
   end
+
+  # Check the order's status 
+  def check_status_active(status) 
+
+  end
+
+  def display_status(status) 
+    status.gsub('_', ' ').upcase 
+  end
 end

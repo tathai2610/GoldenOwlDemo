@@ -10,4 +10,4 @@
           = order_item.quantity
       .col.fs-18.text-end
         | $
-        = order_item.product.price
+        = display_price(order_item.product.price)

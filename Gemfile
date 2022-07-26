@@ -91,4 +91,7 @@ gem 'state_machines'
 gem 'state_machines-activerecord'
 # Guide you in leveraging regular Ruby classes and object oriented design patterns to build a simple, robust and scalable authorization system.
 gem "pundit", "~> 2.2"
+# Whenever is a Ruby gem that provides a clear syntax for writing and deploying cron jobs.
+gem 'whenever', require: false
 
+gem 'sidekiq'
