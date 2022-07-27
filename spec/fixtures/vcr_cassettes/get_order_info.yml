@@ -1,0 +1,82 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://dev-online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/detail
+    body:
+      encoding: UTF-8
+      string: '{"order_code":"LL77AW"}'
+    headers:
+      Token:
+      - 42d959a6-089e-11ed-a172-72bb6fc7632c
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 307
+      message: Temporary Redirect
+    headers:
+      Location:
+      - https://dev-online-gateway.ghn.vn:443/shiip/public-api/v2/shipping-order/detail
+      Date:
+      - Wed, 27 Jul 2022 07:01:47 GMT
+      Content-Length:
+      - '18'
+      Content-Type:
+      - text/plain; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: Temporary Redirect
+  recorded_at: Wed, 27 Jul 2022 07:01:47 GMT
+- request:
+    method: post
+    uri: https://dev-online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/detail
+    body:
+      encoding: UTF-8
+      string: '{"order_code":"LL77AW"}'
+    headers:
+      Token:
+      - 42d959a6-089e-11ed-a172-72bb6fc7632c
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '980'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 27 Jul 2022 07:01:48 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      - Origin
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - ncKrq6Y8OY0PQ6NqWn1YpQMcxz83XOeq
+      X-Xss-Protection:
+      - 1; mode=block
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJjb2RlIjoyMDAsIm1lc3NhZ2UiOiJTdWNjZXNzIiwiZGF0YSI6eyJzaG9wX2lkIjoxMTcwNTYsImNsaWVudF9pZCI6MjUwMzU2MSwicmV0dXJuX25hbWUiOiJBbm5pdmVyIiwicmV0dXJuX3Bob25lIjoiMDkyNDE1MDQwOSIsInJldHVybl9hZGRyZXNzIjoiTm9iaXMgc3VzY2lwaXQgcGVyc3BpY2lhdGlzIiwicmV0dXJuX3dhcmRfY29kZSI6IjU1MDExMCIsInJldHVybl9kaXN0cmljdF9pZCI6MTU3MiwicmV0dXJuX2xvY2F0aW9uIjp7ImxhdCI6MTAuMDE1NjE1NzcyNDMxNzEsImxvbmciOjEwNS43NjM2NDUyNDQzNTIyLCJjZWxsX2NvZGUiOiJBSE5BREFHNiIsInRydXN0X2xldmVsIjo1LCJ3YXJkY29kZSI6IjU1MDExMCJ9LCJmcm9tX25hbWUiOiJBbm5pdmVyIiwiZnJvbV9waG9uZSI6IjA5MjQxNTA0MDkiLCJmcm9tX2FkZHJlc3MiOiJOb2JpcyBzdXNjaXBpdCBwZXJzcGljaWF0aXMiLCJmcm9tX3dhcmRfY29kZSI6IjU1MDExMCIsImZyb21fZGlzdHJpY3RfaWQiOjE1NzIsImZyb21fbG9jYXRpb24iOnsibGF0IjoxMC4wMTU2MTU3NzI0MzE3MSwibG9uZyI6MTA1Ljc2MzY0NTI0NDM1MjIsImNlbGxfY29kZSI6IkFITkFEQUc2IiwidHJ1c3RfbGV2ZWwiOjUsIndhcmRjb2RlIjoiNTUwMTEwIn0sImRlbGl2ZXJfc3RhdGlvbl9pZCI6MCwidG9fbmFtZSI6Ik5hbSBSZW0gQ3VscGEiLCJ0b19waG9uZSI6IjA5MjQxNTA0MDkiLCJ0b19hZGRyZXNzIjoiTm9iaXMgc3VzY2lwaXQgcGVyc3BpY2lhdGlzLCBQb3JybywgUmVwZWxsZW5kdXMsIFZpdGFlIiwidG9fd2FyZF9jb2RlIjoiMjE0MTQiLCJ0b19kaXN0cmljdF9pZCI6MTQ1NSwidG9fbG9jYXRpb24iOnt9LCJ3ZWlnaHQiOjIwMCwibGVuZ3RoIjoyMCwid2lkdGgiOjIwLCJoZWlnaHQiOjEwLCJjb252ZXJ0ZWRfd2VpZ2h0Ijo4MDAsImltYWdlX2lkcyI6bnVsbCwic2VydmljZV90eXBlX2lkIjoyLCJzZXJ2aWNlX2lkIjo1MzMyMSwicGF5bWVudF90eXBlX2lkIjoyLCJwYXltZW50X3R5cGVfaWRzIjpbMl0sImN1c3RvbV9zZXJ2aWNlX2ZlZSI6MCwic29ydF9jb2RlIjoiMC0wMDAtMC0wMCIsImNvZF9hbW91bnQiOjAsImNvZF9jb2xsZWN0X2RhdGUiOm51bGwsImNvZF90cmFuc2Zlcl9kYXRlIjpudWxsLCJpc19jb2RfdHJhbnNmZXJyZWQiOmZhbHNlLCJpc19jb2RfY29sbGVjdGVkIjpmYWxzZSwiaW5zdXJhbmNlX3ZhbHVlIjowLCJvcmRlcl92YWx1ZSI6MCwicGlja19zdGF0aW9uX2lkIjowLCJjbGllbnRfb3JkZXJfY29kZSI6IiIsInJlcXVpcmVkX25vdGUiOiJDSE9USFVIQU5HIiwiY29udGVudCI6IkNvbnNlY3RldHVyIGFiIG9tbmlzIGluIFsxIGPDoWldIiwibm90ZSI6IiIsImVtcGxveWVlX25vdGUiOiIiLCJzZWFsX2NvZGUiOiIiLCJwaWNrdXBfdGltZSI6IjIwMjItMDctMjdUMDY6NDY6NTAuNTJaIiwiaXRlbXMiOlt7Im5hbWUiOiJDb25zZWN0ZXR1ciBhYiBvbW5pcyBpbiIsInF1YW50aXR5IjoxLCJjYXRlZ29yeSI6e30sIndlaWdodCI6NTB9XSwiY291cG9uIjoiIiwiX2lkIjoiNjJlMGRmNWI1NzZiZjU3YjJmZDU2ODU2Iiwib3JkZXJfY29kZSI6IkxMNzdBVyIsInZlcnNpb25fbm8iOiIwNWM0NzkwNi1lNzZhLTRkNDMtOWJiMS1hZWI2MzA2MWQ1ZGMiLCJ1cGRhdGVkX2lwIjoiMjIyLjI1My40Mi4xNzYiLCJ1cGRhdGVkX2VtcGxveWVlIjowLCJ1cGRhdGVkX2NsaWVudCI6MjUwMzU2MSwidXBkYXRlZF9zb3VyY2UiOiJzaGlpcCIsInVwZGF0ZWRfZGF0ZSI6IjIwMjItMDctMjdUMDY6NDY6NTAuMjA3WiIsInVwZGF0ZWRfd2FyZWhvdXNlIjowLCJjcmVhdGVkX2lwIjoiMjIyLjI1My40Mi4xNzYiLCJjcmVhdGVkX2VtcGxveWVlIjowLCJjcmVhdGVkX2NsaWVudCI6MjUwMzU2MSwiY3JlYXRlZF9zb3VyY2UiOiJzaGlpcCIsImNyZWF0ZWRfZGF0ZSI6IjIwMjItMDctMjdUMDY6NDY6NTAuMjA3WiIsInN0YXR1cyI6InJlYWR5X3RvX3BpY2siLCJpbnRlcm5hbF9wcm9jZXNzIjp7InN0YXR1cyI6IiIsInR5cGUiOiIifSwicGlja193YXJlaG91c2VfaWQiOjI0NTYsImRlbGl2ZXJfd2FyZWhvdXNlX2lkIjoxNDE2LCJjdXJyZW50X3dhcmVob3VzZV9pZCI6MjQ1NiwicmV0dXJuX3dhcmVob3VzZV9pZCI6MjQ1NiwibmV4dF93YXJlaG91c2VfaWQiOjAsImN1cnJlbnRfdHJhbnNwb3J0X3dhcmVob3VzZV9pZCI6MCwibGVhZHRpbWUiOiIyMDIyLTA3LTI4VDIzOjU5OjU5WiIsIm9yZGVyX2RhdGUiOiIyMDIyLTA3LTI3VDA2OjQ2OjUwLjUyWiIsImRhdGEiOnt9LCJzb2NfaWQiOiI2MmUwZGY1YjU3NmJmNTdiMmZkNTY4NTUiLCJmaW5pc2hfZGF0ZSI6bnVsbCwidGFnIjpbInRydWNrIl0sImlzX3BhcnRpYWxfcmV0dXJuIjpmYWxzZX19Cg==
+  recorded_at: Wed, 27 Jul 2022 07:01:48 GMT
+recorded_with: VCR 6.1.0

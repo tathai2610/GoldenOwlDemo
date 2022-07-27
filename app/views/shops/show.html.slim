@@ -14,7 +14,7 @@
         - else 
           = link_to "#" do 
             button.btn-small type="button" Follow
-.container-fluid.p-0.py-5.px-4
+.container-fluid.py-5.px-4.bg-white
   .container-xl.p-0
     .row.mx-auto 
       .col-lg-12.mb-4
@@ -23,7 +23,7 @@
     .row.mx-auto.justify-content-around
       = render partial: "shops/info", locals: { shop: @shop }
 - if @products.any?
-  .container-fluid.p-0#plants
+  .container-fluid.p-0.bg-white#plants
     .container-xl.py-5.px-4.position-relative.border-top
       .d-flex.justify-content-between.align-items-center
         h1.p-0.m-0.ff-roboto.fw-400 Plants
@@ -31,7 +31,6 @@
         .row
           = render partial: "products/product", collection: @products, as: :product
       .d-flex.mb-5.py-lg-3.px-lg-4.justify-content-center
-        / = render partial: "layouts/pagination", locals: { pagy: @pagy }
         == pagy_bootstrap_nav(@pagy)
   = render partial: "home/products_4", locals: { section: "best-sellers", product_list: @shop.products.first(4) }
 - else 

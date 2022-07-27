@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :district do
-    name { "MyString" }
+    name { Faker::Lorem.word.capitalize }
     city { nil }
+    shipping_code { 1572 }
   end
 end

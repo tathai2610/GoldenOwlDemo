@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :street do
-    name { "MyString" }
-    ward { nil }
+    name { Faker::Lorem.words.join(' ').capitalize }
   end
 end

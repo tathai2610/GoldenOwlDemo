@@ -8,17 +8,17 @@
 
 require 'faker'
 
-file = File.read('data/vietnam_provinces_districts.json')
+file = File.read('data/vietnam_provinces_districts_wards.json')
 data = JSON.parse(file)
 
 data.each do |city|
-  c = City.create(name: city['name'])
+  c = City.create(name: city['ProvinceName'], shipping_code: city['ProvinceID'])
 
   city['districts'].each do |district|
-    d = District.create(name: district['name'], city: c)
+    d = District.create(name: district['DistrictName'], city: c, shipping_code: district['DistrictID'])
 
-    district['wards'].each do |ward|
-      Ward.create(name: ward['name'], district: d)
+    district['wards']&.each do |ward|
+      Ward.create(name: ward['WardName'], district: d, shipping_code: ward['WardCode'])
     end
   end
 end
@@ -31,15 +31,39 @@ end
   u = User.new(email: "tester#{i+1}@gmail.com", password: "123123", password_confirmation: "123123")
   u.confirm 
   u.save
+
+  ward = Ward.first
+  user_info = UserInfo.create(name: "Tyler", phone: "0924150409", user: u)
+  a = Address.create(city: ward.district.city,
+                     district: ward.district,
+                     ward: ward,
+                     street: Street.create(name: "15 anonym"),
+                     addressable: user_info)
   if i < 10 
     u.add_role :seller 
-    s = Shop.create(user: u, name: Faker::Lorem.sentence.gsub('.', ''), description: Faker::Lorem.paragraphs.join(' '), phone: "333 333 3333")
-    s.approve
+    ActiveRecord::Base.transaction do 
+      s = Shop.create!(user: u, name: Faker::Lorem.sentence.gsub('.', ''), description: Faker::Lorem.paragraphs.join(' '), phone: "0924150409")
+      s.approve
+      ward = Ward.last
+      a = Address.create!(city: ward.district.city, 
+                          district: ward.district, 
+                          ward: ward, 
+                          street: Street.create!(name: "10 anonym"),
+                          addressable: s)
+      GhnClient.new.create_store(s)
+    end
   end
 end
 
 50.times do |i|
-  p = Product.new(name: Faker::Lorem.sentence.gsub('.', ''), description: "<div>#{Faker::Lorem.paragraphs.join('<br>')}</div>", price: Faker::Number.decimal(l_digits: 2, r_digits: 2), shop_id: rand(1..10))
+  p = Product.new(
+    name: Faker::Lorem.sentence.gsub('.', ''), 
+    description: "<div>#{Faker::Lorem.paragraphs.join('<br>')}</div>", 
+    price: Faker::Number.decimal(l_digits: 2, r_digits: 2), 
+    shop_id: rand(1..10), 
+    quantity: 100
+    # code: Faker::Lorem.word.upcase
+  )
   p.images.attach([io: File.open(Rails.root.join('app', 'assets', 'images', 'default.jpg')), filename: 'default-image.jpg', content_type: 'image/jpg'])
   p.save
   2.times do 

@@ -1,5 +1,5 @@
 class ShopRegistrationForm < AddressForm
-  attr_accessor :name, :description, :phone, :user
+  attr_accessor :name, :description, :phone, :user, :shop
 
   validates :name, presence: true 
   validates :description, presence: true
@@ -9,7 +9,7 @@ class ShopRegistrationForm < AddressForm
     return false if invalid?
 
     ActiveRecord::Base.transaction do 
-      shop = Shop.create!(name: name, description: description, phone: phone, user: user)
+      @shop = Shop.create!(name: name, description: description, phone: phone, user: user)
       shop_address = create_address
     end
     

@@ -19,13 +19,14 @@ class LineItemsController < ApplicationController
 
   def update
     @action = params[:commit] if params[:commit]
+    in_stock = @line_item.product.quantity
 
-    # Need to check if product.in_stock is max or min
-    # when Product has 'in_stock' attribute
-    if @action == "inc"
+    if @action == "inc" && in_stock > @line_item.quantity
       @line_item.quantity += 1
-    elsif @action == "dec"
+    elsif @action == "dec" && @line_item.quantity > 0
       @line_item.quantity -= 1
+    else 
+      @error = true
     end
 
     @line_item.save
@@ -40,7 +41,6 @@ class LineItemsController < ApplicationController
     @line_item.destroy
 
     respond_to do |format|
-      format.html 
       format.js
     end
   end

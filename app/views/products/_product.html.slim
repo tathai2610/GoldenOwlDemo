@@ -5,6 +5,6 @@
         h2.m-0.fw-500.product-name.fs-24 = product.name
         .d-flex.mb-1
           span.text-red.fs-30.fw-500 
-            | $ 
-            = sprintf("%.2f", product.price)
+            | $
+            = display_price(product.price)
         button Add to cart 

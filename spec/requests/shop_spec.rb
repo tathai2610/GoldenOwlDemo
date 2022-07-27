@@ -43,7 +43,13 @@ RSpec.describe "Shops", type: :request do
   describe "POST /create" do 
     subject { post user_shop_path(seller), params: params }
 
-    let(:params) { { user_id: buyer.id, shop: { name: Faker::Lorem.word.capitalize, description: Faker::Lorem.sentence } } }
+    let(:params) { { user_id: buyer.id, shop: { name: Faker::Lorem.word.capitalize, 
+                                                description: Faker::Lorem.sentence,
+                                                phone: "0924150409",
+                                                ward: "550110",
+                                                district: 1572,
+                                                city: 220,
+                                                street: "5 anonym" } } }
 
     context "when user is a guest" do 
       it_behaves_like "unauthorized redirect response"
@@ -60,16 +66,18 @@ RSpec.describe "Shops", type: :request do
 
       subject { post user_shop_path(buyer), params: params }
 
-      it_behaves_like "change Shop#count", 1
-
-      it "redirects to new shop" do 
-        subject
-        expect(response).to redirect_to "/users/#{buyer.id}/shop"
-      end
-
-      it "assigns shop state to pending" do 
-        subject 
-        expect(Shop.last).to have_attributes(state: "pending")
+      VCR.use_cassette("create store") do
+        it_behaves_like "change Shop#count", 1
+  
+        it "redirects to new shop" do 
+          subject
+          expect(response).to redirect_to "/users/#{buyer.id}/shop"
+        end
+  
+        it "assigns shop state to pending" do 
+          subject 
+          expect(Shop.last).to have_attributes(state: "pending")
+        end
       end
     end
   end

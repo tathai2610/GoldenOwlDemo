@@ -1,0 +1,169 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://dev-online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/available-services
+    body:
+      encoding: UTF-8
+      string: '{"shop_id":117056,"from_district":1572,"to_district":1455}'
+    headers:
+      Token:
+      - 42d959a6-089e-11ed-a172-72bb6fc7632c
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 307
+      message: Temporary Redirect
+    headers:
+      Location:
+      - https://dev-online-gateway.ghn.vn:443/shiip/public-api/v2/shipping-order/available-services
+      Date:
+      - Wed, 27 Jul 2022 06:46:49 GMT
+      Content-Length:
+      - '18'
+      Content-Type:
+      - text/plain; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: Temporary Redirect
+  recorded_at: Wed, 27 Jul 2022 06:46:49 GMT
+- request:
+    method: post
+    uri: https://dev-online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/available-services
+    body:
+      encoding: UTF-8
+      string: '{"shop_id":117056,"from_district":1572,"to_district":1455}'
+    headers:
+      Token:
+      - 42d959a6-089e-11ed-a172-72bb6fc7632c
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '242'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 27 Jul 2022 06:46:49 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      - Origin
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - oeyidBouhCr1OyoJRR6TTC0xVLumfp6c
+      X-Xss-Protection:
+      - 1; mode=block
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJjb2RlIjoyMDAsImNvZGVfbWVzc2FnZV92YWx1ZSI6IkRvIGRp4buFbiBiaeG6v24gcGjhu6ljIHThuqFwIGPhu6dhIGThu4tjaCBDb3ZpZC0xOSwgdGjhu51pIGdpYW4gZ2lhbyBow6BuZyBjw7MgdGjhu4MgZMOgaSBoxqFuIGThu7Ega2nhur9uIHThu6sgMS01IG5nw6B5LiIsImRhdGEiOlt7InNlcnZpY2VfaWQiOjUzMzIxLCJzaG9ydF9uYW1lIjoixJBpIGLhu5kiLCJzZXJ2aWNlX3R5cGVfaWQiOjJ9XSwibWVzc2FnZSI6IlN1Y2Nlc3MifQo=
+  recorded_at: Wed, 27 Jul 2022 06:46:49 GMT
+- request:
+    method: post
+    uri: http://dev-online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/create
+    body:
+      encoding: UTF-8
+      string: '{"to_name":"Nam Rem Culpa","to_phone":"0924150409","to_address":"Nobis
+        suscipit perspiciatis, Porro, Repellendus, Vitae","to_ward_code":"21414","to_district_id":1455,"weight":200,"length":20,"width":20,"height":10,"service_id":53321,"service_type_id":2,"payment_type_id":2,"required_note":"CHOTHUHANG","items":[{"name":"Consectetur
+        ab omnis in","quantity":1,"weight":50,"price":5765}]}'
+    headers:
+      Token:
+      - 42d959a6-089e-11ed-a172-72bb6fc7632c
+      Content-Type:
+      - application/json
+      Shop-Id:
+      - '117056'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 307
+      message: Temporary Redirect
+    headers:
+      Location:
+      - https://dev-online-gateway.ghn.vn:443/shiip/public-api/v2/shipping-order/create
+      Date:
+      - Wed, 27 Jul 2022 06:46:49 GMT
+      Content-Length:
+      - '18'
+      Content-Type:
+      - text/plain; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: Temporary Redirect
+  recorded_at: Wed, 27 Jul 2022 06:46:49 GMT
+- request:
+    method: post
+    uri: https://dev-online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/create
+    body:
+      encoding: UTF-8
+      string: '{"to_name":"Nam Rem Culpa","to_phone":"0924150409","to_address":"Nobis
+        suscipit perspiciatis, Porro, Repellendus, Vitae","to_ward_code":"21414","to_district_id":1455,"weight":200,"length":20,"width":20,"height":10,"service_id":53321,"service_type_id":2,"payment_type_id":2,"required_note":"CHOTHUHANG","items":[{"name":"Consectetur
+        ab omnis in","quantity":1,"weight":50,"price":5765}]}'
+    headers:
+      Token:
+      - 42d959a6-089e-11ed-a172-72bb6fc7632c
+      Content-Type:
+      - application/json
+      Shop-Id:
+      - '117056'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '396'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 27 Jul 2022 06:46:51 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      - Origin
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - YjRGFnIsA05wni6ugfWLqz3zKdQXhW8w
+      X-Xss-Protection:
+      - 1; mode=block
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJjb2RlIjoyMDAsImNvZGVfbWVzc2FnZV92YWx1ZSI6IkRvIGRp4buFbiBiaeG6v24gcGjhu6ljIHThuqFwIGPhu6dhIGThu4tjaCBDb3ZpZC0xOSwgdGjhu51pIGdpYW4gZ2lhbyBow6BuZyBjw7MgdGjhu4MgZMOgaSBoxqFuIGThu7Ega2nhur9uIHThu6sgMS01IG5nw6B5LiIsImRhdGEiOnsib3JkZXJfY29kZSI6IkxMNzdBVyIsInNvcnRfY29kZSI6IjAtMDAwLTAtMDAiLCJ0cmFuc190eXBlIjoidHJ1Y2siLCJ3YXJkX2VuY29kZSI6IiIsImRpc3RyaWN0X2VuY29kZSI6IiIsImZlZSI6eyJtYWluX3NlcnZpY2UiOjMwMDAwLCJpbnN1cmFuY2UiOjAsInN0YXRpb25fZG8iOjAsInN0YXRpb25fcHUiOjAsInJldHVybiI6MCwicjJzIjowLCJjb3Vwb24iOjB9LCJ0b3RhbF9mZWUiOjMwMDAwLCJleHBlY3RlZF9kZWxpdmVyeV90aW1lIjoiMjAyMi0wNy0yOFQyMzo1OTo1OVoifSwibWVzc2FnZSI6IlN1Y2Nlc3MiLCJtZXNzYWdlX2Rpc3BsYXkiOiJU4bqhbyDEkcahbiBow6BuZyB0aMOgbmggY8O0bmcuIE3DoyDEkcahbiBow6BuZzogTEw3N0FXIn0K
+  recorded_at: Wed, 27 Jul 2022 06:46:51 GMT
+recorded_with: VCR 6.1.0

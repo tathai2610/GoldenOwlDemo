@@ -3,9 +3,9 @@ module ApplicationHelper
 
   def products_section(section, product_id=nil) 
     if section == "similar-products"
-      Product.similar_products(product_id).first(4)
+      Product.similar_products(product_id).available.first(4)
     else
-      Product.first(4)
+      Product.available.first(4)
     end
   end
 
@@ -48,8 +48,12 @@ module ApplicationHelper
     number_with_precision(price, precision: 2, delimiter: ',')
   end
 
-  def disable_class(quantity)
-    quantity == 1 ? "disabled" : ""
+  def disable_class(button, cart_item)
+    if button == "dec"
+      cart_item.quantity == 1 ? "disabled" : ""
+    elsif button == "inc"
+      cart_item.quantity == cart_item.product.quantity ? "disabled" : ""
+    end
   end
 
   # Check if the item is buy_now_item
@@ -57,5 +61,14 @@ module ApplicationHelper
     return false if @item_buy_now.nil?
     return true if @item_buy_now == cart_item
     false
+  end
+
+  def display_status(status) 
+    status.gsub('_', ' ').upcase 
+  end
+
+  def add_item_to_cart_path(user_signed_in)
+    return "/carts/#{current_user.cart.id}/line_items" if user_signed_in
+    "/carts/1/line_items"
   end
 end

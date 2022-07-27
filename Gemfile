@@ -32,6 +32,10 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '>= 3.9.0'
+  # Shim to load environment variables from .env into ENV in development.
+  gem 'dotenv-rails'
+
+  gem 'httparty'
 end
 
 group :development do
@@ -87,3 +91,11 @@ gem 'state_machines'
 gem 'state_machines-activerecord'
 # Guide you in leveraging regular Ruby classes and object oriented design patterns to build a simple, robust and scalable authorization system.
 gem "pundit", "~> 2.2"
+# Whenever is a Ruby gem that provides a clear syntax for writing and deploying cron jobs.
+gem 'whenever', require: false
+
+gem 'sidekiq'
+
+# Test calling external apis
+gem 'vcr'
+gem 'webmock'

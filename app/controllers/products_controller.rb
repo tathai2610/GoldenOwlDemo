@@ -4,13 +4,10 @@ class ProductsController < ApplicationController
   before_action :set_shop, only: [:show, :new, :create, :import]
   before_action :set_product, only: [:show]
   
-  def index 
-    unless params[:shop_id]
-      @products = authorize Product.all
-      @products = Product.in_category(params[:category]) if params[:category]
-      @pagy, @products = pagy(@products, items: 12)
-      @categories = Category.all.order(:name)
-    end
+  def index
+    @products = ProductPolicy::Scope.new(current_user, Product.available).resolve(@user, params[:category])
+    @pagy, @products = pagy(@products, items: 12)
+    @categories = Category.all.order(:name)
   end
   
   def show
