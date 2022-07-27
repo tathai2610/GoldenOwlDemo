@@ -4,7 +4,6 @@ class GhnClient
   include HTTParty
   base_uri 'dev-online-gateway.ghn.vn/shiip/public-api'
   headers token: ENV["GHN_API_KEY"], "Content-Type": "application/json"
-  debug_output $stdout
 
   def get_province 
     self.class.get('/master-data/province')

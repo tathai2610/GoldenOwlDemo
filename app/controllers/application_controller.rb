@@ -1,5 +1,3 @@
-require Rails.root.join('app', 'apis', 'ghn_client.rb')
-
 class ApplicationController < ActionController::Base
   include Pagy::Backend
   include Pundit::Authorization

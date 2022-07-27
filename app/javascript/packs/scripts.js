@@ -246,6 +246,9 @@ $(document).on("turbolinks:load", function() {
     }
   })
 
+  if (+$(".product-quantity").text() < 2) 
+    $("#add-btn").prop("disabled", true)
+
   // Add product to cart ajax
   $("#btn-add-to-cart").on('click', function() {
     let form = $("#form-add-to-cart")

@@ -44,6 +44,11 @@
                   = svg_tag "icons/clipboard-text.svg"
                   .ms-2 My purchase
                 .dropdown-divider
+              - if user_logged_in_and_has_role?(:admin)
+                = link_to admin_root_path, class: "dropdown-item text-darkgreen" do 
+                  = svg_tag "icons/badge.svg"
+                  .ms-2 Admin page
+                .dropdown-divider
               - unless user_signed_in?
                 = link_to new_user_session_path, class: "dropdown-item text-darkgreen" do 
                   = svg_tag "icons/login.svg"
