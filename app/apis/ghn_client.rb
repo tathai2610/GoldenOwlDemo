@@ -47,11 +47,7 @@ class GhnClient
       } 
     }
 
-    response = self.class.get("/v2/shop/register", options)
-    
-    return false if response["code"] != 200
-    shop.update(code: response["data"]["shop_id"])
-    true
+    self.class.get("/v2/shop/register", options)
   end
 
   def create_order(order)
@@ -99,11 +95,7 @@ class GhnClient
       }.to_json
     }
 
-    response = self.class.post('/v2/shipping-order/create', options)
-    puts response.body
-    return false if response["code"] != 200
-    order.update(code: response["data"]["order_code"])
-    true
+    self.class.post('/v2/shipping-order/create', options)
   end
 
   def get_order_info(order_code) 

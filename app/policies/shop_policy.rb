@@ -15,12 +15,6 @@ class ShopPolicy < ApplicationPolicy
   end
 
   def create? 
-    user.present? && user == shop.user && !user.has_role?(:seller)
-  end
-
-  private 
-  
-  def shop 
-    record 
+    user.present? && (user.shop == nil) && !user.has_role?(:seller)
   end
 end

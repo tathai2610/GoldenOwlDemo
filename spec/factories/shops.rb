@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :shop do
-    name { Faker::Lorem.word.capitalize }
+    name { "Anniver" }
     description { Faker::Lorem.sentence }
     association :user
     state { "pending" }
-    phone { "333 333 3333" }
+    phone { "0924150409" }
   end
 end

@@ -1,0 +1,83 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://dev-online-gateway.ghn.vn/shiip/public-api/v2/shop/register?address=Nobis%20suscipit%20perspiciatis&district_id=1572&name=Anniver&phone=0924150409&ward_code=550110
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Token:
+      - 42d959a6-089e-11ed-a172-72bb6fc7632c
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 302
+      message: Found
+    headers:
+      Location:
+      - https://dev-online-gateway.ghn.vn:443/shiip/public-api/v2/shop/register?district_id=1572&ward_code=550110&name=Anniver&phone=0924150409&address=Nobis%20suscipit%20perspiciatis
+      Date:
+      - Wed, 27 Jul 2022 04:43:01 GMT
+      Content-Length:
+      - '5'
+      Content-Type:
+      - text/plain; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: Found
+  recorded_at: Wed, 27 Jul 2022 04:43:01 GMT
+- request:
+    method: get
+    uri: https://dev-online-gateway.ghn.vn/shiip/public-api/v2/shop/register?address=Nobis%20suscipit%20perspiciatis&district_id=1572&name=Anniver&phone=0924150409&ward_code=550110
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Token:
+      - 42d959a6-089e-11ed-a172-72bb6fc7632c
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '83'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 27 Jul 2022 04:43:03 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      - Origin
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - b2FgxOEqmXZd3eEBnQ8jWzvLAtZaDsW2
+      X-Xss-Protection:
+      - 1; mode=block
+    body:
+      encoding: ASCII-8BIT
+      string: '{"code":200,"message":"Success","data":{"shop_id":117056}}
+
+        '
+  recorded_at: Wed, 27 Jul 2022 04:43:03 GMT
+recorded_with: VCR 6.1.0

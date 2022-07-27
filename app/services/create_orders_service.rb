@@ -24,9 +24,11 @@ class CreateOrdersService < ApplicationService
         end
         order.update!(total_price: total_price)
         
+        response = GhnClient.new.create_order(order)
         # Raise error if API call not success
-        raise ActiveRecord::RecordInvalid unless GhnClient.new.create_order(order)
-
+        raise ActiveRecord::RecordInvalid unless response["code"] == 200
+        # Update order code 
+        order.update!(code: response["data"]["order_code"])
       end
     end
   end

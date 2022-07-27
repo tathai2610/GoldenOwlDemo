@@ -4,23 +4,24 @@ class ShopsController < ApplicationController
   before_action :check_shop_exist, only: [:new, :create]
 
   def show 
-    @products = Product.available(shop: @shop)
+    @products = Product.available.where(shop: @shop)
     @products = @shop.products if @user == current_user
     @pagy, @products = pagy(@products, items: 12)
   end
   
   def new 
     @shop_registration = ShopRegistrationForm.new
+    authorize @shop_registration, policy_class: ShopPolicy
   end
 
   def create 
     @shop_registration = ShopRegistrationForm.new(shop_registration_params.merge(user: @user))
+    authorize @shop_registration, policy_class: ShopPolicy
 
-    ActiveRecord::Base.transaction do 
-      raise ActiveRecord::RecordInvalid unless (@shop_registration.save && GhnClient.new.create_store(@shop_registration.shop))
-      flash[:success] = "Congratulations! You have successfuly open your own shop on Planty!"
-      redirect_to user_shop_path(@user)
-    end
+    CreateStoreService.call(@shop_registration)
+
+    flash[:success] = "Congratulations! You have successfuly open your own shop on Planty!"
+    redirect_to user_shop_path(@user)
   rescue ActiveRecord::RecordInvalid
     flash[:error] = "Cannot create your shop"
     render :new
