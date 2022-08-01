@@ -45,7 +45,7 @@ module ApplicationHelper
   end
 
   def display_price(price)
-    number_with_precision(price, precision: 2, delimiter: ',')
+    number_with_precision(price, precision: 0, delimiter: '.')
   end
 
   def disable_class(button, cart_item)

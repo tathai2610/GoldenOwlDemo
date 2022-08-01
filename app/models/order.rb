@@ -11,9 +11,12 @@ class Order < ApplicationRecord
     completed:  [:completed]
   }
 
+  enum payment_method: { cod: 0, paypal: 1 }
+
   belongs_to :user
   belongs_to :shop
   belongs_to :user_address, class_name: "Address"
+  has_one :payment, dependent: :destroy
   has_many :line_items, as: :line_itemable
 
   scope :on_goings, -> { where.not(status: "completed") }
@@ -31,6 +34,6 @@ class Order < ApplicationRecord
   end
 
   def total_price 
-    line_items.sum { |item| item.product.price * item.quantity }
+    line_items.sum { |item| item.product.price * item.quantity }.to_i
   end
 end

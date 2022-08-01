@@ -3,8 +3,7 @@
       = image_tag url_for(product.images.first), class: "w-100 product-img-responsive"
       .container-fluid.p-0.py-3
         h2.m-0.fw-500.product-name.fs-24 = product.name
-        .d-flex.mb-1
-          span.text-red.fs-30.fw-500 
-            | $
+        .d-flex.align-items-center.a.mb-1.text-red.fs-30.fw-500 
+            .fs-2.pe-1px đ
             = display_price(product.price)
         button Add to cart 

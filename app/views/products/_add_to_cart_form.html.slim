@@ -2,7 +2,9 @@
   = simple_form_for @line_item, url: add_item_to_cart_path(user_signed_in?), html: { method: :post, id: "form-add-to-cart" } do |f|
     h1.m-0.pt-4.fw-400.fs-48.lh-sm = product.name 
     h2.m-0.fw-300.fs-30 = product_categories(product)
-    h1.mb-0.fs-36.text-red.fw-bold.mt-40 $#{ display_price(product.price) }
+    h1.mb-0.fs-36.text-red.fw-bold.mt-40.d-flex.align-items-center
+      .pe-1px.fs-24 đ 
+      = display_price(product.price)
     .text-muted.fs-20
       .product-quantity.d-inline-block = product.quantity
       |  pieces available

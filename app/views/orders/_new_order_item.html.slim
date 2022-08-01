@@ -6,15 +6,15 @@
     .col-9.col-md-4.d-inline-block.d-md-flex.justify-content-center.justify-content-sm-start.align-items-center
       = link_to order_item.product.name, shop_product_path(order_item.shop, order_item.product), class: "text-decoration-none text-dark fs-20 w-100"
       .d-flex.d-md-none.justify-content-between 
-        .d-flex.align-items-center.fs-20
-          | $
+        .d-flex.align-items-center.align-items-center.fs-20
+          .fs-4.pe-1px đ
           .item-unit-price = display_price(order_item.product.price)
         .d-flex.align-items-center.fs-18.item-qtt
           | x
           = order_item.quantity 
     .col-2.d-none.d-md-flex.align-items-center.justify-content-center.justify-content-sm-end.justify-content-md-center
-      .d-flex.fs-18
-        | $
+      .d-flex.align-items-center.fs-18
+        .fs-4.pe-1px đ
         .item-unit-price = display_price(order_item.product.price)
     .col-2.d-none.d-md-flex.align-items-center.justify-content-center.justify-content-sm-end.justify-content-md-center
       .d-flex.align-items-center
@@ -22,6 +22,6 @@
           | x
           = order_item.quantity 
     .col-2.d-none.d-md-flex.align-items-center.justify-content-center.justify-content-sm-end.justify-content-md-center
-      .d-flex.fs-18.text-red.fw-500
-        | $ 
+      .d-flex.align-items-center.fs-18.text-red.fw-500
+        .fs-4.pe-1px đ 
         .item-total-price = display_price(order_item.product.price * order_item.quantity)

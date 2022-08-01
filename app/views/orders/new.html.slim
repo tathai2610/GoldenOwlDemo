@@ -26,10 +26,16 @@
       .d-flex.align-items-center
         = svg_tag "icons/truck.svg", class: "text-darkgreen"
         .fs-24.fw-bold.ms-2.text-darkgreen Shipping
-    .bg-white.border.shadow-sm.px-4.py-32.mt-0.mt-xl-3
-      .d-flex.align-items-center
-        = svg_tag "icons/discount.svg", class: "text-darkgreen"
-        .fs-24.fw-bold.ms-2.text-darkgreen Voucher
+      .d-flex.align-items-center.justify-content-around.fs-20.py-3.mt-3
+        div Nhanh 
+        .d-flex.align-items-center 
+          .fs-3.pe-1px đ
+          div = display_price(20000)
+        div x#{ @line_items_group_by_shop.length }
+        .d-flex.align-items-center.text-red
+          .fs-3.pe-1px đ 
+          div = display_price(20000 * @line_items_group_by_shop.length)
+
     .bg-white.border.shadow-sm.px-4.py-32.mt-0.mt-xl-3
       .d-flex.align-items-center.w-100
         = svg_tag "icons/wallet.svg", class: "text-darkgreen"
@@ -38,30 +44,31 @@
       .d-flex.align-items-center.w-100
         .fs-20 Payment Method
         .form-selectgroup.ms-4
-          label.form-selectgroup-item
-            input.form-selectgroup-input#payment-method-card type="radio" name="payment-method" checked=true
-            span.form-selectgroup-label.fs-18 Credit/Debit Card
+          #paypal-button-container
+          / label.form-selectgroup-item
+          /   input.form-selectgroup-input#payment-method-card type="radio" name="payment-method" checked=true
+          /   span.form-selectgroup-label.fs-18 Credit/Debit Card
           label.form-selectgroup-item
             input.form-selectgroup-input#payment-method-cash type="radio" name="payment-method"
             span.form-selectgroup-label.fs-18 Cash on Delivery
     .bg-white.border.border-top-0.shadow-sm.px-4.py-32
       .d-flex.justify-content-end 
-        table.table.table-sm.table-borderless.align-middle.fs-18.w-100.w-lg-50
+        table.table.table-sm.table-borderless.align-middle.fs-20.w-100.w-lg-50
           tbody
             tr
               th Merchandise Subtotal: 
-              td.text-end
-                | $
+              td.text-end.d-flex.align-items-center.justify-content-end
+                .fs-3.pe-1px đ
                 .d-inline-block.order-total-price 
             tr
               th Shipping Total: 
-              td.text-end
-                | $
-                .d-inline-block.order-shipping-price 1.00
+              td.text-end.d-flex.align-items-center.justify-content-end
+                .fs-3.pe-1px đ
+                .d-inline-block.order-shipping-price = display_price(20000 * @line_items_group_by_shop.length)
             tr
               th Total Payment: 
-              td.text-end.text-red.fw-bold.fs-30 
-                | $
+              td.text-end.d-flex.align-items-center.justify-content-end.text-red.fw-bold.fs-30 
+                .fs-1.pe-1px đ
                 .d-inline-block.order-final-price
     .bg-white.border.shadow-sm.px-4.py-32
       .d-flex.justify-content-end
@@ -69,3 +76,7 @@
           = f.button :submit, "Place Order", class: "btn btn-lg text-white bg-color-darkgreen rounded-0 border-color-darkgreen fs-30", id: "btn-place-order"
 
 = render "user_addresses/modal_form"
+
+= simple_form_for :order, url: paypal_finish_payment_orders_path, method: :post, html: { class: "d-none", id: "form-finish-payment" } do |f|
+  = f.input :payment_token, as: :hidden
+  = f.button :submit

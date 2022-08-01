@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
 
   root "home#index"
+  resource :cart
 
   resources :users do
     resource :shop
@@ -22,8 +23,13 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :cart
-  resources :orders
+  resources :orders do 
+    collection do 
+      post '/paypal/create_payment', to: 'orders#paypal_create_payment'
+      post '/paypal/execute_payment', to: 'orders#paypal_execute_payment'
+      post '/paypal/finish_payment', to: 'orders#paypal_finish_payment'
+    end
+  end
 
   resources :shops do    
     resources :products do 

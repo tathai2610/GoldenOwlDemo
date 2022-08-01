@@ -1,6 +1,6 @@
 $(document).on("turbolinks:load", function() { 
   window.displayPrice = function displayPrice(price) {
-    return Number(price).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})
+    return Number(price).toLocaleString('vi', {maximumFractionDigits: 0})
   }
 
   // subnav visibility 
@@ -60,7 +60,7 @@ $(document).on("turbolinks:load", function() {
 
   // Check shop's checkbox
   $('.input-shop-items').on('change', function() {
-    let cartTotalPrice = Number($(".cart-total-price").text().replace(',', ''))
+    let cartTotalPrice = Number($(".cart-total-price").text().replaceAll('.', ''))
     let cartFinalItems = Number($(".cart-final-items").text())
     let items = $(this).closest(".container-fluid").find(".cart-item")
     let shopItemsSibings = $(this).closest(".shop-items").siblings()
@@ -71,7 +71,7 @@ $(document).on("turbolinks:load", function() {
       items.each(function() {
         if ($(this).find(".input-cart-item").is(":not(:checked)")) {
           unchecked.push($(this))
-          cartTotalPrice += Number($(this).find(".item-total-price").text().replace(',', ''))
+          cartTotalPrice += Number($(this).find(".item-total-price").text().replaceAll('.', ''))
           $(this).find(".input-cart-item").prop("checked", true)
         }
       })
@@ -102,7 +102,7 @@ $(document).on("turbolinks:load", function() {
     }
     else {
       items.each(function() {
-        cartTotalPrice -= Number($(this).find(".item-total-price").text().replace(',', ''))
+        cartTotalPrice -= Number($(this).find(".item-total-price").text().replaceAll('.', ''))
       })
 
       if (cartFinalItems - items.length <= 1) 
@@ -122,9 +122,9 @@ $(document).on("turbolinks:load", function() {
 
   // Check cart item's checkbox 
   $('.input-cart-item').on('change', function() {
-    let cartTotalPrice = Number($(".cart-total-price").text().replace(',', ''))
+    let cartTotalPrice = Number($(".cart-total-price").text().replaceAll('.', ''))
     let cartFinalItems = Number($(".cart-final-items").text())
-    let itemTotalPrice = Number($(this).closest('.container-fluid').find('.item-total-price').text().replace(',', ''))
+    let itemTotalPrice = Number($(this).closest('.container-fluid').find('.item-total-price').text().replaceAll('.', ''))
     let allItemsCurrentShop = $(this).closest('.cart-items').find('input').length
     let allItemsCurrentShopChecked = $(this).closest('.cart-items').find('input:checked').length
     let inputShopItems = $(this).closest(".shop-items").find(".input-shop-items")
@@ -179,7 +179,7 @@ $(document).on("turbolinks:load", function() {
     
     if (this.checked) {
       $(".item-total-price").each(function(index) {
-        cartTotalPrice += Number($(this).text().replace(',', ''))
+        cartTotalPrice += Number($(this).text().replaceAll('.', ''))
       })
 
       if (numberOfItems > 1)
@@ -274,7 +274,7 @@ $(document).on("turbolinks:load", function() {
   if ($(".input-cart-item:checked").length > 0) {
     let cartItem = $(".input-cart-item:checked").closest((".cart-item"))
 
-    $(".cart-total-price").text(cartItem.find(".item-total-price").text().replace(',', ''))
+    $(".cart-total-price").text(displayPrice(cartItem.find(".item-total-price").text().replaceAll('.', '')))
     $(".cart-final-items").text(1)
 
     if (cartItem.siblings().length == 0) {
@@ -301,26 +301,6 @@ $(document).on("turbolinks:load", function() {
     })
   })
 
-  $("#form-create-order").on('submit', function(e) {
-    let items = []
-    let userAddress = $(".user-address").first().attr("user-address-id")
-
-    $(".order-item").each(function() {
-      items.push($(this).children().attr("cart-item-id"))
-    })
-
-    $("<input />").attr("type", "hidden")
-          .attr("name", "order[cart_items_ids]")
-          .attr("value", items.join(','))
-          .appendTo("#form-create-order");
-    $("<input />").attr("type", "hidden")
-          .attr("name", "order[user_address_id]")
-          .attr("value", userAddress)
-          .appendTo("#form-create-order");
-
-    return true
-  })
-
   // Update collection of district when user select a city
   $(document).on('change', "#user_address_form_city", function() {
     changeDistrictCollection("#user_address_form_city", "#user_address_form_district", "#user_address_form_ward")
@@ -342,7 +322,7 @@ $(document).on("turbolinks:load", function() {
         if (!$(wardInputId).prop("disabled")) {
           $(wardInputId).prop("disabled", true)
         }
-
+        
         data.forEach(function(item) {
           let newOption = "<option value=" + item.id + ">" + item.name + "</option>"
           $(districtInputId).append(newOption)
@@ -350,18 +330,18 @@ $(document).on("turbolinks:load", function() {
       }
     })
   }
-
+  
   // Update collection of district when user select a city
   $(document).on('change', "#user_address_form_district", function() {
     changeWardCollection("#user_address_form_district", "#user_address_form_ward")
   })
-
+  
   function changeWardCollection(districtInputId, wardInputId) {
     if ($(wardInputId).prop("disabled"))
       $(wardInputId).prop("disabled", false)
 
-    let selectedDistrictId = $(districtInputId + " option:selected").val()
-    $.ajax({
+      let selectedDistrictId = $(districtInputId + " option:selected").val()
+      $.ajax({
       type: "GET",
       url: `/addresses/districts/${selectedDistrictId}/wards`,
       success: function(data) {
@@ -389,11 +369,11 @@ $(document).on("turbolinks:load", function() {
     let orderTotalPrice = 0
 
     $(".order-item").each(function() {
-      orderTotalPrice += +$(this).find(".item-total-price").text().replace(',','')
+      orderTotalPrice += +$(this).find(".item-total-price").text().replaceAll('.','')
     })
 
     $(".order-total-price").text(displayPrice(orderTotalPrice))
-    $(".order-final-price").text(displayPrice(orderTotalPrice + +$(".order-shipping-price").text()))
+    $(".order-final-price").text(displayPrice(orderTotalPrice + +$(".order-shipping-price").text().replace('.','')))
   }
   
   $("#shop_registration_form_city").on('change', function() {
@@ -403,4 +383,57 @@ $(document).on("turbolinks:load", function() {
   $("#shop_registration_form_district").on('change', function() {
     changeWardCollection("#shop_registration_form_district", "#shop_registration_form_ward")
   })
+
+  $("#form-create-order").on('submit', function(e) {
+    addDetailsToOrderForm()
+    return true
+  })
+
+  // Paypal button setup
+  // if ($("#btn-paypal").length) {
+    paypal.Buttons({
+      style: {
+        layout: 'horizontal'
+      },
+      env: "sandbox",
+      createOrder: function() {
+        addDetailsToOrderForm(1)
+        return $.post("/orders/paypal/create_payment", 
+                      $("#form-create-order").serialize()).then(function(data) {
+                        return data.token
+                      }) 
+      },
+      onApprove: function(data) {
+        console.log(data)
+        return $.post("/orders/paypal/execute_payment", {
+          orderID: data.orderID
+        }).then(function() {
+          $("#order_payment_token").val(data.orderID)
+          $("#form-finish-payment").submit()
+        })
+      }
+    }).render('#paypal-button-container');
+  // }
+
+  function addDetailsToOrderForm(paymentMethod = 0) {
+    let items = []
+    let userAddress = $(".user-address").first().attr("user-address-id")
+
+    $(".order-item").each(function() {
+      items.push($(this).children().attr("cart-item-id"))
+    })
+
+    $("<input />").attr("type", "hidden")
+          .attr("name", "order[cart_items_ids]")
+          .attr("value", items.join(','))
+          .appendTo("#form-create-order");
+    $("<input />").attr("type", "hidden")
+          .attr("name", "order[user_address_id]")
+          .attr("value", userAddress)
+          .appendTo("#form-create-order");
+    $("<input />").attr("type", "hidden")
+          .attr("name", "order[payment_method]")
+          .attr("value", paymentMethod)
+          .appendTo("#form-create-order");
+  }
 })

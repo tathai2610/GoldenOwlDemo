@@ -59,7 +59,8 @@ end
   p = Product.new(
     name: Faker::Lorem.sentence.gsub('.', ''), 
     description: "<div>#{Faker::Lorem.paragraphs.join('<br>')}</div>", 
-    price: Faker::Number.decimal(l_digits: 2, r_digits: 2), 
+    # price: Faker::Number.decimal(l_digits: 2, r_digits: 2), 
+    price: Faker::Number.number(digits: 4) * 100,
     shop_id: rand(1..10), 
     quantity: 100
     # code: Faker::Lorem.word.upcase

@@ -95,7 +95,8 @@ gem "pundit", "~> 2.2"
 gem 'whenever', require: false
 
 gem 'sidekiq'
-
 # Test calling external apis
 gem 'vcr'
 gem 'webmock'
+# A gem for using PayPal API
+gem 'paypal-checkout-sdk'
