@@ -3,9 +3,9 @@ module ApplicationHelper
 
   def products_section(section, product_id=nil) 
     if section == "similar-products"
-      Product.includes(:shop).with_attached_images.similar_products(product_id).available.first(4)
+      Product.similar_products(product_id).available.limit(4).includes(:shop).with_attached_images
     else
-      Product.includes(:shop).with_attached_images.available.first(4)
+      Product.available.limit(4).includes(:shop).with_attached_images
     end
   end
 

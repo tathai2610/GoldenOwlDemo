@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
 
   def paypal_execute_payment
     if PaypalClient.execute_payment(payment_id: params[:orderID])
-      render json: {}, status: :ok
+      header :ok
     else 
       render json: { error: "Payment executing failed" }, status: :unprocessable_entity
     end

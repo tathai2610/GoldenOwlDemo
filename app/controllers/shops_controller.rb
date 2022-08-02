@@ -5,7 +5,7 @@ class ShopsController < ApplicationController
 
   def show
     @products = ShopPolicy::Scope.new(current_user, Product.where(shop: @shop)).resolve(@user).with_attached_images
-    @products_best_seller = @shop.products.includes(:shop).with_attached_images.first(4)
+    @products_best_seller = @shop.products.limit(4).includes(:shop).with_attached_images
     @pagy, @products = pagy(@products, items: 12)
   end
   

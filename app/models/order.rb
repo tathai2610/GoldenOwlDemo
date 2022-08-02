@@ -1,4 +1,6 @@
 class Order < ApplicationRecord
+  SHPIPPING_FEE = 20000
+
   STATUSES = {
     created:    [:created, :preparing, :ready_to_pick, :picking],
     shipping:   [:picked, :storing, :transporting, :sorting, :delivering, :money_collect_picking],

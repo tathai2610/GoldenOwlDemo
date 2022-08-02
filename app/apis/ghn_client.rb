@@ -59,7 +59,7 @@ class GhnClient
     service_response = get_service(order)
     service_id = service_response["data"][0]["service_id"]
     service_type_id = service_response["data"][0]["service_type_id"]
-    cod_amount = order.payment.status == "paid" ? 0 : (order.total_price + 20000)
+    cod_amount = order.payment.status == "paid" ? 0 : (order.total_price + Order::SHPIPPING_FEE)
     items = []
 
     order.line_items.each do |line_item|

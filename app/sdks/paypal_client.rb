@@ -1,7 +1,7 @@
 require 'paypal-checkout-sdk'
 
 class PaypalClient
-  def self.create_payment(orders:)
+  def self.create_payment(orders: [])
     # argument 'orders' contains an array of orders
     client = PaypalClient.new.client
     payment_price = ((orders.sum(&:total_price) + (20000 * orders.length)) / 23000).to_s
@@ -41,8 +41,7 @@ class PaypalClient
     begin 
       response = client.execute(payment)
 
-      payments.each(&:set_executing)
-      payments.each(&:save)
+      payments.update_all(status: 1)
       true
     rescue PayPalHttp::HttpError => ioe
       false
@@ -52,10 +51,9 @@ class PaypalClient
   def self.finish_payment(payment_token)
     payments = Payment.where(token: payment_token)
     return nil if payments.blank?
+    payments.update_all(status: 2)
+    
     payments.each do |payment| 
-      payment.set_paid
-      payment.save 
-      
       CreateGhnOrderJob.perform_later(payment.order)
     end
   end
