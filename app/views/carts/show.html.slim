@@ -32,6 +32,6 @@
                 .fs-20.pe-1px đ 
                 .cart-total-price 0
           .col-12.col-sm-11.col-md-4.d-flex.align-items-center.justify-content-center.justify-content-sm-end.mt-2.mt-md-0
-              = link_to "Check Out", new_order_path, class: "btn btn-lg bg-color-darkgreen border-color-darkgreen text-white fs-30 rounded-0 disabled", id: "btn-checkout"
+              = link_to "Check Out", new_order_path, class: "btn btn-lg bg-color-darkgreen border-color-darkgreen text-white fs-30 rounded-0 disabled", id: "btn-checkout", "data-turbolinks": "false"
     - else 
       = render "empty"

@@ -16,18 +16,12 @@ class OrdersController < ApplicationController
   end
 
   def create 
-    @orders.each do |order|
-      response = GhnClient.new.create_order(order)
-      raise ActiveRecord::RecordInvalid unless response["code"] == 200
-      # Update order code 
-      order.update(code: response["data"]["order_code"])
+    @orders.each do |order| 
+      CreateGhnOrderJob.perform_later(order)
     end
 
     flash[:success] = "Your order is created"
     redirect_to action: :index
-  rescue ActiveRecord::RecordInvalid
-    flash[:error] = "Cannot create your order"
-    redirect_back(fallback_location: root_path)
   end
 
   def paypal_create_payment
@@ -52,9 +46,6 @@ class OrdersController < ApplicationController
     payments = PaypalClient.finish_payment(order_params[:payment_token])  
     flash[:success] = "Your order is created and payment is executed successfully"
     redirect_to action: :index
-  rescue ActiveRecord::RecordInvalid
-    flash[:error] = "Cannot create your order"
-    redirect_back(fallback_location: root_path)
   end
 
   private 

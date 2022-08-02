@@ -390,10 +390,10 @@ $(document).on("turbolinks:load", function() {
   })
 
   // Paypal button setup
-  // if ($("#btn-paypal").length) {
+  if ($("#btn-place-order").length) {
     paypal.Buttons({
       style: {
-        layout: 'horizontal'
+        layout: 'vertical'
       },
       env: "sandbox",
       createOrder: function() {
@@ -413,7 +413,7 @@ $(document).on("turbolinks:load", function() {
         })
       }
     }).render('#paypal-button-container');
-  // }
+  }
 
   function addDetailsToOrderForm(paymentMethod = 0) {
     let items = []

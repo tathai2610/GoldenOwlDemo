@@ -56,9 +56,7 @@ class PaypalClient
       payment.set_paid
       payment.save 
       
-      response = GhnClient.new.create_order(payment.order)
-      raise ActiveRecord::RecordInvalid unless response["code"] == 200
-      payment.order.update(code: response["data"]["order_code"])
+      CreateGhnOrderJob.perform_later(payment.order)
     end
   end
 

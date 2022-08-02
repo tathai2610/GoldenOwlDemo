@@ -41,16 +41,12 @@
         = svg_tag "icons/wallet.svg", class: "text-darkgreen"
         .fs-24.fw-bold.ms-2.text-darkgreen Payment 
     .bg-white.border.border-top-0.shadow-sm.px-4.py-32
-      .d-flex.align-items-center.w-100
-        .fs-20 Payment Method
-        .form-selectgroup.ms-4
+      .text-center.fs-20.mb-3 Payment Method
+      .d-flex.align-items-center.justify-content-center.w-100
+        .col-10.col-lg-6
+          input.form-selectgroup-input#payment-method-cash type="radio" name="payment-method" checked=true
+          label.form-selectgroup-label.fs-20.fw-500.mb-3.py-2.py-md-3 Cash on Delivery
           #paypal-button-container
-          / label.form-selectgroup-item
-          /   input.form-selectgroup-input#payment-method-card type="radio" name="payment-method" checked=true
-          /   span.form-selectgroup-label.fs-18 Credit/Debit Card
-          label.form-selectgroup-item
-            input.form-selectgroup-input#payment-method-cash type="radio" name="payment-method"
-            span.form-selectgroup-label.fs-18 Cash on Delivery
     .bg-white.border.border-top-0.shadow-sm.px-4.py-32
       .d-flex.justify-content-end 
         table.table.table-sm.table-borderless.align-middle.fs-20.w-100.w-lg-50
