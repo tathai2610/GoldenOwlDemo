@@ -6,7 +6,9 @@ class Cart < ApplicationRecord
     return nil if line_items.blank? 
 
     [].tap do |result|
-      line_items.group_by(&:shop).each { |shop, items| result.push({ shop: shop, items: items }) }
+      line_items.includes(
+          { product: { images_attachments: :blob, shop: :user } }
+        ).group_by(&:shop).each { |shop, items| result.push({ shop: shop, items: items }) }
     end
   end
 end

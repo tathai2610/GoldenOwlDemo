@@ -3,9 +3,9 @@ module ApplicationHelper
 
   def products_section(section, product_id=nil) 
     if section == "similar-products"
-      Product.similar_products(product_id).available.first(4)
+      Product.similar_products(product_id).available.limit(4).includes(:shop).with_attached_images
     else
-      Product.available.first(4)
+      Product.available.limit(4).includes(:shop).with_attached_images
     end
   end
 
@@ -45,7 +45,7 @@ module ApplicationHelper
   end
 
   def display_price(price)
-    number_with_precision(price, precision: 2, delimiter: ',')
+    number_with_precision(price, precision: 0, delimiter: '.')
   end
 
   def disable_class(button, cart_item)

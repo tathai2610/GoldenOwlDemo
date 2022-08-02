@@ -1,9 +1,13 @@
 class ShopPolicy < ApplicationPolicy  
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
-    # def resolve
-    #   scope.all
-    # end
+    def resolve(shop_owner)
+      if user == shop_owner
+        scope
+      else
+        scope.available
+      end
+    end
   end
 
   def index? 
@@ -11,7 +15,9 @@ class ShopPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    return true if user.has_role?(:admin) || user.shop == record
+    return true if record.state == "active"
+    false 
   end
 
   def create? 

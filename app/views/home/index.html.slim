@@ -8,13 +8,13 @@
       .col-12.col-lg-6.p-3.ps-lg-0.py-lg-5.pe-lg-4
         h1.mb-0 Best Plants for your home
         .py-2.py-lg-4.mt-0.mt-lg-4.fs-24.fw-100.w-sm-100.w-lg-50.ff-dg Check our store and find the most beautiful plant for your home
-        = link_to products_path do 
-          button.btn.fs-30 [type="button"] All the products
+        = link_to products_path, class: "text-decoration-none" do 
+          button.btn.btn-teal.rounded-0.fs-30.fw-400 [type="button"] All the products
       .col-4.p-0.d-none.d-lg-block
         = image_tag "home-cover.jpg", class: "img-fluid h-100"
 
-= render partial: "products_4", locals: { section: "best-sellers", product_list: Product.first(4) }
+= render partial: "products_4", locals: { section: "best-sellers", product_list: products_section("best-sellers") }
 
-= render partial: "products_4", locals: { section: "products", product_list: Product.first(4) }
+= render partial: "products_4", locals: { section: "products", product_list: products_section("products") }
 
       

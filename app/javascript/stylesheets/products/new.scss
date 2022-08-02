@@ -34,3 +34,16 @@ span.invalid-feedback {
   margin: 0;
   font-weight: 500;
 }
+
+textarea.select2-search__field {
+  font-family: 'Darker Grotesque', sans-serif !important;
+  font-size: 20px !important;
+  
+  &::placeholder {
+    font-size: 18px;
+  }
+}
+
+li.select2-results__option {
+  font-size: 20px;
+}

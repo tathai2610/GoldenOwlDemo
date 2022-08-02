@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show]
   
   def index
-    @products = ProductPolicy::Scope.new(current_user, Product.available).resolve(@user, params[:category])
+    @products = ProductPolicy::Scope.new(current_user, Product.available).resolve(@user, params[:category]).includes(:shop).with_attached_images
     @pagy, @products = pagy(@products, items: 12)
     @categories = Category.all.order(:name)
   end

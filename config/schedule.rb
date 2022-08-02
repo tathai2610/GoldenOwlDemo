@@ -19,8 +19,6 @@
 
 # Learn more: http://github.com/javan/whenever
 
-set :output, "output.log"
-
 every :hour do 
   runner 'UpdateOrdersStatusService.call'
 end

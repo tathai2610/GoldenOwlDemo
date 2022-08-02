@@ -59,6 +59,7 @@ class GhnClient
     service_response = get_service(order)
     service_id = service_response["data"][0]["service_id"]
     service_type_id = service_response["data"][0]["service_type_id"]
+    cod_amount = order.payment.status == "paid" ? 0 : (order.total_price + Order::SHPIPPING_FEE)
     items = []
 
     order.line_items.each do |line_item|
@@ -90,6 +91,7 @@ class GhnClient
         service_type_id: service_type_id,
         payment_type_id: 2,
         required_note: "CHOTHUHANG",
+        cod_amount: cod_amount,
         items: items
       }.to_json
     }

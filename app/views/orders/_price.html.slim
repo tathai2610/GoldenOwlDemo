@@ -1,16 +1,18 @@
 .d-flex.justify-content-end.pt-3
-  table.table.table-sm.table-borderless.align-middle.fs-18.w-100.w-lg-50
+  table.table.table-sm.table-borderless.align-middle.fs-20.w-100.w-lg-50
     tbody
       tr
         th Merchandise Subtotal: 
-        td.text-end 
-          | $
+        td.text-end.d-flex.align-items-center.justify-content-end 
+          .fs-3.pe-1px đ
           = display_price(order.total_price)
       tr
         th Shipping Total: 
-        td.text-end $1.00
+        td.text-end.d-flex.align-items-center.justify-content-end 
+          .fs-3.pe-1px đ
+          | 20,000
       tr
         th Total Payment: 
-        td.text-end.text-red.fw-bold.fs-30 
-          | $
-          = display_price(order.total_price)
+        td.text-end.d-flex.align-items-center.justify-content-end.text-red.fw-bold.fs-30 
+          .fs-1.pe-1px đ
+          = display_price(order.total_price + 20000)

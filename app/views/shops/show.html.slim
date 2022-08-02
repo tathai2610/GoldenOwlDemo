@@ -32,7 +32,7 @@
           = render partial: "products/product", collection: @products, as: :product
       .d-flex.mb-5.py-lg-3.px-lg-4.justify-content-center
         == pagy_bootstrap_nav(@pagy)
-  = render partial: "home/products_4", locals: { section: "best-sellers", product_list: @shop.products.first(4) }
+  = render partial: "home/products_4", locals: { section: "best-sellers", product_list: @products_best_seller }
 - else 
   .container-fluid.p-0.bg-color-cream 
     .container-xl.py-5.px-4.d-flex.align-items-center.justify-content-center 

@@ -49,7 +49,8 @@ group :development do
   gem 'spring'
   # Preview email in the default browser instead of sending it.
   gem 'letter_opener'
-  
+  # help you increase your application's performance by reducing the number of queries it makes.
+  gem 'bullet'
 end
 
 group :test do
@@ -95,7 +96,8 @@ gem "pundit", "~> 2.2"
 gem 'whenever', require: false
 
 gem 'sidekiq'
-
 # Test calling external apis
 gem 'vcr'
 gem 'webmock'
+# A gem for using PayPal API
+gem 'paypal-checkout-sdk'
