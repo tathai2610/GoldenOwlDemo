@@ -34,7 +34,6 @@ group :development, :test do
   gem 'rspec-rails', '>= 3.9.0'
   # Shim to load environment variables from .env into ENV in development.
   gem 'dotenv-rails'
-
 end
 
 group :development do

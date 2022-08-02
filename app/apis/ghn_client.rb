@@ -1,4 +1,5 @@
 require 'json'
+require 'httparty'
 
 class GhnClient 
   include HTTParty
