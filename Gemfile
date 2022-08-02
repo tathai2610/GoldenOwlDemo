@@ -35,7 +35,6 @@ group :development, :test do
   # Shim to load environment variables from .env into ENV in development.
   gem 'dotenv-rails'
 
-  gem 'httparty'
 end
 
 group :development do
@@ -101,3 +100,5 @@ gem 'vcr'
 gem 'webmock'
 # A gem for using PayPal API
 gem 'paypal-checkout-sdk'
+
+gem 'httparty'
