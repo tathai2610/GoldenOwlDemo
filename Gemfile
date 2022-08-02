@@ -100,4 +100,8 @@ gem 'webmock'
 # A gem for using PayPal API
 gem 'paypal-checkout-sdk'
 
-gem 'httparty'
+gem 'httparty', require: true
+
+gem 'net-smtp', require: false
+gem 'net-imap', require: false
+gem 'net-pop', require: false
