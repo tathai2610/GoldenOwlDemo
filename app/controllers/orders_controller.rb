@@ -3,7 +3,8 @@ class OrdersController < ApplicationController
   before_action :create_orders, only: [:create, :paypal_create_payment]
   
   def index 
-    @orders = OrderPolicy::Scope.new(current_user, Order).resolve.order("created_at DESC")
+    @orders = OrderPolicy::Scope.new(current_user, Order).resolve.order("created_at DESC").includes(
+      line_items: { product: { images_attachments: :blob } }, shop: :user)
   end
 
   def show 

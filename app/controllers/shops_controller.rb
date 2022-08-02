@@ -3,9 +3,9 @@ class ShopsController < ApplicationController
   before_action :set_shop, only: [:show]
   before_action :check_shop_exist, only: [:new, :create]
 
-  def show 
-    @products = Product.available.where(shop: @shop)
-    @products = @shop.products if @user == current_user
+  def show
+    @products = ShopPolicy::Scope.new(current_user, Product.where(shop: @shop)).resolve(@user).with_attached_images
+    @products_best_seller = @shop.products.includes(:shop).with_attached_images.first(4)
     @pagy, @products = pagy(@products, items: 12)
   end
   

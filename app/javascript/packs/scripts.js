@@ -244,6 +244,10 @@ $(document).on("turbolinks:load", function() {
       $("#add-btn").prop("disabled", true)
       $("#sub-btn").prop("disabled", false)
     }
+
+    if (!Number.isInteger($("#product-show-qtt").val())) {
+      $("#product-show-qtt").val(parseInt($("#product-show-qtt").val()))
+    }
   })
 
   if (+$(".product-quantity").text() < 2) 
