@@ -17,11 +17,19 @@ class OrdersController < ApplicationController
   end
 
   def create 
+    payments = [].tap do |payments|
+      @orders.map do |order| 
+        payments << { order_id: order.id, created_at: Time.now, updated_at: Time.now }
+      end
+    end
+
+    Payment.insert_all(payments)
+
     @orders.each do |order| 
       CreateGhnOrderJob.perform_later(order)
     end
 
-    flash[:success] = "Your order is created"
+    flash[:success] = "Your order is being created."
     redirect_to action: :index
   end
 
@@ -37,7 +45,7 @@ class OrdersController < ApplicationController
 
   def paypal_execute_payment
     if PaypalClient.execute_payment(payment_id: params[:orderID])
-      header :ok
+      head :ok
     else 
       render json: { error: "Payment executing failed" }, status: :unprocessable_entity
     end

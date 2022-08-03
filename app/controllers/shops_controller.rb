@@ -4,7 +4,7 @@ class ShopsController < ApplicationController
   before_action :check_shop_exist, only: [:new, :create]
 
   def show
-    @products = ShopPolicy::Scope.new(current_user, Product.where(shop: @shop)).resolve(@user).with_attached_images
+    @products = ShopPolicy::Scope.new(current_user, Product.where(shop: @shop)).resolve(@user).includes(:shop).with_attached_images
     @products_best_seller = @shop.products.limit(4).includes(:shop).with_attached_images
     @pagy, @products = pagy(@products, items: 12)
   end
@@ -20,7 +20,7 @@ class ShopsController < ApplicationController
 
     CreateStoreService.call(@shop_registration)
 
-    flash[:success] = "Congratulations! You have successfuly open your own shop on Planty!"
+    flash[:success] = "Congratulations! You have successfuly open your own shop on Golden Mall!"
     redirect_to user_shop_path(@user)
   rescue ActiveRecord::RecordInvalid
     flash[:error] = "Cannot create your shop"

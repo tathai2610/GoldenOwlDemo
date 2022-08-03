@@ -3,7 +3,7 @@
   .container-xl.p-0
     .row.mx-auto.p-0.px-lg-4 
       .col-auto.px-4.p-lg-0.mt-5.mb-3
-        = link_to :back, class: "text-decoration-none text-dark fs-24 fw-300 ps-3" do 
+        = link_to products_path, class: "text-decoration-none text-dark fs-24 fw-300 ps-3" do 
           i.fa-solid.fa-arrow-left-long.me-3.fw-400
           | Back to all products 
         .container-fluid.p-0 
@@ -11,7 +11,7 @@
             .col-12.col-lg-6.p-0
               = image_tag url_for(@product.images.first), class: "product-show-img"
               .d-flex.mt-3.pb-2.w-100.product-show_images-holder
-                = render partial: "products/product_images", collection: @product.images, as: :image
+                = render partial: "products/product_images", collection: @product.images.includes(:blob), as: :image
             = render "products/add_to_cart_form", product: @product
 .container-fluid.p-0#product-show-shop 
   .container-xl.py-5.px-4

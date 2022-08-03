@@ -237,6 +237,8 @@ ActiveRecord::Schema.define(version: 2022_07_29_032119) do
   add_foreign_key "districts", "cities"
   add_foreign_key "line_items", "products"
   add_foreign_key "orders", "addresses", column: "user_address_id"
+  add_foreign_key "orders", "shops"
+  add_foreign_key "orders", "users"
   add_foreign_key "payments", "orders"
   add_foreign_key "products", "shops"
   add_foreign_key "shops", "users"

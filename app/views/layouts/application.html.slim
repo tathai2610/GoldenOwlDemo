@@ -6,7 +6,7 @@ html
     meta[name="viewport" content="width=device-width,initial-scale=1"]
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'https://kit.fontawesome.com/f3d6bce8e0.js', crossorigin:"anonymous"
     = javascript_include_tag "https://www.paypal.com/sdk/js?client-id=#{ENV['PAYPAL_CLIENT_ID']}"    

@@ -34,8 +34,6 @@ group :development, :test do
   gem 'rspec-rails', '>= 3.9.0'
   # Shim to load environment variables from .env into ENV in development.
   gem 'dotenv-rails'
-
-  gem 'httparty'
 end
 
 group :development do
@@ -101,3 +99,9 @@ gem 'vcr'
 gem 'webmock'
 # A gem for using PayPal API
 gem 'paypal-checkout-sdk'
+
+gem 'httparty', require: true
+
+gem 'net-smtp', require: false
+gem 'net-imap', require: false
+gem 'net-pop', require: false

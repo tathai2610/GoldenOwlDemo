@@ -15,8 +15,7 @@ class ShopPolicy < ApplicationPolicy
   end
 
   def show?
-    return true if user.has_role?(:admin) || user.shop == record
-    return true if record.state == "active"
+    return true if record.state == "active" ||  user.shop == record
     false 
   end
 
