@@ -4,7 +4,7 @@ class PaypalClient
   def self.create_payment(orders: [])
     # argument 'orders' contains an array of orders
     client = PaypalClient.new.client
-    payment_price = ((orders.sum(&:total_price) + (20000 * orders.length)) / 23000).to_s
+    payment_price = ((orders.sum(&:total_price) + (20000 * orders.length)) / Payment::VND_TO_USD_EXCHANGE_RATE.to_f).round(2).to_s
 
     request = PayPalCheckoutSdk::Orders::OrdersCreateRequest::new
     request.request_body({

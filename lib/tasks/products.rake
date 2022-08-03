@@ -12,12 +12,15 @@ namespace :products do
         shop_id: rand(1..10), 
         quantity: rand(50..100)
       )
-      Faker::Number.number(digits: 1).times do 
+      
+      rand(1..10).times do 
         p.images.attach(io: URI.open(Faker::LoremFlickr.image), filename: p.name, content_type: 'image/png')
       end
+
       count += 1
       puts count
-      p.save
+      puts "After save: #{count}" if p.save
+
       2.times do 
         p.categories << Category.find(rand(1..20))
       end
