@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_29_032119) do
+ActiveRecord::Schema.define(version: 2022_08_03_081344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -153,6 +153,17 @@ ActiveRecord::Schema.define(version: 2022_07_29_032119) do
     t.index ["shop_id"], name: "index_products_on_shop_id"
   end
 
+  create_table "ratings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "product_id", null: false
+    t.text "content"
+    t.integer "star"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_ratings_on_product_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
@@ -241,6 +252,8 @@ ActiveRecord::Schema.define(version: 2022_07_29_032119) do
   add_foreign_key "orders", "users"
   add_foreign_key "payments", "orders"
   add_foreign_key "products", "shops"
+  add_foreign_key "ratings", "products"
+  add_foreign_key "ratings", "users"
   add_foreign_key "shops", "users"
   add_foreign_key "user_infos", "users"
   add_foreign_key "wards", "districts"
