@@ -18,8 +18,9 @@
   }
 
   .logo-responsive {
-    width: 100px;
-    height: 40px;
+    // width: 100px;
+    // height: 40px;
+    max-height: 40px;
   }
 
   .height-responsive {
@@ -53,8 +54,9 @@
   }
 
   .logo-responsive {
-    width: 160px;
-    height: 64px;
+    // width: 160px;
+    // height: 64px;
+    max-height: 64px;
   }
 
   .height-responsive {
@@ -72,10 +74,10 @@
     object-fit: cover;
   }
 
-  .logo-responsive {
-    width: 160px;
-    height: 64px;
-  }
+  // .logo-responsive {
+  //   width: 160px;
+  //   height: 64px;
+  // }
 
   .w-lg-50 {
     width: 50% !important;

@@ -11,7 +11,7 @@
             .col-12.col-lg-6.p-0
               = image_tag url_for(@product.images.first), class: "product-show-img"
               .d-flex.mt-3.pb-2.w-100.product-show_images-holder
-                = render partial: "products/product_images", collection: @product.images, as: :image
+                = render partial: "products/product_images", collection: @product.images.includes(:blob), as: :image
             = render "products/add_to_cart_form", product: @product
 .container-fluid.p-0#product-show-shop 
   .container-xl.py-5.px-4

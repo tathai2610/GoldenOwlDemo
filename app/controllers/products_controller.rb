@@ -48,7 +48,8 @@ class ProductsController < ApplicationController
   end
 
   def set_product
-    @product = authorize Product.find(params[:id])
+    @product = Product.find(params[:id])
+    authorize @product
   end
 
   def product_params 

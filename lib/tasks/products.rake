@@ -1,6 +1,9 @@
+require "open-uri"
+
 namespace :products do
   desc "initalize 50 products"
   task init: :environment do
+    count = 0
     50.times do |i|
       p = Product.new(
         name: Faker::Lorem.sentence.gsub('.', ''), 
@@ -9,7 +12,11 @@ namespace :products do
         shop_id: rand(1..10), 
         quantity: rand(50..100)
       )
-      p.images.attach([io: File.open(Rails.root.join('app', 'assets', 'images', 'default.jpg')), filename: 'default-image.jpg', content_type: 'image/jpg'])
+      Faker::Number.number(digits: 1).times do 
+        p.images.attach(io: URI.open(Faker::LoremFlickr.image), filename: p.name, content_type: 'image/png')
+      end
+      count += 1
+      puts count
       p.save
       2.times do 
         p.categories << Category.find(rand(1..20))
