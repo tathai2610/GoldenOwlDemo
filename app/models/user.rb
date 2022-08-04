@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :orders, dependent: :destroy
   has_many :user_infos, dependent: :destroy
   has_many :addresses, through: :user_infos
+  has_many :ratings, dependent: :destroy
 
   after_create :attach_avatar
   after_create :create_cart

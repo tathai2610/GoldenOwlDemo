@@ -1,0 +1,19 @@
+.container-fluid.px-0.py-3.border-bottom id="review-#{review.id}"
+  .row.mx-auto 
+    .col-auto
+      .avatar style="background-image: url(#{url_for(review.user.avatar)})"
+    .col
+      .review-name.fs-18 = review.user.email
+      .review-star-value.d-flex.text-teal.mt-1
+        = review_star_rating(review)
+      .review-created.fs-18.text-muted.mt-2
+        = review.created_at.strftime("%Y-%m-%d %H:%M")
+      .review-content.fs-20.fw-500.my-3 
+        = review.content
+      - if review.images.attached?
+        .review-images
+          - review.images.each do |i| 
+            = image_tag url_for(i), size: "70x70", class: "me-2 mb-2" 
+      .review-likes.text-muted
+        i.fa-solid.fa-thumbs-up.fa-lg
+          

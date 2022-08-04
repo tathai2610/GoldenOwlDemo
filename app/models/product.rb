@@ -4,6 +4,7 @@ class Product < ApplicationRecord
   has_many :categories, through: :category_products
   has_many :line_items, dependent: :destroy
   has_many :order_products
+  has_many :ratings, dependent: :destroy
   has_many_attached :images
   has_rich_text :description
 
@@ -20,6 +21,17 @@ class Product < ApplicationRecord
   scope :similar_products, -> id { joins(category_products: :category).merge(Category.where(id: [Product.find(id).categories.pluck(:id)])).where.not(id: id) }
   scope :in_category, -> name { joins(category_products: :category).merge(Category.where(name: name)) }
   scope :available, -> { where("quantity > ?", 0).order(created_at: :desc) }
+
+  ["5_star", "4_star", "3_star", "2_star", "1_star"].each do |action| 
+    define_method("reviews_#{action}") do 
+      self.ratings.where(star: action[0].to_i)
+    end
+  end
+
+  def average_star_value
+    return 0 if ratings.blank?
+    ratings.average(:star).round
+  end
 
   private 
 

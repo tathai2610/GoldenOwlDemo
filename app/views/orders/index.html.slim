@@ -21,7 +21,7 @@
       - if @orders.present?
         = render partial: "shop_items", collection: @orders, as: :order, locals: { user_orders: true }
       - else 
-        .empty 
+        .empty.mt-5
           .empty-icon 
             = svg_tag "icons/clipboard-x.svg"
           .empty-title.fs-24 No orders yet

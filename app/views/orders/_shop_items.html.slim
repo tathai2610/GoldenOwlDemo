@@ -11,7 +11,7 @@
       - else 
         = link_to "View order", shop_order_path(order), class: "btn btn-teal text-white bg-color-darkgreen fs-18"
       .vr.mx-3
-      .status.status-teal = display_status(order.status)
+      .status.status-teal.fs-18.fw-bold = display_status(order.status)
   div 
     = render partial: "orders/order_item", collection: order.line_items, as: :order_item
   .d-flex.align-items-center.justify-content-end.pt-3

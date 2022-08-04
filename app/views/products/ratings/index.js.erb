@@ -1,0 +1,14 @@
+<% if @filter %>
+  <% if @reviews.present? %>
+    // Re-render all suitable reviews
+    $(".product-reviews").empty().append("<%= j render partial: "products/ratings/rating", collection: @reviews, as: :review %>")
+    // Re-render new pagination
+    $(".product-show_pagination_holder").html("<%== j pagy_bootstrap_nav(@pagy) %>")
+  <% else %>
+    $(".product-reviews").html("<%= j render 'products/ratings/empty' %>")
+    $(".product-show_pagination_holder").empty()
+  <% end %>
+  // Change active state for filter buttons
+  $(".btn-teal[product-star]").removeClass("btn-teal")
+  $("[product-star='<%= @filter %>']").addClass("btn-teal")
+<% end %>

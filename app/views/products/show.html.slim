@@ -38,23 +38,7 @@
     h1.ff-roboto.fw-400.fs-30.mb-0 Product Description
     .fs-20.fw-400.py-2.ff-dg == @product.description
 
-.container-fluid.p-0.bg-white
-  .container-xl.py-5.px-4.border-bottom
-    h1.ff-roboto.fw-400.fs-30 Product Ratings
-    .bg-color-cream.p-4
-      .row.mx-auto.align-items-center
-        .col-md-auto 
-          div
-            .product-ratings.d-inline-block 3
-            |  out of 5
-          .d-flex
-            .product-star.product-star-1 
-              i.fa-solid.fa-star 
-            .product-star.product-star-2 
-              i.fa-solid.fa-star
-            .product-star.product-star-3 = svg_tag "icons/star.svg"
-            .product-star.product-star-4 = svg_tag "icons/star.svg"
-            .product-star.product-star-5 = svg_tag "icons/star.svg"
+= render "products/ratings/index", { product: @product, reviews: @reviews }
 
 - if Product.similar_products(@product.id).any?
   = render partial: "home/products_4", locals: { section: "similar-products", product_list: products_section("similar-products", @product.id) }

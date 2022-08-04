@@ -12,6 +12,20 @@ class ProductsController < ApplicationController
   
   def show
     @line_item = LineItem.new
+
+    if !params[:filter_star] || (params[:filter_star] == "All")
+      @reviews = @product.ratings.order(created_at: :desc).include_eager_load
+    else
+      @reviews = @product.send("reviews_#{params[:filter_star]}_star").order(created_at: :desc).include_eager_load 
+    end
+
+    @filter = params[:filter_star]
+    @pagy, @reviews = pagy(@reviews, items: 6, link_extra: 'data-remote="true"')
+
+    respond_to do |format| 
+      format.html 
+      format.js { render 'products/ratings/index' } 
+    end
   end
 
   def new

@@ -14,7 +14,7 @@ namespace :products do
       )
       
       rand(1..10).times do 
-        p.images.attach(io: URI.open(Faker::LoremFlickr.image), filename: p.name, content_type: 'image/png')
+        p.images.attach(io: URI.open(Faker::LoremFlickr.image(size: "600x800", search_terms: ['plants'])), filename: p.name, content_type: 'image/jpg')
       end
 
       count += 1
