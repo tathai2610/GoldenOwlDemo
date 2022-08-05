@@ -8,7 +8,7 @@ class RatingsController < ApplicationController
   end
 
   def create 
-    @rating = Rating.create(rating_params.merge(user: current_user, product: @product))
+    @rating = Rating.new(rating_params.merge(user: current_user, product: @product))
     
     if @rating.save 
       @line_item.update(rated: true)
