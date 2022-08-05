@@ -71,4 +71,28 @@ module ApplicationHelper
     return "/carts/#{current_user.cart.id}/line_items" if user_signed_in
     "/carts/1/line_items"
   end
+
+  def review_star_rating(review)
+    solid_star_icon = content_tag(:i, nil, class: "fa-solid fa-star")
+    solid_star = content_tag(:div, solid_star_icon, class: "review-star solid-star")
+    regular_star_icon = content_tag(:i, nil, class: "fa-regular fa-star")
+    regular_star = content_tag(:div, regular_star_icon, class: "review-star regular-star")
+    
+    star_rating = "".html_safe.tap do |star_rating|
+      review.star.times { |i| star_rating << solid_star }
+      (Rating::FULL_STAR - review.star).times { |i| star_rating << regular_star }
+    end
+  end
+
+  def product_star_rating(product)
+    solid_star_icon = content_tag(:i, nil, class: "fa-solid fa-star fa-lg")
+    solid_star = content_tag(:div, solid_star_icon, class: "product-star solid-star")
+    regular_star_icon = content_tag(:i, nil, class: "fa-regular fa-star fa-lg")
+    regular_star = content_tag(:div, regular_star_icon, class: "product-star regular-star")
+
+    star_rating = "".html_safe.tap do |star_rating|
+      product.average_star_value.times { |i| star_rating << solid_star }
+      (Rating::FULL_STAR - product.average_star_value).times { |i| star_rating << regular_star }
+    end    
+  end
 end

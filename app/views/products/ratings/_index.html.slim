@@ -1,0 +1,27 @@
+.container-fluid.p-0.bg-white
+  .container-xl.py-5.px-4.border-bottom
+    h1.ff-roboto.fw-400.fs-30 Product Ratings
+    .bg-color-cream.p-4
+      .row.mx-auto.align-items-center
+        .col-md-auto.d-none.d-md-block 
+          .d-flex.align-items-center
+            .product-ratings.fs-36 = product.average_star_value
+            .fs-24.ms-2 out of 5
+          .d-flex.text-teal.pb-3
+            = product_star_rating(product)
+        .col-12.col-md-auto.d-flex.align-items-center.offset-lg-1
+          .btn-list
+            = link_to "All", "#{url_for(filter_star: "All")}", class: "btn btn-square btn-teal fs-20", remote: true, "product-star": "All"
+            = link_to "5 star (#{product.reviews_5_star.size})", "#{url_for(filter_star: "5")}", class: "btn btn-square fs-20", remote: true, "product-star": "5" 
+            = link_to "4 star (#{product.reviews_4_star.size})", "#{url_for(filter_star: "4")}", class: "btn btn-square fs-20", remote: true, "product-star": "4" 
+            = link_to "3 star (#{product.reviews_3_star.size})", "#{url_for(filter_star: "3")}", class: "btn btn-square fs-20", remote: true, "product-star": "3" 
+            = link_to "2 star (#{product.reviews_2_star.size})", "#{url_for(filter_star: "2")}", class: "btn btn-square fs-20", remote: true, "product-star": "2" 
+            = link_to "1 star (#{product.reviews_1_star.size})", "#{url_for(filter_star: "1")}", class: "btn btn-square fs-20", remote: true, "product-star": "1" 
+    .product-reviews
+      - if product.ratings.present?
+        = render partial: "products/ratings/rating", collection: reviews, as: :review
+      - else 
+        = render "products/ratings/empty"
+    .product-show_pagination_holder.mt-3.mb-4.float-end.position-relative
+      - if product.ratings.present?
+        == pagy_bootstrap_nav(@pagy)

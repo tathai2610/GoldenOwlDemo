@@ -63,7 +63,7 @@ count = 0
     description: "<div>#{Faker::Lorem.paragraphs.join('<br>')}</div>", 
     # price: Faker::Number.decimal(l_digits: 2, r_digits: 2), 
     price: Faker::Number.number(digits: 4) * 100,
-    shop_id: rand(1..10), 
+    shop_id: Shop.pluck(:id),sample, 
     quantity: rand(50..100)
     # code: Faker::Lorem.word.upcase
   )
@@ -82,8 +82,8 @@ count = 0
 end
 
 5.times do
-  s = Shop.find(rand(1..10))
-  item = LineItem.find_or_create_by(line_itemable: User.first.cart, product: Product.find(rand(1..50)))
+  s = Shop.find(Shop.pluck(:id).sample)
+  item = LineItem.find_or_create_by(line_itemable: User.first.cart, product: Product.find(Product.pluck(:id).sample))
   item.update(quantity: rand(1..10))
 end
 

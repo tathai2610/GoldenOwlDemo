@@ -38,5 +38,7 @@
     h1.ff-roboto.fw-400.fs-30.mb-0 Product Description
     .fs-20.fw-400.py-2.ff-dg == @product.description
 
+= render "products/ratings/index", { product: @product, reviews: @reviews }
+
 - if Product.similar_products(@product.id).any?
   = render partial: "home/products_4", locals: { section: "similar-products", product_list: products_section("similar-products", @product.id) }

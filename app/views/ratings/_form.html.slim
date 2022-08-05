@@ -1,0 +1,40 @@
+.bg-white.container-fluid.py-32.mb-4.border 
+  .d-flex.align-item-center.pb-3.border-bottom
+    = link_to shop_product_path(line_item.shop, line_item.product) do
+      = image_tag url_for(line_item.product.images.first), size: "50x50", class: "object-fit-cover"
+    = link_to shop_product_path(line_item.shop, line_item.product), class: "text-decoration-none text-dark fw-500" do
+      .ms-3.fs-24 = line_item.product.name
+  .py-32.rating-product product-id="#{line_item.product.id}"
+    - if line_item.rated? 
+      = render "ratings/rating_success"
+    - else 
+      = simple_form_for Rating.new, url: product_ratings_path(line_item.product, line_item_id: line_item.id), remote: true do |f|
+        .d-flex.align-items-center.justify-content-center.py-32
+          .rating 
+            input type="radio" id="star-5-product-#{line_item.product.id}" name="rate-product-#{line_item.product.id}" value="5" checked=true
+            label for="star-5-product-#{line_item.product.id}" title="Five"
+              = svg_tag "icons/star.svg", class: "icon-filled"
+            input type="radio" id="star-4-product-#{line_item.product.id}" name="rate-product-#{line_item.product.id}" value="4"
+            label for="star-4-product-#{line_item.product.id}" title="Four"
+              = svg_tag "icons/star.svg", class: "icon-filled"
+            input type="radio" id="star-3-product-#{line_item.product.id}" name="rate-product-#{line_item.product.id}" value="3"
+            label for="star-3-product-#{line_item.product.id}" title="Three"
+              = svg_tag "icons/star.svg", class: "icon-filled"
+            input type="radio" id="star-2-product-#{line_item.product.id}" name="rate-product-#{line_item.product.id}" value="2"
+            label for="star-2-product-#{line_item.product.id}" title="Two"
+              = svg_tag "icons/star.svg", class: "icon-filled"
+            input type="radio" id="star-1-product-#{line_item.product.id}" name="rate-product-#{line_item.product.id}" value="1"
+            label for="star-1-product-#{line_item.product.id}" title="One"
+              = svg_tag "icons/star.svg", class: "icon-filled"
+          = f.input :star, as: :hidden, input_html: { value: "5"}
+        .row.mx-auto.justify-content-center.fs-20
+          .col-12.col-md-6
+            = f.input :content, as: :text, label: false, placeholder: 'Leave a review...', input_html: { class: "w-100 p-3 border" }
+          .col-12.col-md-7.d-flex.justify-content-center.mt-3
+            = f.input :images, as: :file, label: false, input_html: { multiple: true, class: "d-none", accept: "image/jpeg, image/png" }          
+            button.btn.btn-teal.bg-color-darkgreen type="button" onclick="document.getElementById('rating_images').click()"
+              = svg_tag "icons/camera.svg"
+              .fs-20 Add Photo 
+          .col-12.col-md-6.review-images-holder.mt-3.text-center
+          .col-12.d-flex.justify-content-center
+            = f.button :submit, 'Rate', class: "btn btn-teal bg-color-darkgreen fs-24 px-4 py-2"

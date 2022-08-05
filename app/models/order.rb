@@ -38,4 +38,10 @@ class Order < ApplicationRecord
   def total_price 
     line_items.sum { |item| item.product.price * item.quantity }.to_i
   end
+
+  def need_rating? 
+    return false unless status == "completed"
+    line_items.map { |item| return true unless item.rated }
+    false
+  end
 end

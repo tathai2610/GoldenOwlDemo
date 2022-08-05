@@ -1,7 +1,7 @@
 @use '../config' as *;
 
 #user-auth {
-  background: url('/assets/home-cover.jpg');
+  background-image: url('/assets/home-cover.jpg');
 
   .container-xl {
     background-color: white;

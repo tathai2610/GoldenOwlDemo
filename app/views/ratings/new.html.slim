@@ -1,0 +1,12 @@
+.container-fluid.p-0 
+  .container-xl.p-0
+    .py-32.px-4.px-xl-0
+      .ff-roboto.fs-30.fw-400 Rate your products
+      = render "layouts/flash"
+    .px-4.py-3.bg-white.mb-4.border
+      = link_to orders_path, class: "text-dark text-docoration-none capitalize d-flex align-items-center fs-18"
+        = svg_tag "icons/arrow-narrow-left.svg"
+        .ms-2.fs-20 Back to order list
+    div 
+      = render partial: "ratings/form", collection: @line_items, as: :line_item
+    
