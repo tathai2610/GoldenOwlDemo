@@ -440,4 +440,17 @@ $(document).on("turbolinks:load", function() {
           .attr("value", paymentMethod)
           .appendTo("#form-create-order");
   }
+
+  $("#rating_images").on('change', function() {
+    $(".review-images-holder").html('');
+    for (var i = 0; i < $(this)[0].files.length; i++) {
+        $(".review-images-holder").append('<img src="'+window.URL.createObjectURL(this.files[i])+'" width="70px" height="70px" class="me-2 mb-2 object-fit-cover"/>');
+    }
+  })
+
+  $("input[name*='rate-product']").on('change', function() {
+    console.log($(this).val())
+    $(this).parent().siblings(".input").children().val($(this).val())
+    console.log($(this).parent().siblings(".input").children().val())
+  })
 })

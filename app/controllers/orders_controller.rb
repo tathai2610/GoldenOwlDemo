@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   
   def index 
     @orders = OrderPolicy::Scope.new(current_user, Order).resolve.order("created_at DESC").includes(
-      line_items: { product: { images_attachments: :blob } }, shop: :user)
+      line_items: { product: { images_attachments: :blob }, product: :shop }, shop: :user)
   end
 
   def show 

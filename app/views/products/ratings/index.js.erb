@@ -11,4 +11,6 @@
   // Change active state for filter buttons
   $(".btn-teal[product-star]").removeClass("btn-teal")
   $("[product-star='<%= @filter %>']").addClass("btn-teal")
+<% else %>
+  $(".product-reviews").empty().append("<%= j render partial: "products/ratings/rating", collection: @reviews, as: :review %>")
 <% end %>

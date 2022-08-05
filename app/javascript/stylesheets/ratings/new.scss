@@ -1,0 +1,54 @@
+@use "../config" as *;
+
+.rating {
+  direction: rtl;
+
+  input {
+    display: none;  
+  }
+
+  label svg {
+    width: 35px;
+    height: 35px;
+  }
+
+  &:not(:checked) > label {
+    cursor: pointer;
+    color: $dark-green;
+    opacity: .2;
+  }
+
+  input:checked ~ label {
+    opacity: 1;
+  }
+
+  &:not(:checked) > label:hover,
+  &:not(:checked) > label:hover ~ label {
+    opacity: .6;
+  }
+
+  & > input:checked + label:hover,
+  & > input:checked + label:hover ~ label,
+  & > input:checked ~ label:hover,
+  & > input:checked ~ label:hover ~ label,
+  & > label:hover ~ input:checked ~ label {
+    opacity: .8;
+  }
+}
+
+#rating_content {
+  min-height: 300px;
+  background-color: rgba(222, 222, 222, 0.4);
+  resize: none;
+  outline: none;
+}
+
+.rating-success {
+  padding: 56px 0;
+
+  &-icon svg {
+    width: 100px;
+    height: 100px;
+    color: $teal;
+  }
+}

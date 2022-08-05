@@ -23,6 +23,6 @@
         .fs-20.ms-2.fw-bold = @order.shop.name
         .d-none.d-md-block.ms-3 = link_to "View shop", user_shop_path(@order.shop.user), class: "btn fs-18"
       div 
-        = render partial: "orders/order_item", collection: @order.line_items, as: :order_item
+        = render partial: "orders/order_item", collection: @order.line_items.includes(product: :shop), as: :order_item
       = render partial: "orders/price", locals: { order: @order }
 

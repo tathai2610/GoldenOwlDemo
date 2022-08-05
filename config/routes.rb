@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   root "home#index"
-  resource :cart
+  resource :cart, only: :show
 
   resources :users do
     resource :shop
@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   end
 
   resources :orders do 
+    resources :ratings, only: :new
+
     collection do 
       post '/paypal/create_payment', to: 'orders#paypal_create_payment'
       post '/paypal/execute_payment', to: 'orders#paypal_execute_payment'
@@ -58,5 +60,7 @@ Rails.application.routes.draw do
     resources :line_items, module: :orders
   end
 
-  resources :products, only: %i(index)
+  resources :products, only: :index do
+    resources :ratings, only: :create
+  end
 end

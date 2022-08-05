@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_03_081344) do
+ActiveRecord::Schema.define(version: 2022_08_05_090259) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -114,6 +114,7 @@ ActiveRecord::Schema.define(version: 2022_08_03_081344) do
     t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "rated", default: false
     t.index ["line_itemable_type", "line_itemable_id"], name: "index_line_items_on_line_itemable"
     t.index ["product_id"], name: "index_line_items_on_product_id"
   end

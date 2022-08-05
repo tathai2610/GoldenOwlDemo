@@ -1,0 +1,3 @@
+<% unless @error %>
+  $(".rating-product[product-id='<%= @product.id %>']").html("<%= j render partial: "ratings/rating_success" %>")
+<% end %>
