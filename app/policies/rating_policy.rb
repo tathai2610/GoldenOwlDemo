@@ -11,6 +11,6 @@ class RatingPolicy < ApplicationPolicy
   end
 
   def create?
-    user.present? && record.need_rating? && user == record.line_itemable.user  
+    user.present? && !record.rated? && user == record.line_itemable.user  
   end
 end
