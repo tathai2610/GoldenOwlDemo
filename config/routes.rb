@@ -63,4 +63,10 @@ Rails.application.routes.draw do
   resources :products, only: :index do
     resources :ratings, only: :create
   end
+
+  namespace :api do
+    namespace :v1 do
+      resources :orders
+    end
+  end
 end

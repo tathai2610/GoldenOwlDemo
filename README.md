@@ -9,7 +9,7 @@ Golden Mall is an online shopping application.
 - User can select items to checkout
 - User can choose payment method (COD or PayPal)
 - User can open their own shop
-- User can add new products (shop required)
+- User can add a product or many products with a csv file. (shop required)
 - Shops and orders created will also be created on GHN server
 - User can rate products which is in completed orders
 
