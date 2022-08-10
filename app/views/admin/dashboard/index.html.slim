@@ -10,1160 +10,1160 @@
             | Overview
           h2.page-title
             | Dashboard
-  .page-body
-    .container-xl
-      .row.row-deck.row-cards
-        .col-sm-6.col-lg-3
-          .card
-            .card-body
-              .d-flex.align-items-center
-                .subheader Sales
-                .ms-auto.lh-1
-                  .dropdown
-                    a.dropdown-toggle.text-muted aria-expanded="false" aria-haspopup="true" data-bs-toggle="dropdown" href="#"  Last 7 days
-                    .dropdown-menu.dropdown-menu-end
-                      a.dropdown-item.active href="#"  Last 7 days
-                      a.dropdown-item href="#"  Last 30 days
-                      a.dropdown-item href="#"  Last 3 months
-              .h1.mb-3 75%
-              .d-flex.mb-2
-                div Conversion rate
-                .ms-auto
-                  span.text-green.d-inline-flex.align-items-center.lh-1
-                    | 7%
-                    /! Download SVG icon from http://tabler-icons.io/i/trending-up
-                    svg.icon.ms-1 fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                      path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                      polyline points=("3 17 9 11 13 15 21 7") /
-                      polyline points=("14 7 21 7 21 14") /
-              .progress.progress-sm
-                .progress-bar.bg-blue aria-valuemax="100" aria-valuemin="0" aria-valuenow="75" role="progressbar" style=("width: 75%") 
-                  span.visually-hidden 75% Complete
-        .col-sm-6.col-lg-3
-          .card
-            .card-body
-              .d-flex.align-items-center
-                .subheader Revenue
-                .ms-auto.lh-1
-                  .dropdown
-                    a.dropdown-toggle.text-muted aria-expanded="false" aria-haspopup="true" data-bs-toggle="dropdown" href="#"  Last 7 days
-                    .dropdown-menu.dropdown-menu-end
-                      a.dropdown-item.active href="#"  Last 7 days
-                      a.dropdown-item href="#"  Last 30 days
-                      a.dropdown-item href="#"  Last 3 months
-              .d-flex.align-items-baseline
-                .h1.mb-0.me-2 $4,300
-                .me-auto
-                  span.text-green.d-inline-flex.align-items-center.lh-1
-                    | 8%
-                    /! Download SVG icon from http://tabler-icons.io/i/trending-up
-                    svg.icon.ms-1 fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                      path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                      polyline points=("3 17 9 11 13 15 21 7") /
-                      polyline points=("14 7 21 7 21 14") /
-            #chart-revenue-bg.chart-sm
-        .col-sm-6.col-lg-3
-          .card
-            .card-body
-              .d-flex.align-items-center
-                .subheader New clients
-                .ms-auto.lh-1
-                  .dropdown
-                    a.dropdown-toggle.text-muted aria-expanded="false" aria-haspopup="true" data-bs-toggle="dropdown" href="#"  Last 7 days
-                    .dropdown-menu.dropdown-menu-end
-                      a.dropdown-item.active href="#"  Last 7 days
-                      a.dropdown-item href="#"  Last 30 days
-                      a.dropdown-item href="#"  Last 3 months
-              .d-flex.align-items-baseline
-                .h1.mb-3.me-2 6,782
-                .me-auto
-                  span.text-yellow.d-inline-flex.align-items-center.lh-1
-                    | 0%
-                    /! Download SVG icon from http://tabler-icons.io/i/minus
-                    svg.icon.ms-1 fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                      path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                      line x1="5" x2="19" y1="12" y2="12" /
-              #chart-new-clients.chart-sm
-        .col-sm-6.col-lg-3
-          .card
-            .card-body
-              .d-flex.align-items-center
-                .subheader Active users
-                .ms-auto.lh-1
-                  .dropdown
-                    a.dropdown-toggle.text-muted aria-expanded="false" aria-haspopup="true" data-bs-toggle="dropdown" href="#"  Last 7 days
-                    .dropdown-menu.dropdown-menu-end
-                      a.dropdown-item.active href="#"  Last 7 days
-                      a.dropdown-item href="#"  Last 30 days
-                      a.dropdown-item href="#"  Last 3 months
-              .d-flex.align-items-baseline
-                .h1.mb-3.me-2 2,986
-                .me-auto
-                  span.text-green.d-inline-flex.align-items-center.lh-1
-                    | 4%
-                    /! Download SVG icon from http://tabler-icons.io/i/trending-up
-                    svg.icon.ms-1 fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                      path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                      polyline points=("3 17 9 11 13 15 21 7") /
-                      polyline points=("14 7 21 7 21 14") /
-              #chart-active-users.chart-sm
-        .col-lg-6
-          .row.row-cards
-            .col-12
-              .card
-                .card-body
-                  h3.card-title Traffic summary
-                  #chart-mentions.chart-lg
-            .col-12
-              .card
-                .card-body
-                  p.mb-3
-                    | Using Storage
-                    strong 6854.45 MB
-                    | 8 GB
-                  .progress.progress-separated.mb-3
-                    .progress-bar.bg-primary role="progressbar" style=("width: 44%") 
-                    .progress-bar.bg-info role="progressbar" style=("width: 19%") 
-                    .progress-bar.bg-success role="progressbar" style=("width: 9%") 
-                  .row
-                    .col-auto.d-flex.align-items-center.pe-2
-                      span.legend.me-2.bg-primary
-                      span Regular
-                      span.d-none.d-md-inline.d-lg-none.d-xxl-inline.ms-2.text-muted 915MB
-                    .col-auto.d-flex.align-items-center.px-2
-                      span.legend.me-2.bg-info
-                      span System
-                      span.d-none.d-md-inline.d-lg-none.d-xxl-inline.ms-2.text-muted 415MB
-                    .col-auto.d-flex.align-items-center.px-2
-                      span.legend.me-2.bg-success
-                      span Shared
-                      span.d-none.d-md-inline.d-lg-none.d-xxl-inline.ms-2.text-muted 201MB
-                    .col-auto.d-flex.align-items-center.ps-2
-                      span.legend.me-2
-                      span Free
-                      span.d-none.d-md-inline.d-lg-none.d-xxl-inline.ms-2.text-muted 612MB
-            .col-sm-4
-              .card
-                .card-body.p-2.text-center
-                  .text-end.text-green
-                    span.text-green.d-inline-flex.align-items-center.lh-1
-                      | 6%
-                      /! Download SVG icon from http://tabler-icons.io/i/trending-up
-                      svg.icon.ms-1 fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                        path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                        polyline points=("3 17 9 11 13 15 21 7") /
-                        polyline points=("14 7 21 7 21 14") /
-                  .h1.m-0 43
-                  .text-muted.mb-3 New Tickets
-            .col-sm-4
-              .card
-                .card-body.p-2.text-center
-                  .text-end.text-red
-                    span.text-red.d-inline-flex.align-items-center.lh-1
-                      | \-2%
-                      /! Download SVG icon from http://tabler-icons.io/i/trending-down
-                      svg.icon.ms-1 fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                        path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                        polyline points=("3 7 9 13 13 9 21 17") /
-                        polyline points=("21 10 21 17 14 17") /
-                  .h1.m-0 95
-                  .text-muted.mb-3 Daily Earnings
-            .col-sm-4
-              .card
-                .card-body.p-2.text-center
-                  .text-end.text-green
-                    span.text-green.d-inline-flex.align-items-center.lh-1
-                      | 9%
-                      /! Download SVG icon from http://tabler-icons.io/i/trending-up
-                      svg.icon.ms-1 fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                        path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                        polyline points=("3 17 9 11 13 15 21 7") /
-                        polyline points=("14 7 21 7 21 14") /
-                  .h1.m-0 7
-                  .text-muted.mb-3 New Replies
-        .col-lg-6
-          .card
-            .card-header.border-0
-              .card-title Development activity
-            .position-relative
-              .position-absolute.top-0.left-0.px-3.mt-1.w-75
-                .row.g-2
-                  .col-auto
-                    #sparkline-activity.chart-sparkline.chart-sparkline-square
-                  .col
-                    div Today's Earning: $4,262.40
-                    .text-muted
-                      /! Download SVG icon from http://tabler-icons.io/i/trending-up
-                      svg.icon.icon-inline.text-green fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                        path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                        polyline points=("3 17 9 11 13 15 21 7") /
-                        polyline points=("14 7 21 7 21 14") /
-                      | +5% more than yesterday
-              #chart-development-activity
-            .card-table.table-responsive
-              table.table.table-vcenter
-                thead
-                  tr
-                    th User
-                    th Commit
-                    th Date
-                tbody
-                  tr
-                    td.w-1
-                      span.avatar.avatar-sm style=("background-image: url(./static/avatars/000m.jpg)") 
-                    td.td-truncate
-                      .text-truncate
-                        | Fix dart Sass compatibility (#29755)
-                    td.text-nowrap.text-muted 28 Nov 2019
-                  tr
-                    td.w-1
-                      span.avatar.avatar-sm JL
-                    td.td-truncate
-                      .text-truncate
-                        | Change deprecated html tags to text decoration classes (#29604)
-                    td.text-nowrap.text-muted 27 Nov 2019
-                  tr
-                    td.w-1
-                      span.avatar.avatar-sm style=("background-image: url(./static/avatars/002m.jpg)") 
-                    td.td-truncate
-                      .text-truncate
-                        | justify-content:between ⇒ justify-content:space-between (#29734)
-                    td.text-nowrap.text-muted 26 Nov 2019
-                  tr
-                    td.w-1
-                      span.avatar.avatar-sm style=("background-image: url(./static/avatars/003m.jpg)") 
-                    td.td-truncate
-                      .text-truncate
-                        | Update change-version.js (#29736)
-                    td.text-nowrap.text-muted 26 Nov 2019
-                  tr
-                    td.w-1
-                      span.avatar.avatar-sm style=("background-image: url(./static/avatars/000f.jpg)") 
-                    td.td-truncate
-                      .text-truncate
-                        | Regenerate package-lock.json (#29730)
-                    td.text-nowrap.text-muted 25 Nov 2019
-                  tr
-                    td.w-1
-                      span.avatar.avatar-sm style=("background-image: url(./static/avatars/001f.jpg)") 
-                    td.td-truncate
-                      .text-truncate
-                        | Some minor text tweaks
-                    td.text-nowrap.text-muted 24 Nov 2019
-        .col-md-8
-          .card style=("height: calc(24rem + 10px)") 
-            .card-body.card-body-scrollable.card-body-scrollable-shadow
-              .divide-y
-                div
-                  .row
-                    .col-auto
-                      span.avatar JL
-                    .col
-                      .text-truncate
-                        strong Jeffie Lewzey
-                        | commented on your
-                        strong "I'm not a witch."
-                        | post.
-                      .text-muted yesterday
-                    .col-auto.align-self-center
-                      .badge.bg-primary
-                div
-                  .row
-                    .col-auto
-                      span.avatar style=("background-image: url(./static/avatars/002m.jpg)") 
-                    .col
-                      .text-truncate
-                        | It's
-                        strong Mallory Hulme
-                        | birthday. Wish him well!
-                      .text-muted 2 days ago
-                    .col-auto.align-self-center
-                      .badge.bg-primary
-                div
-                  .row
-                    .col-auto
-                      span.avatar style=("background-image: url(./static/avatars/003m.jpg)") 
-                    .col
-                      .text-truncate
-                        strong Dunn Slane
-                        | posted
-                        strong "Well, what do you want?"
-                      .text-muted today
-                    .col-auto.align-self-center
-                      .badge.bg-primary
-                div
-                  .row
-                    .col-auto
-                      span.avatar style=("background-image: url(./static/avatars/000f.jpg)") 
-                    .col
-                      .text-truncate
-                        strong Emmy Levet
-                        | created a new project
-                        strong Morning alarm clock
-                      .text-muted 4 days ago
-                    .col-auto.align-self-center
-                      .badge.bg-primary
-                div
-                  .row
-                    .col-auto
-                      span.avatar style=("background-image: url(./static/avatars/001f.jpg)") 
-                    .col
-                      .text-truncate
-                        strong Maryjo Lebarree
-                        | liked your photo.
-                      .text-muted 2 days ago
-                div
-                  .row
-                    .col-auto
-                      span.avatar EP
-                    .col
-                      .text-truncate
-                        strong Egan Poetz
-                        | registered new client as
-                        strong Trilia
-                      .text-muted yesterday
-                div
-                  .row
-                    .col-auto
-                      span.avatar style=("background-image: url(./static/avatars/002f.jpg)") 
-                    .col
-                      .text-truncate
-                        strong Kellie Skingley
-                        | closed a new deal on project
-                        strong Pen Pineapple Apple Pen
-                      .text-muted 2 days ago
-                div
-                  .row
-                    .col-auto
-                      span.avatar style=("background-image: url(./static/avatars/003f.jpg)") 
-                    .col
-                      .text-truncate
-                        strong Christabel Charlwood
-                        | created a new project for
-                        strong Wikibox
-                      .text-muted 4 days ago
-                div
-                  .row
-                    .col-auto
-                      span.avatar HS
-                    .col
-                      .text-truncate
-                        strong Haskel Shelper
-                        | change status of
-                        strong Tabler Icons
-                        | from
-                        strong open
-                        | to
-                        strong closed
-                      .text-muted today
-                div
-                  .row
-                    .col-auto
-                      span.avatar style=("background-image: url(./static/avatars/006m.jpg)") 
-                    .col
-                      .text-truncate
-                        strong Lorry Mion
-                        | liked
-                        strong Tabler UI Kit
-                      .text-muted yesterday
-                div
-                  .row
-                    .col-auto
-                      span.avatar style=("background-image: url(./static/avatars/004f.jpg)") 
-                    .col
-                      .text-truncate
-                        strong Leesa Beaty
-                        | posted new video.
-                      .text-muted 2 days ago
-                div
-                  .row
-                    .col-auto
-                      span.avatar style=("background-image: url(./static/avatars/007m.jpg)") 
-                    .col
-                      .text-truncate
-                        strong Perren Keemar
-                        | and 3 others followed you.
-                      .text-muted 2 days ago
-                div
-                  .row
-                    .col-auto
-                      span.avatar SA
-                    .col
-                      .text-truncate
-                        strong Sunny Airey
-                        | upload 3 new photos to category
-                        strong Inspirations
-                      .text-muted 2 days ago
-                div
-                  .row
-                    .col-auto
-                      span.avatar style=("background-image: url(./static/avatars/009m.jpg)") 
-                    .col
-                      .text-truncate
-                        strong Geoffry Flaunders
-                        | made a
-                        strong $10
-                        | donation.
-                      .text-muted 2 days ago
-                div
-                  .row
-                    .col-auto
-                      span.avatar style=("background-image: url(./static/avatars/010m.jpg)") 
-                    .col
-                      .text-truncate
-                        strong Thatcher Keel
-                        | created a profile.
-                      .text-muted 3 days ago
-                div
-                  .row
-                    .col-auto
-                      span.avatar style=("background-image: url(./static/avatars/005f.jpg)") 
-                    .col
-                      .text-truncate
-                        strong Dyann Escala
-                        | hosted the event
-                        strong Tabler UI Birthday
-                      .text-muted 4 days ago
-                div
-                  .row
-                    .col-auto
-                      span.avatar style=("background-image: url(./static/avatars/006f.jpg)") 
-                    .col
-                      .text-truncate
-                        strong Avivah Mugleston
-                        | mentioned you on
-                        strong Best of 2020
-                      .text-muted 2 days ago
-                div
-                  .row
-                    .col-auto
-                      span.avatar AA
-                    .col
-                      .text-truncate
-                        strong Arlie Armstead
-                        | sent a Review Request to
-                        strong Amanda Blake
-                      .text-muted 2 days ago
-        .col-md-4
-          .row.row-cards
-            .col-12
-              .card.card-sm
-                .card-body
-                  .row.align-items-center
-                    .col-auto
-                      span.bg-blue.text-white.avatar
-                        /! Download SVG icon from http://tabler-icons.io/i/currency-dollar
-                        svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                          path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                          path d=("M16.7 8a3 3 0 0 0 -2.7 -2h-4a3 3 0 0 0 0 6h4a3 3 0 0 1 0 6h-4a3 3 0 0 1 -2.7 -2") /
-                          path d=("M12 3v3m0 12v3") /
-                    .col
-                      .font-weight-medium
-                        | 132 Sales
-                      .text-muted
-                        | 12 waiting payments
-            .col-12
-              .card.card-sm
-                .card-body
-                  .row.align-items-center
-                    .col-auto
-                      span.bg-green.text-white.avatar
-                        /! Download SVG icon from http://tabler-icons.io/i/shopping-cart
-                        svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                          path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                          circle cx="6" cy="19" r="2" /
-                          circle cx="17" cy="19" r="2" /
-                          path d=("M17 17h-11v-14h-2") /
-                          path d=("M6 5l14 1l-1 7h-13") /
-                    .col
-                      .font-weight-medium
-                        | 78 Orders
-                      .text-muted
-                        | 32 shipped
-            .col-12
-              .card.card-sm
-                .card-body
-                  .row.align-items-center
-                    .col-auto
-                      span.bg-yellow.text-white.avatar
-                        /! Download SVG icon from http://tabler-icons.io/i/users
-                        svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                          path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                          circle cx="9" cy="7" r="4" /
-                          path d=("M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2") /
-                          path d=("M16 3.13a4 4 0 0 1 0 7.75") /
-                          path d=("M21 21v-2a4 4 0 0 0 -3 -3.85") /
-                    .col
-                      .font-weight-medium
-                        | 1352 Members
-                      .text-muted
-                        | 163 registered today
-            .col-12
-              .card.card-sm
-                .card-body
-                  .row.align-items-center
-                    .col-auto
-                      span.bg-twitter.text-white.avatar
-                        /! Download SVG icon from http://tabler-icons.io/i/brand-twitter
-                        svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                          path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                          path d=("M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z") /
-                    .col
-                      .font-weight-medium
-                        | 623 Shares
-                      .text-muted
-                        | 16 today
-            .col-12
-              .card.card-sm
-                .card-body
-                  .row.align-items-center
-                    .col-auto
-                      span.bg-facebook.text-white.avatar
-                        /! Download SVG icon from http://tabler-icons.io/i/brand-facebook
-                        svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                          path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                          path d=("M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3") /
-                    .col
-                      .font-weight-medium
-                        | 132 Likes
-                      .text-muted
-                        | 21 today
-        .col-md-12.col-lg-8
-          .card
-            .card-header
-              h3.card-title Most Visited Pages
-            .card-table.table-responsive
-              table.table.table-vcenter
-                thead
-                  tr
-                    th Page name
-                    th Visitors
-                    th Unique
-                    th colspan="2"  Bounce rate
-                tr
-                  td
-                    | \/about.html
-                    a.ms-1 aria-label=("Open website") href="#" 
-                      /! Download SVG icon from http://tabler-icons.io/i/link
-                      svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                        path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                        path d=("M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5") /
-                        path d=("M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5") /
-                  td.text-muted 4,896
-                  td.text-muted 3,654
-                  td.text-muted 82.54%
-                  td.text-end.w-1
-                    #sparkline-bounce-rate-1.chart-sparkline.chart-sparkline-sm
-                tr
-                  td
-                    | \/special-promo.html
-                    a.ms-1 aria-label=("Open website") href="#" 
-                      /! Download SVG icon from http://tabler-icons.io/i/link
-                      svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                        path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                        path d=("M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5") /
-                        path d=("M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5") /
-                  td.text-muted 3,652
-                  td.text-muted 3,215
-                  td.text-muted 76.29%
-                  td.text-end.w-1
-                    #sparkline-bounce-rate-2.chart-sparkline.chart-sparkline-sm
-                tr
-                  td
-                    | \/news/1,new-ui-kit.html
-                    a.ms-1 aria-label=("Open website") href="#" 
-                      /! Download SVG icon from http://tabler-icons.io/i/link
-                      svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                        path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                        path d=("M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5") /
-                        path d=("M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5") /
-                  td.text-muted 3,256
-                  td.text-muted 2,865
-                  td.text-muted 72.65%
-                  td.text-end.w-1
-                    #sparkline-bounce-rate-3.chart-sparkline.chart-sparkline-sm
-                tr
-                  td
-                    | \/lorem-ipsum-dolor-sit-amet-very-long-url.html
-                    a.ms-1 aria-label=("Open website") href="#" 
-                      /! Download SVG icon from http://tabler-icons.io/i/link
-                      svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                        path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                        path d=("M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5") /
-                        path d=("M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5") /
-                  td.text-muted 986
-                  td.text-muted 865
-                  td.text-muted 44.89%
-                  td.text-end.w-1
-                    #sparkline-bounce-rate-4.chart-sparkline.chart-sparkline-sm
-                tr
-                  td
-                    | \/colors.html
-                    a.ms-1 aria-label=("Open website") href="#" 
-                      /! Download SVG icon from http://tabler-icons.io/i/link
-                      svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                        path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                        path d=("M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5") /
-                        path d=("M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5") /
-                  td.text-muted 912
-                  td.text-muted 822
-                  td.text-muted 41.12%
-                  td.text-end.w-1
-                    #sparkline-bounce-rate-5.chart-sparkline.chart-sparkline-sm
-                tr
-                  td
-                    | \/docs/index.html
-                    a.ms-1 aria-label=("Open website") href="#" 
-                      /! Download SVG icon from http://tabler-icons.io/i/link
-                      svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                        path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                        path d=("M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5") /
-                        path d=("M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5") /
-                  td.text-muted 855
-                  td.text-muted 798
-                  td.text-muted 32.65%
-                  td.text-end.w-1
-                    #sparkline-bounce-rate-6.chart-sparkline.chart-sparkline-sm
-        .col-md-6.col-lg-4
-          a.card.card-sponsor aria-label=("Sponsor Tabler!") href="https://github.com/sponsors/codecalm" rel="noopener" style=("background-image: url(./static/sponsor-banner-homepage.svg)") target="_blank" 
-          .card-body
-        .col-md-6.col-lg-4
-          .card
-            .card-header
-              h3.card-title Social Media Traffic
-            table.table.card-table.table-vcenter
-              thead
-                tr
-                  th Network
-                  th colspan="2"  Visitors
-              tbody
-                tr
-                  td Instagram
-                  td 3,550
-                  td.w-50
-                    .progress.progress-xs
-                      .progress-bar.bg-primary style=("width: 71.0%") 
-                tr
-                  td Twitter
-                  td 1,798
-                  td.w-50
-                    .progress.progress-xs
-                      .progress-bar.bg-primary style=("width: 35.96%") 
-                tr
-                  td Facebook
-                  td 1,245
-                  td.w-50
-                    .progress.progress-xs
-                      .progress-bar.bg-primary style=("width: 24.9%") 
-                tr
-                  td TikTok
-                  td 986
-                  td.w-50
-                    .progress.progress-xs
-                      .progress-bar.bg-primary style=("width: 19.72%") 
-                tr
-                  td Pinterest
-                  td 854
-                  td.w-50
-                    .progress.progress-xs
-                      .progress-bar.bg-primary style=("width: 17.08%") 
-                tr
-                  td VK
-                  td 650
-                  td.w-50
-                    .progress.progress-xs
-                      .progress-bar.bg-primary style=("width: 13.0%") 
-                tr
-                  td Pinterest
-                  td 420
-                  td.w-50
-                    .progress.progress-xs
-                      .progress-bar.bg-primary style=("width: 8.4%") 
-        .col-md-12.col-lg-8
-          .card
-            .card-header
-              h3.card-title Tasks
-            .table-responsive
-              table.table.card-table.table-vcenter
-                tr
-                  td.w-1.pe-0
-                    input.form-check-input.m-0.align-middle aria-label=("Select task") checked="" type="checkbox" /
-                  td.w-100
-                    a.text-reset href="#"  Extend the data model.
-                  td.text-nowrap.text-muted
-                    /! Download SVG icon from http://tabler-icons.io/i/calendar
-                    svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                      path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                      rect height="16" rx="2" width="16" x="4" y="5" /
-                      line x1="16" x2="16" y1="3" y2="7" /
-                      line x1="8" x2="8" y1="3" y2="7" /
-                      line x1="4" x2="20" y1="11" y2="11" /
-                      line x1="11" x2="12" y1="15" y2="15" /
-                      line x1="12" x2="12" y1="15" y2="18" /
-                    | January 01, 2019
-                  td.text-nowrap
-                    a.text-muted href="#" 
-                      /! Download SVG icon from http://tabler-icons.io/i/check
-                      svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                        path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                        path d=("M5 12l5 5l10 -10") /
-                      | 2/7
-                  td.text-nowrap
-                    a.text-muted href="#" 
-                      /! Download SVG icon from http://tabler-icons.io/i/message
-                      svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                        path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                        path d=("M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4") /
-                        line x1="8" x2="16" y1="9" y2="9" /
-                        line x1="8" x2="14" y1="13" y2="13" /
-                      | 3
-                  td
-                    span.avatar.avatar-sm style=("background-image: url(./static/avatars/000m.jpg)") 
-                tr
-                  td.w-1.pe-0
-                    input.form-check-input.m-0.align-middle aria-label=("Select task") type="checkbox" /
-                  td.w-100
-                    a.text-reset href="#"  Verify the event flow.
-                  td.text-nowrap.text-muted
-                    /! Download SVG icon from http://tabler-icons.io/i/calendar
-                    svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                      path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                      rect height="16" rx="2" width="16" x="4" y="5" /
-                      line x1="16" x2="16" y1="3" y2="7" /
-                      line x1="8" x2="8" y1="3" y2="7" /
-                      line x1="4" x2="20" y1="11" y2="11" /
-                      line x1="11" x2="12" y1="15" y2="15" /
-                      line x1="12" x2="12" y1="15" y2="18" /
-                    | January 01, 2019
-                  td.text-nowrap
-                    a.text-muted href="#" 
-                      /! Download SVG icon from http://tabler-icons.io/i/check
-                      svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                        path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                        path d=("M5 12l5 5l10 -10") /
-                      | 3/10
-                  td.text-nowrap
-                    a.text-muted href="#" 
-                      /! Download SVG icon from http://tabler-icons.io/i/message
-                      svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                        path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                        path d=("M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4") /
-                        line x1="8" x2="16" y1="9" y2="9" /
-                        line x1="8" x2="14" y1="13" y2="13" /
-                      | 6
-                  td
-                    span.avatar.avatar-sm JL
-                tr
-                  td.w-1.pe-0
-                    input.form-check-input.m-0.align-middle aria-label=("Select task") type="checkbox" /
-                  td.w-100
-                    a.text-reset href="#"  Database backup and maintenance
-                  td.text-nowrap.text-muted
-                    /! Download SVG icon from http://tabler-icons.io/i/calendar
-                    svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                      path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                      rect height="16" rx="2" width="16" x="4" y="5" /
-                      line x1="16" x2="16" y1="3" y2="7" /
-                      line x1="8" x2="8" y1="3" y2="7" /
-                      line x1="4" x2="20" y1="11" y2="11" /
-                      line x1="11" x2="12" y1="15" y2="15" /
-                      line x1="12" x2="12" y1="15" y2="18" /
-                    | January 01, 2019
-                  td.text-nowrap
-                    a.text-muted href="#" 
-                      /! Download SVG icon from http://tabler-icons.io/i/check
-                      svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                        path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                        path d=("M5 12l5 5l10 -10") /
-                      | 0/6
-                  td.text-nowrap
-                    a.text-muted href="#" 
-                      /! Download SVG icon from http://tabler-icons.io/i/message
-                      svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                        path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                        path d=("M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4") /
-                        line x1="8" x2="16" y1="9" y2="9" /
-                        line x1="8" x2="14" y1="13" y2="13" /
-                      | 1
-                  td
-                    span.avatar.avatar-sm style=("background-image: url(./static/avatars/002m.jpg)") 
-                tr
-                  td.w-1.pe-0
-                    input.form-check-input.m-0.align-middle aria-label=("Select task") checked="" type="checkbox" /
-                  td.w-100
-                    a.text-reset href="#"  Identify the implementation team.
-                  td.text-nowrap.text-muted
-                    /! Download SVG icon from http://tabler-icons.io/i/calendar
-                    svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                      path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                      rect height="16" rx="2" width="16" x="4" y="5" /
-                      line x1="16" x2="16" y1="3" y2="7" /
-                      line x1="8" x2="8" y1="3" y2="7" /
-                      line x1="4" x2="20" y1="11" y2="11" /
-                      line x1="11" x2="12" y1="15" y2="15" /
-                      line x1="12" x2="12" y1="15" y2="18" /
-                    | January 01, 2019
-                  td.text-nowrap
-                    a.text-muted href="#" 
-                      /! Download SVG icon from http://tabler-icons.io/i/check
-                      svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                        path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                        path d=("M5 12l5 5l10 -10") /
-                      | 6/10
-                  td.text-nowrap
-                    a.text-muted href="#" 
-                      /! Download SVG icon from http://tabler-icons.io/i/message
-                      svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                        path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                        path d=("M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4") /
-                        line x1="8" x2="16" y1="9" y2="9" /
-                        line x1="8" x2="14" y1="13" y2="13" /
-                      | 12
-                  td
-                    span.avatar.avatar-sm style=("background-image: url(./static/avatars/003m.jpg)") 
-                tr
-                  td.w-1.pe-0
-                    input.form-check-input.m-0.align-middle aria-label=("Select task") type="checkbox" /
-                  td.w-100
-                    a.text-reset href="#"  Define users and workflow
-                  td.text-nowrap.text-muted
-                    /! Download SVG icon from http://tabler-icons.io/i/calendar
-                    svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                      path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                      rect height="16" rx="2" width="16" x="4" y="5" /
-                      line x1="16" x2="16" y1="3" y2="7" /
-                      line x1="8" x2="8" y1="3" y2="7" /
-                      line x1="4" x2="20" y1="11" y2="11" /
-                      line x1="11" x2="12" y1="15" y2="15" /
-                      line x1="12" x2="12" y1="15" y2="18" /
-                    | January 01, 2019
-                  td.text-nowrap
-                    a.text-muted href="#" 
-                      /! Download SVG icon from http://tabler-icons.io/i/check
-                      svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                        path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                        path d=("M5 12l5 5l10 -10") /
-                      | 3/7
-                  td.text-nowrap
-                    a.text-muted href="#" 
-                      /! Download SVG icon from http://tabler-icons.io/i/message
-                      svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                        path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                        path d=("M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4") /
-                        line x1="8" x2="16" y1="9" y2="9" /
-                        line x1="8" x2="14" y1="13" y2="13" /
-                      | 5
-                  td
-                    span.avatar.avatar-sm style=("background-image: url(./static/avatars/000f.jpg)") 
-                tr
-                  td.w-1.pe-0
-                    input.form-check-input.m-0.align-middle aria-label=("Select task") checked="" type="checkbox" /
-                  td.w-100
-                    a.text-reset href="#"  Check Pull Requests
-                  td.text-nowrap.text-muted
-                    /! Download SVG icon from http://tabler-icons.io/i/calendar
-                    svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                      path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                      rect height="16" rx="2" width="16" x="4" y="5" /
-                      line x1="16" x2="16" y1="3" y2="7" /
-                      line x1="8" x2="8" y1="3" y2="7" /
-                      line x1="4" x2="20" y1="11" y2="11" /
-                      line x1="11" x2="12" y1="15" y2="15" /
-                      line x1="12" x2="12" y1="15" y2="18" /
-                    | January 01, 2019
-                  td.text-nowrap
-                    a.text-muted href="#" 
-                      /! Download SVG icon from http://tabler-icons.io/i/check
-                      svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                        path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                        path d=("M5 12l5 5l10 -10") /
-                      | 2/9
-                  td.text-nowrap
-                    a.text-muted href="#" 
-                      /! Download SVG icon from http://tabler-icons.io/i/message
-                      svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                        path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                        path d=("M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4") /
-                        line x1="8" x2="16" y1="9" y2="9" /
-                        line x1="8" x2="14" y1="13" y2="13" /
-                      | 3
-                  td
-                    span.avatar.avatar-sm style=("background-image: url(./static/avatars/001f.jpg)") 
-        .col-12
-          .card
-            .card-header
-              h3.card-title Invoices
-            .card-body.border-bottom.py-3
-              .d-flex
-                .text-muted
-                  | Show
-                  .mx-2.d-inline-block
-                    input.form-control.form-control-sm aria-label=("Invoices count") size="3" type="text" value="8" /
-                  | entries
-                .ms-auto.text-muted
-                  | Search:
-                  .ms-2.d-inline-block
-                    input.form-control.form-control-sm aria-label=("Search invoice") type="text" /
-            .table-responsive
-              table.table.card-table.table-vcenter.text-nowrap.datatable
-                thead
-                  tr
-                    th.w-1
-                      input.form-check-input.m-0.align-middle aria-label=("Select all invoices") type="checkbox" /
-                    th.w-1
-                      | No.
-                      /! Download SVG icon from http://tabler-icons.io/i/chevron-up
-                      svg.icon.icon-sm.text-dark.icon-thick fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                        path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                        polyline points=("6 15 12 9 18 15") /
-                    th Invoice Subject
-                    th Client
-                    th VAT No.
-                    th Created
-                    th Status
-                    th Price
-                    th
-                tbody
-                  tr
-                    td
-                      input.form-check-input.m-0.align-middle aria-label=("Select invoice") type="checkbox" /
-                    td
-                      span.text-muted 001401
-                    td
-                      a.text-reset href="invoice.html" tabindex="-1"  Design Works
-                    td
-                      span.flag.flag-country-us
-                      | Carlson Limited
-                    td
-                      | 87956621
-                    td
-                      | 15 Dec 2017
-                    td
-                      span.badge.bg-success.me-1
-                      | Paid
-                    td $887
-                    td.text-end
-                      span.dropdown
-                        button.btn.dropdown-toggle.align-text-top data-bs-boundary="viewport" data-bs-toggle="dropdown"  Actions
-                      .dropdown-menu.dropdown-menu-end
-                        a.dropdown-item href="#" 
-                          | Action
-                        a.dropdown-item href="#" 
-                          | Another action
-                  tr
-                    td
-                      input.form-check-input.m-0.align-middle aria-label=("Select invoice") type="checkbox" /
-                    td
-                      span.text-muted 001402
-                    td
-                      a.text-reset href="invoice.html" tabindex="-1"  UX Wireframes
-                    td
-                      span.flag.flag-country-gb
-                      | Adobe
-                    td
-                      | 87956421
-                    td
-                      | 12 Apr 2017
-                    td
-                      span.badge.bg-warning.me-1
-                      | Pending
-                    td $1200
-                    td.text-end
-                      span.dropdown
-                        button.btn.dropdown-toggle.align-text-top data-bs-boundary="viewport" data-bs-toggle="dropdown"  Actions
-                      .dropdown-menu.dropdown-menu-end
-                        a.dropdown-item href="#" 
-                          | Action
-                        a.dropdown-item href="#" 
-                          | Another action
-                  tr
-                    td
-                      input.form-check-input.m-0.align-middle aria-label=("Select invoice") type="checkbox" /
-                    td
-                      span.text-muted 001403
-                    td
-                      a.text-reset href="invoice.html" tabindex="-1"  New Dashboard
-                    td
-                      span.flag.flag-country-de
-                      | Bluewolf
-                    td
-                      | 87952621
-                    td
-                      | 23 Oct 2017
-                    td
-                      span.badge.bg-warning.me-1
-                      | Pending
-                    td $534
-                    td.text-end
-                      span.dropdown
-                        button.btn.dropdown-toggle.align-text-top data-bs-boundary="viewport" data-bs-toggle="dropdown"  Actions
-                      .dropdown-menu.dropdown-menu-end
-                        a.dropdown-item href="#" 
-                          | Action
-                        a.dropdown-item href="#" 
-                          | Another action
-                  tr
-                    td
-                      input.form-check-input.m-0.align-middle aria-label=("Select invoice") type="checkbox" /
-                    td
-                      span.text-muted 001404
-                    td
-                      a.text-reset href="invoice.html" tabindex="-1"  Landing Page
-                    td
-                      span.flag.flag-country-br
-                      | Salesforce
-                    td
-                      | 87953421
-                    td
-                      | 2 Sep 2017
-                    td
-                      span.badge.bg-secondary.me-1
-                      | Due in 2 Weeks
-                    td $1500
-                    td.text-end
-                      span.dropdown
-                        button.btn.dropdown-toggle.align-text-top data-bs-boundary="viewport" data-bs-toggle="dropdown"  Actions
-                      .dropdown-menu.dropdown-menu-end
-                        a.dropdown-item href="#" 
-                          | Action
-                        a.dropdown-item href="#" 
-                          | Another action
-                  tr
-                    td
-                      input.form-check-input.m-0.align-middle aria-label=("Select invoice") type="checkbox" /
-                    td
-                      span.text-muted 001405
-                    td
-                      a.text-reset href="invoice.html" tabindex="-1"  Marketing Templates
-                    td
-                      span.flag.flag-country-pl
-                      | Printic
-                    td
-                      | 87956621
-                    td
-                      | 29 Jan 2018
-                    td
-                      span.badge.bg-danger.me-1
-                      | Paid Today
-                    td $648
-                    td.text-end
-                      span.dropdown
-                        button.btn.dropdown-toggle.align-text-top data-bs-boundary="viewport" data-bs-toggle="dropdown"  Actions
-                      .dropdown-menu.dropdown-menu-end
-                        a.dropdown-item href="#" 
-                          | Action
-                        a.dropdown-item href="#" 
-                          | Another action
-                  tr
-                    td
-                      input.form-check-input.m-0.align-middle aria-label=("Select invoice") type="checkbox" /
-                    td
-                      span.text-muted 001406
-                    td
-                      a.text-reset href="invoice.html" tabindex="-1"  Sales Presentation
-                    td
-                      span.flag.flag-country-br
-                      | Tabdaq
-                    td
-                      | 87956621
-                    td
-                      | 4 Feb 2018
-                    td
-                      span.badge.bg-secondary.me-1
-                      | Due in 3 Weeks
-                    td $300
-                    td.text-end
-                      span.dropdown
-                        button.btn.dropdown-toggle.align-text-top data-bs-boundary="viewport" data-bs-toggle="dropdown"  Actions
-                      .dropdown-menu.dropdown-menu-end
-                        a.dropdown-item href="#" 
-                          | Action
-                        a.dropdown-item href="#" 
-                          | Another action
-                  tr
-                    td
-                      input.form-check-input.m-0.align-middle aria-label=("Select invoice") type="checkbox" /
-                    td
-                      span.text-muted 001407
-                    td
-                      a.text-reset href="invoice.html" tabindex="-1"  Logo & Print
-                    td
-                      span.flag.flag-country-us
-                      | Apple
-                    td
-                      | 87956621
-                    td
-                      | 22 Mar 2018
-                    td
-                      span.badge.bg-success.me-1
-                      | Paid Today
-                    td $2500
-                    td.text-end
-                      span.dropdown
-                        button.btn.dropdown-toggle.align-text-top data-bs-boundary="viewport" data-bs-toggle="dropdown"  Actions
-                      .dropdown-menu.dropdown-menu-end
-                        a.dropdown-item href="#" 
-                          | Action
-                        a.dropdown-item href="#" 
-                          | Another action
-                  tr
-                    td
-                      input.form-check-input.m-0.align-middle aria-label=("Select invoice") type="checkbox" /
-                    td
-                      span.text-muted 001408
-                    td
-                      a.text-reset href="invoice.html" tabindex="-1"  Icons
-                    td
-                      span.flag.flag-country-pl
-                      | Tookapic
-                    td
-                      | 87956621
-                    td
-                      | 13 May 2018
-                    td
-                      span.badge.bg-success.me-1
-                      | Paid Today
-                    td $940
-                    td.text-end
-                      span.dropdown
-                        button.btn.dropdown-toggle.align-text-top data-bs-boundary="viewport" data-bs-toggle="dropdown"  Actions
-                      .dropdown-menu.dropdown-menu-end
-                        a.dropdown-item href="#" 
-                          | Action
-                        a.dropdown-item href="#" 
-                          | Another action
-            .card-footer.d-flex.align-items-center
-              p.m-0.text-muted
-                | Showing
-                span 1
-                | to
-                span 8
-                | of
-                span 16
-                | entries
-              ul.pagination.m-0.ms-auto
-                li.page-item.disabled
-                  a.page-link aria-disabled="true" href="#" tabindex="-1" 
-                    /! Download SVG icon from http://tabler-icons.io/i/chevron-left
-                    svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                      path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                      polyline points=("15 6 9 12 15 18") /
-                    | prev
-                li.page-item
-                  a.page-link href="#"  1
-                li.page-item.active
-                  a.page-link href="#"  2
-                li.page-item
-                  a.page-link href="#"  3
-                li.page-item
-                  a.page-link href="#"  4
-                li.page-item
-                  a.page-link href="#"  5
-                li.page-item
-                  a.page-link href="#" 
-                    | next
-                    /! Download SVG icon from http://tabler-icons.io/i/chevron-right
-                    svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
-                      path d=("M0 0h24v24H0z") fill="none" stroke="none" /
-                      polyline points=("9 6 15 12 9 18") /
+  / .page-body
+  /   .container-xl
+  /     .row.row-deck.row-cards
+  /       .col-sm-6.col-lg-3
+  /         .card
+  /           .card-body
+  /             .d-flex.align-items-center
+  /               .subheader Sales
+  /               .ms-auto.lh-1
+  /                 .dropdown
+  /                   a.dropdown-toggle.text-muted aria-expanded="false" aria-haspopup="true" data-bs-toggle="dropdown" href="#"  Last 7 days
+  /                   .dropdown-menu.dropdown-menu-end
+  /                     a.dropdown-item.active href="#"  Last 7 days
+  /                     a.dropdown-item href="#"  Last 30 days
+  /                     a.dropdown-item href="#"  Last 3 months
+  /             .h1.mb-3 75%
+  /             .d-flex.mb-2
+  /               div Conversion rate
+  /               .ms-auto
+  /                 span.text-green.d-inline-flex.align-items-center.lh-1
+  /                   | 7%
+  /                   /! Download SVG icon from http://tabler-icons.io/i/trending-up
+  /                   svg.icon.ms-1 fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                     path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                     polyline points=("3 17 9 11 13 15 21 7") /
+  /                     polyline points=("14 7 21 7 21 14") /
+  /             .progress.progress-sm
+  /               .progress-bar.bg-blue aria-valuemax="100" aria-valuemin="0" aria-valuenow="75" role="progressbar" style=("width: 75%") 
+  /                 span.visually-hidden 75% Complete
+  /       .col-sm-6.col-lg-3
+  /         .card
+  /           .card-body
+  /             .d-flex.align-items-center
+  /               .subheader Revenue
+  /               .ms-auto.lh-1
+  /                 .dropdown
+  /                   a.dropdown-toggle.text-muted aria-expanded="false" aria-haspopup="true" data-bs-toggle="dropdown" href="#"  Last 7 days
+  /                   .dropdown-menu.dropdown-menu-end
+  /                     a.dropdown-item.active href="#"  Last 7 days
+  /                     a.dropdown-item href="#"  Last 30 days
+  /                     a.dropdown-item href="#"  Last 3 months
+  /             .d-flex.align-items-baseline
+  /               .h1.mb-0.me-2 $4,300
+  /               .me-auto
+  /                 span.text-green.d-inline-flex.align-items-center.lh-1
+  /                   | 8%
+  /                   /! Download SVG icon from http://tabler-icons.io/i/trending-up
+  /                   svg.icon.ms-1 fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                     path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                     polyline points=("3 17 9 11 13 15 21 7") /
+  /                     polyline points=("14 7 21 7 21 14") /
+  /           #chart-revenue-bg.chart-sm
+  /       .col-sm-6.col-lg-3
+  /         .card
+  /           .card-body
+  /             .d-flex.align-items-center
+  /               .subheader New clients
+  /               .ms-auto.lh-1
+  /                 .dropdown
+  /                   a.dropdown-toggle.text-muted aria-expanded="false" aria-haspopup="true" data-bs-toggle="dropdown" href="#"  Last 7 days
+  /                   .dropdown-menu.dropdown-menu-end
+  /                     a.dropdown-item.active href="#"  Last 7 days
+  /                     a.dropdown-item href="#"  Last 30 days
+  /                     a.dropdown-item href="#"  Last 3 months
+  /             .d-flex.align-items-baseline
+  /               .h1.mb-3.me-2 6,782
+  /               .me-auto
+  /                 span.text-yellow.d-inline-flex.align-items-center.lh-1
+  /                   | 0%
+  /                   /! Download SVG icon from http://tabler-icons.io/i/minus
+  /                   svg.icon.ms-1 fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                     path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                     line x1="5" x2="19" y1="12" y2="12" /
+  /             #chart-new-clients.chart-sm
+  /       .col-sm-6.col-lg-3
+  /         .card
+  /           .card-body
+  /             .d-flex.align-items-center
+  /               .subheader Active users
+  /               .ms-auto.lh-1
+  /                 .dropdown
+  /                   a.dropdown-toggle.text-muted aria-expanded="false" aria-haspopup="true" data-bs-toggle="dropdown" href="#"  Last 7 days
+  /                   .dropdown-menu.dropdown-menu-end
+  /                     a.dropdown-item.active href="#"  Last 7 days
+  /                     a.dropdown-item href="#"  Last 30 days
+  /                     a.dropdown-item href="#"  Last 3 months
+  /             .d-flex.align-items-baseline
+  /               .h1.mb-3.me-2 2,986
+  /               .me-auto
+  /                 span.text-green.d-inline-flex.align-items-center.lh-1
+  /                   | 4%
+  /                   /! Download SVG icon from http://tabler-icons.io/i/trending-up
+  /                   svg.icon.ms-1 fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                     path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                     polyline points=("3 17 9 11 13 15 21 7") /
+  /                     polyline points=("14 7 21 7 21 14") /
+  /             #chart-active-users.chart-sm
+  /       .col-lg-6
+  /         .row.row-cards
+  /           .col-12
+  /             .card
+  /               .card-body
+  /                 h3.card-title Traffic summary
+  /                 #chart-mentions.chart-lg
+  /           .col-12
+  /             .card
+  /               .card-body
+  /                 p.mb-3
+  /                   | Using Storage
+  /                   strong 6854.45 MB
+  /                   | 8 GB
+  /                 .progress.progress-separated.mb-3
+  /                   .progress-bar.bg-primary role="progressbar" style=("width: 44%") 
+  /                   .progress-bar.bg-info role="progressbar" style=("width: 19%") 
+  /                   .progress-bar.bg-success role="progressbar" style=("width: 9%") 
+  /                 .row
+  /                   .col-auto.d-flex.align-items-center.pe-2
+  /                     span.legend.me-2.bg-primary
+  /                     span Regular
+  /                     span.d-none.d-md-inline.d-lg-none.d-xxl-inline.ms-2.text-muted 915MB
+  /                   .col-auto.d-flex.align-items-center.px-2
+  /                     span.legend.me-2.bg-info
+  /                     span System
+  /                     span.d-none.d-md-inline.d-lg-none.d-xxl-inline.ms-2.text-muted 415MB
+  /                   .col-auto.d-flex.align-items-center.px-2
+  /                     span.legend.me-2.bg-success
+  /                     span Shared
+  /                     span.d-none.d-md-inline.d-lg-none.d-xxl-inline.ms-2.text-muted 201MB
+  /                   .col-auto.d-flex.align-items-center.ps-2
+  /                     span.legend.me-2
+  /                     span Free
+  /                     span.d-none.d-md-inline.d-lg-none.d-xxl-inline.ms-2.text-muted 612MB
+  /           .col-sm-4
+  /             .card
+  /               .card-body.p-2.text-center
+  /                 .text-end.text-green
+  /                   span.text-green.d-inline-flex.align-items-center.lh-1
+  /                     | 6%
+  /                     /! Download SVG icon from http://tabler-icons.io/i/trending-up
+  /                     svg.icon.ms-1 fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                       path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                       polyline points=("3 17 9 11 13 15 21 7") /
+  /                       polyline points=("14 7 21 7 21 14") /
+  /                 .h1.m-0 43
+  /                 .text-muted.mb-3 New Tickets
+  /           .col-sm-4
+  /             .card
+  /               .card-body.p-2.text-center
+  /                 .text-end.text-red
+  /                   span.text-red.d-inline-flex.align-items-center.lh-1
+  /                     | \-2%
+  /                     /! Download SVG icon from http://tabler-icons.io/i/trending-down
+  /                     svg.icon.ms-1 fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                       path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                       polyline points=("3 7 9 13 13 9 21 17") /
+  /                       polyline points=("21 10 21 17 14 17") /
+  /                 .h1.m-0 95
+  /                 .text-muted.mb-3 Daily Earnings
+  /           .col-sm-4
+  /             .card
+  /               .card-body.p-2.text-center
+  /                 .text-end.text-green
+  /                   span.text-green.d-inline-flex.align-items-center.lh-1
+  /                     | 9%
+  /                     /! Download SVG icon from http://tabler-icons.io/i/trending-up
+  /                     svg.icon.ms-1 fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                       path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                       polyline points=("3 17 9 11 13 15 21 7") /
+  /                       polyline points=("14 7 21 7 21 14") /
+  /                 .h1.m-0 7
+  /                 .text-muted.mb-3 New Replies
+  /       .col-lg-6
+  /         .card
+  /           .card-header.border-0
+  /             .card-title Development activity
+  /           .position-relative
+  /             .position-absolute.top-0.left-0.px-3.mt-1.w-75
+  /               .row.g-2
+  /                 .col-auto
+  /                   #sparkline-activity.chart-sparkline.chart-sparkline-square
+  /                 .col
+  /                   div Today's Earning: $4,262.40
+  /                   .text-muted
+  /                     /! Download SVG icon from http://tabler-icons.io/i/trending-up
+  /                     svg.icon.icon-inline.text-green fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                       path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                       polyline points=("3 17 9 11 13 15 21 7") /
+  /                       polyline points=("14 7 21 7 21 14") /
+  /                     | +5% more than yesterday
+  /             #chart-development-activity
+  /           .card-table.table-responsive
+  /             table.table.table-vcenter
+  /               thead
+  /                 tr
+  /                   th User
+  /                   th Commit
+  /                   th Date
+  /               tbody
+  /                 tr
+  /                   td.w-1
+  /                     span.avatar.avatar-sm style=("background-image: url(./static/avatars/000m.jpg)") 
+  /                   td.td-truncate
+  /                     .text-truncate
+  /                       | Fix dart Sass compatibility (#29755)
+  /                   td.text-nowrap.text-muted 28 Nov 2019
+  /                 tr
+  /                   td.w-1
+  /                     span.avatar.avatar-sm JL
+  /                   td.td-truncate
+  /                     .text-truncate
+  /                       | Change deprecated html tags to text decoration classes (#29604)
+  /                   td.text-nowrap.text-muted 27 Nov 2019
+  /                 tr
+  /                   td.w-1
+  /                     span.avatar.avatar-sm style=("background-image: url(./static/avatars/002m.jpg)") 
+  /                   td.td-truncate
+  /                     .text-truncate
+  /                       | justify-content:between ⇒ justify-content:space-between (#29734)
+  /                   td.text-nowrap.text-muted 26 Nov 2019
+  /                 tr
+  /                   td.w-1
+  /                     span.avatar.avatar-sm style=("background-image: url(./static/avatars/003m.jpg)") 
+  /                   td.td-truncate
+  /                     .text-truncate
+  /                       | Update change-version.js (#29736)
+  /                   td.text-nowrap.text-muted 26 Nov 2019
+  /                 tr
+  /                   td.w-1
+  /                     span.avatar.avatar-sm style=("background-image: url(./static/avatars/000f.jpg)") 
+  /                   td.td-truncate
+  /                     .text-truncate
+  /                       | Regenerate package-lock.json (#29730)
+  /                   td.text-nowrap.text-muted 25 Nov 2019
+  /                 tr
+  /                   td.w-1
+  /                     span.avatar.avatar-sm style=("background-image: url(./static/avatars/001f.jpg)") 
+  /                   td.td-truncate
+  /                     .text-truncate
+  /                       | Some minor text tweaks
+  /                   td.text-nowrap.text-muted 24 Nov 2019
+  /       .col-md-8
+  /         .card style=("height: calc(24rem + 10px)") 
+  /           .card-body.card-body-scrollable.card-body-scrollable-shadow
+  /             .divide-y
+  /               div
+  /                 .row
+  /                   .col-auto
+  /                     span.avatar JL
+  /                   .col
+  /                     .text-truncate
+  /                       strong Jeffie Lewzey
+  /                       | commented on your
+  /                       strong "I'm not a witch."
+  /                       | post.
+  /                     .text-muted yesterday
+  /                   .col-auto.align-self-center
+  /                     .badge.bg-primary
+  /               div
+  /                 .row
+  /                   .col-auto
+  /                     span.avatar style=("background-image: url(./static/avatars/002m.jpg)") 
+  /                   .col
+  /                     .text-truncate
+  /                       | It's
+  /                       strong Mallory Hulme
+  /                       | birthday. Wish him well!
+  /                     .text-muted 2 days ago
+  /                   .col-auto.align-self-center
+  /                     .badge.bg-primary
+  /               div
+  /                 .row
+  /                   .col-auto
+  /                     span.avatar style=("background-image: url(./static/avatars/003m.jpg)") 
+  /                   .col
+  /                     .text-truncate
+  /                       strong Dunn Slane
+  /                       | posted
+  /                       strong "Well, what do you want?"
+  /                     .text-muted today
+  /                   .col-auto.align-self-center
+  /                     .badge.bg-primary
+  /               div
+  /                 .row
+  /                   .col-auto
+  /                     span.avatar style=("background-image: url(./static/avatars/000f.jpg)") 
+  /                   .col
+  /                     .text-truncate
+  /                       strong Emmy Levet
+  /                       | created a new project
+  /                       strong Morning alarm clock
+  /                     .text-muted 4 days ago
+  /                   .col-auto.align-self-center
+  /                     .badge.bg-primary
+  /               div
+  /                 .row
+  /                   .col-auto
+  /                     span.avatar style=("background-image: url(./static/avatars/001f.jpg)") 
+  /                   .col
+  /                     .text-truncate
+  /                       strong Maryjo Lebarree
+  /                       | liked your photo.
+  /                     .text-muted 2 days ago
+  /               div
+  /                 .row
+  /                   .col-auto
+  /                     span.avatar EP
+  /                   .col
+  /                     .text-truncate
+  /                       strong Egan Poetz
+  /                       | registered new client as
+  /                       strong Trilia
+  /                     .text-muted yesterday
+  /               div
+  /                 .row
+  /                   .col-auto
+  /                     span.avatar style=("background-image: url(./static/avatars/002f.jpg)") 
+  /                   .col
+  /                     .text-truncate
+  /                       strong Kellie Skingley
+  /                       | closed a new deal on project
+  /                       strong Pen Pineapple Apple Pen
+  /                     .text-muted 2 days ago
+  /               div
+  /                 .row
+  /                   .col-auto
+  /                     span.avatar style=("background-image: url(./static/avatars/003f.jpg)") 
+  /                   .col
+  /                     .text-truncate
+  /                       strong Christabel Charlwood
+  /                       | created a new project for
+  /                       strong Wikibox
+  /                     .text-muted 4 days ago
+  /               div
+  /                 .row
+  /                   .col-auto
+  /                     span.avatar HS
+  /                   .col
+  /                     .text-truncate
+  /                       strong Haskel Shelper
+  /                       | change status of
+  /                       strong Tabler Icons
+  /                       | from
+  /                       strong open
+  /                       | to
+  /                       strong closed
+  /                     .text-muted today
+  /               div
+  /                 .row
+  /                   .col-auto
+  /                     span.avatar style=("background-image: url(./static/avatars/006m.jpg)") 
+  /                   .col
+  /                     .text-truncate
+  /                       strong Lorry Mion
+  /                       | liked
+  /                       strong Tabler UI Kit
+  /                     .text-muted yesterday
+  /               div
+  /                 .row
+  /                   .col-auto
+  /                     span.avatar style=("background-image: url(./static/avatars/004f.jpg)") 
+  /                   .col
+  /                     .text-truncate
+  /                       strong Leesa Beaty
+  /                       | posted new video.
+  /                     .text-muted 2 days ago
+  /               div
+  /                 .row
+  /                   .col-auto
+  /                     span.avatar style=("background-image: url(./static/avatars/007m.jpg)") 
+  /                   .col
+  /                     .text-truncate
+  /                       strong Perren Keemar
+  /                       | and 3 others followed you.
+  /                     .text-muted 2 days ago
+  /               div
+  /                 .row
+  /                   .col-auto
+  /                     span.avatar SA
+  /                   .col
+  /                     .text-truncate
+  /                       strong Sunny Airey
+  /                       | upload 3 new photos to category
+  /                       strong Inspirations
+  /                     .text-muted 2 days ago
+  /               div
+  /                 .row
+  /                   .col-auto
+  /                     span.avatar style=("background-image: url(./static/avatars/009m.jpg)") 
+  /                   .col
+  /                     .text-truncate
+  /                       strong Geoffry Flaunders
+  /                       | made a
+  /                       strong $10
+  /                       | donation.
+  /                     .text-muted 2 days ago
+  /               div
+  /                 .row
+  /                   .col-auto
+  /                     span.avatar style=("background-image: url(./static/avatars/010m.jpg)") 
+  /                   .col
+  /                     .text-truncate
+  /                       strong Thatcher Keel
+  /                       | created a profile.
+  /                     .text-muted 3 days ago
+  /               div
+  /                 .row
+  /                   .col-auto
+  /                     span.avatar style=("background-image: url(./static/avatars/005f.jpg)") 
+  /                   .col
+  /                     .text-truncate
+  /                       strong Dyann Escala
+  /                       | hosted the event
+  /                       strong Tabler UI Birthday
+  /                     .text-muted 4 days ago
+  /               div
+  /                 .row
+  /                   .col-auto
+  /                     span.avatar style=("background-image: url(./static/avatars/006f.jpg)") 
+  /                   .col
+  /                     .text-truncate
+  /                       strong Avivah Mugleston
+  /                       | mentioned you on
+  /                       strong Best of 2020
+  /                     .text-muted 2 days ago
+  /               div
+  /                 .row
+  /                   .col-auto
+  /                     span.avatar AA
+  /                   .col
+  /                     .text-truncate
+  /                       strong Arlie Armstead
+  /                       | sent a Review Request to
+  /                       strong Amanda Blake
+  /                     .text-muted 2 days ago
+  /       .col-md-4
+  /         .row.row-cards
+  /           .col-12
+  /             .card.card-sm
+  /               .card-body
+  /                 .row.align-items-center
+  /                   .col-auto
+  /                     span.bg-blue.text-white.avatar
+  /                       /! Download SVG icon from http://tabler-icons.io/i/currency-dollar
+  /                       svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                         path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                         path d=("M16.7 8a3 3 0 0 0 -2.7 -2h-4a3 3 0 0 0 0 6h4a3 3 0 0 1 0 6h-4a3 3 0 0 1 -2.7 -2") /
+  /                         path d=("M12 3v3m0 12v3") /
+  /                   .col
+  /                     .font-weight-medium
+  /                       | 132 Sales
+  /                     .text-muted
+  /                       | 12 waiting payments
+  /           .col-12
+  /             .card.card-sm
+  /               .card-body
+  /                 .row.align-items-center
+  /                   .col-auto
+  /                     span.bg-green.text-white.avatar
+  /                       /! Download SVG icon from http://tabler-icons.io/i/shopping-cart
+  /                       svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                         path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                         circle cx="6" cy="19" r="2" /
+  /                         circle cx="17" cy="19" r="2" /
+  /                         path d=("M17 17h-11v-14h-2") /
+  /                         path d=("M6 5l14 1l-1 7h-13") /
+  /                   .col
+  /                     .font-weight-medium
+  /                       | 78 Orders
+  /                     .text-muted
+  /                       | 32 shipped
+  /           .col-12
+  /             .card.card-sm
+  /               .card-body
+  /                 .row.align-items-center
+  /                   .col-auto
+  /                     span.bg-yellow.text-white.avatar
+  /                       /! Download SVG icon from http://tabler-icons.io/i/users
+  /                       svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                         path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                         circle cx="9" cy="7" r="4" /
+  /                         path d=("M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2") /
+  /                         path d=("M16 3.13a4 4 0 0 1 0 7.75") /
+  /                         path d=("M21 21v-2a4 4 0 0 0 -3 -3.85") /
+  /                   .col
+  /                     .font-weight-medium
+  /                       | 1352 Members
+  /                     .text-muted
+  /                       | 163 registered today
+  /           .col-12
+  /             .card.card-sm
+  /               .card-body
+  /                 .row.align-items-center
+  /                   .col-auto
+  /                     span.bg-twitter.text-white.avatar
+  /                       /! Download SVG icon from http://tabler-icons.io/i/brand-twitter
+  /                       svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                         path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                         path d=("M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z") /
+  /                   .col
+  /                     .font-weight-medium
+  /                       | 623 Shares
+  /                     .text-muted
+  /                       | 16 today
+  /           .col-12
+  /             .card.card-sm
+  /               .card-body
+  /                 .row.align-items-center
+  /                   .col-auto
+  /                     span.bg-facebook.text-white.avatar
+  /                       /! Download SVG icon from http://tabler-icons.io/i/brand-facebook
+  /                       svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                         path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                         path d=("M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3") /
+  /                   .col
+  /                     .font-weight-medium
+  /                       | 132 Likes
+  /                     .text-muted
+  /                       | 21 today
+  /       .col-md-12.col-lg-8
+  /         .card
+  /           .card-header
+  /             h3.card-title Most Visited Pages
+  /           .card-table.table-responsive
+  /             table.table.table-vcenter
+  /               thead
+  /                 tr
+  /                   th Page name
+  /                   th Visitors
+  /                   th Unique
+  /                   th colspan="2"  Bounce rate
+  /               tr
+  /                 td
+  /                   | \/about.html
+  /                   a.ms-1 aria-label=("Open website") href="#" 
+  /                     /! Download SVG icon from http://tabler-icons.io/i/link
+  /                     svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                       path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                       path d=("M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5") /
+  /                       path d=("M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5") /
+  /                 td.text-muted 4,896
+  /                 td.text-muted 3,654
+  /                 td.text-muted 82.54%
+  /                 td.text-end.w-1
+  /                   #sparkline-bounce-rate-1.chart-sparkline.chart-sparkline-sm
+  /               tr
+  /                 td
+  /                   | \/special-promo.html
+  /                   a.ms-1 aria-label=("Open website") href="#" 
+  /                     /! Download SVG icon from http://tabler-icons.io/i/link
+  /                     svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                       path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                       path d=("M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5") /
+  /                       path d=("M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5") /
+  /                 td.text-muted 3,652
+  /                 td.text-muted 3,215
+  /                 td.text-muted 76.29%
+  /                 td.text-end.w-1
+  /                   #sparkline-bounce-rate-2.chart-sparkline.chart-sparkline-sm
+  /               tr
+  /                 td
+  /                   | \/news/1,new-ui-kit.html
+  /                   a.ms-1 aria-label=("Open website") href="#" 
+  /                     /! Download SVG icon from http://tabler-icons.io/i/link
+  /                     svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                       path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                       path d=("M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5") /
+  /                       path d=("M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5") /
+  /                 td.text-muted 3,256
+  /                 td.text-muted 2,865
+  /                 td.text-muted 72.65%
+  /                 td.text-end.w-1
+  /                   #sparkline-bounce-rate-3.chart-sparkline.chart-sparkline-sm
+  /               tr
+  /                 td
+  /                   | \/lorem-ipsum-dolor-sit-amet-very-long-url.html
+  /                   a.ms-1 aria-label=("Open website") href="#" 
+  /                     /! Download SVG icon from http://tabler-icons.io/i/link
+  /                     svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                       path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                       path d=("M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5") /
+  /                       path d=("M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5") /
+  /                 td.text-muted 986
+  /                 td.text-muted 865
+  /                 td.text-muted 44.89%
+  /                 td.text-end.w-1
+  /                   #sparkline-bounce-rate-4.chart-sparkline.chart-sparkline-sm
+  /               tr
+  /                 td
+  /                   | \/colors.html
+  /                   a.ms-1 aria-label=("Open website") href="#" 
+  /                     /! Download SVG icon from http://tabler-icons.io/i/link
+  /                     svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                       path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                       path d=("M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5") /
+  /                       path d=("M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5") /
+  /                 td.text-muted 912
+  /                 td.text-muted 822
+  /                 td.text-muted 41.12%
+  /                 td.text-end.w-1
+  /                   #sparkline-bounce-rate-5.chart-sparkline.chart-sparkline-sm
+  /               tr
+  /                 td
+  /                   | \/docs/index.html
+  /                   a.ms-1 aria-label=("Open website") href="#" 
+  /                     /! Download SVG icon from http://tabler-icons.io/i/link
+  /                     svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                       path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                       path d=("M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5") /
+  /                       path d=("M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5") /
+  /                 td.text-muted 855
+  /                 td.text-muted 798
+  /                 td.text-muted 32.65%
+  /                 td.text-end.w-1
+  /                   #sparkline-bounce-rate-6.chart-sparkline.chart-sparkline-sm
+  /       .col-md-6.col-lg-4
+  /         a.card.card-sponsor aria-label=("Sponsor Tabler!") href="https://github.com/sponsors/codecalm" rel="noopener" style=("background-image: url(./static/sponsor-banner-homepage.svg)") target="_blank" 
+  /         .card-body
+  /       .col-md-6.col-lg-4
+  /         .card
+  /           .card-header
+  /             h3.card-title Social Media Traffic
+  /           table.table.card-table.table-vcenter
+  /             thead
+  /               tr
+  /                 th Network
+  /                 th colspan="2"  Visitors
+  /             tbody
+  /               tr
+  /                 td Instagram
+  /                 td 3,550
+  /                 td.w-50
+  /                   .progress.progress-xs
+  /                     .progress-bar.bg-primary style=("width: 71.0%") 
+  /               tr
+  /                 td Twitter
+  /                 td 1,798
+  /                 td.w-50
+  /                   .progress.progress-xs
+  /                     .progress-bar.bg-primary style=("width: 35.96%") 
+  /               tr
+  /                 td Facebook
+  /                 td 1,245
+  /                 td.w-50
+  /                   .progress.progress-xs
+  /                     .progress-bar.bg-primary style=("width: 24.9%") 
+  /               tr
+  /                 td TikTok
+  /                 td 986
+  /                 td.w-50
+  /                   .progress.progress-xs
+  /                     .progress-bar.bg-primary style=("width: 19.72%") 
+  /               tr
+  /                 td Pinterest
+  /                 td 854
+  /                 td.w-50
+  /                   .progress.progress-xs
+  /                     .progress-bar.bg-primary style=("width: 17.08%") 
+  /               tr
+  /                 td VK
+  /                 td 650
+  /                 td.w-50
+  /                   .progress.progress-xs
+  /                     .progress-bar.bg-primary style=("width: 13.0%") 
+  /               tr
+  /                 td Pinterest
+  /                 td 420
+  /                 td.w-50
+  /                   .progress.progress-xs
+  /                     .progress-bar.bg-primary style=("width: 8.4%") 
+  /       .col-md-12.col-lg-8
+  /         .card
+  /           .card-header
+  /             h3.card-title Tasks
+  /           .table-responsive
+  /             table.table.card-table.table-vcenter
+  /               tr
+  /                 td.w-1.pe-0
+  /                   input.form-check-input.m-0.align-middle aria-label=("Select task") checked="" type="checkbox" /
+  /                 td.w-100
+  /                   a.text-reset href="#"  Extend the data model.
+  /                 td.text-nowrap.text-muted
+  /                   /! Download SVG icon from http://tabler-icons.io/i/calendar
+  /                   svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                     path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                     rect height="16" rx="2" width="16" x="4" y="5" /
+  /                     line x1="16" x2="16" y1="3" y2="7" /
+  /                     line x1="8" x2="8" y1="3" y2="7" /
+  /                     line x1="4" x2="20" y1="11" y2="11" /
+  /                     line x1="11" x2="12" y1="15" y2="15" /
+  /                     line x1="12" x2="12" y1="15" y2="18" /
+  /                   | January 01, 2019
+  /                 td.text-nowrap
+  /                   a.text-muted href="#" 
+  /                     /! Download SVG icon from http://tabler-icons.io/i/check
+  /                     svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                       path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                       path d=("M5 12l5 5l10 -10") /
+  /                     | 2/7
+  /                 td.text-nowrap
+  /                   a.text-muted href="#" 
+  /                     /! Download SVG icon from http://tabler-icons.io/i/message
+  /                     svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                       path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                       path d=("M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4") /
+  /                       line x1="8" x2="16" y1="9" y2="9" /
+  /                       line x1="8" x2="14" y1="13" y2="13" /
+  /                     | 3
+  /                 td
+  /                   span.avatar.avatar-sm style=("background-image: url(./static/avatars/000m.jpg)") 
+  /               tr
+  /                 td.w-1.pe-0
+  /                   input.form-check-input.m-0.align-middle aria-label=("Select task") type="checkbox" /
+  /                 td.w-100
+  /                   a.text-reset href="#"  Verify the event flow.
+  /                 td.text-nowrap.text-muted
+  /                   /! Download SVG icon from http://tabler-icons.io/i/calendar
+  /                   svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                     path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                     rect height="16" rx="2" width="16" x="4" y="5" /
+  /                     line x1="16" x2="16" y1="3" y2="7" /
+  /                     line x1="8" x2="8" y1="3" y2="7" /
+  /                     line x1="4" x2="20" y1="11" y2="11" /
+  /                     line x1="11" x2="12" y1="15" y2="15" /
+  /                     line x1="12" x2="12" y1="15" y2="18" /
+  /                   | January 01, 2019
+  /                 td.text-nowrap
+  /                   a.text-muted href="#" 
+  /                     /! Download SVG icon from http://tabler-icons.io/i/check
+  /                     svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                       path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                       path d=("M5 12l5 5l10 -10") /
+  /                     | 3/10
+  /                 td.text-nowrap
+  /                   a.text-muted href="#" 
+  /                     /! Download SVG icon from http://tabler-icons.io/i/message
+  /                     svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                       path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                       path d=("M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4") /
+  /                       line x1="8" x2="16" y1="9" y2="9" /
+  /                       line x1="8" x2="14" y1="13" y2="13" /
+  /                     | 6
+  /                 td
+  /                   span.avatar.avatar-sm JL
+  /               tr
+  /                 td.w-1.pe-0
+  /                   input.form-check-input.m-0.align-middle aria-label=("Select task") type="checkbox" /
+  /                 td.w-100
+  /                   a.text-reset href="#"  Database backup and maintenance
+  /                 td.text-nowrap.text-muted
+  /                   /! Download SVG icon from http://tabler-icons.io/i/calendar
+  /                   svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                     path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                     rect height="16" rx="2" width="16" x="4" y="5" /
+  /                     line x1="16" x2="16" y1="3" y2="7" /
+  /                     line x1="8" x2="8" y1="3" y2="7" /
+  /                     line x1="4" x2="20" y1="11" y2="11" /
+  /                     line x1="11" x2="12" y1="15" y2="15" /
+  /                     line x1="12" x2="12" y1="15" y2="18" /
+  /                   | January 01, 2019
+  /                 td.text-nowrap
+  /                   a.text-muted href="#" 
+  /                     /! Download SVG icon from http://tabler-icons.io/i/check
+  /                     svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                       path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                       path d=("M5 12l5 5l10 -10") /
+  /                     | 0/6
+  /                 td.text-nowrap
+  /                   a.text-muted href="#" 
+  /                     /! Download SVG icon from http://tabler-icons.io/i/message
+  /                     svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                       path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                       path d=("M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4") /
+  /                       line x1="8" x2="16" y1="9" y2="9" /
+  /                       line x1="8" x2="14" y1="13" y2="13" /
+  /                     | 1
+  /                 td
+  /                   span.avatar.avatar-sm style=("background-image: url(./static/avatars/002m.jpg)") 
+  /               tr
+  /                 td.w-1.pe-0
+  /                   input.form-check-input.m-0.align-middle aria-label=("Select task") checked="" type="checkbox" /
+  /                 td.w-100
+  /                   a.text-reset href="#"  Identify the implementation team.
+  /                 td.text-nowrap.text-muted
+  /                   /! Download SVG icon from http://tabler-icons.io/i/calendar
+  /                   svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                     path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                     rect height="16" rx="2" width="16" x="4" y="5" /
+  /                     line x1="16" x2="16" y1="3" y2="7" /
+  /                     line x1="8" x2="8" y1="3" y2="7" /
+  /                     line x1="4" x2="20" y1="11" y2="11" /
+  /                     line x1="11" x2="12" y1="15" y2="15" /
+  /                     line x1="12" x2="12" y1="15" y2="18" /
+  /                   | January 01, 2019
+  /                 td.text-nowrap
+  /                   a.text-muted href="#" 
+  /                     /! Download SVG icon from http://tabler-icons.io/i/check
+  /                     svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                       path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                       path d=("M5 12l5 5l10 -10") /
+  /                     | 6/10
+  /                 td.text-nowrap
+  /                   a.text-muted href="#" 
+  /                     /! Download SVG icon from http://tabler-icons.io/i/message
+  /                     svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                       path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                       path d=("M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4") /
+  /                       line x1="8" x2="16" y1="9" y2="9" /
+  /                       line x1="8" x2="14" y1="13" y2="13" /
+  /                     | 12
+  /                 td
+  /                   span.avatar.avatar-sm style=("background-image: url(./static/avatars/003m.jpg)") 
+  /               tr
+  /                 td.w-1.pe-0
+  /                   input.form-check-input.m-0.align-middle aria-label=("Select task") type="checkbox" /
+  /                 td.w-100
+  /                   a.text-reset href="#"  Define users and workflow
+  /                 td.text-nowrap.text-muted
+  /                   /! Download SVG icon from http://tabler-icons.io/i/calendar
+  /                   svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                     path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                     rect height="16" rx="2" width="16" x="4" y="5" /
+  /                     line x1="16" x2="16" y1="3" y2="7" /
+  /                     line x1="8" x2="8" y1="3" y2="7" /
+  /                     line x1="4" x2="20" y1="11" y2="11" /
+  /                     line x1="11" x2="12" y1="15" y2="15" /
+  /                     line x1="12" x2="12" y1="15" y2="18" /
+  /                   | January 01, 2019
+  /                 td.text-nowrap
+  /                   a.text-muted href="#" 
+  /                     /! Download SVG icon from http://tabler-icons.io/i/check
+  /                     svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                       path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                       path d=("M5 12l5 5l10 -10") /
+  /                     | 3/7
+  /                 td.text-nowrap
+  /                   a.text-muted href="#" 
+  /                     /! Download SVG icon from http://tabler-icons.io/i/message
+  /                     svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                       path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                       path d=("M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4") /
+  /                       line x1="8" x2="16" y1="9" y2="9" /
+  /                       line x1="8" x2="14" y1="13" y2="13" /
+  /                     | 5
+  /                 td
+  /                   span.avatar.avatar-sm style=("background-image: url(./static/avatars/000f.jpg)") 
+  /               tr
+  /                 td.w-1.pe-0
+  /                   input.form-check-input.m-0.align-middle aria-label=("Select task") checked="" type="checkbox" /
+  /                 td.w-100
+  /                   a.text-reset href="#"  Check Pull Requests
+  /                 td.text-nowrap.text-muted
+  /                   /! Download SVG icon from http://tabler-icons.io/i/calendar
+  /                   svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                     path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                     rect height="16" rx="2" width="16" x="4" y="5" /
+  /                     line x1="16" x2="16" y1="3" y2="7" /
+  /                     line x1="8" x2="8" y1="3" y2="7" /
+  /                     line x1="4" x2="20" y1="11" y2="11" /
+  /                     line x1="11" x2="12" y1="15" y2="15" /
+  /                     line x1="12" x2="12" y1="15" y2="18" /
+  /                   | January 01, 2019
+  /                 td.text-nowrap
+  /                   a.text-muted href="#" 
+  /                     /! Download SVG icon from http://tabler-icons.io/i/check
+  /                     svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                       path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                       path d=("M5 12l5 5l10 -10") /
+  /                     | 2/9
+  /                 td.text-nowrap
+  /                   a.text-muted href="#" 
+  /                     /! Download SVG icon from http://tabler-icons.io/i/message
+  /                     svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                       path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                       path d=("M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4") /
+  /                       line x1="8" x2="16" y1="9" y2="9" /
+  /                       line x1="8" x2="14" y1="13" y2="13" /
+  /                     | 3
+  /                 td
+  /                   span.avatar.avatar-sm style=("background-image: url(./static/avatars/001f.jpg)") 
+  /       .col-12
+  /         .card
+  /           .card-header
+  /             h3.card-title Invoices
+  /           .card-body.border-bottom.py-3
+  /             .d-flex
+  /               .text-muted
+  /                 | Show
+  /                 .mx-2.d-inline-block
+  /                   input.form-control.form-control-sm aria-label=("Invoices count") size="3" type="text" value="8" /
+  /                 | entries
+  /               .ms-auto.text-muted
+  /                 | Search:
+  /                 .ms-2.d-inline-block
+  /                   input.form-control.form-control-sm aria-label=("Search invoice") type="text" /
+  /           .table-responsive
+  /             table.table.card-table.table-vcenter.text-nowrap.datatable
+  /               thead
+  /                 tr
+  /                   th.w-1
+  /                     input.form-check-input.m-0.align-middle aria-label=("Select all invoices") type="checkbox" /
+  /                   th.w-1
+  /                     | No.
+  /                     /! Download SVG icon from http://tabler-icons.io/i/chevron-up
+  /                     svg.icon.icon-sm.text-dark.icon-thick fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                       path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                       polyline points=("6 15 12 9 18 15") /
+  /                   th Invoice Subject
+  /                   th Client
+  /                   th VAT No.
+  /                   th Created
+  /                   th Status
+  /                   th Price
+  /                   th
+  /               tbody
+  /                 tr
+  /                   td
+  /                     input.form-check-input.m-0.align-middle aria-label=("Select invoice") type="checkbox" /
+  /                   td
+  /                     span.text-muted 001401
+  /                   td
+  /                     a.text-reset href="invoice.html" tabindex="-1"  Design Works
+  /                   td
+  /                     span.flag.flag-country-us
+  /                     | Carlson Limited
+  /                   td
+  /                     | 87956621
+  /                   td
+  /                     | 15 Dec 2017
+  /                   td
+  /                     span.badge.bg-success.me-1
+  /                     | Paid
+  /                   td $887
+  /                   td.text-end
+  /                     span.dropdown
+  /                       button.btn.dropdown-toggle.align-text-top data-bs-boundary="viewport" data-bs-toggle="dropdown"  Actions
+  /                     .dropdown-menu.dropdown-menu-end
+  /                       a.dropdown-item href="#" 
+  /                         | Action
+  /                       a.dropdown-item href="#" 
+  /                         | Another action
+  /                 tr
+  /                   td
+  /                     input.form-check-input.m-0.align-middle aria-label=("Select invoice") type="checkbox" /
+  /                   td
+  /                     span.text-muted 001402
+  /                   td
+  /                     a.text-reset href="invoice.html" tabindex="-1"  UX Wireframes
+  /                   td
+  /                     span.flag.flag-country-gb
+  /                     | Adobe
+  /                   td
+  /                     | 87956421
+  /                   td
+  /                     | 12 Apr 2017
+  /                   td
+  /                     span.badge.bg-warning.me-1
+  /                     | Pending
+  /                   td $1200
+  /                   td.text-end
+  /                     span.dropdown
+  /                       button.btn.dropdown-toggle.align-text-top data-bs-boundary="viewport" data-bs-toggle="dropdown"  Actions
+  /                     .dropdown-menu.dropdown-menu-end
+  /                       a.dropdown-item href="#" 
+  /                         | Action
+  /                       a.dropdown-item href="#" 
+  /                         | Another action
+  /                 tr
+  /                   td
+  /                     input.form-check-input.m-0.align-middle aria-label=("Select invoice") type="checkbox" /
+  /                   td
+  /                     span.text-muted 001403
+  /                   td
+  /                     a.text-reset href="invoice.html" tabindex="-1"  New Dashboard
+  /                   td
+  /                     span.flag.flag-country-de
+  /                     | Bluewolf
+  /                   td
+  /                     | 87952621
+  /                   td
+  /                     | 23 Oct 2017
+  /                   td
+  /                     span.badge.bg-warning.me-1
+  /                     | Pending
+  /                   td $534
+  /                   td.text-end
+  /                     span.dropdown
+  /                       button.btn.dropdown-toggle.align-text-top data-bs-boundary="viewport" data-bs-toggle="dropdown"  Actions
+  /                     .dropdown-menu.dropdown-menu-end
+  /                       a.dropdown-item href="#" 
+  /                         | Action
+  /                       a.dropdown-item href="#" 
+  /                         | Another action
+  /                 tr
+  /                   td
+  /                     input.form-check-input.m-0.align-middle aria-label=("Select invoice") type="checkbox" /
+  /                   td
+  /                     span.text-muted 001404
+  /                   td
+  /                     a.text-reset href="invoice.html" tabindex="-1"  Landing Page
+  /                   td
+  /                     span.flag.flag-country-br
+  /                     | Salesforce
+  /                   td
+  /                     | 87953421
+  /                   td
+  /                     | 2 Sep 2017
+  /                   td
+  /                     span.badge.bg-secondary.me-1
+  /                     | Due in 2 Weeks
+  /                   td $1500
+  /                   td.text-end
+  /                     span.dropdown
+  /                       button.btn.dropdown-toggle.align-text-top data-bs-boundary="viewport" data-bs-toggle="dropdown"  Actions
+  /                     .dropdown-menu.dropdown-menu-end
+  /                       a.dropdown-item href="#" 
+  /                         | Action
+  /                       a.dropdown-item href="#" 
+  /                         | Another action
+  /                 tr
+  /                   td
+  /                     input.form-check-input.m-0.align-middle aria-label=("Select invoice") type="checkbox" /
+  /                   td
+  /                     span.text-muted 001405
+  /                   td
+  /                     a.text-reset href="invoice.html" tabindex="-1"  Marketing Templates
+  /                   td
+  /                     span.flag.flag-country-pl
+  /                     | Printic
+  /                   td
+  /                     | 87956621
+  /                   td
+  /                     | 29 Jan 2018
+  /                   td
+  /                     span.badge.bg-danger.me-1
+  /                     | Paid Today
+  /                   td $648
+  /                   td.text-end
+  /                     span.dropdown
+  /                       button.btn.dropdown-toggle.align-text-top data-bs-boundary="viewport" data-bs-toggle="dropdown"  Actions
+  /                     .dropdown-menu.dropdown-menu-end
+  /                       a.dropdown-item href="#" 
+  /                         | Action
+  /                       a.dropdown-item href="#" 
+  /                         | Another action
+  /                 tr
+  /                   td
+  /                     input.form-check-input.m-0.align-middle aria-label=("Select invoice") type="checkbox" /
+  /                   td
+  /                     span.text-muted 001406
+  /                   td
+  /                     a.text-reset href="invoice.html" tabindex="-1"  Sales Presentation
+  /                   td
+  /                     span.flag.flag-country-br
+  /                     | Tabdaq
+  /                   td
+  /                     | 87956621
+  /                   td
+  /                     | 4 Feb 2018
+  /                   td
+  /                     span.badge.bg-secondary.me-1
+  /                     | Due in 3 Weeks
+  /                   td $300
+  /                   td.text-end
+  /                     span.dropdown
+  /                       button.btn.dropdown-toggle.align-text-top data-bs-boundary="viewport" data-bs-toggle="dropdown"  Actions
+  /                     .dropdown-menu.dropdown-menu-end
+  /                       a.dropdown-item href="#" 
+  /                         | Action
+  /                       a.dropdown-item href="#" 
+  /                         | Another action
+  /                 tr
+  /                   td
+  /                     input.form-check-input.m-0.align-middle aria-label=("Select invoice") type="checkbox" /
+  /                   td
+  /                     span.text-muted 001407
+  /                   td
+  /                     a.text-reset href="invoice.html" tabindex="-1"  Logo & Print
+  /                   td
+  /                     span.flag.flag-country-us
+  /                     | Apple
+  /                   td
+  /                     | 87956621
+  /                   td
+  /                     | 22 Mar 2018
+  /                   td
+  /                     span.badge.bg-success.me-1
+  /                     | Paid Today
+  /                   td $2500
+  /                   td.text-end
+  /                     span.dropdown
+  /                       button.btn.dropdown-toggle.align-text-top data-bs-boundary="viewport" data-bs-toggle="dropdown"  Actions
+  /                     .dropdown-menu.dropdown-menu-end
+  /                       a.dropdown-item href="#" 
+  /                         | Action
+  /                       a.dropdown-item href="#" 
+  /                         | Another action
+  /                 tr
+  /                   td
+  /                     input.form-check-input.m-0.align-middle aria-label=("Select invoice") type="checkbox" /
+  /                   td
+  /                     span.text-muted 001408
+  /                   td
+  /                     a.text-reset href="invoice.html" tabindex="-1"  Icons
+  /                   td
+  /                     span.flag.flag-country-pl
+  /                     | Tookapic
+  /                   td
+  /                     | 87956621
+  /                   td
+  /                     | 13 May 2018
+  /                   td
+  /                     span.badge.bg-success.me-1
+  /                     | Paid Today
+  /                   td $940
+  /                   td.text-end
+  /                     span.dropdown
+  /                       button.btn.dropdown-toggle.align-text-top data-bs-boundary="viewport" data-bs-toggle="dropdown"  Actions
+  /                     .dropdown-menu.dropdown-menu-end
+  /                       a.dropdown-item href="#" 
+  /                         | Action
+  /                       a.dropdown-item href="#" 
+  /                         | Another action
+  /           .card-footer.d-flex.align-items-center
+  /             p.m-0.text-muted
+  /               | Showing
+  /               span 1
+  /               | to
+  /               span 8
+  /               | of
+  /               span 16
+  /               | entries
+  /             ul.pagination.m-0.ms-auto
+  /               li.page-item.disabled
+  /                 a.page-link aria-disabled="true" href="#" tabindex="-1" 
+  /                   /! Download SVG icon from http://tabler-icons.io/i/chevron-left
+  /                   svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                     path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                     polyline points=("15 6 9 12 15 18") /
+  /                   | prev
+  /               li.page-item
+  /                 a.page-link href="#"  1
+  /               li.page-item.active
+  /                 a.page-link href="#"  2
+  /               li.page-item
+  /                 a.page-link href="#"  3
+  /               li.page-item
+  /                 a.page-link href="#"  4
+  /               li.page-item
+  /                 a.page-link href="#"  5
+  /               li.page-item
+  /                 a.page-link href="#" 
+  /                   | next
+  /                   /! Download SVG icon from http://tabler-icons.io/i/chevron-right
+  /                   svg.icon fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+  /                     path d=("M0 0h24v24H0z") fill="none" stroke="none" /
+  /                     polyline points=("9 6 15 12 9 18") /
   

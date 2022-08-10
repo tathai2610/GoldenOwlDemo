@@ -22,7 +22,7 @@ class Order < ApplicationRecord
   has_many :line_items, as: :line_itemable
 
   scope :on_goings, -> { where.not(status: "completed") }
-
+  
   state_machine :status, initial: :created do
     event 
 

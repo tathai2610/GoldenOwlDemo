@@ -11,10 +11,10 @@
     if ($("#cart-item-#{@line_item.id} input").is(":checked")) {    
       // change cart total price
       if ("#{@action}" == "inc") {
-        $(".cart-total-price").text(window.displayPrice(Number($(".cart-total-price").text().replace(',', '')) + +#{@line_item.product.price}))
+        $(".cart-total-price").text(window.displayPrice(+$(".cart-total-price").text().replaceAll('.', '') + +#{@line_item.product.price}))
       }
       else {
-        $(".cart-total-price").text(window.displayPrice(Number($(".cart-total-price").text().replace(',', '')) - +#{@line_item.product.price}))
+        $(".cart-total-price").text(window.displayPrice(+$(".cart-total-price").text().replaceAll('.', '') - +#{@line_item.product.price}))
       }
     }
 
