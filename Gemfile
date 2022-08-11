@@ -104,3 +104,5 @@ gem 'net-imap', require: false
 gem 'net-pop', require: false
 # provides support for Cross-Origin Resource Sharing (CORS) for Rack compatible web applications
 gem 'rack-cors'
+# A ruby implementation of the RFC 7519 OAuth JSON Web Token (JWT) standard.
+gem 'jwt'
