@@ -41,7 +41,7 @@ Dillinger uses a number of open source projects to work properly:
 
 ## API Documentations
 
-The API documentation is available with this [link](https://app.swaggerhub.com/apis/tathai2610/GoldenMall/1.0.0#/)
+The API documentation is available with this [link](https://app.swaggerhub.com/apis/tathai2610/GoldenMall/1.0.0#/).
 
 ## License
 
