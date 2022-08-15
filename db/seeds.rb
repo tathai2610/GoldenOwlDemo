@@ -23,14 +23,19 @@ data.each do |city|
   end
 end
 
-20.times do 
+20.times do
   c = Category.create(name: Faker::Lorem.unique.word.capitalize)
 end
 
 20.times do |i|
+  # Create new user
   u = User.new(email: "tester#{i+1}@gmail.com", password: "123123", password_confirmation: "123123")
-  u.confirm 
+  u.confirm
   u.save
+
+  # Create JWT for each user
+  payload = { user_id: u.id, user_email: u.email }.to_json
+  u.update(jwt: JWT.encode(payload, ENV['JWT_KEY'], 'HS256'))
 
   ward = Ward.find(8191)
   user_info = UserInfo.create(name: "Tyler", phone: "0924150409", user: u)
@@ -39,44 +44,42 @@ end
                      ward: ward,
                      street: Street.create(name: "15 anonym"),
                      addressable: user_info)
-  if i < 10 
-    u.add_role :seller 
-    ActiveRecord::Base.transaction do 
+  if i < 10
+    ActiveRecord::Base.transaction do
+      u.add_role :seller
       s = Shop.create!(user: u, name: Faker::Lorem.sentence.gsub('.', ''), description: Faker::Lorem.paragraphs.join(' '), phone: "0924150409")
       s.approve
       ward = Ward.find(10702)
-      a = Address.create!(city: ward.district.city, 
-                          district: ward.district, 
-                          ward: ward, 
+      a = Address.create!(city: ward.district.city,
+                          district: ward.district,
+                          ward: ward,
                           street: Street.create!(name: "10 anonym"),
                           addressable: s)
       response = GhnClient.new.create_store(s)
       s.update!(code: response["data"]["shop_id"])
     end
-  end
+  endrai
 end
 
 count = 0
 50.times do |i|
   p = Product.new(
-    name: Faker::Lorem.sentence.gsub('.', ''), 
-    description: "<div>#{Faker::Lorem.paragraphs.join('<br>')}</div>", 
-    # price: Faker::Number.decimal(l_digits: 2, r_digits: 2), 
+    name: Faker::Lorem.sentence.gsub('.', ''),
+    description: "<div>#{Faker::Lorem.paragraphs.join('<br>')}</div>",
     price: Faker::Number.number(digits: 4) * 100,
-    shop_id: Shop.pluck(:id),sample, 
+    shop_id: rand(1..10),
     quantity: rand(50..100)
-    # code: Faker::Lorem.word.upcase
   )
 
-  rand(1..10).times do 
-    p.images.attach(io: URI.open(Faker::LoremFlickr.image), filename: p.name, content_type: 'image/png')
+  rand(1..10).times do
+    p.images.attach(io: URI.open(Faker::LoremFlickr.image(size: "600x800", search_terms: ['plants'])), filename: p.name, content_type: 'image/jpg')
   end
 
   count += 1
-  puts "Product number: #{count}"
+  puts count
   puts "After save: #{count}" if p.save
 
-  2.times do 
+  2.times do
     p.categories << Category.find(rand(1..20))
   end
 end
@@ -86,7 +89,3 @@ end
   item = LineItem.find_or_create_by(line_itemable: User.first.cart, product: Product.find(Product.pluck(:id).sample))
   item.update(quantity: rand(1..10))
 end
-
-
-
-

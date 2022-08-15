@@ -106,3 +106,5 @@ gem 'net-pop', require: false
 gem 'rack-cors'
 # A ruby implementation of the RFC 7519 OAuth JSON Web Token (JWT) standard.
 gem 'jwt'
+
+gem "ruby-lsp", "~> 0.2.1", :group => :development
