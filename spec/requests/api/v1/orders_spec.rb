@@ -11,8 +11,6 @@ RSpec.describe "Api::V1::Orders", type: :request do
       VCR.use_cassette("api_create_store") { subject }
     end
 
-    let(:headers) { { Authorization:  "Bearer #{user.jwt}" } }
-
     context "when params are valid" do
       let(:params) do
         {
