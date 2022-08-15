@@ -21,7 +21,7 @@ Dillinger uses a number of open source projects to work properly:
 - [Ruby on Rails] (v6.1.6) - A full-stack framework, ships with all the tools needed.
 - [PostgreSQL] (v1.1) - A powerful, open source object-relational database system.
 - [Bootstrap] (v5.1) - The most popular CSS Framework for developing responsive and mobile-first websites.
-- [jQuery] (v3.6.0) - jQuery is a fast, small, and feature-rich JavaScript library. 
+- [jQuery] (v3.6.0) - jQuery is a fast, small, and feature-rich JavaScript library.
 - [Sidekiq] (v6.4.2) - Simple, efficient background processing for Ruby.
 
 
@@ -39,6 +39,10 @@ Dillinger uses a number of open source projects to work properly:
 - Start webpack server: `bin/webpack-dev-server`
 - Start sidekiq: `bundle exec sidekiq`
 
+## API Documentations
+
+The API documentation is available with the following link:
+https://app.swaggerhub.com/apis/tathai2610/GoldenMall/1.0.0#/
 
 ## License
 
@@ -50,4 +54,3 @@ This is an intern project at [Golden Owl Consulting](https://goldenowl.asia/).
 [Bootstrap]: <https://getbootstrap.com/docs/5.1/getting-started/introduction/>
 [jQuery]: <http://jquery.com>
 [Sidekiq]: <https://github.com/mperham/sidekiq/>
-    
