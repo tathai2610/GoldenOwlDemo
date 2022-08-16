@@ -1,11 +1,11 @@
 class AddressesController < ApplicationController
   before_action :set_city, only: :get_districts
   before_action :set_district, only: :get_wards
-  
-  def get_districts
-    @districts = @city.districts 
 
-    respond_to do |format| 
+  def get_districts
+    @districts = @city.districts
+
+    respond_to do |format|
       format.json { render json: @districts }
     end
   end
@@ -13,18 +13,18 @@ class AddressesController < ApplicationController
   def get_wards
     @wards = @district.wards
 
-    respond_to do |format| 
+    respond_to do |format|
       format.json { render json: @wards }
     end
   end
 
-  private 
+  private
 
   def set_city
-    @city = City.find(params[:city_id])
+    @city = City.find_by(shipping_code: params[:city_id])
   end
 
-  def set_district 
-    @district = District.find(params[:district_id])
+  def set_district
+    @district = District.find_by(shipping_code: params[:district_id])
   end
 end

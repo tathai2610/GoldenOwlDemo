@@ -24,9 +24,13 @@ class User < ApplicationRecord
     end
   end
 
-  def create_cart 
-    if cart.nil? 
+  def create_cart
+    if cart.nil?
       Cart.create(user: self)
     end
+  end
+
+  def has_shop?
+    shop.present?
   end
 end

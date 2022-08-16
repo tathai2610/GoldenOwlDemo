@@ -1,17 +1,17 @@
-= simple_form_for shop, url: user_shop_path(current_user), html: { class: "user-form", id: "form-create-shop" }, validate: true do |f| 
-  .row 
-    .col-12.col-md-6 
+= simple_form_for shop, url: user_shop_path(current_user), html: { class: "user-form", id: "form-create-shop" }, validate: true do |f|
+  .row
+    .col-12.col-md-6
       = f.input :name, label: 'Shop name', placeholder: 'Enter your shop name'
-    .col-12.col-md-6 
+    .col-12.col-md-6
       = f.input :phone, label: 'Phone Number', placeholder: 'Enter you shop phone number'
   .row.mt-2
     = f.input :description, as: :text, placeholder: 'Describe something about your shop...'
   .row.mt-2
-    = f.input :city, collection: City.all
+    = f.input :city, collection: City.all, value_method: :shipping_code
   .row.mt-2
-    = f.input :district, disabled: true, collection: City.all
+    = f.input :district, disabled: true, collection: City.all, value_method: :shipping_code
   .row.mt-2
-    = f.input :ward, disabled: true, collection: City.all
+    = f.input :ward, disabled: true, collection: City.all, value_method: :shipping_code
   .row.mt-2
     = f.input :street, label: "Street Address", placeholder: "Street Name, Building, House No."
   .row.mt-3

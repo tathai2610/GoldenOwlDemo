@@ -1,9 +1,9 @@
-$(document).on("turbolinks:load", function() { 
+$(document).on("turbolinks:load", function() {
   window.displayPrice = function displayPrice(price) {
     return Number(price).toLocaleString('vi', {maximumFractionDigits: 0})
   }
 
-  // subnav visibility 
+  // subnav visibility
   $("#toggle-subnav-btn").on("click", function() {
     if ($("#subnav").is(":visible")) {
       $("#subnav").hide()
@@ -17,7 +17,7 @@ $(document).on("turbolinks:load", function() {
     }
   })
 
-  // categories visibility 
+  // categories visibility
   $("#toggle-categories-btn").on("click", function() {
     if ($("#categories").is(":visible")) {
       $("#categories").hide()
@@ -31,14 +31,14 @@ $(document).on("turbolinks:load", function() {
     }
   })
 
-  // select2 call 
+  // select2 call
   $('#product_category_ids').select2({
     tags: true,
     tokenSeparators: [',', ' '],
     placeholder: 'Choose product category'
   })
 
-  // preview images before save 
+  // preview images before save
   $("#product_images").on('change', function() {
     $("#product-images_preview").html('')
     for (let i = 0; i < $(this)[0].files.length; i++) {
@@ -64,8 +64,8 @@ $(document).on("turbolinks:load", function() {
     let cartFinalItems = Number($(".cart-final-items").text())
     let items = $(this).closest(".container-fluid").find(".cart-item")
     let shopItemsSibings = $(this).closest(".shop-items").siblings()
-    
-    if (this.checked) {    
+
+    if (this.checked) {
       let unchecked = []
 
       items.each(function() {
@@ -91,7 +91,7 @@ $(document).on("turbolinks:load", function() {
       let selectAll = true
       for (x in shopItemsSibings) {
         if($(x).find(".input-shop-items").is(":not(:checked)")) {
-          selectAll = false 
+          selectAll = false
           break
         }
       }
@@ -105,22 +105,22 @@ $(document).on("turbolinks:load", function() {
         cartTotalPrice -= Number($(this).find(".item-total-price").text().replaceAll('.', ''))
       })
 
-      if (cartFinalItems - items.length <= 1) 
+      if (cartFinalItems - items.length <= 1)
         $(".cart-final-items-postfix").text("")
 
       if ($("#shop-all").prop("checked"))
         $("#shop-all").prop("checked", false)
-      
+
       $(".cart-total-price").text(displayPrice(cartTotalPrice))
       $(".cart-final-items").text(cartFinalItems - items.length)
       $(this).closest(".container-fluid").find(".input-cart-item").prop("checked", false)
 
-      if ($("input:checked").length == 0) 
+      if ($("input:checked").length == 0)
         $("#btn-checkout").addClass("disabled")
     }
   })
 
-  // Check cart item's checkbox 
+  // Check cart item's checkbox
   $('.input-cart-item').on('change', function() {
     let cartTotalPrice = Number($(".cart-total-price").text().replaceAll('.', ''))
     let cartFinalItems = Number($(".cart-final-items").text())
@@ -131,13 +131,13 @@ $(document).on("turbolinks:load", function() {
     let shopItemsSibings = $(this).closest(".shop-items").siblings()
 
     if (this.checked) {
-      if (cartFinalItems >= 1) 
+      if (cartFinalItems >= 1)
         $(".cart-final-items-postfix").text("s")
 
       if (allItemsCurrentShopChecked == allItemsCurrentShop)
         inputShopItems.prop("checked", true)
 
-      if ($("#btn-checkout").hasClass("disabled")) 
+      if ($("#btn-checkout").hasClass("disabled"))
         $("#btn-checkout").removeClass("disabled")
 
       $(".cart-total-price").text(displayPrice(cartTotalPrice + itemTotalPrice))
@@ -146,7 +146,7 @@ $(document).on("turbolinks:load", function() {
       let selectAll = true
       for (x in shopItemsSibings) {
         if($(x).find(".input-shop-items").is(":not(:checked)")) {
-          selectAll = false 
+          selectAll = false
           break
         }
       }
@@ -155,16 +155,16 @@ $(document).on("turbolinks:load", function() {
       }
     }
     else {
-      if (cartFinalItems <= 2) 
+      if (cartFinalItems <= 2)
         $(".cart-final-items-postfix").text("")
 
       if (inputShopItems.prop("checked"))
         inputShopItems.prop("checked", false)
-      
+
       if ($("#shop-all").prop("checked"))
         $("#shop-all").prop("checked", false)
 
-      if ($("input:checked").length == 0) 
+      if ($("input:checked").length == 0)
         $("#btn-checkout").addClass("disabled")
 
       $(".cart-total-price").text(displayPrice(cartTotalPrice - itemTotalPrice))
@@ -172,11 +172,11 @@ $(document).on("turbolinks:load", function() {
     }
   })
 
-  // check select all 
+  // check select all
   $("#shop-all").on('change', function() {
     let numberOfItems = $(".item-total-price").length
     let cartTotalPrice = 0
-    
+
     if (this.checked) {
       $(".item-total-price").each(function(index) {
         cartTotalPrice += Number($(this).text().replaceAll('.', ''))
@@ -185,7 +185,7 @@ $(document).on("turbolinks:load", function() {
       if (numberOfItems > 1)
         $(".cart-final-items-postfix").text("s")
 
-      if ($("#btn-checkout").hasClass("disabled")) 
+      if ($("#btn-checkout").hasClass("disabled"))
         $("#btn-checkout").removeClass("disabled")
 
       $(".cart-total-price").text(displayPrice(cartTotalPrice))
@@ -194,7 +194,7 @@ $(document).on("turbolinks:load", function() {
       $("#btn-destroy-cart").toggleClass("disabled")
     }
     else {
-      if (!$("#btn-checkout").hasClass("disabled")) 
+      if (!$("#btn-checkout").hasClass("disabled"))
         $("#btn-checkout").addClass("disabled")
 
       $("input").prop("checked", false)
@@ -250,7 +250,7 @@ $(document).on("turbolinks:load", function() {
     }
   })
 
-  if (+$(".product-quantity").text() < 2) 
+  if (+$(".product-quantity").text() < 2)
     $("#add-btn").prop("disabled", true)
 
   // Add product to cart ajax
@@ -270,11 +270,11 @@ $(document).on("turbolinks:load", function() {
         if (data.created_at == data.updated_at) {
           $(".cart-total-items").text(+$(".cart-total-items").text() + 1 )
         }
-      } 
+      }
     })
-  }) 
-  
-  // Update cart if there is a cart item checked 
+  })
+
+  // Update cart if there is a cart item checked
   if ($(".input-cart-item:checked").length > 0) {
     let cartItem = $(".input-cart-item:checked").closest((".cart-item"))
 
@@ -289,7 +289,7 @@ $(document).on("turbolinks:load", function() {
       }
     }
 
-    if ($("#btn-checkout").hasClass("disabled")) 
+    if ($("#btn-checkout").hasClass("disabled"))
         $("#btn-checkout").removeClass("disabled")
   }
 
@@ -326,20 +326,20 @@ $(document).on("turbolinks:load", function() {
         if (!$(wardInputId).prop("disabled")) {
           $(wardInputId).prop("disabled", true)
         }
-        
+
         data.forEach(function(item) {
-          let newOption = "<option value=" + item.id + ">" + item.name + "</option>"
+          let newOption = "<option value=" + item.shipping_code + ">" + item.name + "</option>"
           $(districtInputId).append(newOption)
         })
       }
     })
   }
-  
+
   // Update collection of district when user select a city
   $(document).on('change', "#user_address_form_district", function() {
     changeWardCollection("#user_address_form_district", "#user_address_form_ward")
   })
-  
+
   function changeWardCollection(districtInputId, wardInputId) {
     if ($(wardInputId).prop("disabled"))
       $(wardInputId).prop("disabled", false)
@@ -352,7 +352,7 @@ $(document).on("turbolinks:load", function() {
         $(wardInputId + " option:not(:first-child)").remove()
 
         data.forEach(function(item) {
-          let newOption = "<option value=" + item.id + ">" + item.name + "</option>"
+          let newOption = "<option value=" + item.shipping_code + ">" + item.name + "</option>"
           $(wardInputId).append(newOption)
         })
       }
@@ -369,7 +369,7 @@ $(document).on("turbolinks:load", function() {
 
   if ($("#btn-place-order").length) {
     $("#new-address-form").enableClientSideValidations()
-    
+
     let orderTotalPrice = 0
 
     $(".order-item").each(function() {
@@ -379,7 +379,7 @@ $(document).on("turbolinks:load", function() {
     $(".order-total-price").text(displayPrice(orderTotalPrice))
     $(".order-final-price").text(displayPrice(orderTotalPrice + +$(".order-shipping-price").text().replace('.','')))
   }
-  
+
   $("#shop_registration_form_city").on('change', function() {
     changeDistrictCollection("#shop_registration_form_city", "#shop_registration_form_district", "#shop_registration_form_ward")
   })
@@ -402,10 +402,10 @@ $(document).on("turbolinks:load", function() {
       env: "sandbox",
       createOrder: function() {
         addDetailsToOrderForm(1)
-        return $.post("/orders/paypal/create_payment", 
+        return $.post("/orders/paypal/create_payment",
                       $("#form-create-order").serialize()).then(function(data) {
                         return data.token
-                      }) 
+                      })
       },
       onApprove: function(data) {
         console.log(data)
