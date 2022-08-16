@@ -2,6 +2,7 @@ module Api
   module V1
     class ShopsController < BaseController
       skip_before_action :verify_authenticity_token
+      before_action :api_authenticate_user, only: :create
 
       def create
         if current_user.has_shop?
@@ -9,7 +10,7 @@ module Api
               code: 200,
               message: "You already have a shop.",
               data: current_user.shop
-            }.to_json, status: :ok
+            }, status: :ok
         else
           shop_registration = ShopRegistrationForm.new(shop_registration_params.merge(user: current_user))
 
@@ -18,7 +19,7 @@ module Api
                 code: 200,
                 message: "You have created your shop. Please wait for an admin to approve.",
                 data: current_user.shop
-              }.to_json, status: :ok
+              }, status: :ok
           else
             render json: { code: 422, message: "Failed to create your shop." }.to_json, status: :unprocessable_entity
           end

@@ -13,7 +13,7 @@ RSpec.shared_context "api context" do
   let(:street2) { create(:street, name: "100 Cong Hoa" ) }
   let(:user_address) { create(:address, addressabe: user_info, city: city1, district: district1, ward: ward1, street: street1) }
   let(:shop_address) { create(:address, addressabe: shop, city: city2, district: district2, ward: ward2, street: street2) }
-  let(:headers) { { Authorization:  "Bearer #{user.jwt}" } }
+  let(:headers) { { Authorization:  "Bearer #{user.jwt}", "content_type": "application/json" } }
 
   before do
     payload = { user_id: user.id, user_email: user.email }.to_json

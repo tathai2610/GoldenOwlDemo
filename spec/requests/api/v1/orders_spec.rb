@@ -7,10 +7,6 @@ RSpec.describe "Api::V1::Orders", type: :request do
   describe 'POST #create' do
     subject { post api_v1_orders_path, params: params, headers: headers }
 
-    let(:create_orders_response) do
-      VCR.use_cassette("api_create_store") { subject }
-    end
-
     context "when params are valid" do
       let(:params) do
         {
