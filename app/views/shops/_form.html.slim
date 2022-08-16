@@ -7,12 +7,12 @@
   .row.mt-2
     = f.input :description, as: :text, placeholder: 'Describe something about your shop...'
   .row.mt-2
-    = f.input :city, collection: City.all, value_method: :shipping_code
+    = f.input :city_code, collection: City.all, value_method: :shipping_code, label: "City"
   .row.mt-2
-    = f.input :district, disabled: true, collection: City.all, value_method: :shipping_code
+    = f.input :district_code, collection: City.all, value_method: :shipping_code, label: "District", disabled: true
   .row.mt-2
-    = f.input :ward, disabled: true, collection: City.all, value_method: :shipping_code
+    = f.input :ward_code, collection: City.all, value_method: :shipping_code, label: "Ward", disabled: true
   .row.mt-2
-    = f.input :street, label: "Street Address", placeholder: "Street Name, Building, House No."
+    = f.input :street_name, label: "Street Address", placeholder: "Street Name, Building, House No.", label: "Street"
   .row.mt-3
     = f.button :submit, "Submit"

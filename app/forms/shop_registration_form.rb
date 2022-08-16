@@ -14,7 +14,6 @@ class ShopRegistrationForm < AddressForm
     end
 
     true
-
   rescue ActiveRecord::RecordInvalid
     false
   end
@@ -22,12 +21,12 @@ class ShopRegistrationForm < AddressForm
   private
 
   def create_address
-    new_street = Street.create!(name: street)
+    new_street = Street.create!(name: street_name)
     Address.create!(
       addressable: shop,
-      city: City.find_by(shipping_code: city),
-      district: District.find_by(shipping_code: district),
-      ward: Ward.find_by(shipping_code: ward),
+      city: City.find_by(shipping_code: city_code),
+      district: District.find_by(shipping_code: district_code),
+      ward: Ward.find_by(shipping_code: ward_code),
       street: new_street
     )
   end

@@ -305,11 +305,6 @@ $(document).on("turbolinks:load", function() {
     })
   })
 
-  // Update collection of district when user select a city
-  $(document).on('change', "#user_address_form_city", function() {
-    changeDistrictCollection("#user_address_form_city", "#user_address_form_district", "#user_address_form_ward")
-  })
-
   function changeDistrictCollection(cityInputId, districtInputId, wardInputId) {
     if ($(districtInputId).prop("disabled")) {
       $(districtInputId).prop("disabled", false)
@@ -334,11 +329,6 @@ $(document).on("turbolinks:load", function() {
       }
     })
   }
-
-  // Update collection of district when user select a city
-  $(document).on('change', "#user_address_form_district", function() {
-    changeWardCollection("#user_address_form_district", "#user_address_form_ward")
-  })
 
   function changeWardCollection(districtInputId, wardInputId) {
     if ($(wardInputId).prop("disabled"))
@@ -380,12 +370,22 @@ $(document).on("turbolinks:load", function() {
     $(".order-final-price").text(displayPrice(orderTotalPrice + +$(".order-shipping-price").text().replace('.','')))
   }
 
-  $("#shop_registration_form_city").on('change', function() {
-    changeDistrictCollection("#shop_registration_form_city", "#shop_registration_form_district", "#shop_registration_form_ward")
+  // Update collection of district when user select a city
+  $(document).on('change', "#user_address_form_city_code", function() {
+    changeDistrictCollection("#user_address_form_city_code", "#user_address_form_district_code", "#user_address_form_ward_code")
   })
 
-  $("#shop_registration_form_district").on('change', function() {
-    changeWardCollection("#shop_registration_form_district", "#shop_registration_form_ward")
+  // Update collection of district when user select a city
+  $(document).on('change', "#user_address_form_district_code", function() {
+    changeWardCollection("#user_address_form_district_code", "#user_address_form_ward_code")
+  })
+
+  $("#shop_registration_form_city_code").on('change', function() {
+    changeDistrictCollection("#shop_registration_form_city_code", "#shop_registration_form_district_code", "#shop_registration_form_ward_code")
+  })
+
+  $("#shop_registration_form_district_code").on('change', function() {
+    changeWardCollection("#shop_registration_form_district_code", "#shop_registration_form_ward_code")
   })
 
   $("#form-create-order").on('submit', function(e) {

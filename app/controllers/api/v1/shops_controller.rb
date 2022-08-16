@@ -5,7 +5,7 @@ module Api
 
       def create
         if current_user.has_shop?
-          render json: { code: 200, message: "You already have a job" }.to_json, status: :ok
+          render json: { code: 200, message: "You already have a shop." }.to_json, status: :ok
         else
           shop_registration = ShopRegistrationForm.new(shop_registration_params.merge(user: current_user))
 
@@ -24,7 +24,7 @@ module Api
       private
 
       def shop_registration_params
-        params.require(:shop_registration).permit(:name, :description, :phone, :city, :district, :ward, :street)
+        params.require(:shop_registration).permit(:name, :description, :phone, :city_code, :district_code, :ward_code, :street_name)
       end
     end
   end

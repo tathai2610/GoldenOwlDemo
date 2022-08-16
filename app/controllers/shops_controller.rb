@@ -43,7 +43,7 @@ class ShopsController < ApplicationController
   end
 
   def shop_registration_params
-    params.require(:shop_registration_form).permit(:name, :description, :phone, :city, :district, :ward, :street)
+    params.require(:shop_registration_form).permit(:name, :description, :phone, :city_code, :district_code, :ward_code, :street_name)
   end
 
   def check_shop_exist

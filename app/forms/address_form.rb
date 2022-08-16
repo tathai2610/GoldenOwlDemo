@@ -1,14 +1,14 @@
-class AddressForm 
+class AddressForm
   include ActiveModel::Model
 
-  attr_accessor :city, :district, :ward, :street
+  attr_accessor :city_code, :district_code, :ward_code, :street_name
 
-  validates :city, presence: true
-  validates :district, presence: true
-  validates :ward, presence: true
-  validates :street, presence: true
+  validates :city_code, presence: true
+  validates :district_code, presence: true
+  validates :ward_code, presence: true
+  validates :street_name, presence: true
 
-  def save 
+  def save
     raise NotImplementedError, "#save must be defined"
   end
 end
