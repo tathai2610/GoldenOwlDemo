@@ -11,7 +11,7 @@ module Api
               message: "You already have a shop.",
               data: current_user.shop
             }, status: :ok
-        else
+      else
           shop_registration = ShopRegistrationForm.new(shop_registration_params.merge(user: current_user))
 
           if CreateStoreService.call(shop_registration)
@@ -21,7 +21,7 @@ module Api
                 data: current_user.shop
               }, status: :ok
           else
-            render json: { code: 422, message: "Failed to create your shop." }.to_json, status: :unprocessable_entity
+            render json: { code: 422, message: "Failed to create your shop." }, status: :unprocessable_entity
           end
         end
       end

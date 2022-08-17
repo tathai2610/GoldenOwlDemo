@@ -1,37 +1,96 @@
 require 'rails_helper'
 require 'requests/api/shared_api_context'
 
+RSpec.shared_examples "successful code" do
+  it "returns successful code" do
+    subject
+    expect(response).to have_http_status(200)
+  end
+end
+
+RSpec.shared_examples "not found message" do
+  it "return not found message" do
+    subject
+    expect(JSON.parse(response.body)["message"]).to eq(not_found_message)
+  end
+end
+
 RSpec.describe "Api::V1:Products", type: :request do
   include_context "api context"
 
   describe "GET #index" do
     subject { get api_v1_products_path, params: params }
 
-    context "when shop has products" do
-      let(:params) { { shop_id: shop.id } }
+    let(:not_found_message) { "Product not found" }
 
-      it "returns successful response" do
-        subject
-        expect(response).to have_http_status(200)
+    describe "when user searches products with product_id" do
+      context "when the product is found" do
+        let(:params) { { product_id: product.id } }
+
+        it_behaves_like "successful code"
+
+        it "returns the product with the same id" do
+          subject
+          expect(JSON.parse(response.body)["data"][0]["id"]).to eq(product.id)
+        end
       end
 
-      it "returns list of products" do
-        subject
-        expect(JSON.parse(response.body)["data"]).to be_an_instance_of(Array)
+      context "when no product is found" do
+        let(:params) { { product_id: product.id + 1 } }
+
+        it_behaves_like "successful code"
+        it_behaves_like "not found message"
       end
     end
 
-    context "when shop does not have products" do
-      let(:params) { { shop_id: 100 } }
+    describe "when user searches products with product_name" do
+      context "when the products are found" do
+        let(:params) { { product_name: product.name } }
 
-      it "returns successful response" do
-        subject
-        expect(response).to have_http_status(422)
+        it_behaves_like "successful code"
+
+        it "returns the product(s) with the same name" do
+          subject
+          expect(JSON.parse(response.body)["data"][0]["name"]).to eq(product.name)
+        end
       end
 
-      it "returns empty message" do
+      context "when no product is found" do
+        let(:params) { { product_name: Faker::Lorem.sentence.gsub('.', '') } }
+
+        it_behaves_like "successful code"
+        it_behaves_like "not found message"
+      end
+    end
+
+    describe "when user searches products with shop_id" do
+      context "when the products are found" do
+        let(:params) { { shop_id: shop.id } }
+
+        before { product }
+
+        it_behaves_like "successful code"
+
+        it "returns the product(s) with the same shop" do
+          subject
+          expect(JSON.parse(response.body)["data"][0]["shop_id"]).to eq(shop.id)
+        end
+      end
+
+      context "when no product is found" do
+        let(:params) { { shop_id: shop.id + 1 } }
+
+        it_behaves_like "successful code"
+        it_behaves_like "not found message"
+      end
+    end
+
+    context "when parameter is missing" do
+      let(:params) { {} }
+
+      it "returns bad request code" do
         subject
-        expect(JSON.parse(response.body)["message"]).to eq("Shop not found")
+        expect(response).to have_http_status(400)
       end
     end
   end
