@@ -8,6 +8,13 @@ RSpec.shared_examples "successful code" do
   end
 end
 
+RSpec.shared_examples "unprocessable entity code" do
+  it "returns unprocessable entity code" do
+    subject
+    expect(response).to have_http_status(422)
+  end
+end
+
 RSpec.shared_examples "not found message" do
   it "return not found message" do
     subject
@@ -93,5 +100,48 @@ RSpec.describe "Api::V1:Products", type: :request do
         expect(response).to have_http_status(400)
       end
     end
+  end
+
+  describe "POST #create" do
+    subject { post api_v1_products_path, params: params, headers: headers }
+
+    let(:params) { {
+      "products": {
+        "data": [
+          {
+            "name": Faker::Lorem.sentence.gsub('.',''),
+            "description": "<div>#{Faker::Lorem.paragraphs.join('<br>')}</div>",
+            "price": 550000,
+            "quantity": 26,
+            "images": [
+              "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80"
+            ],
+            "categories": [
+            ]
+          }
+        ]
+      }
+    } }
+
+    context "when user does not have shop" do
+      it_behaves_like "unprocessable entity code"
+    end
+
+    describe "when user has shop" do
+      let(:user_shop) do
+        create(:shop, user: user)
+      end
+
+      context "when user's shop is not active" do
+        it_behaves_like "unprocessable entity code"
+      end
+
+      context "when user's shop is active" do
+        before { user_shop.approve }
+
+        it_behaves_like "successful code"
+      end
+    end
+
   end
 end
