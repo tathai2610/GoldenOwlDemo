@@ -8,42 +8,42 @@ class ShopsController < ApplicationController
     @products_best_seller = @shop.products.limit(4).includes(:shop).with_attached_images
     @pagy, @products = pagy(@products, items: 12)
   end
-  
-  def new 
+
+  def new
     @shop_registration = ShopRegistrationForm.new
     authorize @shop_registration, policy_class: ShopPolicy
   end
 
-  def create 
+  def create
     @shop_registration = ShopRegistrationForm.new(shop_registration_params.merge(user: @user))
     authorize @shop_registration, policy_class: ShopPolicy
 
-    CreateStoreService.call(@shop_registration)
-
-    flash[:success] = "Congratulations! You have successfuly open your own shop on Golden Mall!"
-    redirect_to user_shop_path(@user)
-  rescue ActiveRecord::RecordInvalid
-    flash[:error] = "Cannot create your shop"
-    render :new
+    if CreateStoreService.call(@shop_registration)
+      flash[:success] = "Congratulations! You have successfuly open your own shop on Golden Mall!"
+      redirect_to user_shop_path(@user)
+    else
+      flash[:error] = "Cannot create your shop"
+      render :new
+    end
   end
 
-  private 
+  private
 
-  def set_user 
+  def set_user
     @user = User.find(params[:user_id])
   end
 
-  def set_shop 
+  def set_shop
     @shop = @user.shop
     authorize @shop
   end
 
-  def shop_params 
+  def shop_params
     params.require(:shop).permit(:name, :description, :phone)
   end
 
-  def shop_registration_params 
-    params.require(:shop_registration_form).permit(:name, :description, :phone, :city, :district, :ward, :street)
+  def shop_registration_params
+    params.require(:shop_registration_form).permit(:name, :description, :phone, :city_code, :district_code, :ward_code, :street_name)
   end
 
   def check_shop_exist

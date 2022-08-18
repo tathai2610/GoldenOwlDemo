@@ -1,45 +1,44 @@
 .container-fluid.p-0#order
-  .container-xl.p-0 
+  .container-xl.p-0
     .py-32.px-4.px-xl-0.header
-      .ff-roboto.fs-30.fw-400 Checkout 
+      .ff-roboto.fs-30.fw-400 Checkout
       = render "layouts/flash"
     .bg-white.border.shadow-sm.px-4.py-32
       .d-flex.align-items-center.justify-content-between
         .d-flex.align-items-center
           = svg_tag "icons/map-pin.svg", class: "text-darkgreen"
           .fs-24.fw-bold.ms-2.text-darkgreen Delevery Address
-        .d-flex.align-items-center 
+        .d-flex.align-items-center
           button.btn.btn-teal.bg-color-darkgreen.fs-18.rounded-0 type="button" data-bs-toggle="modal" data-bs-target="#addressFormModal"
             = svg_tag "icons/plus.svg"
             .ms-2 New address
-      #user_addresses 
+      #user_addresses
         - if current_user.addresses.present?
-          / = render partial: "user_addresses/user_addresses", collection: current_user.addresses, as: :user_address
-          = render partial: "user_addresses/user_address", locals: { user_address: current_user.addresses.first }
+          = render partial: "user_addresses/user_address", collection: current_user.addresses.limit(1).includes(:street, :city, :district, :ward), as: :user_address
     .bg-white.border.shadow-sm.px-4.py-32.mt-0.mt-xl-3
       .d-flex.align-items-center.pb-3
         = svg_tag "icons/clipboard-list.svg", class: "text-darkgreen"
-        .fs-24.fw-bold.ms-2.text-darkgreen Products Ordered 
-      div  
+        .fs-24.fw-bold.ms-2.text-darkgreen Products Ordered
+      div
         = render partial: "new_shop_items", collection: @line_items_group_by_shop, as: :shop_items
     .bg-white.border.shadow-sm.px-4.py-32.mt-0.mt-xl-3
       .d-flex.align-items-center
         = svg_tag "icons/truck.svg", class: "text-darkgreen"
         .fs-24.fw-bold.ms-2.text-darkgreen Shipping
       .d-flex.align-items-center.justify-content-around.fs-20.py-3.mt-3
-        div Nhanh 
-        .d-flex.align-items-center 
+        div Nhanh
+        .d-flex.align-items-center
           .fs-3.pe-1px đ
           div = display_price(20000)
         div x#{ @line_items_group_by_shop.length }
         .d-flex.align-items-center.text-red
-          .fs-3.pe-1px đ 
+          .fs-3.pe-1px đ
           div = display_price(20000 * @line_items_group_by_shop.length)
 
     .bg-white.border.shadow-sm.px-4.py-32.mt-0.mt-xl-3
       .d-flex.align-items-center.w-100
         = svg_tag "icons/wallet.svg", class: "text-darkgreen"
-        .fs-24.fw-bold.ms-2.text-darkgreen Payment 
+        .fs-24.fw-bold.ms-2.text-darkgreen Payment
     .bg-white.border.border-top-0.shadow-sm.px-4.py-32
       .text-center.fs-20.mb-3 Payment Method
       .d-flex.align-items-center.justify-content-center.w-100
@@ -48,22 +47,22 @@
           label.form-selectgroup-label.fs-20.fw-500.mb-3.py-2.py-md-3 Cash on Delivery
           #paypal-button-container
     .bg-white.border.border-top-0.shadow-sm.px-4.py-32
-      .d-flex.justify-content-end 
+      .d-flex.justify-content-end
         table.table.table-sm.table-borderless.align-middle.fs-20.w-100.w-lg-50
           tbody
             tr
-              th Merchandise Subtotal: 
+              th Merchandise Subtotal:
               td.text-end.d-flex.align-items-center.justify-content-end
                 .fs-3.pe-1px đ
-                .d-inline-block.order-total-price 
+                .d-inline-block.order-total-price
             tr
-              th Shipping Total: 
+              th Shipping Total:
               td.text-end.d-flex.align-items-center.justify-content-end
                 .fs-3.pe-1px đ
                 .d-inline-block.order-shipping-price = display_price(20000 * @line_items_group_by_shop.length)
             tr
-              th Total Payment: 
-              td.text-end.d-flex.align-items-center.justify-content-end.text-red.fw-bold.fs-30 
+              th Total Payment:
+              td.text-end.d-flex.align-items-center.justify-content-end.text-red.fw-bold.fs-30
                 .fs-1.pe-1px đ
                 .d-inline-block.order-final-price
     .bg-white.border.shadow-sm.px-4.py-32

@@ -16,6 +16,10 @@ class User < ApplicationRecord
   after_create :attach_avatar
   after_create :create_cart
 
+  def has_shop?
+    shop.present?
+  end
+
   private
 
   def attach_avatar
@@ -24,8 +28,8 @@ class User < ApplicationRecord
     end
   end
 
-  def create_cart 
-    if cart.nil? 
+  def create_cart
+    if cart.nil?
       Cart.create(user: self)
     end
   end

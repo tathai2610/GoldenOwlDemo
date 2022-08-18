@@ -65,9 +65,6 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-gem 'net-smtp'
-
 # This gem is a port of Perl's Data::Faker library that generates fake data.
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 # Template language whose goal is to reduce the view syntax to the essential parts without becoming cryptic
@@ -105,3 +102,9 @@ gem 'httparty', require: true
 gem 'net-smtp', require: false
 gem 'net-imap', require: false
 gem 'net-pop', require: false
+# provides support for Cross-Origin Resource Sharing (CORS) for Rack compatible web applications
+gem 'rack-cors'
+# A ruby implementation of the RFC 7519 OAuth JSON Web Token (JWT) standard.
+gem 'jwt'
+
+gem "ruby-lsp", "~> 0.2.1", :group => :development
