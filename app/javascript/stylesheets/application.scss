@@ -8,10 +8,10 @@
 @use "shops/shops";
 @use "ratings/ratings";
 
-@import 'trix/dist/trix.css';
+@import 'trix/dist/trix';
 @import '@tabler/core/dist/css/tabler.min.css';
 // @import "~bootstrap/scss/bootstrap";
-  
+
 
 @media only screen and (max-width: 767px) {
   .product-img-responsive {
@@ -39,7 +39,7 @@
     &::-webkit-scrollbar {
       display: none;
     }
-    
+
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
   }

@@ -12,19 +12,16 @@ import $ from 'jquery'
 
 require("../stylesheets/application.scss")
 
-import "trix"
-import "@rails/actiontext"
-
 import 'select2'
 import 'select2/dist/css/select2.css'
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-      
+
 import '@tabler/core/dist/js/tabler';
 
-require('packs/scripts.js') 
+require('packs/scripts.js')
 
 global.$ = window.$ = jQuery
 window.jQuery = $
