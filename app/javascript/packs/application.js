@@ -10,6 +10,9 @@ import "channels"
 
 import $ from 'jquery'
 
+import "trix"
+import "@rails/actiontext"
+
 require("../stylesheets/application.scss")
 
 import 'select2'
@@ -25,9 +28,6 @@ require('packs/scripts.js')
 
 global.$ = window.$ = jQuery
 window.jQuery = $
-
-require("trix")
-require("@rails/actiontext")
 
 require('@client-side-validations/client-side-validations')
 require('@client-side-validations/simple-form/dist/simple-form.bootstrap4.esm')
