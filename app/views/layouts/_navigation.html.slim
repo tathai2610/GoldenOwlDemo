@@ -2,75 +2,74 @@
   .container-xl.p-4
     nav.navbar-expand-md.p-0
       .d-flex.justify-content-between.align-items-center
-        .d-block.d-md-none 
+        .d-block.d-md-none
           button#toggle-subnav-btn type="button"
             i.fa-solid.fa-bars.fa-lg.text-darkgreen
-        = link_to root_path do 
+        = link_to root_path do
           = image_tag "logo.png", class: "logo-responsive"
         .d-none.d-md-flex.w-auto.justify-content-between
           = link_to "Home", root_path, class: "me-4"
           = link_to "Products", products_path, class: "me-4"
           - if user_signed_in? && current_user.shop.blank?
             = link_to "Open shop", new_user_shop_path(current_user), class: "me-4"
-          - elsif user_signed_in? && current_user.shop.present? 
+          - elsif user_signed_in? && current_user.shop.present?
             = link_to "Your shop", user_shop_path(current_user), class: "me-4"
           = link_to "About", "#"
-        
+
         .d-flex.align-items-center.justify-content-between
           - if user_signed_in?
-            = link_to cart_path, class: "position-relative text-darkgreen" do 
+            = link_to cart_path, class: "position-relative text-darkgreen" do
               = svg_tag "icons/shopping-cart.svg", class: "fs-36"
               span.position-absolute.top-0.start-100.translate-middle.px-2.bg-danger.border.border-light.rounded-pill.d-flex.justify-content-center.align-items-center
-                span.fs-5.fw-bold.cart-total-items = current_user.cart.line_items.size
-          - else 
-            = link_to new_user_session_path, class: "position-relative text-darkgreen" do 
+                span.fs-5.fw-bold.cart-total-items.text-white = current_user.cart.line_items.size
+          - else
+            = link_to new_user_session_path, class: "position-relative text-darkgreen" do
               = svg_tag "icons/shopping-cart.svg", class: "fs-36"
           .dropdown.ms-4
             a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,10"
               - unless user_signed_in?
                 = svg_tag "icons/user.svg", class: "text-darkgreen"
-              - else 
+              - else
                 = image_tag url_for(current_user.avatar), size:"35x35"
             .dropdown-menu
               - if user_logged_in_and_has_role?(:seller)
-                = link_to new_shop_product_path(current_user.shop), class: "dropdown-item text-darkgreen" do 
+                = link_to new_shop_product_path(current_user.shop), class: "dropdown-item text-darkgreen" do
                   = svg_tag "icons/square-plus.svg"
                   .ms-2 Add product
-                = link_to shop_orders_path, class: "dropdown-item text-darkgreen" do 
+                = link_to shop_orders_path, class: "dropdown-item text-darkgreen" do
                   = svg_tag "icons/building-store.svg"
                   .ms-2 My shop orders
                 .dropdown-divider
-                = link_to orders_path, class: "dropdown-item text-darkgreen" do 
+                = link_to orders_path, class: "dropdown-item text-darkgreen" do
                   = svg_tag "icons/clipboard-text.svg"
                   .ms-2 My purchase
                 .dropdown-divider
               - if user_logged_in_and_has_role?(:admin)
-                = link_to admin_root_path, class: "dropdown-item text-darkgreen" do 
+                = link_to admin_root_path, class: "dropdown-item text-darkgreen" do
                   = svg_tag "icons/badge.svg"
                   .ms-2 Admin page
                 .dropdown-divider
               - unless user_signed_in?
-                = link_to new_user_session_path, class: "dropdown-item text-darkgreen" do 
+                = link_to new_user_session_path, class: "dropdown-item text-darkgreen" do
                   = svg_tag "icons/login.svg"
                   .ms-2 Sign in
-                = link_to new_user_registration_path, class: "dropdown-item text-darkgreen" do 
+                = link_to new_user_registration_path, class: "dropdown-item text-darkgreen" do
                   = svg_tag "icons/user-plus.svg"
                   .ms-2 Sign up
-              - else 
-                = link_to destroy_user_session_path, method: :delete, class: "dropdown-item text-darkgreen" do 
+              - else
+                = link_to destroy_user_session_path, method: :delete, class: "dropdown-item text-darkgreen" do
                   = svg_tag "icons/logout.svg"
                   .ms-2 Logout
 #subnav.container-fluid.py-2.px-0
-  = link_to root_path do 
+  = link_to root_path do
     .container-fluid.py-2 Home
   = link_to products_path do
     .container-fluid.py-2 Plants
   - if user_signed_in? && current_user.shop.blank?
-    = link_to new_user_shop_path(current_user) do 
+    = link_to new_user_shop_path(current_user) do
       .container-fluid.py-2 Open shop
-  - elsif user_signed_in? && current_user.shop.present? 
+  - elsif user_signed_in? && current_user.shop.present?
     = link_to user_shop_path(current_user) do
       .container-fluid.py-2 Your shop
   = link_to "#" do
     .container-fluid.py-2 About
-

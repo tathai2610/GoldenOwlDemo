@@ -3,6 +3,10 @@ $(document).on("turbolinks:load", function() {
     return Number(price).toLocaleString('vi', {maximumFractionDigits: 0})
   }
 
+  if ($(".pagination").length) {
+    $(".page-item a").addClass('fs-18');
+  }
+
   // subnav visibility
   $("#toggle-subnav-btn").on("click", function() {
     if ($("#subnav").is(":visible")) {
