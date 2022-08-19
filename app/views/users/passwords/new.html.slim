@@ -15,14 +15,14 @@
 
 / <%= render "users/shared/links" %>
 
-.container-fluid.py-5.px-5.px-lg-0.height-responsive#user-auth
+.container-fluid.py-5.px-5.px-lg-0.height-responsive#user-auth style="background-image: url('#{image_url('/assets/home-cover.jpg')}')"
   .container-xl.p-4
     .row.mx-auto.justify-content-center.align-items-center.h-100
       .col-10.col-lg-5.p-0.px-5.ps-lg-0
-        h1.mb-0.ff-roboto.fw-100.pt-lg-4.pb-0 Forgot your password?        
+        h1.mb-0.ff-roboto.fw-100.pt-lg-4.pb-0 Forgot your password?
         .d-block.mt-4
           = render "layouts/flash"
-          = simple_form_for user_password_path, :html=> { class: 'user-form' } do |f| 
+          = simple_form_for user_password_path, :html=> { class: 'user-form' } do |f|
             = f.input :email, placeholder: 'Enter your email'
             = f.button :submit, "Send reset password instructions"
         .mt-3.text-center.fs-18

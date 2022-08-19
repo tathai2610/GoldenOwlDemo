@@ -1,7 +1,7 @@
 @use '../config' as *;
 
 #user-auth {
-  background-image: url('/assets/home-cover.jpg');
+  // background-image: url('/assets/home-cover.jpg');
 
   .container-xl {
     background-color: white;
@@ -38,7 +38,7 @@
     display: block;
   }
 
-  span > label, 
+  span > label,
   trix-editor {
     margin: 0;
     font-size: 20px;
