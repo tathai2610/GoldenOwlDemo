@@ -58,7 +58,7 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
   # provides RSpec- and Minitest-compatible one-liners to test common Rails functionality
-  gem 'shoulda-matchers', '~> 5.0'  
+  gem 'shoulda-matchers', '~> 5.0'
   gem 'shoulda-callback-matchers', '~> 1.1.1'
   gem 'database_rewinder'
 end
@@ -108,3 +108,8 @@ gem 'rack-cors'
 gem 'jwt'
 
 gem "ruby-lsp", "~> 0.2.1", :group => :development
+# Capistrano
+gem 'capistrano', '~> 3.11'
+gem 'capistrano-rails', '~> 1.4'
+gem 'capistrano-passenger', '~> 0.2.0'
+gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
