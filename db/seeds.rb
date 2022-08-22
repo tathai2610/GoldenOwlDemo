@@ -67,7 +67,7 @@ count = 0
     name: Faker::Lorem.sentence.gsub('.', ''),
     description: "<div>#{Faker::Lorem.paragraphs.join('<br>')}</div>",
     price: Faker::Number.number(digits: 4) * 100,
-    shop_id: rand(1..10),
+    shop_id: Shop.pluck(:id).sample,
     quantity: rand(50..100)
   )
 
@@ -80,7 +80,7 @@ count = 0
   puts "After save: #{count}" if p.save
 
   2.times do
-    p.categories << Category.find(rand(1..20))
+    p.categories << Category.find(Category.pluck(:id).sample))
   end
 end
 

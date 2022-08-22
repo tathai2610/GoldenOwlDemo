@@ -20,6 +20,11 @@ class User < ApplicationRecord
     shop.present?
   end
 
+  def generate_jwt
+    payload = { user_id: self.id, user_email: self.email }.to_json
+    self.update(jwt: JWT.encode(payload, ENV['JWT_KEY'], 'HS256'))
+  end
+
   private
 
   def attach_avatar
