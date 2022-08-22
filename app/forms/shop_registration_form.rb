@@ -9,6 +9,7 @@ class ShopRegistrationForm < AddressForm
     return false if invalid?
 
     ActiveRecord::Base.transaction do
+      user.add_role(:seller)
       @shop = Shop.create!(name: name, description: description, phone: phone, user: user)
       shop_address = create_address
     end

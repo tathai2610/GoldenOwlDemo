@@ -33,10 +33,9 @@
     .row.mx-auto.justify-content-center.align-items-center.h-100
       .col-lg-4.p-0.d-none.d-lg-flex
         = image_tag "signup-cover.jpg"
-      .col-lg-5.p-0.px-sm-5.ps-lg-0
+      .col-lg-5.p-0.px-sm-5.ps-lg-4
         h1.mb-0.ff-roboto.fw-100.pt-lg-4.pb-0 Sign up
         .py-2.fs-24 Find the perfect plants for your home
-
         .d-block.mt-4
           = render "layouts/flash"
           = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), :html=> { class: 'user-form' }) do |f|
