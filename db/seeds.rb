@@ -58,7 +58,7 @@ end
       response = GhnClient.new.create_store(s)
       s.update!(code: response["data"]["shop_id"])
     end
-  endrai
+  end
 end
 
 count = 0
