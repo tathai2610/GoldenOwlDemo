@@ -1,25 +1,25 @@
 = render "layouts/flash"
-.container-fluid.p-0.shop-cover.py-5
+.container-fluid.p-0.shop-cover.py-5 style="background-image: url('#{image_url('shop-cover.jpg')}')"
   .container-xl.p-0
-    .row.mx-auto.justify-content-center 
+    .row.mx-auto.justify-content-center
       .col-auto.p-0.d-flex.justify-content-center
         = image_tag @shop.avatar, size: "115x115", class: "object-fit-cover rounded border-color-darkgreen"
     .row.mx-auto.mt-2
       .fs-30.fw-500.ff-roboto.mb-0.text-center.text-darkgreen = @shop.name
     .row.mx-auto.mt-3.justify-content-center
-      .col-auto.p-0 
-        - if current_user == @user 
-          = link_to new_shop_product_path(@shop) do 
-            button.btn-small type="button" Add product 
-        - else 
-          = link_to "#" do 
+      .col-auto.p-0
+        - if current_user == @user
+          = link_to new_shop_product_path(@shop) do
+            button.btn-small type="button" Add product
+        - else
+          = link_to "#" do
             button.btn-small type="button" Follow
 .container-fluid.py-5.px-4.bg-white
   .container-xl.p-0
-    .row.mx-auto 
+    .row.mx-auto
       .col-lg-12.mb-4
-        .ff-roboto.fw-400.text-darkgreen.text-center.text-uppercase.lh-sm Description 
-        .text-center.fs-24 = @shop.description 
+        .ff-roboto.fw-400.text-darkgreen.text-center.text-uppercase.lh-sm Description
+        .text-center.fs-24 = @shop.description
     .row.mx-auto.justify-content-around
       = render partial: "shops/info", locals: { shop: @shop }
 - if @products.any?
@@ -27,13 +27,13 @@
     .container-xl.py-5.px-4.position-relative.border-top
       .d-flex.justify-content-between.align-items-center
         h1.p-0.m-0.ff-roboto.fw-400 Plants
-      .container-fluid.p-0.my-4 
+      .container-fluid.p-0.my-4
         .row
           = render partial: "products/product", collection: @products, as: :product
       .d-flex.mb-5.py-lg-3.px-lg-4.justify-content-center
         == pagy_bootstrap_nav(@pagy)
   = render partial: "home/products_4", locals: { section: "best-sellers", product_list: @products_best_seller }
-- else 
-  .container-fluid.p-0.bg-color-cream 
-    .container-xl.py-5.px-4.d-flex.align-items-center.justify-content-center 
-      h2.py-5.ff-roboto.fw-300.text-center It seems that this shop hasn't added any products yet.    
+- else
+  .container-fluid.p-0.bg-color-cream
+    .container-xl.py-5.px-4.d-flex.align-items-center.justify-content-center
+      h2.py-5.ff-roboto.fw-300.text-center It seems that this shop hasn't added any products yet.
