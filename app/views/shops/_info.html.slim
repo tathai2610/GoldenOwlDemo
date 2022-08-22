@@ -1,16 +1,10 @@
 .col-auto.col-md-auto.mb-3.mb-lg-0
-  .ff-roboto.fw-400.text-darkgreen.text-center.text-uppercase.lh-sm Joined 
+  .ff-roboto.fw-400.text-darkgreen.text-center.text-uppercase.lh-sm Joined
   .text-center.fs-24 = shop.created_at.strftime("%b %Y")
 .col-auto.col-md-auto.mb-3.mb-lg-0
-  .ff-roboto.fw-400.text-darkgreen.text-center.text-uppercase.lh-sm Rate  
-  .text-center.fs-24 10
-.col-auto.col-md-auto.mb-3.mb-lg-0
-  .ff-roboto.fw-400.text-darkgreen.text-center.text-uppercase.lh-sm Followers  
-  .text-center.fs-24 10
-.col-auto.col-md-auto.mb-3.mb-lg-0
-  .ff-roboto.fw-400.text-darkgreen.text-center.text-uppercase.lh-sm Products  
+  .ff-roboto.fw-400.text-darkgreen.text-center.text-uppercase.lh-sm Products
   .text-center.fs-24 = shop.products_count
-- if user_signed_in? && current_user == shop.user 
+- if user_signed_in? && current_user == shop.user
   .col-auto.col-md-auto.mb-3.mb-lg-0
-    .ff-roboto.fw-400.text-darkgreen.text-center.text-uppercase.lh-sm State  
+    .ff-roboto.fw-400.text-darkgreen.text-center.text-uppercase.lh-sm State
     .text-center.fs-24 = shop.state.capitalize

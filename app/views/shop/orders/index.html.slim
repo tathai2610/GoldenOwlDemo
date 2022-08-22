@@ -1,27 +1,29 @@
-.container-fluid.p-0 
+- content_for :title, "My shop orders"
+
+.container-fluid.p-0
   .container-xl.p-0
     .py-32.px-4.px-xl-0
       .ff-roboto.fs-30.fw-400 My shop's orders
-      = render "layouts/flash" 
+      = render "layouts/flash"
     .bg-white.shadow-sm.overflow-x-auto
       .row.mx-auto.w-767px
         .col.d-flex.align-items-center.justify-content-center.p-0
           = link_to "All", "#", class: "py-3 fs-20 fw-bold text-darkgreen border-color-darkgreen border-x-0 border-top-0 w-100 text-decoration-none text-center"
         .col.d-flex.align-items-center.justify-content-center.p-0
           = link_to "To Pay", "#", class: "py-3 fs-20 text-dark w-100 text-decoration-none text-center"
-        .col.d-flex.align-items-center.justify-content-center.p-0 
+        .col.d-flex.align-items-center.justify-content-center.p-0
           = link_to "To Ship", "#", class: "py-3 fs-20 text-dark w-100 text-decoration-none text-center"
-        .col.d-flex.align-items-center.justify-content-center.p-0 
+        .col.d-flex.align-items-center.justify-content-center.p-0
           = link_to "To Receive", "#", class: "py-3 fs-20 text-dark w-100 text-decoration-none text-center"
-        .col.d-flex.align-items-center.justify-content-center.p-0 
+        .col.d-flex.align-items-center.justify-content-center.p-0
           = link_to "Completed", "#", class: "py-3 fs-20 text-dark w-100 text-decoration-none text-center"
-        .col.d-flex.align-items-center.justify-content-center.p-0 
+        .col.d-flex.align-items-center.justify-content-center.p-0
           = link_to "Cancelled", "#", class: "py-3 fs-20 text-dark w-100 text-decoration-none text-center"
     div.pb-5
       - if @orders.present?
         = render partial: "orders/shop_items", collection: @orders, as: :order, locals: { user_orders: false }
-      - else 
-        .empty 
-          .empty-icon 
+      - else
+        .empty
+          .empty-icon
             = svg_tag "icons/clipboard-x.svg"
           .empty-title.fs-24 No orders yet

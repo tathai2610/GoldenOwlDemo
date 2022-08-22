@@ -1,36 +1,39 @@
+- content_for :title, @product.name
+
 = render 'layouts/flash'
 .container-fluid.p-0.pb-5.bg-white
   .container-xl.p-0
-    .row.mx-auto.p-0.px-lg-4 
+    .row.mx-auto.p-0.px-lg-4
       .col-auto.px-4.p-lg-0.mt-5.mb-3
-        = link_to products_path, class: "text-decoration-none text-dark fs-24 fw-300 ps-3" do 
+        = link_to products_path, class: "text-decoration-none text-dark fs-24 fw-300 ps-3" do
           i.fa-solid.fa-arrow-left-long.me-3.fw-400
-          | Back to all products 
-        .container-fluid.p-0 
-          .row.mx-auto.p-0 
+          | Back to all products
+        .container-fluid.p-0
+          .row.mx-auto.p-0
             .col-12.col-lg-6.p-0
               = image_tag url_for(@product.images.first), class: "product-show-img"
               .d-flex.mt-3.pb-2.w-100.product-show_images-holder
                 = render partial: "products/product_images", collection: @product.images.includes(:blob), as: :image
             = render "products/add_to_cart_form", product: @product
-.container-fluid.p-0#product-show-shop 
-  .container-xl.py-5.px-4
+.container-fluid.p-0#product-show-shop
+  .container-xl.p-4
     .row.mx-auto.p-0.justify-content-between.justify-content-md-around.align-items-center
       .col-12.col-lg-auto.p-0
-        .container-fluid.p-0 
+        .container-fluid.p-0
           .row.mx-auto.mb-4.mb-lg-0.justify-content-center.align-items-center
             .col-auto.ps-0
-              = link_to user_shop_path(@shop.user) do 
+              = link_to user_shop_path(@shop.user) do
                 = image_tag url_for(@shop.avatar), size: "100x100"
             .col-auto.pe-0
-              h4.mb-2.fs-20.fw-400.ff-roboto.lh-sm = @shop.name
-              .d-flex
-                = link_to user_shop_path(@shop.user) do 
-                  button.btn-small.fs-20.py-2.bg-white.text-darkgreen type="button" View shop
-                = link_to "#", class: "ms-2" do 
-                  button.btn-small.fs-20.py-2 type="button" Follow
+              = link_to user_shop_path(@shop.user), class: "text-decoration-none text-dark text-center" do
+                h4.mb-2.fs-20.fw-400.ff-roboto.lh-sm = @shop.name
+              / .d-flex
+              /   = link_to user_shop_path(@shop.user) do
+              /     button.btn-small.fs-20.py-2.bg-white.text-darkgreen type="button" View shop
+              /   = link_to "#", class: "ms-2" do
+              /     button.btn-small.fs-20.py-2 type="button" Follow
       .col-12.col-lg-auto.p-0.d-flex.align-items-center
-        .container-fluid.p-0 
+        .container-fluid.p-0
           .row.mx-auto.justify-content-center.gx-4
             = render partial: "shops/info", locals: { shop: @shop }
 .container-fluid.p-0.bg-white

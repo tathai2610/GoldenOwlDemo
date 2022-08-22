@@ -3,8 +3,6 @@
     .d-flex.align-items-center.fs-20
       = svg_tag "icons/building-store.svg"
       = link_to order.shop.name, user_shop_path(order.shop.user), class: "ms-2 fw-bold text-darkgreen text-decoration-none"
-      / .d-none.d-md-block.ms-3 = link_to "Follow", "#", class: "btn btn-teal text-white bg-color-darkgreen fs-18"
-      / .d-none.d-md-block.ms-2 = link_to "View shop", user_shop_path(order.shop.user), class: "btn fs-18"
     .d-flex.align-items-center
       .status.status-teal.fs-18.fw-bold = display_status(order.status)
       .vr.mx-3

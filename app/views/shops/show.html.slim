@@ -1,3 +1,5 @@
+- content_for :title, @shop.name
+
 = render "layouts/flash"
 .container-fluid.p-0.shop-cover.py-5 style="background-image: url('#{image_url('shop-cover.jpg')}')"
   .container-xl.p-0
@@ -11,9 +13,9 @@
         - if current_user == @user
           = link_to new_shop_product_path(@shop) do
             button.btn-small type="button" Add product
-        - else
-          = link_to "#" do
-            button.btn-small type="button" Follow
+        / - else
+        /   = link_to "#" do
+        /     button.btn-small type="button" Follow
 .container-fluid.py-5.px-4.bg-white
   .container-xl.p-0
     .row.mx-auto

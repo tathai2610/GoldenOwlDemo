@@ -1,3 +1,5 @@
+- content_for :title, "Pending shops"
+
 .page-wrapper
   .container-xl
     /! Page title
@@ -12,9 +14,7 @@
         .card-body
           = render "layouts/flash"
           #pending-shops.accordion
-            - if @pending_shops.any? 
+            - if @pending_shops.any?
               = render partial: "shop", collection: @pending_shops, as: :shop
-            - else 
+            - else
               = render "empty"
-
-  
